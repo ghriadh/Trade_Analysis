@@ -1,0 +1,5 @@
+flow_key,flow_code,flow_description
+1,M,IMPORT
+2,X,EXPORT
+3,RM,RE_IMPORT
+4,RX,RE_EXPORT

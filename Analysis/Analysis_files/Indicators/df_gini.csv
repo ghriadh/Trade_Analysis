@@ -1,0 +1,161 @@
+year,gini,indicator_name
+2015,0.8489291939211079,"Current account balance (BoP, current US$)"
+2016,0.8580034808078978,"Current account balance (BoP, current US$)"
+2017,0.8462262165952772,"Current account balance (BoP, current US$)"
+2018,0.8343027344397049,"Current account balance (BoP, current US$)"
+2019,0.8434033648264387,"Current account balance (BoP, current US$)"
+2020,0.8583576769922339,"Current account balance (BoP, current US$)"
+2021,0.8632200135848387,"Current account balance (BoP, current US$)"
+2022,0.8501040959497903,"Current account balance (BoP, current US$)"
+2023,0.8591787821963585,"Current account balance (BoP, current US$)"
+2024,0.8663120509913437,"Current account balance (BoP, current US$)"
+2015,0.4830148929549219,Current account balance (% of GDP)
+2016,0.48795516318582566,Current account balance (% of GDP)
+2017,0.47992477497679564,Current account balance (% of GDP)
+2018,0.5055310243956516,Current account balance (% of GDP)
+2019,0.5226330501569205,Current account balance (% of GDP)
+2020,0.5252269988879145,Current account balance (% of GDP)
+2021,0.48835070497045724,Current account balance (% of GDP)
+2022,0.47846565016640685,Current account balance (% of GDP)
+2023,0.5262885564740584,Current account balance (% of GDP)
+2024,0.5113532892412306,Current account balance (% of GDP)
+2015,0.8841341683470806,"Foreign direct investment, net inflows (BoP, current US$)"
+2016,0.873118391420023,"Foreign direct investment, net inflows (BoP, current US$)"
+2017,0.850634575843799,"Foreign direct investment, net inflows (BoP, current US$)"
+2018,0.8532396305872668,"Foreign direct investment, net inflows (BoP, current US$)"
+2019,0.8445694997087648,"Foreign direct investment, net inflows (BoP, current US$)"
+2020,0.8735930854883599,"Foreign direct investment, net inflows (BoP, current US$)"
+2021,0.8502993548473997,"Foreign direct investment, net inflows (BoP, current US$)"
+2022,0.8498183524077864,"Foreign direct investment, net inflows (BoP, current US$)"
+2023,0.8473848375219863,"Foreign direct investment, net inflows (BoP, current US$)"
+2024,0.8139224621071265,"Foreign direct investment, net inflows (BoP, current US$)"
+2015,0.8211948267999858,"External debt stocks, total (DOD, current US$)"
+2016,0.8189984296541809,"External debt stocks, total (DOD, current US$)"
+2017,0.8197503284028629,"External debt stocks, total (DOD, current US$)"
+2018,0.8212512800153177,"External debt stocks, total (DOD, current US$)"
+2019,0.8208422215284176,"External debt stocks, total (DOD, current US$)"
+2020,0.8160110165459077,"External debt stocks, total (DOD, current US$)"
+2021,0.8177388477221589,"External debt stocks, total (DOD, current US$)"
+2022,0.8116917835075533,"External debt stocks, total (DOD, current US$)"
+2023,0.8124168111313445,"External debt stocks, total (DOD, current US$)"
+2024,0.8119509097176848,"External debt stocks, total (DOD, current US$)"
+2015,0.669138648652731,"Inflation, consumer prices (annual %)"
+2016,0.7888585092097844,"Inflation, consumer prices (annual %)"
+2017,0.6309507792181615,"Inflation, consumer prices (annual %)"
+2018,0.5778925789188594,"Inflation, consumer prices (annual %)"
+2019,0.7057621539966132,"Inflation, consumer prices (annual %)"
+2020,0.8041713928156954,"Inflation, consumer prices (annual %)"
+2021,0.6817755356458116,"Inflation, consumer prices (annual %)"
+2022,0.4864593059214502,"Inflation, consumer prices (annual %)"
+2023,0.5533377571401622,"Inflation, consumer prices (annual %)"
+2024,0.6613503171327374,"Inflation, consumer prices (annual %)"
+2015,0.4810016243087805,Real interest rate (%)
+2016,0.4222139185359942,Real interest rate (%)
+2017,0.5444680828758188,Real interest rate (%)
+2018,0.4425551083692601,Real interest rate (%)
+2019,0.4219365283473398,Real interest rate (%)
+2020,0.47080976554740506,Real interest rate (%)
+2021,0.47738719294278736,Real interest rate (%)
+2022,0.5534785719738544,Real interest rate (%)
+2023,0.555906743774262,Real interest rate (%)
+2024,0.5182724936729337,Real interest rate (%)
+2015,0.2524953153839576,Expense (% of GDP)
+2016,0.24892085083364424,Expense (% of GDP)
+2017,0.25278417668479114,Expense (% of GDP)
+2018,0.25239610094112536,Expense (% of GDP)
+2019,0.24584712955450844,Expense (% of GDP)
+2020,0.24445805240452292,Expense (% of GDP)
+2021,0.23228587578387058,Expense (% of GDP)
+2022,0.22535619944944096,Expense (% of GDP)
+2023,0.23423093479365936,Expense (% of GDP)
+2024,0.11622627874146414,Expense (% of GDP)
+2015,0.821648196421049,Exports of goods and services (current US$)
+2016,0.8215380345736979,Exports of goods and services (current US$)
+2017,0.818661200194569,Exports of goods and services (current US$)
+2018,0.8161751539529587,Exports of goods and services (current US$)
+2019,0.8142503792957263,Exports of goods and services (current US$)
+2020,0.8247809085008034,Exports of goods and services (current US$)
+2021,0.8183510352272597,Exports of goods and services (current US$)
+2022,0.8107794664794259,Exports of goods and services (current US$)
+2023,0.8037931161802352,Exports of goods and services (current US$)
+2024,0.7963533283608732,Exports of goods and services (current US$)
+2015,0.3571667397609837,Exports of goods and services (% of GDP)
+2016,0.35729469638925176,Exports of goods and services (% of GDP)
+2017,0.3556203444303162,Exports of goods and services (% of GDP)
+2018,0.3475603948623554,Exports of goods and services (% of GDP)
+2019,0.34641172169339085,Exports of goods and services (% of GDP)
+2020,0.3786002244424223,Exports of goods and services (% of GDP)
+2021,0.3870585804734359,Exports of goods and services (% of GDP)
+2022,0.3715150650983592,Exports of goods and services (% of GDP)
+2023,0.36364429333105697,Exports of goods and services (% of GDP)
+2024,0.35023275160036665,Exports of goods and services (% of GDP)
+2015,0.8127793897958019,Imports of goods and services (current US$)
+2016,0.813204643579683,Imports of goods and services (current US$)
+2017,0.8139650384411202,Imports of goods and services (current US$)
+2018,0.8139047923912447,Imports of goods and services (current US$)
+2019,0.8118268329077734,Imports of goods and services (current US$)
+2020,0.8165697811348953,Imports of goods and services (current US$)
+2021,0.8148108692921107,Imports of goods and services (current US$)
+2022,0.8099738401909444,Imports of goods and services (current US$)
+2023,0.8012659248321711,Imports of goods and services (current US$)
+2024,0.7929262321925528,Imports of goods and services (current US$)
+2015,0.28499277978234333,Imports of goods and services (% of GDP)
+2016,0.2929326025926575,Imports of goods and services (% of GDP)
+2017,0.2949941035228918,Imports of goods and services (% of GDP)
+2018,0.28827654423223037,Imports of goods and services (% of GDP)
+2019,0.2947979565018771,Imports of goods and services (% of GDP)
+2020,0.3041255899154867,Imports of goods and services (% of GDP)
+2021,0.2997309288104666,Imports of goods and services (% of GDP)
+2022,0.3039449343406401,Imports of goods and services (% of GDP)
+2023,0.301801711386367,Imports of goods and services (% of GDP)
+2024,0.3058199935821779,Imports of goods and services (% of GDP)
+2015,0.2999698367301047,Trade (% of GDP)
+2016,0.30575970351972753,Trade (% of GDP)
+2017,0.3064420584322481,Trade (% of GDP)
+2018,0.29607545660700546,Trade (% of GDP)
+2019,0.3009558621024504,Trade (% of GDP)
+2020,0.3182727815016046,Trade (% of GDP)
+2021,0.3162827350809674,Trade (% of GDP)
+2022,0.3110344447509291,Trade (% of GDP)
+2023,0.3109087061144596,Trade (% of GDP)
+2024,0.3122322553756775,Trade (% of GDP)
+2015,0.8770866389954284,GDP (current US$)
+2016,0.8784381740010584,GDP (current US$)
+2017,0.876930685148797,GDP (current US$)
+2018,0.8770502924277037,GDP (current US$)
+2019,0.8782727269906753,GDP (current US$)
+2020,0.881538261623341,GDP (current US$)
+2021,0.8817913438506904,GDP (current US$)
+2022,0.8786405037841194,GDP (current US$)
+2023,0.8751919766503562,GDP (current US$)
+2024,0.8688464071347376,GDP (current US$)
+2015,0.6425987587391323,GDP per capita (current US$)
+2016,0.6422913051255025,GDP per capita (current US$)
+2017,0.6381501735936439,GDP per capita (current US$)
+2018,0.6391400645862573,GDP per capita (current US$)
+2019,0.6337061415603099,GDP per capita (current US$)
+2020,0.6405172761104317,GDP per capita (current US$)
+2021,0.6453221844346075,GDP per capita (current US$)
+2022,0.6379575803791836,GDP per capita (current US$)
+2023,0.6418597361369008,GDP per capita (current US$)
+2024,0.6307480825187536,GDP per capita (current US$)
+2015,0.39512820724353503,"Unemployment, total (% of total labor force) (modeled ILO estimate)"
+2016,0.39383659202940835,"Unemployment, total (% of total labor force) (modeled ILO estimate)"
+2017,0.39481703610582575,"Unemployment, total (% of total labor force) (modeled ILO estimate)"
+2018,0.40150441925370545,"Unemployment, total (% of total labor force) (modeled ILO estimate)"
+2019,0.40210111548876526,"Unemployment, total (% of total labor force) (modeled ILO estimate)"
+2020,0.38016695017039814,"Unemployment, total (% of total labor force) (modeled ILO estimate)"
+2021,0.3832757880160835,"Unemployment, total (% of total labor force) (modeled ILO estimate)"
+2022,0.4021893435996772,"Unemployment, total (% of total labor force) (modeled ILO estimate)"
+2023,0.40086663332533706,"Unemployment, total (% of total labor force) (modeled ILO estimate)"
+2024,0.39995895984949525,"Unemployment, total (% of total labor force) (modeled ILO estimate)"
+2015,0.8203455403582245,"Population, total"
+2016,0.8198368222723647,"Population, total"
+2017,0.8194498622786134,"Population, total"
+2018,0.8190223671122582,"Population, total"
+2019,0.8184757921535296,"Population, total"
+2020,0.8179001578123468,"Population, total"
+2021,0.8174450961526357,"Population, total"
+2022,0.8167269538186397,"Population, total"
+2023,0.815889186670212,"Population, total"
+2024,0.8150903751243052,"Population, total"

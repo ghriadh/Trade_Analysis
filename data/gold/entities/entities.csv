@@ -1,0 +1,313 @@
+entity_key,country_id,country_code,country_iso3,country_name,wb_country_code,wb_country_iso3,wb_country_name,entity_type
+1,,637.0,A59,"North America and Central America, nes",,,,COUNTRY
+2,,473.0,A79,"LAIA, nes",,,,COUNTRY
+3,,636.0,A79,"Rest of America, nes",,,,COUNTRY
+4,AW,533.0,ABW,Aruba,533,ABW,Aruba,COUNTRY
+5,ZH,,,,999,AFE,Africa Eastern and Southern,ENTITY
+6,AF,4.0,AFG,Afghanistan,4,AFG,Afghanistan,COUNTRY
+7,ZI,,,,999,AFW,Africa Western and Central,ENTITY
+8,AO,24.0,AGO,Angola,24,AGO,Angola,COUNTRY
+9,,660.0,AIA,Anguilla,660,AIA,Anguilla,COUNTRY
+10,,,,,248,ALA,Åland Islands,COUNTRY
+11,AL,8.0,ALB,Albania,8,ALB,Albania,COUNTRY
+12,AD,20.0,AND,Andorra,20,AND,Andorra,COUNTRY
+13,1A,,,,999,ARB,Arab World,ENTITY
+14,AE,784.0,ARE,United Arab Emirates,784,ARE,United Arab Emirates,COUNTRY
+15,AR,32.0,ARG,Argentina,32,ARG,Argentina,COUNTRY
+16,AM,51.0,ARM,Armenia,51,ARM,Armenia,COUNTRY
+17,AS,16.0,ASM,American Samoa,16,ASM,American Samoa,COUNTRY
+18,,10.0,ATA,Antarctica,10,ATA,Antarctica,COUNTRY
+19,,80.0,ATB,Br. Antarctic Terr.,,,,COUNTRY
+20,,260.0,ATF,Fr. South Antarctic Terr.,260,ATF,French Southern and Antarctic Lands,COUNTRY
+21,AG,28.0,ATG,Antigua and Barbuda,28,ATG,Antigua and Barbuda,COUNTRY
+22,AU,36.0,AUS,Australia,36,AUS,Australia,COUNTRY
+23,AT,40.0,AUT,Austria,40,AUT,Austria,COUNTRY
+24,AZ,31.0,AZE,Azerbaijan,31,AZE,Azerbaijan,COUNTRY
+25,BI,108.0,BDI,Burundi,108,BDI,Burundi,COUNTRY
+26,BE,56.0,BEL,Belgium,56,BEL,Belgium,COUNTRY
+27,BJ,204.0,BEN,Benin,204,BEN,Benin,COUNTRY
+28,,535.0,BES,Bonaire,535,BES,Caribbean Netherlands,COUNTRY
+29,BF,854.0,BFA,Burkina Faso,854,BFA,Burkina Faso,COUNTRY
+30,BD,50.0,BGD,Bangladesh,50,BGD,Bangladesh,COUNTRY
+31,BG,100.0,BGR,Bulgaria,100,BGR,Bulgaria,COUNTRY
+32,BH,48.0,BHR,Bahrain,48,BHR,Bahrain,COUNTRY
+33,BS,44.0,BHS,Bahamas,44,BHS,Bahamas,COUNTRY
+34,BA,70.0,BIH,Bosnia Herzegovina,70,BIH,Bosnia and Herzegovina,COUNTRY
+35,,652.0,BLM,Saint BarthÃƒÂ©lemy,652,BLM,Saint Barthélemy,COUNTRY
+36,BY,112.0,BLR,Belarus,112,BLR,Belarus,COUNTRY
+37,BZ,84.0,BLZ,Belize,84,BLZ,Belize,COUNTRY
+38,BM,60.0,BMU,Bermuda,60,BMU,Bermuda,COUNTRY
+39,BO,68.0,BOL,Bolivia (Plurinational State of),68,BOL,Bolivia,COUNTRY
+40,BR,76.0,BRA,Brazil,76,BRA,Brazil,COUNTRY
+41,BB,52.0,BRB,Barbados,52,BRB,Barbados,COUNTRY
+42,BN,96.0,BRN,Brunei Darussalam,96,BRN,Brunei,COUNTRY
+43,BT,64.0,BTN,Bhutan,64,BTN,Bhutan,COUNTRY
+44,,74.0,BVT,Bouvet Island,74,BVT,Bouvet Island,COUNTRY
+45,BW,72.0,BWA,Botswana,72,BWA,Botswana,COUNTRY
+46,CF,140.0,CAF,Central African Rep.,140,CAF,Central African Republic,COUNTRY
+47,CA,124.0,CAN,Canada,124,CAN,Canada,COUNTRY
+48,,166.0,CCK,Cocos Isds,166,CCK,Cocos (Keeling) Islands,COUNTRY
+49,B8,,,,999,CEB,Central Europe and the Baltics,ENTITY
+50,CH,757.0,CHE,Switzerland,756,CHE,Switzerland,COUNTRY
+51,JG,,,,999,CHI,Channel Islands,ENTITY
+52,CL,152.0,CHL,Chile,152,CHL,Chile,COUNTRY
+53,CN,156.0,CHN,China,156,CHN,China,COUNTRY
+54,CI,384.0,CIV,Cote d'Ivoire,384,CIV,Ivory Coast,COUNTRY
+55,CM,120.0,CMR,Cameroon,120,CMR,Cameroon,COUNTRY
+56,CD,180.0,COD,Dem. Rep. of the Congo,180,COD,DR Congo,COUNTRY
+57,CG,178.0,COG,Congo,178,COG,Congo,COUNTRY
+58,,184.0,COK,Cook Isds,184,COK,Cook Islands,COUNTRY
+59,CO,170.0,COL,Colombia,170,COL,Colombia,COUNTRY
+60,KM,174.0,COM,Comoros,174,COM,Comoros,COUNTRY
+61,CV,132.0,CPV,Cabo Verde,132,CPV,Cape Verde,COUNTRY
+62,CR,188.0,CRI,Costa Rica,188,CRI,Costa Rica,COUNTRY
+63,S3,,,,999,CSS,Caribbean small states,ENTITY
+64,CU,192.0,CUB,Cuba,192,CUB,Cuba,COUNTRY
+65,CW,531.0,CUW,Curacao,531,CUW,Curacao,COUNTRY
+66,,162.0,CXR,Christmas Isds,162,CXR,Christmas Island,COUNTRY
+67,KY,136.0,CYM,Cayman Isds,136,CYM,Cayman Islands,COUNTRY
+68,CY,196.0,CYP,Cyprus,196,CYP,Cyprus,COUNTRY
+69,CZ,203.0,CZE,Czechia,203,CZE,Czechia,COUNTRY
+70,DE,276.0,DEU,Germany,276,DEU,Germany,COUNTRY
+71,DJ,262.0,DJI,Djibouti,262,DJI,Djibouti,COUNTRY
+72,DM,212.0,DMA,Dominica,212,DMA,Dominica,COUNTRY
+73,DK,208.0,DNK,Denmark,208,DNK,Denmark,COUNTRY
+74,DO,214.0,DOM,Dominican Rep.,214,DOM,Dominican Republic,COUNTRY
+75,DZ,12.0,DZA,Algeria,12,DZA,Algeria,COUNTRY
+76,,568.0,E19,"Other Europe, nes",,,,COUNTRY
+77,4E,,,,999,EAP,East Asia & Pacific (excluding high income),ENTITY
+78,V2,,,,999,EAR,Early-demographic dividend,ENTITY
+79,Z4,,,,999,EAS,East Asia & Pacific,ENTITY
+80,7E,,,,999,ECA,Europe & Central Asia (excluding high income),ENTITY
+81,Z7,,,,999,ECS,Europe & Central Asia,ENTITY
+82,EC,218.0,ECU,Ecuador,218,ECU,Ecuador,COUNTRY
+83,EG,818.0,EGY,Egypt,818,EGY,Egypt,COUNTRY
+84,XC,,,,999,EMU,Euro area,ENTITY
+85,ER,232.0,ERI,Eritrea,232,ERI,Eritrea,COUNTRY
+86,,732.0,ESH,Western Sahara,732,ESH,Western Sahara,COUNTRY
+87,ES,724.0,ESP,Spain,724,ESP,Spain,COUNTRY
+88,EE,233.0,EST,Estonia,233,EST,Estonia,COUNTRY
+89,ET,231.0,ETH,Ethiopia,231,ETH,Ethiopia,COUNTRY
+90,EU,,,,999,EUU,European Union,ENTITY
+91,,577.0,F19,"Other Africa, nes",,,,COUNTRY
+92,F1,,,,999,FCS,Fragile and conflict affected situations,ENTITY
+93,FI,246.0,FIN,Finland,246,FIN,Finland,COUNTRY
+94,FJ,242.0,FJI,Fiji,242,FJI,Fiji,COUNTRY
+95,,238.0,FLK,Falkland Isds (Malvinas),238,FLK,Falkland Islands,COUNTRY
+96,FR,251.0,FRA,France,250,FRA,France,COUNTRY
+97,FO,234.0,FRO,Faroe Isds,234,FRO,Faroe Islands,COUNTRY
+98,FM,583.0,FSM,FS Micronesia,583,FSM,Micronesia,COUNTRY
+99,GA,266.0,GAB,Gabon,266,GAB,Gabon,COUNTRY
+100,GB,826.0,GBR,United Kingdom,826,GBR,United Kingdom,COUNTRY
+101,GE,268.0,GEO,Georgia,268,GEO,Georgia,COUNTRY
+102,,,,,831,GGY,Guernsey,COUNTRY
+103,GH,288.0,GHA,Ghana,288,GHA,Ghana,COUNTRY
+104,GI,292.0,GIB,Gibraltar,292,GIB,Gibraltar,COUNTRY
+105,GN,324.0,GIN,Guinea,324,GIN,Guinea,COUNTRY
+106,,,,,312,GLP,Guadeloupe,COUNTRY
+107,GM,270.0,GMB,Gambia,270,GMB,Gambia,COUNTRY
+108,GW,624.0,GNB,Guinea-Bissau,624,GNB,Guinea-Bissau,COUNTRY
+109,GQ,226.0,GNQ,Equatorial Guinea,226,GNQ,Equatorial Guinea,COUNTRY
+110,GR,300.0,GRC,Greece,300,GRC,Greece,COUNTRY
+111,GD,308.0,GRD,Grenada,308,GRD,Grenada,COUNTRY
+112,GL,304.0,GRL,Greenland,304,GRL,Greenland,COUNTRY
+113,GT,320.0,GTM,Guatemala,320,GTM,Guatemala,COUNTRY
+114,,,,,254,GUF,French Guiana,COUNTRY
+115,GU,316.0,GUM,Guam,316,GUM,Guam,COUNTRY
+116,GY,328.0,GUY,Guyana,328,GUY,Guyana,COUNTRY
+117,HK,344.0,HKG,"China, Hong Kong SAR",344,HKG,Hong Kong,COUNTRY
+118,,334.0,HMD,Heard Island and McDonald Islands,334,HMD,Heard Island and McDonald Islands,COUNTRY
+119,HN,340.0,HND,Honduras,340,HND,Honduras,COUNTRY
+120,XE,,,,999,HPC,Heavily indebted poor countries (HIPC),ENTITY
+121,HR,191.0,HRV,Croatia,191,HRV,Croatia,COUNTRY
+122,HT,332.0,HTI,Haiti,332,HTI,Haiti,COUNTRY
+123,HU,348.0,HUN,Hungary,348,HUN,Hungary,COUNTRY
+124,XF,,,,999,IBD,IBRD only,ENTITY
+125,ZT,,,,999,IBT,IDA & IBRD total,ENTITY
+126,XG,,,,999,IDA,IDA total,ENTITY
+127,XH,,,,999,IDB,IDA blend,ENTITY
+128,ID,360.0,IDN,Indonesia,360,IDN,Indonesia,COUNTRY
+129,XI,,,,999,IDX,IDA only,ENTITY
+130,IM,,,,833,IMN,Isle of Man,COUNTRY
+131,IN,699.0,IND,India,356,IND,India,COUNTRY
+132,,86.0,IOT,Br. Indian Ocean Terr.,86,IOT,British Indian Ocean Territory,COUNTRY
+133,IE,372.0,IRL,Ireland,372,IRL,Ireland,COUNTRY
+134,IR,364.0,IRN,Iran,364,IRN,Iran,COUNTRY
+135,IQ,368.0,IRQ,Iraq,368,IRQ,Iraq,COUNTRY
+136,IS,352.0,ISL,Iceland,352,ISL,Iceland,COUNTRY
+137,IL,376.0,ISR,Israel,376,ISR,Israel,COUNTRY
+138,IT,380.0,ITA,Italy,380,ITA,Italy,COUNTRY
+139,JM,388.0,JAM,Jamaica,388,JAM,Jamaica,COUNTRY
+140,,,,,832,JEY,Jersey,COUNTRY
+141,JO,400.0,JOR,Jordan,400,JOR,Jordan,COUNTRY
+142,JP,392.0,JPN,Japan,392,JPN,Japan,COUNTRY
+143,KZ,398.0,KAZ,Kazakhstan,398,KAZ,Kazakhstan,COUNTRY
+144,KE,404.0,KEN,Kenya,404,KEN,Kenya,COUNTRY
+145,KG,417.0,KGZ,Kyrgyzstan,417,KGZ,Kyrgyzstan,COUNTRY
+146,KH,116.0,KHM,Cambodia,116,KHM,Cambodia,COUNTRY
+147,KI,296.0,KIR,Kiribati,296,KIR,Kiribati,COUNTRY
+148,KN,659.0,KNA,Saint Kitts and Nevis,659,KNA,Saint Kitts and Nevis,COUNTRY
+149,KR,410.0,KOR,Rep. of Korea,410,KOR,South Korea,COUNTRY
+150,KW,414.0,KWT,Kuwait,414,KWT,Kuwait,COUNTRY
+151,XJ,,,,999,LAC,Latin America & Caribbean (excluding high income),ENTITY
+152,LA,418.0,LAO,Lao People's Dem. Rep.,418,LAO,Laos,COUNTRY
+153,LB,422.0,LBN,Lebanon,422,LBN,Lebanon,COUNTRY
+154,LR,430.0,LBR,Liberia,430,LBR,Liberia,COUNTRY
+155,LY,434.0,LBY,Libya,434,LBY,Libya,COUNTRY
+156,LC,662.0,LCA,Saint Lucia,662,LCA,Saint Lucia,COUNTRY
+157,ZJ,,,,999,LCN,Latin America & Caribbean,ENTITY
+158,XL,,,,999,LDC,Least developed countries: UN classification,ENTITY
+159,LI,,,,438,LIE,Liechtenstein,COUNTRY
+160,LK,144.0,LKA,Sri Lanka,144,LKA,Sri Lanka,COUNTRY
+161,XO,,,,999,LMY,Low & middle income,ENTITY
+162,LS,426.0,LSO,Lesotho,426,LSO,Lesotho,COUNTRY
+163,V3,,,,999,LTE,Late-demographic dividend,ENTITY
+164,LT,440.0,LTU,Lithuania,440,LTU,Lithuania,COUNTRY
+165,LU,442.0,LUX,Luxembourg,442,LUX,Luxembourg,COUNTRY
+166,LV,428.0,LVA,Latvia,428,LVA,Latvia,COUNTRY
+167,MO,446.0,MAC,"China, Macao SAR",446,MAC,Macau,COUNTRY
+168,MF,,,,663,MAF,Saint Martin,COUNTRY
+169,MA,504.0,MAR,Morocco,504,MAR,Morocco,COUNTRY
+170,MC,,,,492,MCO,Monaco,COUNTRY
+171,MD,498.0,MDA,Rep. of Moldova,498,MDA,Moldova,COUNTRY
+172,MG,450.0,MDG,Madagascar,450,MDG,Madagascar,COUNTRY
+173,MV,462.0,MDV,Maldives,462,MDV,Maldives,COUNTRY
+174,ZQ,,,,999,MEA,"Middle East, North Africa, Afghanistan & Pakistan",ENTITY
+175,MX,484.0,MEX,Mexico,484,MEX,Mexico,COUNTRY
+176,MH,584.0,MHL,Marshall Isds,584,MHL,Marshall Islands,COUNTRY
+177,XP,,,,999,MIC,Middle income,ENTITY
+178,MK,807.0,MKD,North Macedonia,807,MKD,North Macedonia,COUNTRY
+179,ML,466.0,MLI,Mali,466,MLI,Mali,COUNTRY
+180,MT,470.0,MLT,Malta,470,MLT,Malta,COUNTRY
+181,MM,104.0,MMR,Myanmar,104,MMR,Myanmar,COUNTRY
+182,XQ,,,,999,MNA,"Middle East, North Africa, Afghanistan & Pakistan (excluding high income)",ENTITY
+183,ME,499.0,MNE,Montenegro,499,MNE,Montenegro,COUNTRY
+184,MN,496.0,MNG,Mongolia,496,MNG,Mongolia,COUNTRY
+185,MP,580.0,MNP,N. Mariana Isds,580,MNP,Northern Mariana Islands,COUNTRY
+186,MZ,508.0,MOZ,Mozambique,508,MOZ,Mozambique,COUNTRY
+187,MR,478.0,MRT,Mauritania,478,MRT,Mauritania,COUNTRY
+188,,500.0,MSR,Montserrat,500,MSR,Montserrat,COUNTRY
+189,,,,,474,MTQ,Martinique,COUNTRY
+190,MU,480.0,MUS,Mauritius,480,MUS,Mauritius,COUNTRY
+191,MW,454.0,MWI,Malawi,454,MWI,Malawi,COUNTRY
+192,MY,458.0,MYS,Malaysia,458,MYS,Malaysia,COUNTRY
+193,,,,,175,MYT,Mayotte,COUNTRY
+194,XU,,,,999,NAC,North America,ENTITY
+195,,516.0,NAM,Namibia,516,NAM,Namibia,COUNTRY
+196,NC,540.0,NCL,New Caledonia,540,NCL,New Caledonia,COUNTRY
+197,NE,562.0,NER,Niger,562,NER,Niger,COUNTRY
+198,,574.0,NFK,Norfolk Isds,574,NFK,Norfolk Island,COUNTRY
+199,NG,566.0,NGA,Nigeria,566,NGA,Nigeria,COUNTRY
+200,NI,558.0,NIC,Nicaragua,558,NIC,Nicaragua,COUNTRY
+201,,570.0,NIU,Niue,570,NIU,Niue,COUNTRY
+202,NL,528.0,NLD,Netherlands,528,NLD,Netherlands,COUNTRY
+203,NO,579.0,NOR,Norway,578,NOR,Norway,COUNTRY
+204,NP,524.0,NPL,Nepal,524,NPL,Nepal,COUNTRY
+205,NR,520.0,NRU,Nauru,520,NRU,Nauru,COUNTRY
+206,NZ,554.0,NZL,New Zealand,554,NZL,New Zealand,COUNTRY
+207,,527.0,O19,"Oceania, nes",,,,COUNTRY
+208,OE,,,,999,OED,OECD members,ENTITY
+209,OM,512.0,OMN,Oman,512,OMN,Oman,COUNTRY
+210,S4,,,,999,OSS,Other small states,ENTITY
+211,PK,586.0,PAK,Pakistan,586,PAK,Pakistan,COUNTRY
+212,PA,591.0,PAN,Panama,591,PAN,Panama,COUNTRY
+213,,612.0,PCN,Pitcairn,612,PCN,Pitcairn Islands,COUNTRY
+214,PE,604.0,PER,Peru,604,PER,Peru,COUNTRY
+215,PH,608.0,PHL,Philippines,608,PHL,Philippines,COUNTRY
+216,PW,585.0,PLW,Palau,585,PLW,Palau,COUNTRY
+217,PG,598.0,PNG,Papua New Guinea,598,PNG,Papua New Guinea,COUNTRY
+218,PL,616.0,POL,Poland,616,POL,Poland,COUNTRY
+219,V1,,,,999,PRE,Pre-demographic dividend,ENTITY
+220,PR,,,,630,PRI,Puerto Rico,COUNTRY
+221,KP,408.0,PRK,Dem. People's Rep. of Korea,408,PRK,North Korea,COUNTRY
+222,PT,620.0,PRT,Portugal,620,PRT,Portugal,COUNTRY
+223,PY,600.0,PRY,Paraguay,600,PRY,Paraguay,COUNTRY
+224,PS,275.0,PSE,State of Palestine,275,PSE,Palestine,COUNTRY
+225,S2,,,,999,PSS,Pacific island small states,ENTITY
+226,V4,,,,999,PST,Post-demographic dividend,ENTITY
+227,PF,258.0,PYF,French Polynesia,258,PYF,French Polynesia,COUNTRY
+228,QA,634.0,QAT,Qatar,634,QAT,Qatar,COUNTRY
+229,,,,,638,REU,Réunion,COUNTRY
+230,RO,642.0,ROU,Romania,642,ROU,Romania,COUNTRY
+231,RU,643.0,RUS,Russian Federation,643,RUS,Russia,COUNTRY
+232,RW,646.0,RWA,Rwanda,646,RWA,Rwanda,COUNTRY
+233,,490.0,S19,"Other Asia, nes",,,,COUNTRY
+234,8S,,,,999,SAS,South Asia,ENTITY
+235,SA,682.0,SAU,Saudi Arabia,682,SAU,Saudi Arabia,COUNTRY
+236,SD,729.0,SDN,Sudan,729,SDN,Sudan,COUNTRY
+237,SN,686.0,SEN,Senegal,686,SEN,Senegal,COUNTRY
+238,SG,702.0,SGP,Singapore,702,SGP,Singapore,COUNTRY
+239,,239.0,SGS,South Georgia and the South Sandwich Islands,239,SGS,South Georgia,COUNTRY
+240,,654.0,SHN,Saint Helena,654,SHN,"Saint Helena, Ascension and Tristan da Cunha",COUNTRY
+241,,,,,744,SJM,Svalbard and Jan Mayen,COUNTRY
+242,SB,90.0,SLB,Solomon Isds,90,SLB,Solomon Islands,COUNTRY
+243,SL,694.0,SLE,Sierra Leone,694,SLE,Sierra Leone,COUNTRY
+244,SV,222.0,SLV,El Salvador,222,SLV,El Salvador,COUNTRY
+245,SM,674.0,SMR,San Marino,674,SMR,San Marino,COUNTRY
+246,SO,706.0,SOM,Somalia,706,SOM,Somalia,COUNTRY
+247,,666.0,SPM,Saint Pierre and Miquelon,666,SPM,Saint Pierre and Miquelon,COUNTRY
+248,RS,688.0,SRB,Serbia,688,SRB,Serbia,COUNTRY
+249,ZF,,,,999,SSA,Sub-Saharan Africa (excluding high income),ENTITY
+250,SS,728.0,SSD,South Sudan,728,SSD,South Sudan,COUNTRY
+251,ZG,,,,999,SSF,Sub-Saharan Africa,ENTITY
+252,S1,,,,999,SST,Small states,ENTITY
+253,ST,678.0,STP,Sao Tome and Principe,678,STP,Sao Tome and Principe,COUNTRY
+254,SR,740.0,SUR,Suriname,740,SUR,Suriname,COUNTRY
+255,SK,703.0,SVK,Slovakia,703,SVK,Slovakia,COUNTRY
+256,SI,705.0,SVN,Slovenia,705,SVN,Slovenia,COUNTRY
+257,SE,752.0,SWE,Sweden,752,SWE,Sweden,COUNTRY
+258,SZ,748.0,SWZ,Eswatini,748,SWZ,Eswatini,COUNTRY
+259,SX,534.0,SXM,Sint Maarten,534,SXM,Sint Maarten,COUNTRY
+260,SC,690.0,SYC,Seychelles,690,SYC,Seychelles,COUNTRY
+261,SY,760.0,SYR,Syria,760,SYR,Syria,COUNTRY
+262,TC,796.0,TCA,Turks and Caicos Isds,796,TCA,Turks and Caicos Islands,COUNTRY
+263,TD,148.0,TCD,Chad,148,TCD,Chad,COUNTRY
+264,T4,,,,999,TEA,East Asia & Pacific (IDA & IBRD countries),ENTITY
+265,T7,,,,999,TEC,Europe & Central Asia (IDA & IBRD countries),ENTITY
+266,TG,768.0,TGO,Togo,768,TGO,Togo,COUNTRY
+267,TH,764.0,THA,Thailand,764,THA,Thailand,COUNTRY
+268,TJ,762.0,TJK,Tajikistan,762,TJK,Tajikistan,COUNTRY
+269,,772.0,TKL,Tokelau,772,TKL,Tokelau,COUNTRY
+270,TM,795.0,TKM,Turkmenistan,795,TKM,Turkmenistan,COUNTRY
+271,T2,,,,999,TLA,Latin America & the Caribbean (IDA & IBRD countries),ENTITY
+272,TL,626.0,TLS,Timor-Leste,626,TLS,Timor-Leste,COUNTRY
+273,T3,,,,999,TMN,"Middle East, North Africa, Afghanistan & Pakistan (IDA & IBRD)",ENTITY
+274,TO,776.0,TON,Tonga,776,TON,Tonga,COUNTRY
+275,T5,,,,999,TSA,South Asia (IDA & IBRD),ENTITY
+276,T6,,,,999,TSS,Sub-Saharan Africa (IDA & IBRD countries),ENTITY
+277,TT,780.0,TTO,Trinidad and Tobago,780,TTO,Trinidad and Tobago,COUNTRY
+278,TN,788.0,TUN,Tunisia,788,TUN,Tunisia,COUNTRY
+279,TR,792.0,TUR,Turkiye,792,TUR,Turkiye,COUNTRY
+280,TV,798.0,TUV,Tuvalu,798,TUV,Tuvalu,COUNTRY
+281,,,,,158,TWN,Taiwan,COUNTRY
+282,TZ,834.0,TZA,United Rep. of Tanzania,834,TZA,Tanzania,COUNTRY
+283,UG,800.0,UGA,Uganda,800,UGA,Uganda,COUNTRY
+284,UA,804.0,UKR,Ukraine,804,UKR,Ukraine,COUNTRY
+285,,581.0,UMI,United States Minor Outlying Islands,581,UMI,United States Minor Outlying Islands,COUNTRY
+286,UY,858.0,URY,Uruguay,858,URY,Uruguay,COUNTRY
+287,US,842.0,USA,USA,840,USA,United States,COUNTRY
+288,UZ,860.0,UZB,Uzbekistan,860,UZB,Uzbekistan,COUNTRY
+289,,336.0,VAT,Holy See (Vatican City State),336,VAT,Vatican City,COUNTRY
+290,VC,670.0,VCT,Saint Vincent and the Grenadines,670,VCT,Saint Vincent and the Grenadines,COUNTRY
+291,VE,862.0,VEN,Venezuela,862,VEN,Venezuela,COUNTRY
+292,VG,92.0,VGB,Br. Virgin Isds,92,VGB,British Virgin Islands,COUNTRY
+293,VI,,,,850,VIR,United States Virgin Islands,COUNTRY
+294,VN,704.0,VNM,Viet Nam,704,VNM,Vietnam,COUNTRY
+295,VU,548.0,VUT,Vanuatu,548,VUT,Vanuatu,COUNTRY
+296,,0.0,W00,World,0,WLD,World,ENTITY
+297,,876.0,WLF,Wallis and Futuna Isds,876,WLF,Wallis and Futuna,COUNTRY
+298,WS,882.0,WSM,Samoa,882,WSM,Samoa,COUNTRY
+299,,837.0,X1,Bunkers,,,,COUNTRY
+300,,838.0,X2,Free Zones,,,,COUNTRY
+301,XK,,,,990,XKX,Kosovo,COUNTRY
+302,,839.0,XX,Special Categories,,,,COUNTRY
+303,XD,,,,999,XXD,High income,ENTITY
+304,XM,,,,999,XXM,Low income,ENTITY
+305,XN,,,,999,XXN,Lower middle income,ENTITY
+306,XT,,,,999,XXT,Upper middle income,ENTITY
+307,XY,,,,999,XXY,Not classified,ENTITY
+308,YE,887.0,YEM,Yemen,887,YEM,Yemen,COUNTRY
+309,ZA,710.0,ZAF,South Africa,710,ZAF,South Africa,COUNTRY
+310,ZM,894.0,ZMB,Zambia,894,ZMB,Zambia,COUNTRY
+311,ZW,716.0,ZWE,Zimbabwe,716,ZWE,Zimbabwe,COUNTRY
+312,,899.0,_X,"Areas, nes",,,,COUNTRY

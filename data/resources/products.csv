@@ -1,0 +1,97 @@
+﻿chapter,description,sector
+01,Live animals,Produits agricoles et animaux vivants
+02,Meat and edible meat offal,Produits agricoles et animaux vivants
+03,"Fish and crustaceans, molluscs and other aquatic invertebrates",Produits agricoles et pêche
+04,Dairy produce; birds' eggs; natural honey,Produits agricoles et alimentation
+05,"Products of animal origin, not elsewhere specified or included",Produits agricoles
+06,"Live trees and other plants; bulbs, roots and the like; cut flowers",Produits agricoles et floriculture
+07,Edible vegetables and certain roots and tubers,Produits agricoles et alimentation
+08,Edible fruit and nuts; peel of citrus fruit or melons,Produits agricoles et alimentation
+09,"Coffee, tea, mate and spices",Produits agricoles et alimentation
+10,Cereals,Produits agricoles et alimentation
+11,Products of the milling industry; malt; starches; inulin; wheat gluten,Produits agricoles et alimentation
+12,"Oil seeds and oleaginous fruits; miscellaneous grains, seeds and fruit",Produits agricoles et alimentation
+13,"Lac; gums, resins and other vegetable saps and extracts",Produits agricoles
+14,Vegetable plaiting materials; vegetable products not elsewhere specified,Produits agricoles
+15,Animal or vegetable fats and oils,Produits agricoles et industrie alimentaire
+16,"Preparés de viande, poisson ou crustacés",Industrie alimentaire
+17,Sugars and sugar confectionery,Industrie alimentaire
+18,Cocoa and cocoa preparations,Industrie alimentaire
+19,"Preparations of cereals, flour, starch or milk; pastrycooks’ products",Industrie alimentaire
+20,"Preparations of vegetables, fruit, nuts or other parts of plants",Industrie alimentaire
+21,Miscellaneous edible preparations,Industrie alimentaire
+22,"Beverages, spirits and vinegar",Industrie alimentaire
+23,Residues and waste from the food industries; prepared animal fodder,Industrie alimentaire
+24,Tobacco and manufactured tobacco substitutes,Autres produits manufacturés
+25,"Salt; sulfur; earths and stone; plastering materials, lime and cement",Minéraux et matériaux de construction
+26,"Ores, slag and ash",Minéraux et combustibles
+27,"Mineral fuels, mineral oils and products of their distillation",Minéraux et combustibles
+28,Inorganic chemicals; organic or inorganic compounds of precious metals,Produits chimiques
+29,Organic chemicals,Produits chimiques
+30,Pharmaceutical products,Produits chimiques et pharmaceutiques
+31,Fertilizers,Produits chimiques
+32,Tanning or dyeing extracts; paints and varnishes,Produits chimiques
+33,"Essential oils and resinoids; perfumery, cosmetic or toilet preparations",Produits chimiques et cosmétiques
+34,"Soap, organic surface-active agents, washing preparations",Produits chimiques et ménagers
+35,Albuminoidal substances; modified starches; glues; enzymes,Produits chimiques
+36,Explosives; pyrotechnic products,Produits chimiques et industriels
+37,Photographic or cinematographic goods,Produits manufacturés
+38,Miscellaneous chemical products,Produits chimiques
+39,Plastics and articles thereof,Produits manufacturés
+40,Rubber and articles thereof,Produits manufacturés
+41,Raw hides and skins (other than furskins) and leather,Produits manufacturés
+42,Articles of leather; saddlery and harness; travel goods,Produits manufacturés
+43,Furskins and artificial fur; manufactures thereof,Produits manufacturés
+44,Wood and articles of wood; wood charcoal,Bois et produits forestiers
+45,Cork and articles of cork,Bois et produits forestiers
+46,"Manufactures of straw, of esparto or of other plaiting materials",Produits manufacturés
+47,Pulp of wood or of other fibrous cellulosic material,Produits du papier
+48,Paper and paperboard; articles of paper pulp,Produits du papier
+49,"Printed books, newspapers, pictures and other products of the printing industry",Produits du papier
+50,Silk,Textile et habillement
+51,"Wool, fine or coarse animal hair",Textile et habillement
+52,Cotton,Textile et habillement
+53,Other vegetable textile fibres,Textile et habillement
+54,Man-made filaments,Textile et habillement
+55,Man-made staple fibres,Textile et habillement
+56,"Wadding, felt and nonwovens; special yarns",Textile et habillement
+57,Carpets and other textile floor coverings,Textile et habillement
+58,Special woven fabrics; tufted textile fabrics; lace,Textile et habillement
+59,"Impregnated, coated, covered or laminated textile fabrics",Textile et habillement
+60,Knitted or crocheted fabrics,Textile et habillement
+61,"Articles of apparel and clothing accessories, knitted or crocheted",Textile et habillement
+62,"Articles of apparel and clothing accessories, not knitted or crocheted",Textile et habillement
+63,Other made up textile articles,Textile et habillement
+64,"Footwear, gaiters and the like",Textile et habillement
+65,Headgear and parts thereof,Textile et habillement
+66,"Umbrellas, sun umbrellas, walking-sticks",Produits manufacturés
+67,Prepared feathers and down,Produits manufacturés
+68,"Articles of stone, plaster, cement, asbestos, mica or similar materials",Minéraux et matériaux de construction
+69,Ceramic products,Minéraux et matériaux de construction
+70,Glass and glassware,Minéraux et matériaux de construction
+71,"Natural or cultured pearls, precious or semi-precious stones",Bijoux et métaux précieux
+72,Iron and steel,Métaux de base
+73,Articles of iron or steel,Métaux de base
+74,Copper and articles thereof,Métaux de base
+75,Nickel and articles thereof,Métaux de base
+76,Aluminium and articles thereof,Métaux de base
+78,Lead and articles thereof,Métaux de base
+79,Zinc and articles thereof,Métaux de base
+80,Tin and articles thereof,Métaux de base
+81,Other base metals,Métaux de base
+82,"Tools, implements, cutlery",Machines et équipements
+83,Miscellaneous articles of base metal,Machines et équipements
+84,"Nuclear reactors, boilers, machinery",Machines et équipements
+85,Electrical machinery and equipment,Machines et équipements
+86,Railway or tramway locomotives,Transport
+87,Vehicles other than railway or tramway rolling stock,Transport
+88,"Aircraft, spacecraft",Transport
+89,"Ships, boats and floating structures",Transport
+90,"Optical, photographic, measuring instruments",Machines et équipements
+91,Clocks and watches,Machines et équipements
+92,Musical instruments,Produits manufacturés
+93,Arms and ammunition,Produits manufacturés
+94,"Furniture; bedding, mattresses",Produits manufacturés
+95,"Toys, games and sports requisites",Produits manufacturés
+96,Miscellaneous manufactured articles,Produits manufacturés
+97,"Works of art, collectors' pieces and antiques",Produits culturels

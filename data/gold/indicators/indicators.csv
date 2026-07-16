@@ -1,0 +1,17 @@
+indicator_key,indicator_code,indicator_name,indicator_description,indicator_unit
+1,BN.CAB.XOKA.CD,"Current account balance (BoP, current US$)","Net balance of trade in goods and services, income, and current transfers measured in current US dollars.",USD
+2,BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),"Net transactions of goods, services, income, and current transfers relative to GDP.",%
+3,BX.KLT.DINV.CD.WD,"Foreign direct investment, net inflows (BoP, current US$)",Net inflows of foreign direct investment into the reporting economy.,USD
+4,DT.DOD.DECT.CD,"External debt stocks, total (DOD, current US$)","Total outstanding external debt owed by a country to nonresidents, measured in current US dollars.",USD
+5,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Annual percentage change in the cost to the average consumer of acquiring a basket of goods and services.,%
+6,FR.INR.RINR,Real interest rate (%),"Lending interest rate adjusted for inflation as measured by the GDP deflator, reflecting the real cost of borrowing.",%
+7,GC.XPN.TOTL.GD.ZS,Expense (% of GDP),"General government total expenditure expressed as a percentage of GDP, representing the size of the public sector in the economy.",% of GDP
+8,NE.EXP.GNFS.CD,Exports of goods and services (current US$),Value of all goods and services provided to the rest of the world.,USD
+9,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),"Value of exports of goods and services expressed as a percentage of GDP, indicating the degree of export orientation of the economy.",% of GDP
+10,NE.IMP.GNFS.CD,Imports of goods and services (current US$),Value of all goods and services received from the rest of the world.,USD
+11,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),"Value of imports of goods and services expressed as a percentage of GDP, reflecting the economy’s reliance on foreign goods and services.",% of GDP
+12,NE.TRD.GNFS.ZS,Trade (% of GDP),Sum of exports and imports of goods and services measured as a share of GDP.,%
+13,NY.GDP.MKTP.CD,GDP (current US$),Total value of goods and services produced within a country in a given year.,USD
+14,NY.GDP.PCAP.CD,GDP per capita (current US$),Gross domestic product divided by midyear population; reflecting average income level.,USD per capita
+15,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Share of the labor force that is without work but available for and seeking employment.,%
+16,SP.POP.TOTL,"Population, total",Total population based on the de facto definition of population.,Persons

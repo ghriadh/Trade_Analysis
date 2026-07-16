@@ -1,0 +1,46 @@
+# ── Virtual environment ──────────────────────────────────────────
+myenv/
+.venv/
+env/
+
+# ── Environment / secrets ────────────────────────────────────────
+.env
+.env.*
+
+# ── Python ───────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# ── Logs ─────────────────────────────────────────────────────────
+logs/
+*.log
+
+# ── Archives ─────────────────────────────────────────────────────
+*.zip
+*.rar
+*.tar.gz
+
+# ── Data — raw and intermediate layers (regenerable) ─────────────
+data/bronze/
+data/silver/
+
+# data/gold/     → committed (needed by analysis pages)
+# data/resources/ → committed (reference CSVs used by pipeline)
+# data/trade_analysis.duckdb → committed (36 MB, DuckDB backend)
+# data/etl_status.json       → committed (ETL status page)
+# data/known_divergences.json → committed
+
+# ── French archived app ──────────────────────────────────────────
+app_fr/
+
+# ── Local Claude project files ───────────────────────────────────
+.claude/
+
+# ── OS / IDE ─────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,17 @@
+indicator_code,indicator_name,indicator_description,indicator_unit
+NY.GDP.MKTP.CD,GDP (current US$),Total value of goods and services produced within a country in a given year.,USD
+NY.GDP.PCAP.CD,GDP per capita (current US$),Gross domestic product divided by midyear population; reflecting average income level.,USD per capita
+FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Annual percentage change in the cost to the average consumer of acquiring a basket of goods and services.,%
+SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Share of the labor force that is without work but available for and seeking employment.,%
+NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),"Value of exports of goods and services expressed as a percentage of GDP, indicating the degree of export orientation of the economy.",% of GDP
+NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),"Value of imports of goods and services expressed as a percentage of GDP, reflecting the economy’s reliance on foreign goods and services.",% of GDP
+GC.XPN.TOTL.GD.ZS,Expense (% of GDP),"General government total expenditure expressed as a percentage of GDP, representing the size of the public sector in the economy.",% of GDP
+FR.INR.RINR,Real interest rate (%),"Lending interest rate adjusted for inflation as measured by the GDP deflator, reflecting the real cost of borrowing.",%
+BN.CAB.XOKA.CD,"Current account balance (BoP, current US$)","Net balance of trade in goods and services, income, and current transfers measured in current US dollars.",USD
+DT.DOD.DECT.CD,"External debt stocks, total (DOD, current US$)","Total outstanding external debt owed by a country to nonresidents, measured in current US dollars.",USD
+NE.EXP.GNFS.CD,Exports of goods and services (current US$),Value of all goods and services provided to the rest of the world.,USD
+NE.IMP.GNFS.CD,Imports of goods and services (current US$),Value of all goods and services received from the rest of the world.,USD
+NE.TRD.GNFS.ZS,Trade (% of GDP),Sum of exports and imports of goods and services measured as a share of GDP.,%
+BN.CAB.XOKA.GD.ZS,Current account balance (% of GDP),"Net transactions of goods, services, income, and current transfers relative to GDP.",%
+BX.KLT.DINV.CD.WD,"Foreign direct investment, net inflows (BoP, current US$)",Net inflows of foreign direct investment into the reporting economy.,USD
+SP.POP.TOTL,"Population, total",Total population based on the de facto definition of population.,Persons

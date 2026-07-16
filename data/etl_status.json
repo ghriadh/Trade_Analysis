@@ -1,0 +1,1006 @@
+{
+  "last_updated": "2026-07-15 23:21 UTC",
+  "pipelines": {
+    "bronze": {
+      "status": "done",
+      "started_at": "2026-07-15 23:18 UTC",
+      "ended_at": "2026-07-15 23:18 UTC",
+      "stages": {
+        "countries": {
+          "status": "done",
+          "rows": 250,
+          "duration_s": 1.2,
+          "updated_at": "2026-07-15 23:18 UTC"
+        },
+        "trade_flow": {
+          "status": "done",
+          "rows": 4,
+          "duration_s": 0.0,
+          "updated_at": "2026-07-15 23:18 UTC"
+        },
+        "products": {
+          "status": "done",
+          "rows": 96,
+          "duration_s": 0.0,
+          "updated_at": "2026-07-15 23:18 UTC"
+        },
+        "indicators": {
+          "status": "done",
+          "rows": 16,
+          "duration_s": 0.0,
+          "updated_at": "2026-07-15 23:18 UTC"
+        },
+        "indicator_values": {
+          "status": "done",
+          "rows": 0,
+          "duration_s": 0.2,
+          "updated_at": "2026-07-15 23:18 UTC"
+        },
+        "trade_data": {
+          "status": "done",
+          "rows": 543998,
+          "duration_s": 70.3,
+          "updated_at": "2026-07-15 23:20 UTC",
+          "checkpoints": {
+            "2023/TOTAL/X": {
+              "total": 10,
+              "done": 1,
+              "failed": 9
+            },
+            "2023/TOTAL/M": {
+              "total": 5,
+              "done": 5,
+              "failed": 0
+            },
+            "2022/TOTAL/X": {
+              "total": 8,
+              "done": 8,
+              "failed": 0
+            },
+            "2022/TOTAL/M": {
+              "total": 12,
+              "done": 12,
+              "failed": 0
+            },
+            "2021/TOTAL/X": {
+              "total": 17,
+              "done": 17,
+              "failed": 0
+            },
+            "2021/TOTAL/M": {
+              "total": 14,
+              "done": 14,
+              "failed": 0
+            },
+            "2020/TOTAL/X": {
+              "total": 15,
+              "done": 15,
+              "failed": 0
+            },
+            "2020/TOTAL/M": {
+              "total": 15,
+              "done": 14,
+              "failed": 1
+            },
+            "2019/TOTAL/X": {
+              "total": 3,
+              "done": 3,
+              "failed": 0
+            },
+            "2019/TOTAL/M": {
+              "total": 21,
+              "done": 21,
+              "failed": 0
+            },
+            "2018/TOTAL/X": {
+              "total": 1,
+              "done": 1,
+              "failed": 0
+            },
+            "2018/TOTAL/M": {
+              "total": 1,
+              "done": 1,
+              "failed": 0
+            },
+            "2017/TOTAL/X": {
+              "total": 249,
+              "done": 171,
+              "failed": 78
+            },
+            "2017/TOTAL/X#2026-05-24 09:38 UTC": {
+              "total": 78,
+              "with_data": 48,
+              "empty": 24,
+              "failed": 6,
+              "type": "correction"
+            },
+            "2017/TOTAL/X#2026-05-24 09:39 UTC": {
+              "total": 6,
+              "with_data": 2,
+              "empty": 4,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2017/TOTAL/M#2026-05-24 10:31 UTC": {
+              "total": 249,
+              "with_data": 164,
+              "empty": 72,
+              "failed": 13,
+              "type": "standard"
+            },
+            "2017/TOTAL/M#2026-05-24 12:57 UTC": {
+              "total": 13,
+              "with_data": 11,
+              "empty": 2,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2016/TOTAL/X#2026-05-24 13:02 UTC": {
+              "total": 249,
+              "with_data": 158,
+              "empty": 69,
+              "failed": 22,
+              "type": "standard"
+            },
+            "2016/TOTAL/X#2026-05-24 13:25 UTC": {
+              "total": 22,
+              "with_data": 14,
+              "empty": 8,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2016/TOTAL/M#2026-05-24 14:05 UTC": {
+              "total": 249,
+              "with_data": 156,
+              "empty": 71,
+              "failed": 22,
+              "type": "standard"
+            },
+            "2016/TOTAL/M#2026-05-24 20:02 UTC": {
+              "total": 22,
+              "with_data": 14,
+              "empty": 7,
+              "failed": 1,
+              "type": "correction"
+            },
+            "2016/TOTAL/M#2026-05-24 20:03 UTC": {
+              "total": 1,
+              "with_data": 1,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2015/TOTAL/X#2026-05-24 20:09 UTC": {
+              "total": 249,
+              "with_data": 156,
+              "empty": 72,
+              "failed": 21,
+              "type": "standard"
+            },
+            "2015/TOTAL/X#2026-05-24 20:50 UTC": {
+              "total": 1,
+              "with_data": 0,
+              "empty": 1,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2015/TOTAL/M#2026-05-24 20:55 UTC": {
+              "total": 249,
+              "with_data": 118,
+              "empty": 46,
+              "failed": 85,
+              "type": "standard"
+            },
+            "2015/TOTAL/M#2026-05-24 21:27 UTC": {
+              "total": 249,
+              "with_data": 47,
+              "empty": 73,
+              "failed": 11,
+              "type": "standard"
+            },
+            "2015/TOTAL/M#2026-05-25 06:35 UTC": {
+              "total": 1,
+              "with_data": 1,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2023/TOTAL/X#2026-05-25 18:38 UTC": {
+              "total": 249,
+              "with_data": 0,
+              "empty": 76,
+              "failed": 15,
+              "type": "standard"
+            },
+            "2023/TOTAL/X#2026-05-25 18:42 UTC": {
+              "total": 15,
+              "with_data": 0,
+              "empty": 15,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2023/TOTAL/X#2026-05-25 18:43 UTC": {
+              "total": 1,
+              "with_data": 1,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2023/TOTAL/X#2026-05-25 18:45 UTC": {
+              "total": 1,
+              "with_data": 1,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2023/TOTAL/X#2026-05-25 18:46 UTC": {
+              "total": 1,
+              "with_data": 0,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2023/TOTAL/X#2026-05-25 19:38 UTC": {
+              "total": 1,
+              "with_data": 1,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2023/TOTAL/X#2026-05-25 21:07 UTC": {
+              "total": 249,
+              "with_data": 0,
+              "empty": 87,
+              "failed": 4,
+              "type": "standard"
+            },
+            "2023/TOTAL/X#2026-05-25 21:24 UTC": {
+              "total": 4,
+              "with_data": 0,
+              "empty": 4,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2023/TOTAL/X#2026-05-25 21:33 UTC": {
+              "total": 249,
+              "with_data": 149,
+              "empty": 81,
+              "failed": 19,
+              "type": "standard"
+            },
+            "2023/TOTAL/X#2026-05-25 21:37 UTC": {
+              "total": 1,
+              "with_data": 0,
+              "empty": 1,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2023/TOTAL/X#2026-05-25 21:50 UTC": {
+              "total": 1,
+              "with_data": 1,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2015/TOTAL/X#2026-05-26 00:40 UTC": {
+              "total": 6,
+              "with_data": 6,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2015/TOTAL/M#2026-05-26 01:08 UTC": {
+              "total": 6,
+              "with_data": 6,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2024/TOTAL/X#2026-05-26 01:29 UTC": {
+              "total": 249,
+              "with_data": 119,
+              "empty": 106,
+              "failed": 24,
+              "type": "standard"
+            },
+            "2024/TOTAL/X#2026-05-26 01:30 UTC": {
+              "total": 24,
+              "with_data": 11,
+              "empty": 11,
+              "failed": 2,
+              "type": "correction"
+            },
+            "2024/TOTAL/X#2026-05-26 01:31 UTC": {
+              "total": 2,
+              "with_data": 1,
+              "empty": 1,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2024/TOTAL/M#2026-05-26 01:35 UTC": {
+              "total": 249,
+              "with_data": 81,
+              "empty": 61,
+              "failed": 107,
+              "type": "standard"
+            },
+            "2024/TOTAL/M#2026-05-26 02:03 UTC": {
+              "total": 249,
+              "with_data": 48,
+              "empty": 107,
+              "failed": 13,
+              "type": "standard"
+            },
+            "2024/TOTAL/M#2026-05-26 02:05 UTC": {
+              "total": 13,
+              "with_data": 2,
+              "empty": 10,
+              "failed": 1,
+              "type": "correction"
+            },
+            "2024/TOTAL/M#2026-05-26 02:06 UTC": {
+              "total": 1,
+              "with_data": 0,
+              "empty": 1,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2024/TOTAL/M_X#2026-05-26 02:07 UTC": {
+              "total": 5,
+              "with_data": 10,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2025/TOTAL/M_X#2026-05-26 02:08 UTC": {
+              "total": 5,
+              "with_data": 6,
+              "empty": 4,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2025/TOTAL/X#2026-05-26 02:14 UTC": {
+              "total": 249,
+              "with_data": 48,
+              "empty": 154,
+              "failed": 47,
+              "type": "standard"
+            },
+            "2023/TOTAL/X#2026-05-26 19:40 UTC": {
+              "total": 249,
+              "with_data": 141,
+              "empty": 82,
+              "failed": 26,
+              "type": "standard"
+            },
+            "2023/TOTAL/X#2026-05-26 19:42 UTC": {
+              "total": 26,
+              "with_data": 16,
+              "empty": 9,
+              "failed": 1,
+              "type": "correction"
+            },
+            "2023/TOTAL/X#2026-05-26 19:48 UTC": {
+              "total": 1,
+              "with_data": 1,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2023/TOTAL/M#2026-05-26 19:52 UTC": {
+              "total": 249,
+              "with_data": 95,
+              "empty": 53,
+              "failed": 101,
+              "type": "standard"
+            },
+            "2023/TOTAL/M#2026-05-26 20:06 UTC": {
+              "total": 249,
+              "with_data": 59,
+              "empty": 81,
+              "failed": 14,
+              "type": "standard"
+            },
+            "2023/TOTAL/M#2026-05-26 20:11 UTC": {
+              "total": 2,
+              "with_data": 0,
+              "empty": 2,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2023/TOTAL/M_X#2026-05-26 20:12 UTC": {
+              "total": 5,
+              "with_data": 10,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2022/TOTAL/M_X#2026-05-26 20:15 UTC": {
+              "total": 5,
+              "with_data": 10,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2022/TOTAL/X#2026-05-26 20:21 UTC": {
+              "total": 249,
+              "with_data": 142,
+              "empty": 74,
+              "failed": 33,
+              "type": "standard"
+            },
+            "2022/TOTAL/X#2026-05-26 20:25 UTC": {
+              "total": 33,
+              "with_data": 6,
+              "empty": 6,
+              "failed": 21,
+              "type": "correction"
+            },
+            "2022/TOTAL/X#2026-05-26 20:59 UTC": {
+              "total": 21,
+              "with_data": 0,
+              "empty": 0,
+              "failed": 21,
+              "type": "correction"
+            },
+            "2022/TOTAL/X#2026-05-26 21:00 UTC": {
+              "total": 2,
+              "with_data": 2,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2022/TOTAL/M#2026-05-26 21:06 UTC": {
+              "total": 249,
+              "with_data": 152,
+              "empty": 82,
+              "failed": 15,
+              "type": "standard"
+            },
+            "2022/TOTAL/M#2026-05-26 21:08 UTC": {
+              "total": 15,
+              "with_data": 8,
+              "empty": 6,
+              "failed": 1,
+              "type": "correction"
+            },
+            "2022/TOTAL/M#2026-05-26 21:09 UTC": {
+              "total": 1,
+              "with_data": 0,
+              "empty": 1,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2021/TOTAL/X#2026-05-26 21:14 UTC": {
+              "total": 249,
+              "with_data": 109,
+              "empty": 49,
+              "failed": 91,
+              "type": "standard"
+            },
+            "2021/TOTAL/X#2026-05-26 22:07 UTC": {
+              "total": 15,
+              "with_data": 5,
+              "empty": 8,
+              "failed": 2,
+              "type": "correction"
+            },
+            "2021/TOTAL/X#2026-05-26 22:08 UTC": {
+              "total": 2,
+              "with_data": 0,
+              "empty": 2,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2021/TOTAL/M_X#2026-05-26 22:09 UTC": {
+              "total": 5,
+              "with_data": 10,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2021/TOTAL/M#2026-05-26 22:13 UTC": {
+              "total": 249,
+              "with_data": 137,
+              "empty": 75,
+              "failed": 37,
+              "type": "standard"
+            },
+            "2021/TOTAL/M#2026-05-27 03:08 UTC": {
+              "total": 37,
+              "with_data": 12,
+              "empty": 6,
+              "failed": 19,
+              "type": "correction"
+            },
+            "2021/TOTAL/M#2026-05-27 03:09 UTC": {
+              "total": 19,
+              "with_data": 14,
+              "empty": 5,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2020/TOTAL/M_X#2026-05-27 03:10 UTC": {
+              "total": 5,
+              "with_data": 10,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2020/TOTAL/X#2026-05-27 03:15 UTC": {
+              "total": 249,
+              "with_data": 143,
+              "empty": 75,
+              "failed": 31,
+              "type": "standard"
+            },
+            "2020/TOTAL/X#2026-05-27 03:16 UTC": {
+              "total": 31,
+              "with_data": 19,
+              "empty": 11,
+              "failed": 1,
+              "type": "correction"
+            },
+            "2020/TOTAL/X#2026-05-27 03:17 UTC": {
+              "total": 1,
+              "with_data": 1,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2020/TOTAL/M#2026-05-27 03:20 UTC": {
+              "total": 249,
+              "with_data": 71,
+              "empty": 38,
+              "failed": 140,
+              "type": "standard"
+            },
+            "2020/TOTAL/M#2026-05-27 04:05 UTC": {
+              "total": 140,
+              "with_data": 80,
+              "empty": 42,
+              "failed": 18,
+              "type": "correction"
+            },
+            "2020/TOTAL/M#2026-05-27 04:07 UTC": {
+              "total": 18,
+              "with_data": 12,
+              "empty": 6,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2019/TOTAL/M_X#2026-05-27 04:08 UTC": {
+              "total": 5,
+              "with_data": 10,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2019/TOTAL/X#2026-05-27 04:15 UTC": {
+              "total": 249,
+              "with_data": 142,
+              "empty": 77,
+              "failed": 30,
+              "type": "standard"
+            },
+            "2019/TOTAL/X#2026-05-27 04:16 UTC": {
+              "total": 30,
+              "with_data": 12,
+              "empty": 4,
+              "failed": 14,
+              "type": "correction"
+            },
+            "2019/TOTAL/X#2026-05-27 07:49 UTC": {
+              "total": 14,
+              "with_data": 0,
+              "empty": 0,
+              "failed": 14,
+              "type": "correction"
+            },
+            "2019/TOTAL/X#2026-05-27 07:50 UTC": {
+              "total": 14,
+              "with_data": 0,
+              "empty": 0,
+              "failed": 14,
+              "type": "correction"
+            },
+            "2019/TOTAL/X#2026-05-27 07:53 UTC": {
+              "total": 14,
+              "with_data": 12,
+              "empty": 2,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2019/TOTAL/M#2026-05-27 08:45 UTC": {
+              "total": 249,
+              "with_data": 160,
+              "empty": 81,
+              "failed": 8,
+              "type": "standard"
+            },
+            "2019/TOTAL/M#2026-05-27 08:55 UTC": {
+              "total": 8,
+              "with_data": 6,
+              "empty": 2,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2018/TOTAL/X#2026-05-28 09:43 UTC": {
+              "total": 249,
+              "with_data": 163,
+              "empty": 72,
+              "failed": 14,
+              "type": "standard"
+            },
+            "2018/TOTAL/X#2026-05-28 09:44 UTC": {
+              "total": 14,
+              "with_data": 9,
+              "empty": 5,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2018/TOTAL/M_X#2026-05-28 09:47 UTC": {
+              "total": 5,
+              "with_data": 10,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2018/TOTAL/M#2026-05-28 09:51 UTC": {
+              "total": 249,
+              "with_data": 136,
+              "empty": 58,
+              "failed": 55,
+              "type": "standard"
+            },
+            "2018/TOTAL/M#2026-05-28 10:06 UTC": {
+              "total": 55,
+              "with_data": 33,
+              "empty": 16,
+              "failed": 6,
+              "type": "correction"
+            },
+            "2018/TOTAL/M#2026-05-28 10:07 UTC": {
+              "total": 6,
+              "with_data": 3,
+              "empty": 3,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2018/TOTAL/M_X#2026-05-28 10:07 UTC": {
+              "total": 5,
+              "with_data": 0,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2017/TOTAL/M_X#2026-05-28 10:09 UTC": {
+              "total": 5,
+              "with_data": 10,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2016/TOTAL/M_X#2026-05-28 10:10 UTC": {
+              "total": 5,
+              "with_data": 10,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2015/TOTAL/M_X#2026-05-28 10:12 UTC": {
+              "total": 5,
+              "with_data": 10,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2017/TOTAL/X#2026-05-28 10:21 UTC": {
+              "total": 249,
+              "with_data": 162,
+              "empty": 67,
+              "failed": 20,
+              "type": "standard"
+            },
+            "2017/TOTAL/X#2026-05-28 10:23 UTC": {
+              "total": 20,
+              "with_data": 11,
+              "empty": 7,
+              "failed": 2,
+              "type": "correction"
+            },
+            "2017/TOTAL/X#2026-05-28 10:24 UTC": {
+              "total": 2,
+              "with_data": 2,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2017/TOTAL/M#2026-05-28 10:27 UTC": {
+              "total": 249,
+              "with_data": 47,
+              "empty": 16,
+              "failed": 186,
+              "type": "standard"
+            },
+            "2017/TOTAL/M#2026-05-28 11:46 UTC": {
+              "total": 249,
+              "with_data": 118,
+              "empty": 68,
+              "failed": 16,
+              "type": "standard"
+            },
+            "2017/TOTAL/M#2026-05-28 11:47 UTC": {
+              "total": 16,
+              "with_data": 10,
+              "empty": 6,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2016/TOTAL/X#2026-05-28 11:52 UTC": {
+              "total": 249,
+              "with_data": 153,
+              "empty": 70,
+              "failed": 26,
+              "type": "standard"
+            },
+            "2016/TOTAL/X#2026-05-28 11:53 UTC": {
+              "total": 26,
+              "with_data": 0,
+              "empty": 0,
+              "failed": 26,
+              "type": "correction"
+            },
+            "2016/TOTAL/X#2026-05-28 12:01 UTC": {
+              "total": 26,
+              "with_data": 17,
+              "empty": 7,
+              "failed": 2,
+              "type": "correction"
+            },
+            "2016/TOTAL/X#2026-05-28 12:02 UTC": {
+              "total": 2,
+              "with_data": 2,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2016/TOTAL/M#2026-05-28 12:07 UTC": {
+              "total": 249,
+              "with_data": 159,
+              "empty": 71,
+              "failed": 19,
+              "type": "standard"
+            },
+            "2016/TOTAL/M#2026-05-28 12:10 UTC": {
+              "total": 19,
+              "with_data": 10,
+              "empty": 7,
+              "failed": 2,
+              "type": "correction"
+            },
+            "2016/TOTAL/M#2026-05-28 12:11 UTC": {
+              "total": 2,
+              "with_data": 2,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2015/TOTAL/X#2026-05-28 12:16 UTC": {
+              "total": 249,
+              "with_data": 121,
+              "empty": 49,
+              "failed": 79,
+              "type": "standard"
+            },
+            "2015/TOTAL/X#2026-05-28 13:46 UTC": {
+              "total": 79,
+              "with_data": 45,
+              "empty": 30,
+              "failed": 4,
+              "type": "correction"
+            },
+            "2015/TOTAL/X#2026-05-28 13:47 UTC": {
+              "total": 4,
+              "with_data": 3,
+              "empty": 1,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2015/TOTAL/M#2026-05-28 14:19 UTC": {
+              "total": 249,
+              "with_data": 154,
+              "empty": 76,
+              "failed": 19,
+              "type": "standard"
+            },
+            "2015/TOTAL/M#2026-05-28 14:21 UTC": {
+              "total": 19,
+              "with_data": 15,
+              "empty": 4,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2024/TOTAL/M_X#2026-05-28 14:27 UTC": {
+              "total": 5,
+              "with_data": 10,
+              "empty": 0,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2024/TOTAL/X#2026-05-28 14:34 UTC": {
+              "total": 249,
+              "with_data": 101,
+              "empty": 75,
+              "failed": 73,
+              "type": "standard"
+            },
+            "2024/TOTAL/X#2026-05-28 16:53 UTC": {
+              "total": 73,
+              "with_data": 26,
+              "empty": 40,
+              "failed": 7,
+              "type": "correction"
+            },
+            "2024/TOTAL/X#2026-05-28 16:54 UTC": {
+              "total": 1,
+              "with_data": 0,
+              "empty": 1,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2024/TOTAL/M#2026-05-28 17:00 UTC": {
+              "total": 249,
+              "with_data": 122,
+              "empty": 108,
+              "failed": 19,
+              "type": "standard"
+            },
+            "2024/TOTAL/M#2026-05-28 17:02 UTC": {
+              "total": 19,
+              "with_data": 9,
+              "empty": 9,
+              "failed": 1,
+              "type": "correction"
+            },
+            "2024/TOTAL/M#2026-05-28 17:08 UTC": {
+              "total": 1,
+              "with_data": 0,
+              "empty": 1,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2025/TOTAL/M_X#2026-05-28 17:10 UTC": {
+              "total": 5,
+              "with_data": 6,
+              "empty": 4,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2025/TOTAL/X#2026-05-28 17:15 UTC": {
+              "total": 249,
+              "with_data": 51,
+              "empty": 176,
+              "failed": 22,
+              "type": "standard"
+            },
+            "2025/TOTAL/X#2026-05-28 17:17 UTC": {
+              "total": 2,
+              "with_data": 1,
+              "empty": 1,
+              "failed": 0,
+              "type": "correction"
+            },
+            "2025/TOTAL/M#2026-05-28 17:23 UTC": {
+              "total": 249,
+              "with_data": 37,
+              "empty": 101,
+              "failed": 111,
+              "type": "standard"
+            },
+            "2025/TOTAL/M#2026-05-28 18:27 UTC": {
+              "total": 249,
+              "with_data": 18,
+              "empty": 182,
+              "failed": 12,
+              "type": "standard"
+            },
+            "2025/TOTAL/M#2026-05-28 18:32 UTC": {
+              "total": 12,
+              "with_data": 1,
+              "empty": 11,
+              "failed": 0,
+              "type": "correction"
+            }
+          }
+        }
+      }
+    },
+    "silver": {
+      "status": "done",
+      "started_at": "2026-07-15 23:20 UTC",
+      "ended_at": "2026-07-15 23:20 UTC",
+      "stages": {
+        "countries": {
+          "status": "done",
+          "rows": 250,
+          "duration_s": 0.3,
+          "updated_at": "2026-07-15 23:20 UTC"
+        },
+        "trade_flow": {
+          "status": "done",
+          "rows": 4,
+          "duration_s": 0.2,
+          "updated_at": "2026-07-15 23:20 UTC"
+        },
+        "products": {
+          "status": "done",
+          "rows": 96,
+          "duration_s": 0.2,
+          "updated_at": "2026-07-15 23:20 UTC"
+        },
+        "indicators": {
+          "status": "done",
+          "rows": 16,
+          "duration_s": 0.2,
+          "updated_at": "2026-07-15 23:20 UTC"
+        },
+        "indicators_values": {
+          "status": "done",
+          "rows": 42560,
+          "duration_s": 2.1,
+          "updated_at": "2026-07-15 23:20 UTC"
+        },
+        "trade_data": {
+          "status": "done",
+          "rows": 543998,
+          "duration_s": 41.3,
+          "updated_at": "2026-07-15 23:20 UTC"
+        }
+      }
+    },
+    "gold": {
+      "status": "done",
+      "started_at": "2026-07-15 23:20 UTC",
+      "ended_at": "2026-07-15 23:21 UTC",
+      "stages": {
+        "countries": {
+          "status": "done",
+          "rows": 312,
+          "duration_s": 1.0,
+          "updated_at": "2026-07-15 23:20 UTC"
+        },
+        "trade_flow": {
+          "status": "done",
+          "rows": 4,
+          "duration_s": 0.9,
+          "updated_at": "2026-07-15 23:20 UTC"
+        },
+        "products": {
+          "status": "done",
+          "rows": 97,
+          "duration_s": 0.8,
+          "updated_at": "2026-07-15 23:20 UTC"
+        },
+        "indicators": {
+          "status": "done",
+          "rows": 16,
+          "duration_s": 0.2,
+          "updated_at": "2026-07-15 23:20 UTC"
+        },
+        "indicators_values": {
+          "status": "done",
+          "rows": 42560,
+          "duration_s": 1.6,
+          "updated_at": "2026-07-15 23:21 UTC"
+        },
+        "trade_data": {
+          "status": "done",
+          "rows": 543998,
+          "duration_s": 27.2,
+          "updated_at": "2026-07-15 23:21 UTC"
+        }
+      }
+    }
+  }
+}

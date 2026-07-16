@@ -1,0 +1,26 @@
+# Core data
+pandas
+numpy
+# Visualization
+matplotlib
+plotly
+scipy
+# Env
+python-dotenv
+# World Bank API
+requests
+# Comtrade API
+comtradeapicall
+# Utilities
+tqdm
+# Database
+sqlalchemy
+pyodbc
+duckdb
+duckdb-engine
+# Statistics / forecasting
+statsmodels
+scikit-learn
+# Streamlit
+streamlit>=1.35.0
+

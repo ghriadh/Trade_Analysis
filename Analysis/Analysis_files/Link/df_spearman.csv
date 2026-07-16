@@ -1,0 +1,705 @@
+trade_var,trade_label,indicator,ind_label,ind_flag,rho,pvalue,sig,abs_rho,n
+export_share_structural,Export Share,Current account balance (% of GDP),Current Account % GDP,[E],0.484,0.0,True,0.4840483267436033,180
+export_share_structural,Export Share,"Current account balance (BoP, current US$)",Current Account (US$),[T],0.012,0.8683,False,0.012441780430817093,180
+export_share_structural,Export Share,Expense (% of GDP),Expense % GDP,[E],0.235,0.0046,True,0.2350744918997344,144
+export_share_structural,Export Share,Exports of goods and services (% of GDP),Exports % GDP,[T],0.216,0.0053,True,0.21559594518017924,166
+export_share_structural,Export Share,Exports of goods and services (current US$),Exports (US$),[T],0.967,0.0,True,0.966608600751359,166
+export_share_structural,Export Share,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.877,0.0,True,0.8771947334714011,113
+export_share_structural,Export Share,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.727,0.0,True,0.7265608204409552,182
+export_share_structural,Export Share,GDP (current US$),GDP (US$),[S],0.937,0.0,True,0.9374658669623016,184
+export_share_structural,Export Share,GDP per capita (current US$),GDP per Capita (US$),[E],0.441,0.0,True,0.4408471446720676,184
+export_share_structural,Export Share,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.153,0.0497,True,0.1525935525846328,166
+export_share_structural,Export Share,Imports of goods and services (current US$),Imports (US$),[T],0.956,0.0,True,0.9560019518542616,166
+export_share_structural,Export Share,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.016,0.832,False,0.016011898809055184,178
+export_share_structural,Export Share,"Population, total",Population,[S],0.65,0.0,True,0.6502889087734066,184
+export_share_structural,Export Share,Real interest rate (%),Real Interest Rate %,[E],-0.357,0.0,True,0.35708675393211636,129
+export_share_structural,Export Share,Trade (% of GDP),Trade % GDP,[T],0.021,0.7888,False,0.02094570487124058,166
+export_share_structural,Export Share,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.101,0.1904,False,0.10060629696853328,171
+import_share_structural,Import Share,Current account balance (% of GDP),Current Account % GDP,[E],0.417,0.0,True,0.4169596292878255,180
+import_share_structural,Import Share,"Current account balance (BoP, current US$)",Current Account (US$),[T],-0.061,0.4197,False,0.060511313655710525,180
+import_share_structural,Import Share,Expense (% of GDP),Expense % GDP,[E],0.263,0.0014,True,0.26308280316213795,144
+import_share_structural,Import Share,Exports of goods and services (% of GDP),Exports % GDP,[T],0.167,0.0317,True,0.1667759775012068,166
+import_share_structural,Import Share,Exports of goods and services (current US$),Exports (US$),[T],0.965,0.0,True,0.9646042772892313,166
+import_share_structural,Import Share,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.918,0.0,True,0.9177915845331073,113
+import_share_structural,Import Share,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.762,0.0,True,0.7624013663399447,182
+import_share_structural,Import Share,GDP (current US$),GDP (US$),[S],0.959,0.0,True,0.959347612300704,184
+import_share_structural,Import Share,GDP per capita (current US$),GDP per Capita (US$),[E],0.447,0.0,True,0.44680928938747866,184
+import_share_structural,Import Share,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.145,0.0624,False,0.14493829622011878,166
+import_share_structural,Import Share,Imports of goods and services (current US$),Imports (US$),[T],0.979,0.0,True,0.9788050664260078,166
+import_share_structural,Import Share,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.022,0.7714,False,0.021933641584550276,178
+import_share_structural,Import Share,"Population, total",Population,[S],0.676,0.0,True,0.6759039776848191,184
+import_share_structural,Import Share,Real interest rate (%),Real Interest Rate %,[E],-0.363,0.0,True,0.36340944602371994,129
+import_share_structural,Import Share,Trade (% of GDP),Trade % GDP,[T],-0.004,0.9613,False,0.0037908997418515332,166
+import_share_structural,Import Share,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.082,0.2867,False,0.08194399028006336,171
+coverage_ratio_structural,Coverage Ratio,Current account balance (% of GDP),Current Account % GDP,[E],0.528,0.0,True,0.5281341856256436,180
+coverage_ratio_structural,Coverage Ratio,"Current account balance (BoP, current US$)",Current Account (US$),[T],0.221,0.0029,True,0.22051880362193366,180
+coverage_ratio_structural,Coverage Ratio,Expense (% of GDP),Expense % GDP,[E],0.006,0.9456,False,0.00573107359164694,144
+coverage_ratio_structural,Coverage Ratio,Exports of goods and services (% of GDP),Exports % GDP,[T],0.271,0.0004,True,0.2707568157491552,166
+coverage_ratio_structural,Coverage Ratio,Exports of goods and services (current US$),Exports (US$),[T],0.622,0.0,True,0.6221797804688647,166
+coverage_ratio_structural,Coverage Ratio,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.451,0.0,True,0.45089868669477934,113
+coverage_ratio_structural,Coverage Ratio,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.368,0.0,True,0.36756216607877945,182
+coverage_ratio_structural,Coverage Ratio,GDP (current US$),GDP (US$),[S],0.574,0.0,True,0.5744492721656455,184
+coverage_ratio_structural,Coverage Ratio,GDP per capita (current US$),GDP per Capita (US$),[E],0.234,0.0014,True,0.23412928125815696,184
+coverage_ratio_structural,Coverage Ratio,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.137,0.0787,False,0.13687378009108653,166
+coverage_ratio_structural,Coverage Ratio,Imports of goods and services (current US$),Imports (US$),[T],0.558,0.0,True,0.5578472936386341,166
+coverage_ratio_structural,Coverage Ratio,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],0.019,0.8063,False,0.01851209563306048,178
+coverage_ratio_structural,Coverage Ratio,"Population, total",Population,[S],0.385,0.0,True,0.3847894996903345,184
+coverage_ratio_structural,Coverage Ratio,Real interest rate (%),Real Interest Rate %,[E],-0.199,0.0239,True,0.19885733133198608,129
+coverage_ratio_structural,Coverage Ratio,Trade (% of GDP),Trade % GDP,[T],0.064,0.4103,False,0.06431936953008584,166
+coverage_ratio_structural,Coverage Ratio,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.119,0.1198,False,0.11941020294900674,171
+total_export,Total Export,Current account balance (% of GDP),Current Account % GDP,[E],0.484,0.0,True,0.48419442223861503,180
+total_export,Total Export,"Current account balance (BoP, current US$)",Current Account (US$),[T],0.013,0.8587,False,0.01335950706145373,180
+total_export,Total Export,Expense (% of GDP),Expense % GDP,[E],0.251,0.0024,True,0.2509414473975058,144
+total_export,Total Export,Exports of goods and services (% of GDP),Exports % GDP,[T],0.221,0.0041,True,0.22140428568430334,166
+total_export,Total Export,Exports of goods and services (current US$),Exports (US$),[T],0.966,0.0,True,0.9657953281423803,166
+total_export,Total Export,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.879,0.0,True,0.8793322853507001,113
+total_export,Total Export,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.732,0.0,True,0.7324131506238504,182
+total_export,Total Export,GDP (current US$),GDP (US$),[S],0.933,0.0,True,0.9330371203707893,184
+total_export,Total Export,GDP per capita (current US$),GDP per Capita (US$),[E],0.447,0.0,True,0.44748930136955944,184
+total_export,Total Export,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.146,0.0608,False,0.14586962453040067,166
+total_export,Total Export,Imports of goods and services (current US$),Imports (US$),[T],0.954,0.0,True,0.9544960857976368,166
+total_export,Total Export,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.027,0.7181,False,0.02724044233269428,178
+total_export,Total Export,"Population, total",Population,[S],0.641,0.0,True,0.6406762748057486,184
+total_export,Total Export,Real interest rate (%),Real Interest Rate %,[E],-0.344,0.0001,True,0.344117129128827,129
+total_export,Total Export,Trade (% of GDP),Trade % GDP,[T],0.028,0.7202,False,0.028002812349151047,166
+total_export,Total Export,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.101,0.1883,False,0.10108749456254539,171
+total_import,Total Import,Current account balance (% of GDP),Current Account % GDP,[E],0.422,0.0,True,0.4218754340425137,180
+total_import,Total Import,"Current account balance (BoP, current US$)",Current Account (US$),[T],-0.051,0.4929,False,0.05143693150076082,180
+total_import,Total Import,Expense (% of GDP),Expense % GDP,[E],0.268,0.0012,True,0.26755593423331825,144
+total_import,Total Import,Exports of goods and services (% of GDP),Exports % GDP,[T],0.183,0.0182,True,0.18319096690242825,166
+total_import,Total Import,Exports of goods and services (current US$),Exports (US$),[T],0.962,0.0,True,0.9622274225029908,166
+total_import,Total Import,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.923,0.0,True,0.9232893346973744,113
+total_import,Total Import,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.771,0.0,True,0.7710564451274374,182
+total_import,Total Import,GDP (current US$),GDP (US$),[S],0.949,0.0,True,0.9493785981158082,184
+total_import,Total Import,GDP per capita (current US$),GDP per Capita (US$),[E],0.455,0.0,True,0.45508694232515934,184
+total_import,Total Import,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.132,0.0906,False,0.13177902071484038,166
+total_import,Total Import,Imports of goods and services (current US$),Imports (US$),[T],0.972,0.0,True,0.9723670955149327,166
+total_import,Total Import,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.039,0.6094,False,0.03855835459387229,178
+total_import,Total Import,"Population, total",Population,[S],0.657,0.0,True,0.6568116299386351,184
+total_import,Total Import,Real interest rate (%),Real Interest Rate %,[E],-0.363,0.0,True,0.3625373505628091,129
+total_import,Total Import,Trade (% of GDP),Trade % GDP,[T],0.013,0.863,False,0.013495078388985664,166
+total_import,Total Import,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.101,0.1894,False,0.10084509577453928,171
+avg_growth_export,Avg Growth Export,Current account balance (% of GDP),Current Account % GDP,[E],-0.065,0.3846,False,0.06518431181305537,180
+avg_growth_export,Avg Growth Export,"Current account balance (BoP, current US$)",Current Account (US$),[T],-0.128,0.0864,False,0.12817204699336499,180
+avg_growth_export,Avg Growth Export,Expense (% of GDP),Expense % GDP,[E],0.064,0.4426,False,0.06447658739887227,144
+avg_growth_export,Avg Growth Export,Exports of goods and services (% of GDP),Exports % GDP,[T],0.006,0.9367,False,0.006209729888555418,166
+avg_growth_export,Avg Growth Export,Exports of goods and services (current US$),Exports (US$),[T],-0.133,0.0884,False,0.13264738598442713,166
+avg_growth_export,Avg Growth Export,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.002,0.9856,False,0.001721685754921776,113
+avg_growth_export,Avg Growth Export,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.053,0.4749,False,0.05329203525730346,182
+avg_growth_export,Avg Growth Export,GDP (current US$),GDP (US$),[S],-0.11,0.1359,False,0.11033820482615868,184
+avg_growth_export,Avg Growth Export,GDP per capita (current US$),GDP per Capita (US$),[E],-0.143,0.0529,False,0.1429152094408009,184
+avg_growth_export,Avg Growth Export,Imports of goods and services (% of GDP),Imports % GDP,[T],0.076,0.3306,False,0.0759780258987974,166
+avg_growth_export,Avg Growth Export,Imports of goods and services (current US$),Imports (US$),[T],-0.132,0.0912,False,0.131521921632002,166
+avg_growth_export,Avg Growth Export,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],0.13,0.0845,False,0.12968893295855208,178
+avg_growth_export,Avg Growth Export,"Population, total",Population,[S],-0.015,0.8397,False,0.01500938628437022,184
+avg_growth_export,Avg Growth Export,Real interest rate (%),Real Interest Rate %,[E],0.169,0.0556,False,0.16897688108475262,129
+avg_growth_export,Avg Growth Export,Trade (% of GDP),Trade % GDP,[T],0.04,0.6058,False,0.04034619178542195,166
+avg_growth_export,Avg Growth Export,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],0.044,0.5673,False,0.044049379753109165,171
+avg_growth_import,Avg Growth Import,Current account balance (% of GDP),Current Account % GDP,[E],-0.047,0.5272,False,0.04743679569368096,180
+avg_growth_import,Avg Growth Import,"Current account balance (BoP, current US$)",Current Account (US$),[T],-0.069,0.3548,False,0.0693737544587419,180
+avg_growth_import,Avg Growth Import,Expense (% of GDP),Expense % GDP,[E],0.052,0.5321,False,0.05248393410471066,144
+avg_growth_import,Avg Growth Import,Exports of goods and services (% of GDP),Exports % GDP,[T],0.09,0.25,False,0.08977480219111382,166
+avg_growth_import,Avg Growth Import,Exports of goods and services (current US$),Exports (US$),[T],-0.031,0.693,False,0.030865007240749674,166
+avg_growth_import,Avg Growth Import,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.048,0.6158,False,0.04771647911104458,113
+avg_growth_import,Avg Growth Import,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.111,0.1352,False,0.11114848993956572,182
+avg_growth_import,Avg Growth Import,GDP (current US$),GDP (US$),[S],-0.074,0.3175,False,0.07409722630240112,184
+avg_growth_import,Avg Growth Import,GDP per capita (current US$),GDP per Capita (US$),[E],-0.14,0.0586,False,0.13966925989460777,184
+avg_growth_import,Avg Growth Import,Imports of goods and services (% of GDP),Imports % GDP,[T],0.201,0.0095,True,0.20077077255650932,166
+avg_growth_import,Avg Growth Import,Imports of goods and services (current US$),Imports (US$),[T],-0.023,0.7689,False,0.022978886393686906,166
+avg_growth_import,Avg Growth Import,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],0.044,0.5618,False,0.043769403123224596,178
+avg_growth_import,Avg Growth Import,"Population, total",Population,[S],-0.005,0.9473,False,0.004903599151237168,184
+avg_growth_import,Avg Growth Import,Real interest rate (%),Real Interest Rate %,[E],0.147,0.0954,False,0.14743165091584,129
+avg_growth_import,Avg Growth Import,Trade (% of GDP),Trade % GDP,[T],0.149,0.055,False,0.1492407706676181,166
+avg_growth_import,Avg Growth Import,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.045,0.5613,False,0.04472377638112614,171
+cagr_export,CAGR Export,Current account balance (% of GDP),Current Account % GDP,[E],-0.058,0.4409,False,0.05779722974133895,180
+cagr_export,CAGR Export,"Current account balance (BoP, current US$)",Current Account (US$),[T],-0.212,0.0043,True,0.2121213991833056,180
+cagr_export,CAGR Export,Expense (% of GDP),Expense % GDP,[E],0.1,0.2322,False,0.1001772372688581,144
+cagr_export,CAGR Export,Exports of goods and services (% of GDP),Exports % GDP,[T],0.053,0.4998,False,0.05273154658215627,166
+cagr_export,CAGR Export,Exports of goods and services (current US$),Exports (US$),[T],0.045,0.5633,False,0.04517598169874283,166
+cagr_export,CAGR Export,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.193,0.0404,True,0.19316149745074068,113
+cagr_export,CAGR Export,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.181,0.0147,True,0.18053642378832876,182
+cagr_export,CAGR Export,GDP (current US$),GDP (US$),[S],0.069,0.3511,False,0.06913679895436117,184
+cagr_export,CAGR Export,GDP per capita (current US$),GDP per Capita (US$),[E],-0.084,0.2585,False,0.08371949216782232,184
+cagr_export,CAGR Export,Imports of goods and services (% of GDP),Imports % GDP,[T],0.082,0.2946,False,0.08182309484332696,166
+cagr_export,CAGR Export,Imports of goods and services (current US$),Imports (US$),[T],0.063,0.4203,False,0.06295779377505403,166
+cagr_export,CAGR Export,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],0.065,0.3878,False,0.06512640356794047,178
+cagr_export,CAGR Export,"Population, total",Population,[S],0.123,0.0961,False,0.12305423625311471,184
+cagr_export,CAGR Export,Real interest rate (%),Real Interest Rate %,[E],0.101,0.2568,False,0.10056211024740119,129
+cagr_export,CAGR Export,Trade (% of GDP),Trade % GDP,[T],0.065,0.4084,False,0.0645843389930111,166
+cagr_export,CAGR Export,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],0.019,0.8027,False,0.019241903790484512,171
+cagr_import,CAGR Import,Current account balance (% of GDP),Current Account % GDP,[E],-0.031,0.6771,False,0.03125311867583981,180
+cagr_import,CAGR Import,"Current account balance (BoP, current US$)",Current Account (US$),[T],-0.059,0.4308,False,0.05907916626799056,180
+cagr_import,CAGR Import,Expense (% of GDP),Expense % GDP,[E],0.063,0.4516,False,0.06321462589271719,144
+cagr_import,CAGR Import,Exports of goods and services (% of GDP),Exports % GDP,[T],0.147,0.0581,False,0.14736762020693853,166
+cagr_import,CAGR Import,Exports of goods and services (current US$),Exports (US$),[T],0.008,0.9205,False,0.007804793586164921,166
+cagr_import,CAGR Import,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.046,0.6322,False,0.04551238865184521,113
+cagr_import,CAGR Import,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.107,0.1519,False,0.10664975993502718,182
+cagr_import,CAGR Import,GDP (current US$),GDP (US$),[S],-0.048,0.5153,False,0.048258697362882706,184
+cagr_import,CAGR Import,GDP per capita (current US$),GDP per Capita (US$),[E],-0.096,0.1934,False,0.09631608806251485,184
+cagr_import,CAGR Import,Imports of goods and services (% of GDP),Imports % GDP,[T],0.262,0.0007,True,0.26172424286943563,166
+cagr_import,CAGR Import,Imports of goods and services (current US$),Imports (US$),[T],0.016,0.8329,False,0.0164989401221483,166
+cagr_import,CAGR Import,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.01,0.8914,False,0.010307194396154592,178
+cagr_import,CAGR Import,"Population, total",Population,[S],-0.009,0.9043,False,0.00892395327759033,184
+cagr_import,CAGR Import,Real interest rate (%),Real Interest Rate %,[E],0.079,0.3737,False,0.07896097652330201,129
+cagr_import,CAGR Import,Trade (% of GDP),Trade % GDP,[T],0.216,0.0052,True,0.216036686465045,166
+cagr_import,CAGR Import,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.032,0.6785,False,0.03192584037080389,171
+volatility_export,Volatility Export,Current account balance (% of GDP),Current Account % GDP,[E],-0.061,0.4183,False,0.060692389762203855,180
+volatility_export,Volatility Export,"Current account balance (BoP, current US$)",Current Account (US$),[T],-0.017,0.8179,False,0.01727733554740027,180
+volatility_export,Volatility Export,Expense (% of GDP),Expense % GDP,[E],0.01,0.9077,False,0.00974202130866212,144
+volatility_export,Volatility Export,Exports of goods and services (% of GDP),Exports % GDP,[T],-0.127,0.1025,False,0.12718534220412617,166
+volatility_export,Volatility Export,Exports of goods and services (current US$),Exports (US$),[T],-0.289,0.0002,True,0.28902659139085357,166
+volatility_export,Volatility Export,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],-0.242,0.0097,True,0.24240836389949355,113
+volatility_export,Volatility Export,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],-0.157,0.0347,True,0.15667324887929868,182
+volatility_export,Volatility Export,GDP (current US$),GDP (US$),[S],-0.283,0.0001,True,0.28345808246252946,184
+volatility_export,Volatility Export,GDP per capita (current US$),GDP per Capita (US$),[E],-0.149,0.0441,True,0.14857491256644806,184
+volatility_export,Volatility Export,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.051,0.5132,False,0.05110237790417024,166
+volatility_export,Volatility Export,Imports of goods and services (current US$),Imports (US$),[T],-0.296,0.0001,True,0.2956796860243037,166
+volatility_export,Volatility Export,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],0.08,0.2861,False,0.08038717941625192,178
+volatility_export,Volatility Export,"Population, total",Population,[S],-0.175,0.0172,True,0.17545753922349563,184
+volatility_export,Volatility Export,Real interest rate (%),Real Interest Rate %,[E],0.198,0.0244,True,0.19813617547007906,129
+volatility_export,Volatility Export,Trade (% of GDP),Trade % GDP,[T],-0.091,0.2461,False,0.09051461791928138,166
+volatility_export,Volatility Export,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],0.072,0.3471,False,0.07233923830382151,171
+volatility_import,Volatility Import,Current account balance (% of GDP),Current Account % GDP,[E],-0.029,0.6999,False,0.02892382148776656,180
+volatility_import,Volatility Import,"Current account balance (BoP, current US$)",Current Account (US$),[T],-0.06,0.4249,False,0.05984256667150221,180
+volatility_import,Volatility Import,Expense (% of GDP),Expense % GDP,[E],0.024,0.7767,False,0.023836604117852735,144
+volatility_import,Volatility Import,Exports of goods and services (% of GDP),Exports % GDP,[T],-0.13,0.0946,False,0.1301682162570571,166
+volatility_import,Volatility Import,Exports of goods and services (current US$),Exports (US$),[T],-0.155,0.0464,True,0.154849728209541,166
+volatility_import,Volatility Import,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.009,0.9255,False,0.008891217739185404,113
+volatility_import,Volatility Import,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],-0.001,0.9911,False,0.0008300754034922884,182
+volatility_import,Volatility Import,GDP (current US$),GDP (US$),[S],-0.106,0.1504,False,0.10643343347296372,184
+volatility_import,Volatility Import,GDP per capita (current US$),GDP per Capita (US$),[E],-0.245,0.0008,True,0.24488233192097603,184
+volatility_import,Volatility Import,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.062,0.4244,False,0.0624147375490587,166
+volatility_import,Volatility Import,Imports of goods and services (current US$),Imports (US$),[T],-0.157,0.0435,True,0.15687241589187145,166
+volatility_import,Volatility Import,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],0.203,0.0064,True,0.2034883597219356,178
+volatility_import,Volatility Import,"Population, total",Population,[S],0.026,0.7277,False,0.025835639370189466,184
+volatility_import,Volatility Import,Real interest rate (%),Real Interest Rate %,[E],0.137,0.1206,False,0.13734664956017878,129
+volatility_import,Volatility Import,Trade (% of GDP),Trade % GDP,[T],-0.107,0.1685,False,0.10738084244548449,166
+volatility_import,Volatility Import,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],0.01,0.9007,False,0.009610751946241997,171
+negfreq_export,Neg.Freq Export,Current account balance (% of GDP),Current Account % GDP,[E],-0.039,0.6066,False,0.03863473626659389,180
+negfreq_export,Neg.Freq Export,"Current account balance (BoP, current US$)",Current Account (US$),[T],0.056,0.4518,False,0.05643507721451846,180
+negfreq_export,Neg.Freq Export,Expense (% of GDP),Expense % GDP,[E],0.02,0.8113,False,0.02007286118649314,144
+negfreq_export,Neg.Freq Export,Exports of goods and services (% of GDP),Exports % GDP,[T],0.005,0.9539,False,0.004525504679251553,166
+negfreq_export,Neg.Freq Export,Exports of goods and services (current US$),Exports (US$),[T],-0.023,0.7707,False,0.022790903811739992,166
+negfreq_export,Neg.Freq Export,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],-0.219,0.0195,True,0.21941281223593123,113
+negfreq_export,Neg.Freq Export,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],-0.143,0.0544,False,0.14284880863508667,182
+negfreq_export,Neg.Freq Export,GDP (current US$),GDP (US$),[S],-0.081,0.276,False,0.08073061286007072,184
+negfreq_export,Neg.Freq Export,GDP per capita (current US$),GDP per Capita (US$),[E],0.147,0.047,True,0.146641028486433,184
+negfreq_export,Neg.Freq Export,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.039,0.6136,False,0.039468989151535266,166
+negfreq_export,Neg.Freq Export,Imports of goods and services (current US$),Imports (US$),[T],-0.044,0.572,False,0.04417115720687736,166
+negfreq_export,Neg.Freq Export,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.095,0.2073,False,0.0949635339544535,178
+negfreq_export,Neg.Freq Export,"Population, total",Population,[S],-0.173,0.0186,True,0.17340994884157246,184
+negfreq_export,Neg.Freq Export,Real interest rate (%),Real Interest Rate %,[E],0.02,0.8228,False,0.019911119629320212,129
+negfreq_export,Neg.Freq Export,Trade (% of GDP),Trade % GDP,[T],-0.007,0.9311,False,0.006766340133873617,166
+negfreq_export,Neg.Freq Export,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],0.061,0.4283,False,0.0609668790201157,171
+negfreq_import,Negfreq Import,Current account balance (% of GDP),Current Account % GDP,[E],0.126,0.0921,False,0.12593564922686587,180
+negfreq_import,Negfreq Import,"Current account balance (BoP, current US$)",Current Account (US$),[T],0.038,0.6089,False,0.03839234285562512,180
+negfreq_import,Negfreq Import,Expense (% of GDP),Expense % GDP,[E],0.156,0.0617,False,0.15611526859525937,144
+negfreq_import,Negfreq Import,Exports of goods and services (% of GDP),Exports % GDP,[T],-0.054,0.4904,False,0.05390254415305063,166
+negfreq_import,Negfreq Import,Exports of goods and services (current US$),Exports (US$),[T],0.2,0.0099,True,0.1995980678989169,166
+negfreq_import,Negfreq Import,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.063,0.5048,False,0.06338570523773325,113
+negfreq_import,Negfreq Import,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.081,0.279,False,0.08066429920220053,182
+negfreq_import,Negfreq Import,GDP (current US$),GDP (US$),[S],0.207,0.0048,True,0.20714678777173157,184
+negfreq_import,Negfreq Import,GDP per capita (current US$),GDP per Capita (US$),[E],0.183,0.0127,True,0.18337408416968232,184
+negfreq_import,Negfreq Import,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.142,0.0689,False,0.14152384279966554,166
+negfreq_import,Negfreq Import,Imports of goods and services (current US$),Imports (US$),[T],0.208,0.0072,True,0.20775477739998943,166
+negfreq_import,Negfreq Import,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.004,0.9597,False,0.0038135404590830084,178
+negfreq_import,Negfreq Import,"Population, total",Population,[S],0.083,0.2598,False,0.08349006312483773,184
+negfreq_import,Negfreq Import,Real interest rate (%),Real Interest Rate %,[E],-0.114,0.198,False,0.11408964791652917,129
+negfreq_import,Negfreq Import,Trade (% of GDP),Trade % GDP,[T],-0.097,0.2151,False,0.09672860211209817,166
+negfreq_import,Negfreq Import,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],0.075,0.3289,False,0.07511216979159459,171
+resilience_export,Resilience Export,Current account balance (% of GDP),Current Account % GDP,[E],0.046,0.5439,False,0.045533438892472675,180
+resilience_export,Resilience Export,"Current account balance (BoP, current US$)",Current Account (US$),[T],-0.104,0.1643,False,0.1040992132448941,180
+resilience_export,Resilience Export,Expense (% of GDP),Expense % GDP,[E],0.013,0.8766,False,0.0130536655158971,144
+resilience_export,Resilience Export,Exports of goods and services (% of GDP),Exports % GDP,[T],0.104,0.1837,False,0.1036948811047915,166
+resilience_export,Resilience Export,Exports of goods and services (current US$),Exports (US$),[T],0.181,0.0199,True,0.18064096375427624,166
+resilience_export,Resilience Export,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.344,0.0002,True,0.3436883998303267,113
+resilience_export,Resilience Export,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.229,0.0019,True,0.2287624113192824,182
+resilience_export,Resilience Export,GDP (current US$),GDP (US$),[S],0.202,0.0059,True,0.2023459450192012,184
+resilience_export,Resilience Export,GDP per capita (current US$),GDP per Capita (US$),[E],-0.012,0.8751,False,0.011669044140097878,184
+resilience_export,Resilience Export,Imports of goods and services (% of GDP),Imports % GDP,[T],0.073,0.35,False,0.07298990492580855,166
+resilience_export,Resilience Export,Imports of goods and services (current US$),Imports (US$),[T],0.198,0.0104,True,0.19844376351081913,166
+resilience_export,Resilience Export,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],0.05,0.5114,False,0.049540070175737236,178
+resilience_export,Resilience Export,"Population, total",Population,[S],0.209,0.0044,True,0.20905167224193014,184
+resilience_export,Resilience Export,Real interest rate (%),Real Interest Rate %,[E],-0.054,0.5455,False,0.05370375028999969,129
+resilience_export,Resilience Export,Trade (% of GDP),Trade % GDP,[T],0.081,0.2972,False,0.08139809431863494,166
+resilience_export,Resilience Export,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.034,0.6571,False,0.03418782906086085,171
+resilience_import,Resilience Import,Current account balance (% of GDP),Current Account % GDP,[E],-0.039,0.6019,False,0.03914021772344122,180
+resilience_import,Resilience Import,"Current account balance (BoP, current US$)",Current Account (US$),[T],0.01,0.8957,False,0.009840869083003845,180
+resilience_import,Resilience Import,Expense (% of GDP),Expense % GDP,[E],-0.052,0.5343,False,0.05220260510652321,144
+resilience_import,Resilience Import,Exports of goods and services (% of GDP),Exports % GDP,[T],0.167,0.0312,True,0.16734526832749172,166
+resilience_import,Resilience Import,Exports of goods and services (current US$),Exports (US$),[T],-0.04,0.6064,False,0.04028060528469788,166
+resilience_import,Resilience Import,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],-0.016,0.87,False,0.015570027696683884,113
+resilience_import,Resilience Import,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],-0.028,0.7036,False,0.028389773152534815,182
+resilience_import,Resilience Import,GDP (current US$),GDP (US$),[S],-0.102,0.1692,False,0.10178507961245097,184
+resilience_import,Resilience Import,GDP per capita (current US$),GDP per Capita (US$),[E],-0.007,0.9254,False,0.0069513406156901675,184
+resilience_import,Resilience Import,Imports of goods and services (% of GDP),Imports % GDP,[T],0.235,0.0023,True,0.23508038281528745,166
+resilience_import,Resilience Import,Imports of goods and services (current US$),Imports (US$),[T],-0.043,0.5866,False,0.042505299389258504,166
+resilience_import,Resilience Import,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.118,0.117,False,0.11790928222008967,178
+resilience_import,Resilience Import,"Population, total",Population,[S],-0.105,0.157,False,0.10475748326216966,184
+resilience_import,Resilience Import,Real interest rate (%),Real Interest Rate %,[E],0.03,0.7332,False,0.03030252208889225,129
+resilience_import,Resilience Import,Trade (% of GDP),Trade % GDP,[T],0.214,0.0055,True,0.21442325854723276,166
+resilience_import,Resilience Import,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.048,0.5365,False,0.047594162029198424,171
+structural_score,Structural Score,Current account balance (% of GDP),Current Account % GDP,[E],0.296,0.0001,True,0.29642878822017615,180
+structural_score,Structural Score,"Current account balance (BoP, current US$)",Current Account (US$),[T],0.012,0.8775,False,0.011571380509832124,180
+structural_score,Structural Score,Expense (% of GDP),Expense % GDP,[E],0.22,0.0082,True,0.21954915018547622,144
+structural_score,Structural Score,Exports of goods and services (% of GDP),Exports % GDP,[T],0.163,0.0359,True,0.1629667135391525,166
+structural_score,Structural Score,Exports of goods and services (current US$),Exports (US$),[T],0.692,0.0,True,0.6915283228744726,166
+structural_score,Structural Score,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.556,0.0,True,0.5557302193277941,113
+structural_score,Structural Score,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.554,0.0,True,0.5535149811690327,182
+structural_score,Structural Score,GDP (current US$),GDP (US$),[S],0.65,0.0,True,0.6500866389203798,184
+structural_score,Structural Score,GDP per capita (current US$),GDP per Capita (US$),[E],0.33,0.0,True,0.33037313008744795,184
+structural_score,Structural Score,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.047,0.5448,False,0.04732984238252146,166
+structural_score,Structural Score,Imports of goods and services (current US$),Imports (US$),[T],0.696,0.0,True,0.6963082670472431,166
+structural_score,Structural Score,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.051,0.4969,False,0.05124871532439789,178
+structural_score,Structural Score,"Population, total",Population,[S],0.478,0.0,True,0.47823817178874933,184
+structural_score,Structural Score,Real interest rate (%),Real Interest Rate %,[E],-0.236,0.0071,True,0.23613941228592436,129
+structural_score,Structural Score,Trade (% of GDP),Trade % GDP,[T],0.049,0.5324,False,0.04880422691879866,166
+structural_score,Structural Score,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.077,0.3185,False,0.07673721631393225,171
+growth_risk,Growth Risk,Current account balance (% of GDP),Current Account % GDP,[E],0.058,0.4409,False,0.05779722974133895,180
+growth_risk,Growth Risk,"Current account balance (BoP, current US$)",Current Account (US$),[T],0.212,0.0043,True,0.2121213991833056,180
+growth_risk,Growth Risk,Expense (% of GDP),Expense % GDP,[E],-0.1,0.2322,False,0.1001772372688581,144
+growth_risk,Growth Risk,Exports of goods and services (% of GDP),Exports % GDP,[T],-0.053,0.4998,False,0.05273154658215627,166
+growth_risk,Growth Risk,Exports of goods and services (current US$),Exports (US$),[T],-0.045,0.5633,False,0.04517598169874283,166
+growth_risk,Growth Risk,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],-0.193,0.0404,True,0.19316149745074068,113
+growth_risk,Growth Risk,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],-0.181,0.0147,True,0.18053642378832876,182
+growth_risk,Growth Risk,GDP (current US$),GDP (US$),[S],-0.069,0.3511,False,0.06913679895436117,184
+growth_risk,Growth Risk,GDP per capita (current US$),GDP per Capita (US$),[E],0.084,0.2585,False,0.08371949216782232,184
+growth_risk,Growth Risk,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.082,0.2946,False,0.08182309484332696,166
+growth_risk,Growth Risk,Imports of goods and services (current US$),Imports (US$),[T],-0.063,0.4203,False,0.06295779377505403,166
+growth_risk,Growth Risk,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.065,0.3878,False,0.06512640356794047,178
+growth_risk,Growth Risk,"Population, total",Population,[S],-0.123,0.0961,False,0.12305423625311471,184
+growth_risk,Growth Risk,Real interest rate (%),Real Interest Rate %,[E],-0.101,0.2568,False,0.10056211024740119,129
+growth_risk,Growth Risk,Trade (% of GDP),Trade % GDP,[T],-0.065,0.4084,False,0.0645843389930111,166
+growth_risk,Growth Risk,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.019,0.8027,False,0.019241903790484512,171
+stability_risk,Stability Risk,Current account balance (% of GDP),Current Account % GDP,[E],-0.061,0.4183,False,0.060692389762203855,180
+stability_risk,Stability Risk,"Current account balance (BoP, current US$)",Current Account (US$),[T],-0.017,0.8179,False,0.01727733554740027,180
+stability_risk,Stability Risk,Expense (% of GDP),Expense % GDP,[E],0.01,0.9077,False,0.00974202130866212,144
+stability_risk,Stability Risk,Exports of goods and services (% of GDP),Exports % GDP,[T],-0.127,0.1025,False,0.12718534220412617,166
+stability_risk,Stability Risk,Exports of goods and services (current US$),Exports (US$),[T],-0.289,0.0002,True,0.28902659139085357,166
+stability_risk,Stability Risk,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],-0.242,0.0097,True,0.24240836389949355,113
+stability_risk,Stability Risk,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],-0.157,0.0347,True,0.15667324887929868,182
+stability_risk,Stability Risk,GDP (current US$),GDP (US$),[S],-0.283,0.0001,True,0.28345808246252946,184
+stability_risk,Stability Risk,GDP per capita (current US$),GDP per Capita (US$),[E],-0.149,0.0441,True,0.14857491256644806,184
+stability_risk,Stability Risk,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.051,0.5132,False,0.05110237790417024,166
+stability_risk,Stability Risk,Imports of goods and services (current US$),Imports (US$),[T],-0.296,0.0001,True,0.2956796860243037,166
+stability_risk,Stability Risk,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],0.08,0.2861,False,0.08038717941625192,178
+stability_risk,Stability Risk,"Population, total",Population,[S],-0.175,0.0172,True,0.17545753922349563,184
+stability_risk,Stability Risk,Real interest rate (%),Real Interest Rate %,[E],0.198,0.0244,True,0.19813617547007906,129
+stability_risk,Stability Risk,Trade (% of GDP),Trade % GDP,[T],-0.091,0.2461,False,0.09051461791928138,166
+stability_risk,Stability Risk,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],0.072,0.3471,False,0.07233923830382151,171
+consistency_risk,Consistency Risk,Current account balance (% of GDP),Current Account % GDP,[E],-0.039,0.6066,False,0.03863473626659389,180
+consistency_risk,Consistency Risk,"Current account balance (BoP, current US$)",Current Account (US$),[T],0.056,0.4518,False,0.05643507721451846,180
+consistency_risk,Consistency Risk,Expense (% of GDP),Expense % GDP,[E],0.02,0.8113,False,0.02007286118649314,144
+consistency_risk,Consistency Risk,Exports of goods and services (% of GDP),Exports % GDP,[T],0.005,0.9539,False,0.004525504679251553,166
+consistency_risk,Consistency Risk,Exports of goods and services (current US$),Exports (US$),[T],-0.023,0.7707,False,0.022790903811739992,166
+consistency_risk,Consistency Risk,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],-0.219,0.0195,True,0.21941281223593123,113
+consistency_risk,Consistency Risk,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],-0.143,0.0544,False,0.14284880863508667,182
+consistency_risk,Consistency Risk,GDP (current US$),GDP (US$),[S],-0.081,0.276,False,0.08073061286007072,184
+consistency_risk,Consistency Risk,GDP per capita (current US$),GDP per Capita (US$),[E],0.147,0.047,True,0.146641028486433,184
+consistency_risk,Consistency Risk,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.039,0.6136,False,0.039468989151535266,166
+consistency_risk,Consistency Risk,Imports of goods and services (current US$),Imports (US$),[T],-0.044,0.572,False,0.04417115720687736,166
+consistency_risk,Consistency Risk,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.095,0.2073,False,0.0949635339544535,178
+consistency_risk,Consistency Risk,"Population, total",Population,[S],-0.173,0.0186,True,0.17340994884157246,184
+consistency_risk,Consistency Risk,Real interest rate (%),Real Interest Rate %,[E],0.02,0.8228,False,0.019911119629320212,129
+consistency_risk,Consistency Risk,Trade (% of GDP),Trade % GDP,[T],-0.007,0.9311,False,0.006766340133873617,166
+consistency_risk,Consistency Risk,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],0.061,0.4283,False,0.0609668790201157,171
+balance_risk,Balance Risk,Current account balance (% of GDP),Current Account % GDP,[E],-0.528,0.0,True,0.528245899435264,180
+balance_risk,Balance Risk,"Current account balance (BoP, current US$)",Current Account (US$),[T],-0.221,0.0029,True,0.22082459466452395,180
+balance_risk,Balance Risk,Expense (% of GDP),Expense % GDP,[E],-0.007,0.9347,False,0.006892948303751989,144
+balance_risk,Balance Risk,Exports of goods and services (% of GDP),Exports % GDP,[T],-0.271,0.0004,True,0.27116643050209793,166
+balance_risk,Balance Risk,Exports of goods and services (current US$),Exports (US$),[T],-0.623,0.0,True,0.6230079831234077,166
+balance_risk,Balance Risk,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],-0.451,0.0,True,0.45110618162313165,113
+balance_risk,Balance Risk,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],-0.37,0.0,True,0.3700539157877246,182
+balance_risk,Balance Risk,GDP (current US$),GDP (US$),[S],-0.575,0.0,True,0.5752067789728541,184
+balance_risk,Balance Risk,GDP per capita (current US$),GDP per Capita (US$),[E],-0.235,0.0013,True,0.23469213360055752,184
+balance_risk,Balance Risk,Imports of goods and services (% of GDP),Imports % GDP,[T],0.136,0.0814,False,0.1356330649151117,166
+balance_risk,Balance Risk,Imports of goods and services (current US$),Imports (US$),[T],-0.559,0.0,True,0.5589196808044384,166
+balance_risk,Balance Risk,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.018,0.8091,False,0.01823069486144492,178
+balance_risk,Balance Risk,"Population, total",Population,[S],-0.385,0.0,True,0.3852044231867303,184
+balance_risk,Balance Risk,Real interest rate (%),Real Interest Rate %,[E],0.198,0.0243,True,0.19829961043065647,129
+balance_risk,Balance Risk,Trade (% of GDP),Trade % GDP,[T],-0.065,0.4046,False,0.06510366126593124,166
+balance_risk,Balance Risk,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],0.12,0.1192,False,0.11961284418648724,171
+combined_score,Combined Score,Current account balance (% of GDP),Current Account % GDP,[E],0.283,0.0001,True,0.283308555349815,180
+combined_score,Combined Score,"Current account balance (BoP, current US$)",Current Account (US$),[T],-0.025,0.742,False,0.024707679803337407,180
+combined_score,Combined Score,Expense (% of GDP),Expense % GDP,[E],0.256,0.0019,True,0.25641783066825347,144
+combined_score,Combined Score,Exports of goods and services (% of GDP),Exports % GDP,[T],0.144,0.0638,False,0.14418695862364198,166
+combined_score,Combined Score,Exports of goods and services (current US$),Exports (US$),[T],0.742,0.0,True,0.7421402622561345,166
+combined_score,Combined Score,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.623,0.0,True,0.6226597133850671,113
+combined_score,Combined Score,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.604,0.0,True,0.6037427119445519,182
+combined_score,Combined Score,GDP (current US$),GDP (US$),[S],0.718,0.0,True,0.7181094474664528,184
+combined_score,Combined Score,GDP per capita (current US$),GDP per Capita (US$),[E],0.326,0.0,True,0.3260085820380441,184
+combined_score,Combined Score,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.079,0.3127,False,0.07883775245128892,166
+combined_score,Combined Score,Imports of goods and services (current US$),Imports (US$),[T],0.752,0.0,True,0.7521566523549338,166
+combined_score,Combined Score,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.06,0.4282,False,0.05975267162423313,178
+combined_score,Combined Score,"Population, total",Population,[S],0.536,0.0,True,0.5359217503128277,184
+combined_score,Combined Score,Real interest rate (%),Real Interest Rate %,[E],-0.265,0.0024,True,0.2647910945286477,129
+combined_score,Combined Score,Trade (% of GDP),Trade % GDP,[T],0.024,0.7623,False,0.023647915230638528,166
+combined_score,Combined Score,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.089,0.2466,False,0.08908646147146244,171
+f_norm_rank,F Norm Rank,Current account balance (% of GDP),Current Account % GDP,[E],0.296,0.0001,True,0.29642878822017615,180
+f_norm_rank,F Norm Rank,"Current account balance (BoP, current US$)",Current Account (US$),[T],0.012,0.8775,False,0.011571380509832124,180
+f_norm_rank,F Norm Rank,Expense (% of GDP),Expense % GDP,[E],0.22,0.0082,True,0.21954915018547622,144
+f_norm_rank,F Norm Rank,Exports of goods and services (% of GDP),Exports % GDP,[T],0.163,0.0359,True,0.1629667135391525,166
+f_norm_rank,F Norm Rank,Exports of goods and services (current US$),Exports (US$),[T],0.692,0.0,True,0.6915283228744726,166
+f_norm_rank,F Norm Rank,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.556,0.0,True,0.5557302193277941,113
+f_norm_rank,F Norm Rank,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.554,0.0,True,0.5535149811690327,182
+f_norm_rank,F Norm Rank,GDP (current US$),GDP (US$),[S],0.65,0.0,True,0.6500866389203798,184
+f_norm_rank,F Norm Rank,GDP per capita (current US$),GDP per Capita (US$),[E],0.33,0.0,True,0.33037313008744795,184
+f_norm_rank,F Norm Rank,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.047,0.5448,False,0.04732984238252146,166
+f_norm_rank,F Norm Rank,Imports of goods and services (current US$),Imports (US$),[T],0.696,0.0,True,0.6963082670472431,166
+f_norm_rank,F Norm Rank,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.051,0.4969,False,0.05124871532439789,178
+f_norm_rank,F Norm Rank,"Population, total",Population,[S],0.478,0.0,True,0.47823817178874933,184
+f_norm_rank,F Norm Rank,Real interest rate (%),Real Interest Rate %,[E],-0.236,0.0071,True,0.23613941228592436,129
+f_norm_rank,F Norm Rank,Trade (% of GDP),Trade % GDP,[T],0.049,0.5324,False,0.04880422691879866,166
+f_norm_rank,F Norm Rank,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.077,0.3185,False,0.07673721631393225,171
+g_norm_rank,G Norm Rank,Current account balance (% of GDP),Current Account % GDP,[E],0.112,0.1332,False,0.11234229145639717,180
+g_norm_rank,G Norm Rank,"Current account balance (BoP, current US$)",Current Account (US$),[T],-0.106,0.1566,False,0.10601697382730069,180
+g_norm_rank,G Norm Rank,Expense (% of GDP),Expense % GDP,[E],0.221,0.0078,True,0.2209839280762321,144
+g_norm_rank,G Norm Rank,Exports of goods and services (% of GDP),Exports % GDP,[T],0.004,0.9594,False,0.003985035783994795,166
+g_norm_rank,G Norm Rank,Exports of goods and services (current US$),Exports (US$),[T],0.475,0.0,True,0.4754050622284719,166
+g_norm_rank,G Norm Rank,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.454,0.0,True,0.45382638421039506,113
+g_norm_rank,G Norm Rank,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.437,0.0,True,0.4371192999498371,182
+g_norm_rank,G Norm Rank,GDP (current US$),GDP (US$),[S],0.529,0.0,True,0.5288595736729411,184
+g_norm_rank,G Norm Rank,GDP per capita (current US$),GDP per Capita (US$),[E],0.152,0.0399,True,0.1516590462302197,184
+g_norm_rank,G Norm Rank,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.145,0.0629,False,0.1446943144374252,166
+g_norm_rank,G Norm Rank,Imports of goods and services (current US$),Imports (US$),[T],0.491,0.0,True,0.4913189707641614,166
+g_norm_rank,G Norm Rank,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.045,0.5479,False,0.04533548385723984,178
+g_norm_rank,G Norm Rank,"Population, total",Population,[S],0.429,0.0,True,0.42863967744700765,184
+g_norm_rank,G Norm Rank,Real interest rate (%),Real Interest Rate %,[E],-0.18,0.0413,True,0.17997311038995528,129
+g_norm_rank,G Norm Rank,Trade (% of GDP),Trade % GDP,[T],-0.076,0.3321,False,0.07574191449619073,166
+g_norm_rank,G Norm Rank,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.06,0.4319,False,0.06048689756552306,171
+export_pc,Export per Capita,Current account balance (% of GDP),Current Account % GDP,[E],0.551,0.0,True,0.5511596587126928,180
+export_pc,Export per Capita,"Current account balance (BoP, current US$)",Current Account (US$),[T],0.318,0.0,True,0.31760646194778214,180
+export_pc,Export per Capita,Expense (% of GDP),Expense % GDP,[E],0.503,0.0,True,0.503064476587399,144
+export_pc,Export per Capita,Exports of goods and services (% of GDP),Exports % GDP,[T],0.671,0.0,True,0.6712516003106177,166
+export_pc,Export per Capita,Exports of goods and services (current US$),Exports (US$),[T],0.728,0.0,True,0.7283249732407077,166
+export_pc,Export per Capita,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.455,0.0,True,0.4553151849356656,113
+export_pc,Export per Capita,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.465,0.0,True,0.4649357836150679,182
+export_pc,Export per Capita,GDP (current US$),GDP (US$),[S],0.541,0.0,True,0.5411402433210013,184
+export_pc,Export per Capita,GDP per capita (current US$),GDP per Capita (US$),[E],0.823,0.0,True,0.8232450441478034,184
+export_pc,Export per Capita,Imports of goods and services (% of GDP),Imports % GDP,[T],0.314,0.0,True,0.3144505425315339,166
+export_pc,Export per Capita,Imports of goods and services (current US$),Imports (US$),[T],0.672,0.0,True,0.6722590089617394,166
+export_pc,Export per Capita,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.324,0.0,True,0.32369782302011013,178
+export_pc,Export per Capita,"Population, total",Population,[S],-0.03,0.684,False,0.030200815436464627,184
+export_pc,Export per Capita,Real interest rate (%),Real Interest Rate %,[E],-0.377,0.0,True,0.377368563753812,129
+export_pc,Export per Capita,Trade (% of GDP),Trade % GDP,[T],0.513,0.0,True,0.5131645224253363,166
+export_pc,Export per Capita,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],0.036,0.6429,False,0.035710621446899196,171
+import_pc,Import per Capita,Current account balance (% of GDP),Current Account % GDP,[E],0.402,0.0,True,0.4020805233099477,180
+import_pc,Import per Capita,"Current account balance (BoP, current US$)",Current Account (US$),[T],0.331,0.0,True,0.33065423003044336,180
+import_pc,Import per Capita,Expense (% of GDP),Expense % GDP,[E],0.568,0.0,True,0.5679871713976826,144
+import_pc,Import per Capita,Exports of goods and services (% of GDP),Exports % GDP,[T],0.709,0.0,True,0.7093862152916238,166
+import_pc,Import per Capita,Exports of goods and services (current US$),Exports (US$),[T],0.543,0.0,True,0.5428489726530527,166
+import_pc,Import per Capita,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.194,0.0392,True,0.19433423992148452,113
+import_pc,Import per Capita,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.31,0.0,True,0.3097096925735124,182
+import_pc,Import per Capita,GDP (current US$),GDP (US$),[S],0.31,0.0,True,0.3096549179988384,184
+import_pc,Import per Capita,GDP per capita (current US$),GDP per Capita (US$),[E],0.925,0.0,True,0.925086951957057,184
+import_pc,Import per Capita,Imports of goods and services (% of GDP),Imports % GDP,[T],0.463,0.0,True,0.4630485654920562,166
+import_pc,Import per Capita,Imports of goods and services (current US$),Imports (US$),[T],0.496,0.0,True,0.49556372909102353,166
+import_pc,Import per Capita,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.473,0.0,True,0.4732266157123008,178
+import_pc,Import per Capita,"Population, total",Population,[S],-0.304,0.0,True,0.30426683439011304,184
+import_pc,Import per Capita,Real interest rate (%),Real Interest Rate %,[E],-0.356,0.0,True,0.35554381580896643,129
+import_pc,Import per Capita,Trade (% of GDP),Trade % GDP,[T],0.616,0.0,True,0.615920204839759,166
+import_pc,Import per Capita,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],0.081,0.2938,False,0.08073559632203292,171
+trade_intensity,Trade Intensity,Current account balance (% of GDP),Current Account % GDP,[E],0.232,0.0017,True,0.23218175102652658,180
+trade_intensity,Trade Intensity,"Current account balance (BoP, current US$)",Current Account (US$),[T],0.199,0.0075,True,0.19880818998998936,180
+trade_intensity,Trade Intensity,Expense (% of GDP),Expense % GDP,[E],0.345,0.0,True,0.3452147946901161,144
+trade_intensity,Trade Intensity,Exports of goods and services (% of GDP),Exports % GDP,[T],0.7,0.0,True,0.6995377463428967,166
+trade_intensity,Trade Intensity,Exports of goods and services (current US$),Exports (US$),[T],0.338,0.0,True,0.3380039666715638,166
+trade_intensity,Trade Intensity,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.153,0.106,False,0.15286406999858607,113
+trade_intensity,Trade Intensity,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.247,0.0008,True,0.246731453686968,182
+trade_intensity,Trade Intensity,GDP (current US$),GDP (US$),[S],0.165,0.0251,True,0.16509361723030924,184
+trade_intensity,Trade Intensity,GDP per capita (current US$),GDP per Capita (US$),[E],0.295,0.0,True,0.29493545183714,184
+trade_intensity,Trade Intensity,Imports of goods and services (% of GDP),Imports % GDP,[T],0.597,0.0,True,0.5968135454488215,166
+trade_intensity,Trade Intensity,Imports of goods and services (current US$),Imports (US$),[T],0.307,0.0001,True,0.30707861985014795,166
+trade_intensity,Trade Intensity,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.146,0.0521,False,0.14582211791141006,178
+trade_intensity,Trade Intensity,"Population, total",Population,[S],-0.092,0.2123,False,0.09237664187737245,184
+trade_intensity,Trade Intensity,Real interest rate (%),Real Interest Rate %,[E],-0.098,0.2674,False,0.09835951017304947,129
+trade_intensity,Trade Intensity,Trade (% of GDP),Trade % GDP,[T],0.687,0.0,True,0.6865673599597036,166
+trade_intensity,Trade Intensity,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],0.084,0.2727,False,0.08435477822612406,171
+export_dep,Export / GDP,Current account balance (% of GDP),Current Account % GDP,[E],0.413,0.0,True,0.41302122397159563,180
+export_dep,Export / GDP,"Current account balance (BoP, current US$)",Current Account (US$),[T],0.215,0.0038,True,0.21482313699950717,180
+export_dep,Export / GDP,Expense (% of GDP),Expense % GDP,[E],0.28,0.0007,True,0.27964504318400124,144
+export_dep,Export / GDP,Exports of goods and services (% of GDP),Exports % GDP,[T],0.627,0.0,True,0.626915125821143,166
+export_dep,Export / GDP,Exports of goods and services (current US$),Exports (US$),[T],0.532,0.0,True,0.5317937120910026,166
+export_dep,Export / GDP,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.396,0.0,True,0.39599604095449603,113
+export_dep,Export / GDP,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.367,0.0,True,0.3673153331050792,182
+export_dep,Export / GDP,GDP (current US$),GDP (US$),[S],0.414,0.0,True,0.41400497198562525,184
+export_dep,Export / GDP,GDP per capita (current US$),GDP per Capita (US$),[E],0.297,0.0,True,0.29721821160701467,184
+export_dep,Export / GDP,Imports of goods and services (% of GDP),Imports % GDP,[T],0.375,0.0,True,0.37514953722165084,166
+export_dep,Export / GDP,Imports of goods and services (current US$),Imports (US$),[T],0.485,0.0,True,0.4854293029991395,166
+export_dep,Export / GDP,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.062,0.4111,False,0.061985730791572956,178
+export_dep,Export / GDP,"Population, total",Population,[S],0.158,0.0319,True,0.158299276548159,184
+export_dep,Export / GDP,Real interest rate (%),Real Interest Rate %,[E],-0.181,0.0398,True,0.18127566322580288,129
+export_dep,Export / GDP,Trade (% of GDP),Trade % GDP,[T],0.528,0.0,True,0.5282572879719604,166
+export_dep,Export / GDP,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.01,0.8994,False,0.009741551292245292,171
+import_dep,Import / GDP,Current account balance (% of GDP),Current Account % GDP,[E],0.034,0.6463,False,0.034436354320671374,180
+import_dep,Import / GDP,"Current account balance (BoP, current US$)",Current Account (US$),[T],0.129,0.0841,False,0.1290959466730866,180
+import_dep,Import / GDP,Expense (% of GDP),Expense % GDP,[E],0.36,0.0,True,0.3603824466781074,144
+import_dep,Import / GDP,Exports of goods and services (% of GDP),Exports % GDP,[T],0.632,0.0,True,0.6319600394568389,166
+import_dep,Import / GDP,Exports of goods and services (current US$),Exports (US$),[T],0.122,0.1171,False,0.12208795936785106,166
+import_dep,Import / GDP,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],-0.03,0.7488,False,0.030449717626901556,113
+import_dep,Import / GDP,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.112,0.1314,False,0.11224331361323661,182
+import_dep,Import / GDP,GDP (current US$),GDP (US$),[S],-0.065,0.3795,False,0.06516653069637657,184
+import_dep,Import / GDP,GDP per capita (current US$),GDP per Capita (US$),[E],0.211,0.004,True,0.21133443201180482,184
+import_dep,Import / GDP,Imports of goods and services (% of GDP),Imports % GDP,[T],0.702,0.0,True,0.7019303418893109,166
+import_dep,Import / GDP,Imports of goods and services (current US$),Imports (US$),[T],0.117,0.1345,False,0.11663116250760804,166
+import_dep,Import / GDP,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.166,0.0272,True,0.1655236688845718,178
+import_dep,Import / GDP,"Population, total",Population,[S],-0.254,0.0005,True,0.2541963770579753,184
+import_dep,Import / GDP,Real interest rate (%),Real Interest Rate %,[E],-0.041,0.6449,False,0.0409577397074567,129
+import_dep,Import / GDP,Trade (% of GDP),Trade % GDP,[T],0.707,0.0,True,0.7069936197452095,166
+import_dep,Import / GDP,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],0.128,0.0965,False,0.1275341623292113,171
+balance_dep,Balance / GDP,Current account balance (% of GDP),Current Account % GDP,[E],0.464,0.0,True,0.4640641091724307,180
+balance_dep,Balance / GDP,"Current account balance (BoP, current US$)",Current Account (US$),[T],0.202,0.0067,True,0.2015757736630976,180
+balance_dep,Balance / GDP,Expense (% of GDP),Expense % GDP,[E],-0.187,0.0245,True,0.18743745453522442,144
+balance_dep,Balance / GDP,Exports of goods and services (% of GDP),Exports % GDP,[T],-0.008,0.9149,False,0.008355720192247151,166
+balance_dep,Balance / GDP,Exports of goods and services (current US$),Exports (US$),[T],0.464,0.0,True,0.4637778873801079,166
+balance_dep,Balance / GDP,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.292,0.0017,True,0.2916053264133211,113
+balance_dep,Balance / GDP,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.207,0.005,True,0.20701921316017866,182
+balance_dep,Balance / GDP,GDP (current US$),GDP (US$),[S],0.493,0.0,True,0.49298268088463193,184
+balance_dep,Balance / GDP,GDP per capita (current US$),GDP per Capita (US$),[E],0.126,0.088,False,0.12614222267599162,184
+balance_dep,Balance / GDP,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.377,0.0,True,0.3766344155980439,166
+balance_dep,Balance / GDP,Imports of goods and services (current US$),Imports (US$),[T],0.413,0.0,True,0.4127752009570382,166
+balance_dep,Balance / GDP,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],0.044,0.5632,False,0.04361194391898937,178
+balance_dep,Balance / GDP,"Population, total",Population,[S],0.408,0.0,True,0.40817189470024084,184
+balance_dep,Balance / GDP,Real interest rate (%),Real Interest Rate %,[E],-0.137,0.122,False,0.1368379272079808,129
+balance_dep,Balance / GDP,Trade (% of GDP),Trade % GDP,[T],-0.209,0.0068,True,0.20938359183159486,166
+balance_dep,Balance / GDP,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.191,0.0125,True,0.1906838465808014,171
+trade_elasticity_x,Trade Elasticity (X),Current account balance (% of GDP),Current Account % GDP,[E],0.005,0.9462,False,0.005075026913021508,179
+trade_elasticity_x,Trade Elasticity (X),"Current account balance (BoP, current US$)",Current Account (US$),[T],-0.222,0.0028,True,0.22225814112361994,179
+trade_elasticity_x,Trade Elasticity (X),Expense (% of GDP),Expense % GDP,[E],0.094,0.2617,False,0.09414875873627014,144
+trade_elasticity_x,Trade Elasticity (X),Exports of goods and services (% of GDP),Exports % GDP,[T],-0.024,0.7622,False,0.023729157678349367,165
+trade_elasticity_x,Trade Elasticity (X),Exports of goods and services (current US$),Exports (US$),[T],0.115,0.1414,False,0.11497788706977963,165
+trade_elasticity_x,Trade Elasticity (X),"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.206,0.0291,True,0.20624087061255522,112
+trade_elasticity_x,Trade Elasticity (X),"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.176,0.0177,True,0.17611309608735382,181
+trade_elasticity_x,Trade Elasticity (X),GDP (current US$),GDP (US$),[S],0.117,0.1148,False,0.11696027241548453,183
+trade_elasticity_x,Trade Elasticity (X),GDP per capita (current US$),GDP per Capita (US$),[E],-0.025,0.7354,False,0.025153199442715303,183
+trade_elasticity_x,Trade Elasticity (X),Imports of goods and services (% of GDP),Imports % GDP,[T],-0.074,0.3428,False,0.07431841283792177,165
+trade_elasticity_x,Trade Elasticity (X),Imports of goods and services (current US$),Imports (US$),[T],0.132,0.0908,False,0.1320965408725224,165
+trade_elasticity_x,Trade Elasticity (X),"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],0.116,0.1225,False,0.11617510314641791,178
+trade_elasticity_x,Trade Elasticity (X),"Population, total",Population,[S],0.15,0.0433,True,0.14954948251436045,183
+trade_elasticity_x,Trade Elasticity (X),Real interest rate (%),Real Interest Rate %,[E],0.089,0.3141,False,0.08931431494385887,129
+trade_elasticity_x,Trade Elasticity (X),Trade (% of GDP),Trade % GDP,[T],-0.056,0.4714,False,0.05645709583961682,165
+trade_elasticity_x,Trade Elasticity (X),"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],0.066,0.3942,False,0.06576555396449088,170
+trade_elasticity_m,Trade Elasticity (M),Current account balance (% of GDP),Current Account % GDP,[E],0.03,0.6872,False,0.0303005575101715,179
+trade_elasticity_m,Trade Elasticity (M),"Current account balance (BoP, current US$)",Current Account (US$),[T],-0.011,0.8863,False,0.010764162421784847,179
+trade_elasticity_m,Trade Elasticity (M),Expense (% of GDP),Expense % GDP,[E],0.13,0.121,False,0.1297851048352417,144
+trade_elasticity_m,Trade Elasticity (M),Exports of goods and services (% of GDP),Exports % GDP,[T],0.113,0.1472,False,0.11334563090974907,165
+trade_elasticity_m,Trade Elasticity (M),Exports of goods and services (current US$),Exports (US$),[T],0.045,0.5691,False,0.044641270969215545,165
+trade_elasticity_m,Trade Elasticity (M),"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.014,0.8807,False,0.01434221428754474,112
+trade_elasticity_m,Trade Elasticity (M),"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.035,0.642,False,0.034783462196574376,181
+trade_elasticity_m,Trade Elasticity (M),GDP (current US$),GDP (US$),[S],-0.036,0.6302,False,0.03582306700437936,183
+trade_elasticity_m,Trade Elasticity (M),GDP per capita (current US$),GDP per Capita (US$),[E],-0.021,0.7821,False,0.020582916658915724,183
+trade_elasticity_m,Trade Elasticity (M),Imports of goods and services (% of GDP),Imports % GDP,[T],0.172,0.0276,True,0.17150577634350578,165
+trade_elasticity_m,Trade Elasticity (M),Imports of goods and services (current US$),Imports (US$),[T],0.049,0.5347,False,0.04866981808758884,165
+trade_elasticity_m,Trade Elasticity (M),"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],0.013,0.8657,False,0.01276270685139043,178
+trade_elasticity_m,Trade Elasticity (M),"Population, total",Population,[S],-0.021,0.7817,False,0.020620121188860963,183
+trade_elasticity_m,Trade Elasticity (M),Real interest rate (%),Real Interest Rate %,[E],0.051,0.5668,False,0.05088621110859546,129
+trade_elasticity_m,Trade Elasticity (M),Trade (% of GDP),Trade % GDP,[T],0.157,0.0445,True,0.15662045502813707,165
+trade_elasticity_m,Trade Elasticity (M),"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.011,0.8881,False,0.010867089438541847,170
+combined_profile_num,combined_profile_num,Current account balance (% of GDP),Current Account % GDP,[E],0.234,0.0016,True,0.23409849692083168,180
+combined_profile_num,combined_profile_num,"Current account balance (BoP, current US$)",Current Account (US$),[T],-0.045,0.5458,False,0.045313332045256,180
+combined_profile_num,combined_profile_num,Expense (% of GDP),Expense % GDP,[E],0.22,0.0081,True,0.22000117790892704,144
+combined_profile_num,combined_profile_num,Exports of goods and services (% of GDP),Exports % GDP,[T],0.152,0.0506,False,0.1519910018652888,166
+combined_profile_num,combined_profile_num,Exports of goods and services (current US$),Exports (US$),[T],0.676,0.0,True,0.6761404828936742,166
+combined_profile_num,combined_profile_num,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.558,0.0,True,0.5584028608956724,113
+combined_profile_num,combined_profile_num,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.575,0.0,True,0.5750032414189321,182
+combined_profile_num,combined_profile_num,GDP (current US$),GDP (US$),[S],0.655,0.0,True,0.655253575872787,184
+combined_profile_num,combined_profile_num,GDP per capita (current US$),GDP per Capita (US$),[E],0.298,0.0,True,0.2975540843924363,184
+combined_profile_num,combined_profile_num,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.042,0.5911,False,0.04199428593468442,166
+combined_profile_num,combined_profile_num,Imports of goods and services (current US$),Imports (US$),[T],0.689,0.0,True,0.6890883670274371,166
+combined_profile_num,combined_profile_num,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.045,0.5531,False,0.04474734371409868,178
+combined_profile_num,combined_profile_num,"Population, total",Population,[S],0.487,0.0,True,0.48743882739375494,184
+combined_profile_num,combined_profile_num,Real interest rate (%),Real Interest Rate %,[E],-0.23,0.0087,True,0.2301996546058138,129
+combined_profile_num,combined_profile_num,Trade (% of GDP),Trade % GDP,[T],0.045,0.5643,False,0.04505858196803476,166
+combined_profile_num,combined_profile_num,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.045,0.5561,False,0.04532131890382685,171
+strategic_quadrant_combined_num,strategic_quadrant_combined_num,Current account balance (% of GDP),Current Account % GDP,[E],0.159,0.0326,True,0.15934789367682653,180
+strategic_quadrant_combined_num,strategic_quadrant_combined_num,"Current account balance (BoP, current US$)",Current Account (US$),[T],-0.09,0.2295,False,0.09000577312586999,180
+strategic_quadrant_combined_num,strategic_quadrant_combined_num,Expense (% of GDP),Expense % GDP,[E],0.235,0.0045,True,0.23542440658727767,144
+strategic_quadrant_combined_num,strategic_quadrant_combined_num,Exports of goods and services (% of GDP),Exports % GDP,[T],0.15,0.0536,False,0.1500650156525182,166
+strategic_quadrant_combined_num,strategic_quadrant_combined_num,Exports of goods and services (current US$),Exports (US$),[T],0.609,0.0,True,0.6090275479991519,166
+strategic_quadrant_combined_num,strategic_quadrant_combined_num,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.538,0.0,True,0.5379739498090583,113
+strategic_quadrant_combined_num,strategic_quadrant_combined_num,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.518,0.0,True,0.5177391071483122,182
+strategic_quadrant_combined_num,strategic_quadrant_combined_num,GDP (current US$),GDP (US$),[S],0.6,0.0,True,0.600379598024324,184
+strategic_quadrant_combined_num,strategic_quadrant_combined_num,GDP per capita (current US$),GDP per Capita (US$),[E],0.255,0.0005,True,0.25473175191596664,184
+strategic_quadrant_combined_num,strategic_quadrant_combined_num,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.049,0.5315,False,0.04891125998174858,166
+strategic_quadrant_combined_num,strategic_quadrant_combined_num,Imports of goods and services (current US$),Imports (US$),[T],0.621,0.0,True,0.6208442380969738,166
+strategic_quadrant_combined_num,strategic_quadrant_combined_num,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.045,0.5537,False,0.044685118689813674,178
+strategic_quadrant_combined_num,strategic_quadrant_combined_num,"Population, total",Population,[S],0.456,0.0,True,0.4561292902801927,184
+strategic_quadrant_combined_num,strategic_quadrant_combined_num,Real interest rate (%),Real Interest Rate %,[E],-0.213,0.0154,True,0.21297052099214264,129
+strategic_quadrant_combined_num,strategic_quadrant_combined_num,Trade (% of GDP),Trade % GDP,[T],0.043,0.586,False,0.04257714349785908,166
+strategic_quadrant_combined_num,strategic_quadrant_combined_num,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.084,0.274,False,0.08411400871196556,171
+size_profile_num,size_profile_num,Current account balance (% of GDP),Current Account % GDP,[E],0.447,0.0,True,0.4467877506612732,180
+size_profile_num,size_profile_num,"Current account balance (BoP, current US$)",Current Account (US$),[T],0.087,0.2476,False,0.08662309681922173,180
+size_profile_num,size_profile_num,Expense (% of GDP),Expense % GDP,[E],0.289,0.0004,True,0.2890571240294118,144
+size_profile_num,size_profile_num,Exports of goods and services (% of GDP),Exports % GDP,[T],0.156,0.0442,True,0.15641175286621167,166
+size_profile_num,size_profile_num,Exports of goods and services (current US$),Exports (US$),[T],0.872,0.0,True,0.8724929667787651,166
+size_profile_num,size_profile_num,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.679,0.0,True,0.6789271515030765,113
+size_profile_num,size_profile_num,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.602,0.0,True,0.6020084246142351,182
+size_profile_num,size_profile_num,GDP (current US$),GDP (US$),[S],0.835,0.0,True,0.8347776686099095,184
+size_profile_num,size_profile_num,GDP per capita (current US$),GDP per Capita (US$),[E],0.494,0.0,True,0.4938130879921926,184
+size_profile_num,size_profile_num,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.141,0.0702,False,0.14090573121883126,166
+size_profile_num,size_profile_num,Imports of goods and services (current US$),Imports (US$),[T],0.862,0.0,True,0.8620837911578493,166
+size_profile_num,size_profile_num,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.07,0.3533,False,0.06997927982988733,178
+size_profile_num,size_profile_num,"Population, total",Population,[S],0.545,0.0,True,0.5448569162327247,184
+size_profile_num,size_profile_num,Real interest rate (%),Real Interest Rate %,[E],-0.433,0.0,True,0.43276298288483583,129
+size_profile_num,size_profile_num,Trade (% of GDP),Trade % GDP,[T],0.002,0.9802,False,0.0019408179864938264,166
+size_profile_num,size_profile_num,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.085,0.2663,False,0.0854748977850976,171
+balance_profile_num,balance_profile_num,Current account balance (% of GDP),Current Account % GDP,[E],0.494,0.0,True,0.49352856239376164,180
+balance_profile_num,balance_profile_num,"Current account balance (BoP, current US$)",Current Account (US$),[T],0.315,0.0,True,0.3147208276577089,180
+balance_profile_num,balance_profile_num,Expense (% of GDP),Expense % GDP,[E],-0.004,0.9588,False,0.004340173963497913,144
+balance_profile_num,balance_profile_num,Exports of goods and services (% of GDP),Exports % GDP,[T],0.238,0.0021,True,0.23753661196261497,166
+balance_profile_num,balance_profile_num,Exports of goods and services (current US$),Exports (US$),[T],0.482,0.0,True,0.48217358517377534,166
+balance_profile_num,balance_profile_num,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.225,0.0167,True,0.2247727091256508,113
+balance_profile_num,balance_profile_num,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.211,0.0043,True,0.2107716406447074,182
+balance_profile_num,balance_profile_num,GDP (current US$),GDP (US$),[S],0.418,0.0,True,0.4177225415579767,184
+balance_profile_num,balance_profile_num,GDP per capita (current US$),GDP per Capita (US$),[E],0.243,0.0009,True,0.24264383994481226,184
+balance_profile_num,balance_profile_num,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.107,0.1707,False,0.1068226014259477,166
+balance_profile_num,balance_profile_num,Imports of goods and services (current US$),Imports (US$),[T],0.418,0.0,True,0.4183669991399944,166
+balance_profile_num,balance_profile_num,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.031,0.6825,False,0.03086900269239372,178
+balance_profile_num,balance_profile_num,"Population, total",Population,[S],0.238,0.0011,True,0.238061455155298,184
+balance_profile_num,balance_profile_num,Real interest rate (%),Real Interest Rate %,[E],-0.145,0.1014,False,0.1448893379445728,129
+balance_profile_num,balance_profile_num,Trade (% of GDP),Trade % GDP,[T],0.066,0.4013,False,0.06556317402188105,166
+balance_profile_num,balance_profile_num,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.098,0.201,False,0.09826925057153976,171
+growth_profile_num,growth_profile_num,Current account balance (% of GDP),Current Account % GDP,[E],-0.036,0.6301,False,0.036130720914272725,180
+growth_profile_num,growth_profile_num,"Current account balance (BoP, current US$)",Current Account (US$),[T],-0.188,0.0114,True,0.1881520908716624,180
+growth_profile_num,growth_profile_num,Expense (% of GDP),Expense % GDP,[E],0.107,0.2021,False,0.10692995372603774,144
+growth_profile_num,growth_profile_num,Exports of goods and services (% of GDP),Exports % GDP,[T],0.059,0.4482,False,0.05926131111338067,166
+growth_profile_num,growth_profile_num,Exports of goods and services (current US$),Exports (US$),[T],0.041,0.6006,False,0.0409293724970182,166
+growth_profile_num,growth_profile_num,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.181,0.0549,False,0.18108499629177596,113
+growth_profile_num,growth_profile_num,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.195,0.0083,True,0.1951578948197798,182
+growth_profile_num,growth_profile_num,GDP (current US$),GDP (US$),[S],0.037,0.6226,False,0.036519544040466624,184
+growth_profile_num,growth_profile_num,GDP per capita (current US$),GDP per Capita (US$),[E],-0.086,0.2474,False,0.08569557366886918,184
+growth_profile_num,growth_profile_num,Imports of goods and services (% of GDP),Imports % GDP,[T],0.058,0.4573,False,0.058086817334267016,166
+growth_profile_num,growth_profile_num,Imports of goods and services (current US$),Imports (US$),[T],0.046,0.5561,False,0.04600630989195526,166
+growth_profile_num,growth_profile_num,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],0.037,0.623,False,0.03709953813476149,178
+growth_profile_num,growth_profile_num,"Population, total",Population,[S],0.085,0.2494,False,0.08534636335702492,184
+growth_profile_num,growth_profile_num,Real interest rate (%),Real Interest Rate %,[E],0.133,0.1335,False,0.13280089735036343,129
+growth_profile_num,growth_profile_num,Trade (% of GDP),Trade % GDP,[T],0.065,0.4037,False,0.06523069020993487,166
+growth_profile_num,growth_profile_num,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],0.014,0.8603,False,0.013559102228544222,171
+stability_profile_num,stability_profile_num,Current account balance (% of GDP),Current Account % GDP,[E],0.09,0.2272,False,0.09045845361638266,180
+stability_profile_num,stability_profile_num,"Current account balance (BoP, current US$)",Current Account (US$),[T],0.035,0.6376,False,0.03534800284155126,180
+stability_profile_num,stability_profile_num,Expense (% of GDP),Expense % GDP,[E],-0.002,0.9836,False,0.0017285573588380258,144
+stability_profile_num,stability_profile_num,Exports of goods and services (% of GDP),Exports % GDP,[T],0.133,0.0875,False,0.13305285519765267,166
+stability_profile_num,stability_profile_num,Exports of goods and services (current US$),Exports (US$),[T],0.294,0.0001,True,0.2937983326588018,166
+stability_profile_num,stability_profile_num,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.254,0.0067,True,0.25377470518848433,113
+stability_profile_num,stability_profile_num,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.161,0.0298,True,0.16113389648476395,182
+stability_profile_num,stability_profile_num,GDP (current US$),GDP (US$),[S],0.295,0.0,True,0.2952343026594265,184
+stability_profile_num,stability_profile_num,GDP per capita (current US$),GDP per Capita (US$),[E],0.144,0.0507,False,0.14428387765342338,184
+stability_profile_num,stability_profile_num,Imports of goods and services (% of GDP),Imports % GDP,[T],0.063,0.4209,False,0.06287986105595673,166
+stability_profile_num,stability_profile_num,Imports of goods and services (current US$),Imports (US$),[T],0.303,0.0001,True,0.3031431915114629,166
+stability_profile_num,stability_profile_num,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.06,0.4289,False,0.05966483740976585,178
+stability_profile_num,stability_profile_num,"Population, total",Population,[S],0.189,0.0102,True,0.1890622807448043,184
+stability_profile_num,stability_profile_num,Real interest rate (%),Real Interest Rate %,[E],-0.221,0.0119,True,0.22083513898621324,129
+stability_profile_num,stability_profile_num,Trade (% of GDP),Trade % GDP,[T],0.097,0.213,False,0.0971618432513934,166
+stability_profile_num,stability_profile_num,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.08,0.2986,False,0.07994621525715775,171
+consistency_profile_num,consistency_profile_num,Current account balance (% of GDP),Current Account % GDP,[E],-0.003,0.9692,False,0.002895249350576547,180
+consistency_profile_num,consistency_profile_num,"Current account balance (BoP, current US$)",Current Account (US$),[T],-0.105,0.1625,False,0.10455748448958058,180
+consistency_profile_num,consistency_profile_num,Expense (% of GDP),Expense % GDP,[E],-0.004,0.9644,False,0.0037565981970862127,144
+consistency_profile_num,consistency_profile_num,Exports of goods and services (% of GDP),Exports % GDP,[T],0.001,0.9875,False,0.001225736937892418,166
+consistency_profile_num,consistency_profile_num,Exports of goods and services (current US$),Exports (US$),[T],0.016,0.8358,False,0.016205415005757617,166
+consistency_profile_num,consistency_profile_num,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.248,0.008,True,0.24821960878404803,113
+consistency_profile_num,consistency_profile_num,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.143,0.0549,False,0.14253313075943605,182
+consistency_profile_num,consistency_profile_num,GDP (current US$),GDP (US$),[S],0.054,0.4667,False,0.05399230597714174,184
+consistency_profile_num,consistency_profile_num,GDP per capita (current US$),GDP per Capita (US$),[E],-0.134,0.0701,False,0.13381531576009928,184
+consistency_profile_num,consistency_profile_num,Imports of goods and services (% of GDP),Imports % GDP,[T],0.031,0.6925,False,0.03092263459489415,166
+consistency_profile_num,consistency_profile_num,Imports of goods and services (current US$),Imports (US$),[T],0.035,0.6555,False,0.03487486838894134,166
+consistency_profile_num,consistency_profile_num,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],0.094,0.2141,False,0.09358322386446491,178
+consistency_profile_num,consistency_profile_num,"Population, total",Population,[S],0.148,0.0444,True,0.14840292309248848,184
+consistency_profile_num,consistency_profile_num,Real interest rate (%),Real Interest Rate %,[E],-0.026,0.7697,False,0.026022567210896505,129
+consistency_profile_num,consistency_profile_num,Trade (% of GDP),Trade % GDP,[T],0.009,0.9055,False,0.00927958248994408,166
+consistency_profile_num,consistency_profile_num,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.029,0.706,False,0.029052852755628984,171
+structural_profile_num,structural_profile_num,Current account balance (% of GDP),Current Account % GDP,[E],0.263,0.0004,True,0.2632435497732055,180
+structural_profile_num,structural_profile_num,"Current account balance (BoP, current US$)",Current Account (US$),[T],-0.009,0.9079,False,0.008681771150178789,180
+structural_profile_num,structural_profile_num,Expense (% of GDP),Expense % GDP,[E],0.186,0.0256,True,0.18602554614100505,144
+structural_profile_num,structural_profile_num,Exports of goods and services (% of GDP),Exports % GDP,[T],0.146,0.0601,False,0.1462666946532905,166
+structural_profile_num,structural_profile_num,Exports of goods and services (current US$),Exports (US$),[T],0.684,0.0,True,0.6840251714948536,166
+structural_profile_num,structural_profile_num,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.56,0.0,True,0.5599553560142325,113
+structural_profile_num,structural_profile_num,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.554,0.0,True,0.5538795404255097,182
+structural_profile_num,structural_profile_num,GDP (current US$),GDP (US$),[S],0.649,0.0,True,0.6488520651544217,184
+structural_profile_num,structural_profile_num,GDP per capita (current US$),GDP per Capita (US$),[E],0.307,0.0,True,0.3070161763694337,184
+structural_profile_num,structural_profile_num,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.055,0.4794,False,0.055273524177684864,166
+structural_profile_num,structural_profile_num,Imports of goods and services (current US$),Imports (US$),[T],0.694,0.0,True,0.6939321576906747,166
+structural_profile_num,structural_profile_num,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.067,0.3708,False,0.06747422151666697,178
+structural_profile_num,structural_profile_num,"Population, total",Population,[S],0.491,0.0,True,0.4913203769745702,184
+structural_profile_num,structural_profile_num,Real interest rate (%),Real Interest Rate %,[E],-0.243,0.0055,True,0.24290736078772665,129
+structural_profile_num,structural_profile_num,Trade (% of GDP),Trade % GDP,[T],0.036,0.6462,False,0.035890290316295814,166
+structural_profile_num,structural_profile_num,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.11,0.1506,False,0.11040386795439727,171
+profile_full_periode_num,profile_full_periode_num,Current account balance (% of GDP),Current Account % GDP,[E],0.102,0.1735,False,0.10188188814321104,180
+profile_full_periode_num,profile_full_periode_num,"Current account balance (BoP, current US$)",Current Account (US$),[T],-0.116,0.1207,False,0.11608398688769155,180
+profile_full_periode_num,profile_full_periode_num,Expense (% of GDP),Expense % GDP,[E],0.248,0.0028,True,0.2475135807392826,144
+profile_full_periode_num,profile_full_periode_num,Exports of goods and services (% of GDP),Exports % GDP,[T],0.062,0.4267,False,0.06210261137809316,166
+profile_full_periode_num,profile_full_periode_num,Exports of goods and services (current US$),Exports (US$),[T],0.489,0.0,True,0.48867737463418237,166
+profile_full_periode_num,profile_full_periode_num,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.444,0.0,True,0.443630224746613,113
+profile_full_periode_num,profile_full_periode_num,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.438,0.0,True,0.4378900456024725,182
+profile_full_periode_num,profile_full_periode_num,GDP (current US$),GDP (US$),[S],0.526,0.0,True,0.5256633925581138,184
+profile_full_periode_num,profile_full_periode_num,GDP per capita (current US$),GDP per Capita (US$),[E],0.202,0.0059,True,0.20238598208888148,184
+profile_full_periode_num,profile_full_periode_num,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.1,0.1978,False,0.10047107489942349,166
+profile_full_periode_num,profile_full_periode_num,Imports of goods and services (current US$),Imports (US$),[T],0.5,0.0,True,0.5004667567322982,166
+profile_full_periode_num,profile_full_periode_num,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.111,0.1387,False,0.11142819014443817,178
+profile_full_periode_num,profile_full_periode_num,"Population, total",Population,[S],0.4,0.0,True,0.40019359528112947,184
+profile_full_periode_num,profile_full_periode_num,Real interest rate (%),Real Interest Rate %,[E],-0.22,0.0123,True,0.21973652390326792,129
+profile_full_periode_num,profile_full_periode_num,Trade (% of GDP),Trade % GDP,[T],-0.023,0.7669,False,0.023176179257582898,166
+profile_full_periode_num,profile_full_periode_num,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.018,0.8182,False,0.01771011066024161,171
+static_quadrant_num,static_quadrant_num,Current account balance (% of GDP),Current Account % GDP,[E],0.483,0.0,True,0.48288333393638255,180
+static_quadrant_num,static_quadrant_num,"Current account balance (BoP, current US$)",Current Account (US$),[T],0.281,0.0001,True,0.28089831751003175,180
+static_quadrant_num,static_quadrant_num,Expense (% of GDP),Expense % GDP,[E],-0.011,0.8998,False,0.01058125393414883,144
+static_quadrant_num,static_quadrant_num,Exports of goods and services (% of GDP),Exports % GDP,[T],0.177,0.0222,True,0.1774629402071664,166
+static_quadrant_num,static_quadrant_num,Exports of goods and services (current US$),Exports (US$),[T],0.591,0.0,True,0.591365520509836,166
+static_quadrant_num,static_quadrant_num,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.334,0.0003,True,0.33442550644362884,113
+static_quadrant_num,static_quadrant_num,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.303,0.0,True,0.30302183556427686,182
+static_quadrant_num,static_quadrant_num,GDP (current US$),GDP (US$),[S],0.523,0.0,True,0.5231194413043833,184
+static_quadrant_num,static_quadrant_num,GDP per capita (current US$),GDP per Capita (US$),[E],0.293,0.0001,True,0.29274517515924176,184
+static_quadrant_num,static_quadrant_num,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.146,0.0613,False,0.14556726441060175,166
+static_quadrant_num,static_quadrant_num,Imports of goods and services (current US$),Imports (US$),[T],0.542,0.0,True,0.5422869301553357,166
+static_quadrant_num,static_quadrant_num,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.055,0.4657,False,0.05502245232436885,178
+static_quadrant_num,static_quadrant_num,"Population, total",Population,[S],0.354,0.0,True,0.3536553384534723,184
+static_quadrant_num,static_quadrant_num,Real interest rate (%),Real Interest Rate %,[E],-0.207,0.0187,True,0.20673788031734913,129
+static_quadrant_num,static_quadrant_num,Trade (% of GDP),Trade % GDP,[T],0.016,0.8426,False,0.015530313592861762,166
+static_quadrant_num,static_quadrant_num,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.097,0.2079,False,0.09678618526506834,171
+dynamic_quadrant_num,dynamic_quadrant_num,Current account balance (% of GDP),Current Account % GDP,[E],0.001,0.9916,False,0.0007882052250378471,180
+dynamic_quadrant_num,dynamic_quadrant_num,"Current account balance (BoP, current US$)",Current Account (US$),[T],-0.138,0.0638,False,0.13845619653298813,180
+dynamic_quadrant_num,dynamic_quadrant_num,Expense (% of GDP),Expense % GDP,[E],0.06,0.4776,False,0.05964600030548979,144
+dynamic_quadrant_num,dynamic_quadrant_num,Exports of goods and services (% of GDP),Exports % GDP,[T],0.033,0.6692,False,0.033404659122981226,166
+dynamic_quadrant_num,dynamic_quadrant_num,Exports of goods and services (current US$),Exports (US$),[T],0.293,0.0001,True,0.29341471572014677,166
+dynamic_quadrant_num,dynamic_quadrant_num,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.352,0.0001,True,0.3522726837294606,113
+dynamic_quadrant_num,dynamic_quadrant_num,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.223,0.0024,True,0.22329829428950282,182
+dynamic_quadrant_num,dynamic_quadrant_num,GDP (current US$),GDP (US$),[S],0.296,0.0,True,0.2962604104771405,184
+dynamic_quadrant_num,dynamic_quadrant_num,GDP per capita (current US$),GDP per Capita (US$),[E],0.087,0.238,False,0.08742187333841661,184
+dynamic_quadrant_num,dynamic_quadrant_num,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.032,0.678,False,0.03245757570463539,166
+dynamic_quadrant_num,dynamic_quadrant_num,Imports of goods and services (current US$),Imports (US$),[T],0.312,0.0,True,0.312205193059436,166
+dynamic_quadrant_num,dynamic_quadrant_num,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],0.042,0.5795,False,0.04181419033126139,178
+dynamic_quadrant_num,dynamic_quadrant_num,"Population, total",Population,[S],0.255,0.0005,True,0.2552599509253347,184
+dynamic_quadrant_num,dynamic_quadrant_num,Real interest rate (%),Real Interest Rate %,[E],-0.087,0.328,False,0.08679811936873626,129
+dynamic_quadrant_num,dynamic_quadrant_num,Trade (% of GDP),Trade % GDP,[T],-0.006,0.9427,False,0.0056211683007544415,166
+dynamic_quadrant_num,dynamic_quadrant_num,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.018,0.8173,False,0.017797110075443538,171
+strategic_quadrant_num,strategic_quadrant_num,Current account balance (% of GDP),Current Account % GDP,[E],0.26,0.0004,True,0.26022378423388653,180
+strategic_quadrant_num,strategic_quadrant_num,"Current account balance (BoP, current US$)",Current Account (US$),[T],0.012,0.8727,False,0.012028836323046714,180
+strategic_quadrant_num,strategic_quadrant_num,Expense (% of GDP),Expense % GDP,[E],0.104,0.216,False,0.10373715538519805,144
+strategic_quadrant_num,strategic_quadrant_num,Exports of goods and services (% of GDP),Exports % GDP,[T],0.069,0.3754,False,0.06924148983690434,166
+strategic_quadrant_num,strategic_quadrant_num,Exports of goods and services (current US$),Exports (US$),[T],0.627,0.0,True,0.6273185013097126,166
+strategic_quadrant_num,strategic_quadrant_num,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.552,0.0,True,0.5521928202797809,113
+strategic_quadrant_num,strategic_quadrant_num,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.497,0.0,True,0.49673756640456873,182
+strategic_quadrant_num,strategic_quadrant_num,GDP (current US$),GDP (US$),[S],0.596,0.0,True,0.5963874649872117,184
+strategic_quadrant_num,strategic_quadrant_num,GDP per capita (current US$),GDP per Capita (US$),[E],0.301,0.0,True,0.3007290487430614,184
+strategic_quadrant_num,strategic_quadrant_num,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.124,0.1113,False,0.1240593396218656,166
+strategic_quadrant_num,strategic_quadrant_num,Imports of goods and services (current US$),Imports (US$),[T],0.633,0.0,True,0.6329628829642807,166
+strategic_quadrant_num,strategic_quadrant_num,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.044,0.5558,False,0.04444754163125998,178
+strategic_quadrant_num,strategic_quadrant_num,"Population, total",Population,[S],0.47,0.0,True,0.46966395674849476,184
+strategic_quadrant_num,strategic_quadrant_num,Real interest rate (%),Real Interest Rate %,[E],-0.189,0.0319,True,0.18908686117777906,129
+strategic_quadrant_num,strategic_quadrant_num,Trade (% of GDP),Trade % GDP,[T],-0.041,0.5974,False,0.04128576547163744,166
+strategic_quadrant_num,strategic_quadrant_num,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.081,0.2939,False,0.08072968875979504,171
+meta_profile_num,meta_profile_num,Current account balance (% of GDP),Current Account % GDP,[E],0.187,0.012,True,0.18679379004525246,180
+meta_profile_num,meta_profile_num,"Current account balance (BoP, current US$)",Current Account (US$),[T],-0.028,0.7133,False,0.02757226436312723,180
+meta_profile_num,meta_profile_num,Expense (% of GDP),Expense % GDP,[E],0.106,0.2052,False,0.1062056689367238,144
+meta_profile_num,meta_profile_num,Exports of goods and services (% of GDP),Exports % GDP,[T],0.044,0.5718,False,0.04420078510668619,166
+meta_profile_num,meta_profile_num,Exports of goods and services (current US$),Exports (US$),[T],0.59,0.0,True,0.5899944719499359,166
+meta_profile_num,meta_profile_num,"External debt stocks, total (DOD, current US$)",External Debt (US$),[S],0.524,0.0,True,0.524051680352776,113
+meta_profile_num,meta_profile_num,"Foreign direct investment, net inflows (BoP, current US$)",FDI Inflows (US$),[S],0.45,0.0,True,0.4495539141151085,182
+meta_profile_num,meta_profile_num,GDP (current US$),GDP (US$),[S],0.564,0.0,True,0.5638421104125793,184
+meta_profile_num,meta_profile_num,GDP per capita (current US$),GDP per Capita (US$),[E],0.256,0.0005,True,0.25579159015816166,184
+meta_profile_num,meta_profile_num,Imports of goods and services (% of GDP),Imports % GDP,[T],-0.12,0.1245,False,0.11971331749303282,166
+meta_profile_num,meta_profile_num,Imports of goods and services (current US$),Imports (US$),[T],0.604,0.0,True,0.6036681553322043,166
+meta_profile_num,meta_profile_num,"Inflation, consumer prices (annual %)",Inflation % (CPI),[E],-0.021,0.7809,False,0.020989815393321298,178
+meta_profile_num,meta_profile_num,"Population, total",Population,[S],0.449,0.0,True,0.44861322413361815,184
+meta_profile_num,meta_profile_num,Real interest rate (%),Real Interest Rate %,[E],-0.208,0.0178,True,0.20843044714154643,129
+meta_profile_num,meta_profile_num,Trade (% of GDP),Trade % GDP,[T],-0.049,0.5321,False,0.04883869878199207,166
+meta_profile_num,meta_profile_num,"Unemployment, total (% of total labor force) (modeled ILO estimate)",Unemployment %,[E],-0.09,0.2437,False,0.0896222246036058,171

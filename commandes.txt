@@ -1,0 +1,100 @@
+create new virtual envirment 
+        python  -m venv myenv
+
+
+activate environement : 
+    .\myenv\Scripts\activate
+Activate virtual envirment
+        Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted -Force
+        venv\Scripts\Activate
+
+Autrement
+    pip install virtualenv
+    virtualenv myenv
+    cd myenv\Scripts\
+    .\Activate
+
+
+changer interpreteur 
+        Ctrl + Shift + P  →  "Python: Select Interpreter"
+
+
+install requirements
+        pip install -r requirements.txt
+
+
+execution script final 
+        python myfile.py (name of file contenant main)
+
+
+
+
+
+creation dossiers depuis settings 
+    python -c "from src.config.settings import ensure_directories; ensure_directories()"
+
+
+Pour le bootstrap, l'ordre complet avant le premier run est :
+
+    # 1. Créer les dossiers data/
+        python -c "from src.config.settings import ensure_directories; ensure_directories()"
+
+    # 2. Créer la base de données (si DB active)
+        python -m src.bootstrap.create_database
+
+    # 3. Créer les schémas bronze/silver/gold (si DB active)
+        python -m src.bootstrap.create_schemas
+        python -m src.bootstrap.create_schemas --db duckdb
+
+    # 4. Lancer le pipeline
+        python -m src.pipelines.run_bronze
+
+Lancer le pipeline
+    python -m src.bronze.extract_indicators
+    python -m src.pipelines.run_bronze
+
+
+Lancer le pipeline with option BD
+    python -m src.pipelines.run_silver --db sqlserver
+    python -m src.pipelines.run_gold   --db sqlserver
+
+
+execute extract_trade 
+        python -m src.bronze.extract_trade_data --year 2022 --product TOTAL --flows M X
+
+
+execute consolidate de extract data (regroupement et save df et base)
+        python -m src.bronze.extract_trade_data --consolidate
+        python -m src.bronze.extract_trade_data --consolidate --db sqlserver
+
+cas de duckerdb
+        python -m src.pipelines.run_gold --db duckdb
+    
+supprimer checkpoint extraction 
+        del "data\bronze\trade_data\year=2024\product=TOTAL\flows=M_X\.checkpoints\251_M.done"
+supprimer un fichier extraction
+        del "data\bronze\trade_data\year=2024\product=TOTAL\flows=M_X\251_M.csv"
+
+
+test cnx 
+
+        python -c "
+        from src.db.connector import get_connector
+        print(get_connector('duckdb').test_connection())
+        print(get_connector('sqlserver').test_connection())
+        "
+
+        python -c "
+        from src.db.connector import get_connector
+
+        for backend in ['sqlserver', 'duckdb', 'databricks']:
+            try:
+                result = get_connector(backend).test_connection()
+                print(result)
+            except Exception as e:
+                print({'status': 'error', 'backend': backend, 'detail': str(e)})
+        "
+
+
+open page stream 
+    streamlit run "app/pages/01_ETL_Architecture.py"

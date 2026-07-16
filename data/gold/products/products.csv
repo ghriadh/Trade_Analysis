@@ -1,0 +1,98 @@
+product_key,cmdCode,product_description,sector
+1,001,,Produits agricoles et animaux vivants
+2,002,,Produits agricoles et animaux vivants
+3,003,,Produits agricoles et pêche
+4,004,,Produits agricoles et alimentation
+5,005,,Produits agricoles
+6,006,,Produits agricoles et floriculture
+7,007,,Produits agricoles et alimentation
+8,008,,Produits agricoles et alimentation
+9,009,,Produits agricoles et alimentation
+10,010,,Produits agricoles et alimentation
+11,011,,Produits agricoles et alimentation
+12,012,,Produits agricoles et alimentation
+13,013,,Produits agricoles
+14,014,,Produits agricoles
+15,015,,Produits agricoles et industrie alimentaire
+16,016,,Industrie alimentaire
+17,017,,Industrie alimentaire
+18,018,,Industrie alimentaire
+19,019,,Industrie alimentaire
+20,020,,Industrie alimentaire
+21,021,,Industrie alimentaire
+22,022,,Industrie alimentaire
+23,023,,Industrie alimentaire
+24,024,,Autres produits manufacturés
+25,025,,Minéraux et matériaux de construction
+26,026,,Minéraux et combustibles
+27,027,,Minéraux et combustibles
+28,028,,Produits chimiques
+29,029,,Produits chimiques
+30,030,,Produits chimiques et pharmaceutiques
+31,031,,Produits chimiques
+32,032,,Produits chimiques
+33,033,,Produits chimiques et cosmétiques
+34,034,,Produits chimiques et ménagers
+35,035,,Produits chimiques
+36,036,,Produits chimiques et industriels
+37,037,,Produits manufacturés
+38,038,,Produits chimiques
+39,039,,Produits manufacturés
+40,040,,Produits manufacturés
+41,041,,Produits manufacturés
+42,042,,Produits manufacturés
+43,043,,Produits manufacturés
+44,044,,Bois et produits forestiers
+45,045,,Bois et produits forestiers
+46,046,,Produits manufacturés
+47,047,,Produits du papier
+48,048,,Produits du papier
+49,049,,Produits du papier
+50,050,,Textile et habillement
+51,051,,Textile et habillement
+52,052,,Textile et habillement
+53,053,,Textile et habillement
+54,054,,Textile et habillement
+55,055,,Textile et habillement
+56,056,,Textile et habillement
+57,057,,Textile et habillement
+58,058,,Textile et habillement
+59,059,,Textile et habillement
+60,060,,Textile et habillement
+61,061,,Textile et habillement
+62,062,,Textile et habillement
+63,063,,Textile et habillement
+64,064,,Textile et habillement
+65,065,,Textile et habillement
+66,066,,Produits manufacturés
+67,067,,Produits manufacturés
+68,068,,Minéraux et matériaux de construction
+69,069,,Minéraux et matériaux de construction
+70,070,,Minéraux et matériaux de construction
+71,071,,Bijoux et métaux précieux
+72,072,,Métaux de base
+73,073,,Métaux de base
+74,074,,Métaux de base
+75,075,,Métaux de base
+76,076,,Métaux de base
+77,078,,Métaux de base
+78,079,,Métaux de base
+79,080,,Métaux de base
+80,081,,Métaux de base
+81,082,,Machines et équipements
+82,083,,Machines et équipements
+83,084,,Machines et équipements
+84,085,,Machines et équipements
+85,086,,Transport
+86,087,,Transport
+87,088,,Transport
+88,089,,Transport
+89,090,,Machines et équipements
+90,091,,Machines et équipements
+91,092,,Produits manufacturés
+92,093,,Produits manufacturés
+93,094,,Produits manufacturés
+94,095,,Produits manufacturés
+95,096,,Produits manufacturés
+96,097,,Produits culturels
+97,TOTAL,AGGREGATION ALL PRODUCTS,AGGREGATION ALL SECTORS
