@@ -26,12 +26,15 @@ logs/
 # ── Data — raw and intermediate layers (regenerable) ─────────────
 data/bronze/
 data/silver/
+data/sql/
 
 # data/gold/     → committed (needed by analysis pages)
 # data/resources/ → committed (reference CSVs used by pipeline)
 # data/trade_analysis.duckdb → committed (36 MB, DuckDB backend)
 # data/etl_status.json       → committed (ETL status page)
 # data/known_divergences.json → committed
+# data/sql/      → NOT committed (125 MB, duplicate pure-SQL DuckDB file,
+#                   only used by Analysis/notebooks_sql, not read by the app)
 
 # ── French archived app ──────────────────────────────────────────
 app_fr/
@@ -44,3 +47,7 @@ app_fr/
 Thumbs.db
 .vscode/
 .idea/
+
+# ── Personal learning / scratch files (not part of the project) ──
+commandes.txt
+scoop
