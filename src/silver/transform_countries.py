@@ -80,6 +80,7 @@ def transform_countries(df: pd.DataFrame) -> pd.DataFrame:
     "TÃ¼rkiye":       "Turkiye",  
     "TÃƒÂ¼rkiye" :    "Turkiye",
     "São Tomé and Príncipe": "Sao Tome and Principe",
+    "Saint Barthélemy": "Saint Barthelemy",
     }
     df["country_name"] = df["country_name"].replace(NAME_CORRECTIONS)
 

@@ -134,13 +134,17 @@ def transform_trade_data(df: pd.DataFrame) -> pd.DataFrame:
     # Standardize country names with special characters
     NAME_CORRECTIONS = {
     "Côte d'Ivoire":  "Cote d'Ivoire",
+    "CÃ´te d'Ivoire": "Cote d'Ivoire",
     "CÃƒÂ´te d'Ivoire": "Cote d'Ivoire",
     "Curaçao":        "Curacao",
+    "CuraÃ§ao":       "Curacao",
     "CuraÃƒÂ§ao":     "Curacao",
     "Türkiye":        "Turkiye",
-    "TÃ¼rkiye":       "Turkiye",  
+    "TÃ¼rkiye":       "Turkiye",
     "TÃƒÂ¼rkiye" :    "Turkiye",
     "São Tomé and Príncipe": "Sao Tome and Principe",
+    "Saint Barthélemy":  "Saint Barthelemy",
+    "Saint BarthÃ©lemy": "Saint Barthelemy",
     }
     df["reporterDesc"] = df["reporterDesc"].replace(NAME_CORRECTIONS)
     df["partnerDesc"] = df["partnerDesc"].replace(NAME_CORRECTIONS)

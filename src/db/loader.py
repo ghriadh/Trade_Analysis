@@ -30,6 +30,17 @@ VALID_SCHEMAS      = {"bronze", "silver", "gold"}
 DEFAULT_CHUNKSIZE  = 500
 LARGE_CHUNKSIZE    = 5000   # for tables with 1M+ rows
 
+# Backends that support multi-row INSERT (method="multi") and their max bound
+# parameters per statement. SQL Server is deliberately excluded: it already
+# gets fast, driver-level batching via pyodbc's fast_executemany (set on its
+# engine in connector.py) -- method="multi" would replace that with one big
+# multi-VALUES statement instead and risks hitting SQL Server's own ~2100
+# parameter limit on wide tables.
+MULTI_ROW_PARAM_LIMITS = {
+    "databricks": 10_000,  # BAD_REQUEST if a single query exceeds this
+    "duckdb":     100_000,  # no meaningful limit at our data sizes; generous cap
+}
+
 
 def save_to_db(
     df: pd.DataFrame,
@@ -65,6 +76,21 @@ def save_to_db(
 
     try:
         effective_chunksize = chunksize or DEFAULT_CHUNKSIZE
+        method = None
+
+        param_limit = MULTI_ROW_PARAM_LIMITS.get(connector.backend)
+        if param_limit is not None:
+            method = "multi"
+            n_cols = max(len(df.columns), 1)
+            max_rows_per_statement = max(param_limit // n_cols, 1)
+            if effective_chunksize > max_rows_per_statement:
+                logger.info(
+                    "Capping chunksize for %s | requested=%d -> %d (param limit %d / %d cols)",
+                    connector.backend, effective_chunksize, max_rows_per_statement,
+                    param_limit, n_cols,
+                )
+                effective_chunksize = max_rows_per_statement
+
         df.to_sql(
             name=table,
             schema=schema,
@@ -72,6 +98,7 @@ def save_to_db(
             if_exists=if_exists,
             index=False,
             chunksize=effective_chunksize,
+            method=method,
         )
         logger.info(
             "Saved -> %s.%s | %d rows", schema, table, len(df)

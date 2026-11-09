@@ -103,16 +103,16 @@ class SQLServerConnector(BaseConnector):
 
 
 # ============================================================
-# DATABRICKS (stub — to be implemented)
+# DATABRICKS
 # ============================================================
 
 class DatabricksConnector(BaseConnector):
     """
-    Databricks SQL connector (Unity Catalog).
-    Requires: databricks-sqlalchemy or databricks-sql-connector.
+    Databricks SQL connector (Unity Catalog), via the official Databricks
+    SQLAlchemy dialect.
 
-    To implement: pip install sqlalchemy-databricks
-    Connection URL: databricks+connector://token:<token>@<host>/<catalog>
+    Requires: pip install databricks-sqlalchemy
+    Connection URL: databricks://token:<token>@<host>?http_path=<path>&catalog=<catalog>
     """
 
     def __init__(self, config: dict) -> None:
@@ -129,9 +129,9 @@ class DatabricksConnector(BaseConnector):
 
         cfg = self._config
         url = (
-            f"databricks+connector://token:{cfg['token']}"
-            f"@{cfg['host']}/{cfg['catalog']}"
+            f"databricks://token:{cfg['token']}@{cfg['host']}"
             f"?http_path={urllib.parse.quote_plus(cfg['http_path'])}"
+            f"&catalog={cfg['catalog']}"
         )
         self._engine = create_engine(url)
 

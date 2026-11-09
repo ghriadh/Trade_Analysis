@@ -26,8 +26,9 @@ def create_schemas(db: str | None = None) -> None:
 
     with engine.begin() as conn:
         for schema in SCHEMAS:
-            if connector.backend == "duckdb":
-                # DuckDB uses standard SQL CREATE SCHEMA IF NOT EXISTS
+            if connector.backend in ("duckdb", "databricks"):
+                # DuckDB and Databricks (Unity Catalog) both support standard
+                # ANSI CREATE SCHEMA IF NOT EXISTS
                 conn.execute(text(f"CREATE SCHEMA IF NOT EXISTS {schema}"))
             else:
                 # SQL Server requires sys.schemas check + EXEC

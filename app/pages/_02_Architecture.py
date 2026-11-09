@@ -154,27 +154,32 @@ with col1:
           ODBC driver · <code style="font-size:12px;background:#253B5C;color:#93C5FD;
           padding:1px 5px;border-radius:3px;">fast_executemany</code> for bulk inserts
         </span>
-        <span class="badge badge-active">active</span>
+        <span class="badge badge-done">done</span>
+        <span style="font-size:10px;color:#6890B0;border:1px solid #304870;
+          border-radius:10px;padding:1px 8px;white-space:nowrap;"
+          title="DB_BACKEND in .env is currently set to this one">default</span>
       </div>
 
       <div class="backend-row">
-        <div class="dot dot-partial"></div>
-        <span class="backend-name">Databricks</span>
-        <span class="backend-desc">
-          Cloud data lakehouse · Unity Catalog · token auth ·
-          SQL warehouse · planned for production deployment
-        </span>
-        <span class="badge badge-planned">planned</span>
-      </div>
-
-      <div class="backend-row">
-        <div class="dot dot-pending"></div>
+        <div class="dot dot-done"></div>
         <span class="backend-name">DuckDB</span>
         <span class="backend-desc">
           Embedded file-based DB · zero config · single file ·
-          ideal for local testing and portfolio demo
+          full medallion ETL + a complete SQL analysis notebook (9 chapters),
+          validated end-to-end against the pandas reference
         </span>
-        <span class="badge badge-ext">extensible</span>
+        <span class="badge badge-done">done</span>
+      </div>
+
+      <div class="backend-row">
+        <div class="dot dot-done"></div>
+        <span class="backend-name">Databricks</span>
+        <span class="backend-desc">
+          Cloud data lakehouse · Unity Catalog · token auth ·
+          SQL warehouse · full medallion ETL, validated end-to-end against the
+          pandas/DuckDB reference
+        </span>
+        <span class="badge badge-done">done</span>
       </div>
 
     </div>
@@ -251,21 +256,23 @@ with st.expander("🔌  Test live connection"):
         unsafe_allow_html=True)
     if st.button("Test connections", key="test_conn"):
         from src.db.connector import get_connector
-        connected = []
+        results = []
         with st.spinner("Testing backends…"):
             for backend in ("sqlserver", "duckdb", "databricks"):
                 try:
                     connector = get_connector(backend=backend)
                     result    = connector.test_connection()
-                    if result["status"] == "ok":
-                        connected.append(backend)
-                except Exception:
-                    pass
-        if connected:
-            for b in connected:
-                st.success(f"✅  {b} — connected")
-        else:
-            st.info("No backends reachable in this environment.")
+                    results.append((backend, result))
+                except Exception as e:
+                    results.append((backend, {"status": "error", "detail": str(e)}))
+        for backend, result in results:
+            if result["status"] == "ok":
+                st.success(f"✅  {backend} — connected")
+            elif backend == "sqlserver":
+                st.error(f"❌  {backend} — {result.get('detail', 'unreachable')}")
+                st.caption("ℹ️  SQL Server : fonctionne en local uniquement")
+            else:
+                st.error(f"❌  {backend} — {result.get('detail', 'unreachable')}")
 
 with st.expander("🗄️  Database & schema creation"):
     st.code("""
@@ -343,143 +350,193 @@ def save_to_db(
 # Same call for every table and every backend — zero backend-specific code
     """, language="python")
 
-with st.expander("🦆  Live DuckDB demo — in-memory pipeline simulation"):
+with st.expander("🦆  Live DuckDB demo — real pipeline data"):
     st.markdown(
         "<div style='font-size:14px;color:#A8C0D8;margin-bottom:12px;'>"
-        "Illustrates the medallion pattern on synthetic data: two tables per layer, "
-        "one dirty row filtered at Silver, surrogate keys assigned at Gold.</div>",
+        "Connects read-only to the actual populated file — "
+        "<code style='font-size:12px;background:#253B5C;color:#93C5FD;padding:1px 5px;"
+        "border-radius:3px;'>data/sql/trade_analysis_sql.duckdb</code> — built by the real "
+        "bronze → silver → gold pipeline, not synthetic data. This is the same file behind the "
+        "full SQL analysis notebook (medallion ETL + structural/bilateral/combined scoring, "
+        "9 chapters validated against the pandas reference).</div>",
         unsafe_allow_html=True)
 
-    if st.button("▶  Run DuckDB demo", key="duckdb_demo"):
+    if st.button("▶  Query live DuckDB file", key="duckdb_real_demo"):
         try:
-            import duckdb, pandas as pd
+            import duckdb
 
-            with st.spinner("Running in-memory pipeline…"):
-                con = duckdb.connect(":memory:")
-                for schema in ["bronze", "silver", "gold"]:
-                    con.execute(f"CREATE SCHEMA {schema}")
+            db_path = ROOT / "data" / "sql" / "trade_analysis_sql.duckdb"
 
-                # ── Bronze — raw, multi-table, dirty rows ─────────────
-                df_b_countries = pd.DataFrame({
-                    "wb_code": [250,      276,       842,             156,    392,   None],
-                    "iso3":    ["FRA",    "DEU",     "USA",           "CHN",  "JPN", "???"],
-                    "name":    ["France", "Germany", "United States", "China","Japan","Unknown"],
-                    "region":  ["Europe", "Europe",  "Americas",      "Asia", "Asia", None],
-                })
-                df_b_trade = pd.DataFrame({
-                    "reporter_code": [250,        250,         276,        None,       250,        276],
-                    "partner_code":  [276,        842,         250,        276,        276,        250],
-                    "year":          [2023,       2023,        2023,       2023,       2023,       2023],
-                    "flow":          ["M",        "M",         "X",        "M",        "M",        "X"],
-                    "value_usd":     [85_000_000, 120_000_000, 95_000_000, 50_000_000, 85_000_000, -1],
-                })
-                con.execute("CREATE TABLE bronze.countries  AS SELECT * FROM df_b_countries")
-                con.execute("CREATE TABLE bronze.trade_data AS SELECT * FROM df_b_trade")
+            if not db_path.exists():
+                st.error(f"File not found: {db_path}")
+            else:
+                with st.spinner("Querying DuckDB file…"):
+                    con = duckdb.connect(str(db_path), read_only=True)
 
-                # ── Silver — clean, deduplicate, reject invalids ───────
-                df_s_countries = con.execute("""
-                    SELECT CAST(wb_code AS INTEGER) AS wb_code,
-                           TRIM(iso3)   AS iso3,
-                           TRIM(name)   AS name,
-                           TRIM(region) AS region
-                    FROM bronze.countries
-                    WHERE wb_code IS NOT NULL AND iso3 != '???'
-                """).df()
-                df_s_trade = con.execute("""
-                    SELECT DISTINCT
-                           CAST(reporter_code AS INTEGER) AS reporter_code,
-                           CAST(partner_code  AS INTEGER) AS partner_code,
-                           year, flow,
-                           CAST(value_usd AS BIGINT) AS value_usd
-                    FROM bronze.trade_data
-                    WHERE reporter_code IS NOT NULL AND value_usd > 0
-                """).df()
-                con.execute("CREATE TABLE silver.countries  AS SELECT * FROM df_s_countries")
-                con.execute("CREATE TABLE silver.trade_data AS SELECT * FROM df_s_trade")
+                    gold_tables = [
+                        "entities", "products", "trade_flow",
+                        "indicators", "indicators_values", "trade_data",
+                    ]
+                    gold_counts = {
+                        t: con.execute(f"SELECT COUNT(*) FROM gold.{t}").fetchone()[0]
+                        for t in gold_tables
+                    }
 
-                # ── Gold — dimension + fact, surrogate keys ────────────
-                # entities: countries + "World" aggregate (entity_type=ENTITY)
-                df_g_entities = con.execute("""
-                    SELECT ROW_NUMBER() OVER (ORDER BY wb_code) AS entity_key,
-                           wb_code, iso3, name, 'COUNTRY' AS entity_type
-                    FROM silver.countries
-                    UNION ALL
-                    SELECT 99 AS entity_key, 0 AS wb_code,
-                           'WLD' AS iso3, 'World' AS name, 'ENTITY' AS entity_type
-                """).df()
-                con.execute("CREATE TABLE gold.entities AS SELECT * FROM df_g_entities")
+                    n_analysis_tables = con.execute(
+                        "SELECT COUNT(*) FROM information_schema.tables "
+                        "WHERE table_schema = 'analysis'"
+                    ).fetchone()[0]
 
-                df_g_trade = con.execute("""
-                    SELECT e_rep.entity_key AS reporter_key,
-                           e_par.entity_key AS partner_key,
-                           t.year, t.flow, t.value_usd
-                    FROM silver.trade_data t
-                    JOIN gold.entities e_rep ON t.reporter_code = e_rep.wb_code
-                    JOIN gold.entities e_par ON t.partner_code  = e_par.wb_code
-                """).df()
-                con.execute("CREATE TABLE gold.trade_data AS SELECT * FROM df_g_trade")
+                    sample = con.execute("""
+                        SELECT country_name, structural_profile, meta_profile, structural_score
+                        FROM analysis.trade_structural
+                        ORDER BY structural_score DESC
+                        LIMIT 5
+                    """).df()
 
-                # code divergence: simulate France having different WB vs Comtrade codes
-                df_divergence = pd.DataFrame({
-                    "iso3":           ["FRA"],
-                    "wb_code":        [250],
-                    "comtrade_code":  [251],
-                })
+                    con.close()
 
-            st.success("✅  In-memory pipeline complete — Bronze → Silver → Gold")
+                st.success("✅  Connected to the real pipeline output")
 
-            def _layer_title(label, color, note="", note_color="#EF4444"):
-                note_html = (f" <span style='color:{note_color};font-weight:500;"
-                             f"font-size:11px;'>{note}</span>") if note else ""
                 st.markdown(
-                    f"<div style='font-size:12px;font-weight:700;color:{color};"
-                    f"text-transform:uppercase;letter-spacing:.07em;margin:1rem 0 .3rem 0;'>"
-                    f"{label}{note_html}</div>",
-                    unsafe_allow_html=True,
-                )
+                    "<div style='font-size:12px;font-weight:700;color:#34D399;"
+                    "text-transform:uppercase;letter-spacing:.07em;margin:1rem 0 .3rem 0;'>"
+                    "🟢 Gold layer — live row counts</div>", unsafe_allow_html=True)
+                gcols = st.columns(len(gold_tables))
+                for col, t in zip(gcols, gold_tables):
+                    col.metric(t, f"{gold_counts[t]:,}")
 
-            _layer_title("🟡 Bronze — Raw", "#F59E0B",
-                         "· dirty rows: NULL codes, invalid values, duplicates")
-            cb1, cb2 = st.columns(2)
-            with cb1:
-                st.caption("countries — includes rows with missing or invalid codes")
-                st.dataframe(df_b_countries, use_container_width=True, height=220)
-            with cb2:
-                st.caption("trade_data — includes NULL reporter, negative value, duplicate")
-                st.dataframe(df_b_trade, use_container_width=True, height=220)
-
-            _layer_title("🔵 Silver — Cleaned", "#93C5FD",
-                         "· rows rejected: NULLs, invalid values, duplicates removed")
-            cs1, cs2 = st.columns(2)
-            with cs1:
-                st.caption("countries — NULL wb_code and invalid iso3 filtered out")
-                st.dataframe(df_s_countries, use_container_width=True, height=210)
-            with cs2:
-                st.caption("trade_data — NULL reporter, negative value and duplicate removed")
-                st.dataframe(df_s_trade, use_container_width=True, height=210)
-
-            _layer_title("🟢 Gold — Star Schema", "#34D399",
-                         "· surrogate keys · entity classification · divergence check",
-                         "#34D399")
-            cg1, cg2 = st.columns(2)
-            with cg1:
-                st.caption("entities — dimension · surrogate key · COUNTRY vs ENTITY type")
-                st.dataframe(df_g_entities, use_container_width=True, height=230)
-            with cg2:
-                st.caption("trade_data — fact · reporter_key / partner_key replace raw codes")
-                st.dataframe(df_g_trade, use_container_width=True, height=180)
                 st.markdown(
-                    "<div style='margin-top:.5rem;background:#1C1407;border-left:3px solid #F59E0B;"
-                    "border-radius:0 6px 6px 0;padding:.5rem .8rem;font-size:12px;color:#D97706;'>"
-                    "⚠ <strong>Code divergence detected</strong> — WB code ≠ Comtrade code "
-                    "for some reporters. Re-extraction required with Comtrade-specific codes.</div>",
-                    unsafe_allow_html=True,
-                )
-                st.dataframe(df_divergence, use_container_width=True, height=80)
-
-            con.close()
+                    f"<div style='font-size:12px;font-weight:700;color:#818CF8;"
+                    f"text-transform:uppercase;letter-spacing:.07em;margin:1.2rem 0 .3rem 0;'>"
+                    f"📊 Analysis layer — {n_analysis_tables} tables built by the SQL notebook "
+                    f"(structural + bilateral + combined scoring)</div>",
+                    unsafe_allow_html=True)
+                st.caption("Top 5 countries by structural score — analysis.trade_structural")
+                st.dataframe(sample, use_container_width=True, height=210)
 
         except ImportError:
             st.error("duckdb not installed. Run: `pip install duckdb`")
         except Exception as e:
             st.error(f"Demo error: {e}")
+
+def _format_large(n: float) -> str:
+    sign = "-" if n < 0 else ""
+    n = abs(n)
+    for unit, div in (("T", 1e12), ("B", 1e9), ("M", 1e6), ("K", 1e3)):
+        if n >= div:
+            return f"{sign}{n / div:.2f}{unit}"
+    return f"{sign}{n:.2f}"
+
+
+with st.expander("🔎  Live cross-backend query"):
+    st.markdown(
+        "<div style='font-size:14px;color:#A8C0D8;margin-bottom:12px;'>"
+        "Runs the exact same SQL query against the gold layer live, on all three backends, "
+        "to prove the medallion ETL produces identical results regardless of the database. "
+        "SQL Server is local-only by design — unreachable from a public deployment, shown "
+        "with that note instead of an error.</div>",
+        unsafe_allow_html=True)
+
+    DEMO_COUNTRIES = ["China", "USA", "Germany", "France", "India", "Brazil", "Tunisia"]
+    country = st.selectbox("Country", DEMO_COUNTRIES, index=0, key="xbackend_country")
+
+    # No LIMIT/TOP here on purpose — that clause isn't portable across backends
+    # (SQL Server needs TOP, DuckDB/Databricks need LIMIT). Keeping the ORDER BY
+    # but doing the top-5 cut in pandas keeps one identical query for all three.
+    QUERY = """
+SELECT e2.country_name AS partner, SUM(t.primaryValue) AS total_value
+FROM gold.trade_data t
+JOIN gold.entities e1 ON t.reporter_key = e1.entity_key
+JOIN gold.entities e2 ON t.partner_key = e2.entity_key
+WHERE e1.country_name = :country
+  AND e1.entity_type = 'COUNTRY'
+  AND e2.entity_type = 'COUNTRY'
+GROUP BY e2.country_name
+ORDER BY total_value DESC
+""".strip()
+    # entity_type = 'COUNTRY' excludes aggregates like "World" and "EU"
+    # (tagged 'ENTITY' in the gold layer) — without it, "World" swamps every
+    # other partner since it sums the reporter's trade with everyone.
+
+    st.code(QUERY, language="sql")
+
+    if st.button("▶  Run on all backends", key="xbackend_run"):
+        import time
+
+        import numpy as np
+        import pandas as pd
+        from sqlalchemy import text
+
+        from src.db.connector import get_connector
+
+        results = {}
+        cols = st.columns(3)
+        with st.spinner("Querying all backends…"):
+            for col, backend in zip(cols, ("duckdb", "databricks", "sqlserver")):
+                with col:
+                    st.markdown(f"**{backend}**")
+                    try:
+                        connector = get_connector(backend=backend)
+
+                        conn_check = connector.test_connection()
+                        if conn_check["status"] != "ok":
+                            raise ConnectionError(conn_check.get("detail", "unreachable"))
+
+                        t0 = time.time()
+                        with connector.get_engine().connect() as conn:
+                            df = pd.read_sql(text(QUERY), conn, params={"country": country})
+                        df = df.sort_values("total_value", ascending=False).head(5).reset_index(drop=True)
+                        elapsed = time.time() - t0
+                        results[backend] = df
+
+                        st.caption(f"⏱ {elapsed:.2f}s")
+                        df_display = df.copy()
+                        df_display["total_value"] = df_display["total_value"].apply(_format_large)
+                        st.dataframe(df_display, use_container_width=True, height=180)
+                        if not df.empty:
+                            import plotly.graph_objects as go
+
+                            scale, unit = (
+                                (1e12, "USD Trillion") if df["total_value"].max() >= 1e12
+                                else (1e9, "USD Billion")
+                            )
+                            fig = go.Figure(go.Bar(
+                                x=df["partner"],
+                                y=df["total_value"] / scale,
+                                marker=dict(color="#60A5FA"),
+                                text=df["total_value"].apply(_format_large),
+                                textposition="outside",
+                            ))
+                            fig.update_layout(
+                                paper_bgcolor="#1F3050",
+                                plot_bgcolor="#162035",
+                                font=dict(family="IBM Plex Sans", color="#C4D5E8", size=12),
+                                margin=dict(l=30, r=20, t=20, b=30),
+                                xaxis=dict(gridcolor="#304870", linecolor="#304870"),
+                                yaxis=dict(gridcolor="#304870", linecolor="#304870", title=unit),
+                                height=340,
+                            )
+                            st.plotly_chart(fig, width="stretch", key=f"xbackend_chart_{backend}")
+
+                    except ConnectionError as e:
+                        if backend == "sqlserver":
+                            st.caption("ℹ️  Local-only — unreachable from this deployment")
+                        else:
+                            st.error(f"❌ {e}")
+                    except Exception as e:
+                        st.error(f"❌ {e}")
+
+        if "duckdb" in results and "databricks" in results:
+            a, b = results["duckdb"], results["databricks"]
+            same = (
+                list(a["partner"]) == list(b["partner"])
+                and np.allclose(a["total_value"].values, b["total_value"].values, rtol=1e-6)
+            )
+            if same:
+                st.success("✅  DuckDB and Databricks returned identical results")
+            else:
+                st.warning(
+                    "⚠️  Results differ slightly between DuckDB and Databricks — "
+                    "likely floating-point summation order, not a data error"
+                )

@@ -18,6 +18,8 @@ sqlalchemy
 pyodbc
 duckdb
 duckdb-engine
+jupysql
+databricks-sqlalchemy
 # Statistics / forecasting
 statsmodels
 scikit-learn
