@@ -702,7 +702,6 @@ with tab5:
         else:
             _layout["yaxis"] = dict(title=y_label, autorange=True,
                                     gridcolor="#304870", linecolor="#304870")
-        _layout.pop("xaxis", None) if x_range is None else None
         fig.update_layout(**{k: v for k, v in PLOTLY_LAYOUT.items()
                              if k not in ("xaxis","yaxis")},
             title=title, height=560,
