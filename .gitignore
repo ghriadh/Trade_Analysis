@@ -28,9 +28,20 @@ logs/
 *.tar.gz
 
 # ── Data — raw and intermediate layers (regenerable) ─────────────
-data/bronze/
+# data/bronze/* (not a trailing-slash dir pattern) so git still
+# traverses the tree below, letting the negations re-include one file.
+data/bronze/*
 data/silver/
 data/sql/
+
+# Exception: ship the final consolidated trade_data bronze file so
+# "Run Silver" works on a fresh cloud deployment (Comtrade extraction
+# itself is CLI-only / too long to trigger online; per-batch files and
+# .checkpoints/ stay git-ignored, only this one 40MB consolidated file
+# is tracked, same rationale as data/gold/).
+!data/bronze/trade_data/
+data/bronze/trade_data/*
+!data/bronze/trade_data/trade_data.csv
 
 # data/gold/     → committed (needed by analysis pages)
 # data/resources/ → committed (reference CSVs used by pipeline)
