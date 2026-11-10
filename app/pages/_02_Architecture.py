@@ -114,7 +114,10 @@ STRINGS = {
         "btn_test_connections": "Test connections",
         "spinner_testing_backends": "Testing backends…",
         "connected": "✅  {backend} — connected",
-        "sqlserver_local_note": "ℹ️  SQL Server : runs locally only",
+        "sqlserver_local_note": (
+            "ℹ️  SQL Server uses Windows Integrated Authentication and only runs on the "
+            "local network — unreachable from this deployment regardless of credentials."
+        ),
         "exp_db_creation": "🗄️  Database & schema creation",
         "exp_connector": "📄  Connector — Abstract Base Class + Factory",
         "exp_loader": "💾  Loader — one function, all tables, all backends",
@@ -129,6 +132,11 @@ STRINGS = {
         ),
         "btn_query_duckdb": "▶  Query live DuckDB file",
         "file_not_found": "File not found: {path}",
+        "sql_demo_local_note": (
+            "ℹ️  This demo reads a 125MB DuckDB file (the pure-SQL ETL duplicate), "
+            "deliberately excluded from the repo to stay under GitHub's size limit — "
+            "only available by running the pure-SQL pipeline locally."
+        ),
         "spinner_querying_duckdb": "Querying DuckDB file…",
         "connected_real_pipeline": "✅  Connected to the real pipeline output",
         "gold_layer_counts": "🟢 Gold layer — live row counts",
@@ -149,7 +157,10 @@ STRINGS = {
         "country_label": "Country",
         "btn_run_all_backends": "▶  Run on all backends",
         "elapsed_caption": "⏱ {elapsed:.2f}s",
-        "local_only_note": "ℹ️  Local-only — unreachable from this deployment",
+        "local_only_note": (
+            "ℹ️  SQL Server uses Windows Integrated Authentication and only runs on the "
+            "local network — unreachable from this deployment regardless of credentials."
+        ),
         "identical_results": "✅  DuckDB and Databricks returned identical results",
         "results_differ": (
             "⚠️  Results differ slightly between DuckDB and Databricks — "
@@ -267,6 +278,11 @@ STRINGS = {
         ),
         "btn_query_duckdb": "▶  Interroger le fichier DuckDB en direct",
         "file_not_found": "Fichier introuvable : {path}",
+        "sql_demo_local_note": (
+            "ℹ️  Cette démo lit un fichier DuckDB de 125 Mo (le double pur-SQL de l'ETL), "
+            "volontairement exclu du dépôt pour rester sous la limite GitHub — "
+            "disponible uniquement en exécutant le pipeline pur-SQL en local."
+        ),
         "spinner_querying_duckdb": "Interrogation du fichier DuckDB…",
         "connected_real_pipeline": "✅  Connecté à la sortie réelle du pipeline",
         "gold_layer_counts": "🟢 Couche Gold — nombre de lignes en direct",
@@ -511,7 +527,6 @@ with st.expander(t(STRINGS, "exp_test_connection")):
             if result["status"] == "ok":
                 st.success(t(STRINGS, "connected").format(backend=backend))
             elif backend == "sqlserver":
-                st.error(f"❌  {backend} — {result.get('detail', t(STRINGS, 'unreachable'))}")
                 st.caption(t(STRINGS, "sqlserver_local_note"))
             else:
                 st.error(f"❌  {backend} — {result.get('detail', t(STRINGS, 'unreachable'))}")
@@ -605,7 +620,7 @@ with st.expander(t(STRINGS, "exp_duckdb_demo")):
             db_path = ROOT / "data" / "sql" / "trade_analysis_sql.duckdb"
 
             if not db_path.exists():
-                st.error(t(STRINGS, "file_not_found").format(path=db_path))
+                st.caption(t(STRINGS, "sql_demo_local_note"))
             else:
                 with st.spinner(t(STRINGS, "spinner_querying_duckdb")):
                     con = duckdb.connect(str(db_path), read_only=True)
@@ -752,13 +767,11 @@ ORDER BY total_value DESC
                             )
                             st.plotly_chart(fig, width="stretch", key=f"xbackend_chart_{backend}")
 
-                    except ConnectionError as e:
+                    except Exception as e:
                         if backend == "sqlserver":
                             st.caption(t(STRINGS, "local_only_note"))
                         else:
                             st.error(f"❌ {e}")
-                    except Exception as e:
-                        st.error(f"❌ {e}")
 
         if "duckdb" in results and "databricks" in results:
             a, b = results["duckdb"], results["databricks"]
