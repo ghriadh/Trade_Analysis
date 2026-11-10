@@ -26,8 +26,372 @@ import plotly.graph_objects as go
 import plotly.express as px
 import numpy as np
 from utils.styles import inject_styles, kpi, section_label, thin_divider, finding, format_value
+from utils.i18n import t
 
 inject_styles()
+
+# ════════════════════════════════════════════════════════════════
+# TRANSLATIONS
+# ════════════════════════════════════════════════════════════════
+# NOTE: category/profile values that come from df_structural columns
+# (e.g. "Dominant", "Star", "Stars", "Leader", "Global Leader", ...)
+# are DATA and are never translated here, even where they are shown
+# as plain text (badges, distribution charts, scorecards). Only the
+# surrounding UI copy (titles, axis labels, descriptive sub-text) is
+# translated.
+
+STRINGS = {
+    "en": {
+        "eyebrow": "Trade Analysis · Page 3 of 6",
+        "title": "Country Trade Profile",
+        "caption": "F.3 — Individual country trade structure · trends · balance · scoring",
+        "lbl_select_country": "Select country",
+        "kpi_exports_latest": "Exports (latest)",
+        "kpi_export_share": "Export share",
+        "kpi_structural_score": "Structural score",
+        "kpi_profile": "Profile",
+        "warn_no_data": "No data available for {country}.",
+        "warn_no_structural": "No structural data for {country}.",
+
+        "tab_trends": "📈 Trends",
+        "tab_balance": "⚖️ Balance",
+        "tab_growth": "📊 Growth",
+        "tab_global_view": "🌐 Global View",
+        "tab_scoring": "🏅 Scoring",
+        "tab_positioning": "🎯 Positioning",
+
+        "sec_trends": "F.3.2 · Export & Import Trends",
+        "sec_share_trends": "F.3.3 · Share Trends",
+        "opt_exports": "Exports",
+        "opt_imports": "Imports",
+        "opt_export_share": "Export Share",
+        "opt_import_share": "Import Share",
+        "unit_usd_billion": "USD Billion",
+        "unit_share": "Share",
+        "title_trends": "{country} — Exports & Imports (USD Billion)",
+        "title_share_trends": "{country} — Export & Import Share of World Trade",
+
+        "sec_balance": "F.3.4 · Trade Balance & Coverage Ratio",
+        "trace_trade_balance": "Trade Balance",
+        "title_balance": "{country} — Trade Balance (USD Billion)",
+        "trace_coverage_ratio": "Coverage Ratio (%)",
+        "balanced_100": "Balanced (100%)",
+        "title_coverage": "{country} — Coverage Ratio (Exports/Imports × 100%)",
+        "unit_coverage_pct": "Coverage (%)",
+
+        "sec_growth": "F.3.5 · Annual Growth Rates",
+        "title_growth": "{country} — Annual Export & Import Growth Rate (%)",
+        "unit_pct": "%",
+
+        "sec_global_view": "F.3.6 · Global Trade View — Overview",
+        "title_volume": "Volume (USD B)",
+        "unit_usd_b": "USD B",
+        "title_world_share": "World Share (%)",
+        "title_export_growth": "Export Growth (%)",
+        "trace_export_pct": "Export %",
+        "title_trade_balance_b": "Trade Balance (USD B)",
+        "trace_balance": "Balance",
+        "card_stability": "📊 Stability — Export Volatility",
+        "card_stability_sub": "σ of annual export growth · lower = more stable",
+        "card_consistency": "📉 Consistency — Negative Growth Freq.",
+        "card_consistency_sub": "{years} with negative export growth",
+        "years_of_10": "{n:.1f} / 10 years",
+
+        "sec_positioning": "F.4.5 · Global Positioning — Where does this country stand?",
+        "quad_tab_static": "📐 Static Quadrant",
+        "quad_tab_dynamic": "⚡ Dynamic Quadrant",
+        "quad_tab_strategic": "⭐ Strategic Quadrant",
+        "quad_tab_meta": "🌐 Meta Profile",
+        "other_countries": "Other countries",
+        "others": "Others",
+
+        "lbl_countries_to_animate": "Countries to animate",
+        "title_static_anim": "Static Quadrant — Animated ({start}–{end})",
+        "axis_export_share_size": "Export Share (%) — Trade Size",
+        "axis_coverage_balance": "Coverage Ratio (%) — Trade Balance",
+        "quad_dominant_desc": "🟢 Dominant<br><sub>Large & Surplus</sub>",
+        "quad_balanced_desc": "🔵 Balanced<br><sub>Small & Surplus</sub>",
+        "quad_vulnerable_desc": "🟡 Vulnerable<br><sub>Large & Deficit</sub>",
+        "quad_marginal_desc": "⚫ Marginal<br><sub>Small & Deficit</sub>",
+        "btn_play": "▶ Play",
+        "btn_pause": "⏸ Pause",
+        "slider_year_prefix": "Year: ",
+        "badge_static_quadrant": "→ Static Quadrant: ",
+        "title_static_dist": "Static Quadrant Distribution — All Countries",
+        "axis_countries": "Countries",
+
+        "lbl_highlight_countries": "Highlight countries",
+        "hover_cagr": "CAGR",
+        "hover_volatility": "Volatility",
+        "hover_quadrant": "Quadrant",
+        "hover_dynamic_quadrant": "Dynamic Quadrant",
+        "quad_star_desc": "⭐ Star<br>(High Growth · Low Vol.)",
+        "quad_stable_desc": "😴 Stable Stagnant<br>(Low Growth · Low Vol.)",
+        "quad_risky_desc": "📈 Risky Grower<br>(High Growth · High Vol.)",
+        "quad_declining_desc": "📉 Declining<br>(Low Growth · High Vol.)",
+        "title_dynamic_quadrant": "Dynamic Quadrant — {country} vs all countries",
+        "axis_cagr_export": "CAGR Export (%)",
+        "axis_export_volatility": "Export Volatility",
+        "badge_dynamic_quadrant": "→ Dynamic Quadrant: ",
+
+        "hover_export_share": "Export Share",
+        "hover_strategic_quadrant": "Strategic Quadrant",
+        "quad_stars_desc": "⭐ Stars<br><sub>Large & Growing</sub>",
+        "quad_emerging_desc": "🌱 Emerging<br><sub>Small & Growing</sub>",
+        "quad_cashcows_desc": "🐄 Cash Cows<br><sub>Large & Stagnant</sub>",
+        "quad_marginal2_desc": "📉 Marginal<br><sub>Small & Shrinking</sub>",
+        "title_strategic_quadrant": "Strategic Quadrant (BCG) — {country}",
+        "axis_export_share_pct": "Export Share (%)",
+        "badge_strategic_quadrant": "→ Strategic Quadrant: ",
+
+        "title_meta_positioning": "Meta Profile Positioning — {country} highlighted",
+        "axis_structural_score": "Structural Score",
+        "hover_structural_score": "Structural Score",
+        "hover_meta_profile": "Meta Profile",
+        "title_meta_dist": "Meta Profile Distribution",
+        "badge_meta_profile": "{country} Meta Profile: ",
+
+        "expander_quad_defs": "Quadrant & Meta Profile definitions",
+        "quad_defs_col1": (
+            "**Static** (Export Share × Coverage Ratio)\n"
+            "- 🟢 **Dominant** — large exporter + trade surplus\n"
+            "- 🔵 **Balanced** — small exporter + trade surplus\n"
+            "- 🟡 **Vulnerable** — large exporter + trade deficit\n"
+            "- ⚫ **Marginal** — small exporter + trade deficit\n\n"
+            "**Dynamic** (CAGR × Volatility, thresholds: z=0 × median vol)\n"
+            "- ⭐ **Star** — high CAGR, low volatility\n"
+            "- 📈 **Risky Grower** — high CAGR, high volatility\n"
+            "- 📉 **Declining** — low CAGR, low volatility\n"
+            "- 😴 **Stable Stagnant** — low CAGR, high volatility\n\n"
+            "**Strategic** (Export Share × CAGR, thresholds: 1% × 0)\n"
+            "- ⭐ **Stars** — large share & positive CAGR\n"
+            "- 🌱 **Emerging** — small share & positive CAGR\n"
+            "- 🐄 **Cash Cows** — large share & negative CAGR\n"
+            "- 📉 **Marginal** — small share & negative CAGR"
+        ),
+        "quad_defs_col2": (
+            "**Meta Profile** (composite of 3 quadrants)\n\n"
+            "Derived from Static × Dynamic × Strategic combination:\n\n"
+            "- 🌍 **Global Leader** — Dominant + Stars\n"
+            "- 💪 **Established Power** — Dominant/Vulnerable + Stars/Cash Cow\n"
+            "- ⬆️ **Rising Challenger** — Emerging + Star (small but stable & growing)\n"
+            "- 🌪️ **Volatile Emerging** — Emerging + Risky Grower (small + unstable)\n"
+            "- 📍 **Peripheral** — otherwise (low score, low growth)\n\n"
+            "*Not a 4-quadrant system — composite classification\n"
+            "from the interaction of 3 quadrant dimensions*"
+        ),
+
+        "sec_scoring": "F.3.7 · Structural Scoring",
+        "md_profile_scorecard": "**Profile Scorecard**",
+        "score_size_profile": "Size Profile",
+        "score_balance_profile": "Balance Profile",
+        "score_growth_profile": "Growth Profile",
+        "score_stability_profile": "Stability Profile",
+        "score_consistency_profile": "Consistency Profile",
+        "lbl_structural_score": "Structural Score",
+        "lbl_structural_profile": "Structural Profile",
+        "lbl_meta_profile": "Meta Profile",
+        "lbl_quadrants": "Quadrants",
+        "lbl_static": "Static",
+        "lbl_dynamic": "Dynamic",
+        "lbl_strategic": "Strategic",
+        "sec_radar": "Radar — 5 Dimensions",
+        "lbl_compare_with": "Compare with",
+        "dim_size": "Size",
+        "dim_balance": "Balance",
+        "dim_growth": "Growth",
+        "dim_stability": "Stability",
+        "dim_consistency": "Consistency",
+        "sec_structural_heatmap": "Structural Heatmap — Top & Bottom",
+        "lbl_view": "View",
+        "opt_top_performers": "Top performers",
+        "opt_bottom_performers": "Bottom performers",
+        "lbl_n_countries": "N countries",
+        "expander_scoring_methodology": "Scoring methodology",
+        "md_scoring_methodology": (
+            "**Structural Score** = `0.60 × z_export_share + 0.10 × z_coverage_ratio "
+            "+ 0.15 × z_cagr_export − 0.10 × z_volatility_export − 0.05 × z_negfreq_export`\n\n"
+            "**Thresholds** : q85 → Strong · q50 → Good · q15 → Moderate · below → Weak\n\n"
+            "**Radar dimensions** : all mapped 0→1 where 1 = best profile\n"
+            "(e.g. Leader=1.0, Major=0.67, Mid=0.33, Small=0.0)"
+        ),
+    },
+    "fr": {
+        "eyebrow": "Analyse commerciale · Page 3 sur 6",
+        "title": "Profil pays",
+        "caption": "F.3 — Structure commerciale du pays · tendances · balance · scoring",
+        "lbl_select_country": "Sélectionner un pays",
+        "kpi_exports_latest": "Exportations (dernière année)",
+        "kpi_export_share": "Part des exportations",
+        "kpi_structural_score": "Score structurel",
+        "kpi_profile": "Profil",
+        "warn_no_data": "Aucune donnée disponible pour {country}.",
+        "warn_no_structural": "Aucune donnée structurelle pour {country}.",
+
+        "tab_trends": "📈 Tendances",
+        "tab_balance": "⚖️ Balance",
+        "tab_growth": "📊 Croissance",
+        "tab_global_view": "🌐 Vue globale",
+        "tab_scoring": "🏅 Scoring",
+        "tab_positioning": "🎯 Positionnement",
+
+        "sec_trends": "F.3.2 · Tendances des exportations & importations",
+        "sec_share_trends": "F.3.3 · Tendances des parts de marché",
+        "opt_exports": "Exportations",
+        "opt_imports": "Importations",
+        "opt_export_share": "Part des exportations",
+        "opt_import_share": "Part des importations",
+        "unit_usd_billion": "Milliards USD",
+        "unit_share": "Part",
+        "title_trends": "{country} — Exportations & importations (milliards USD)",
+        "title_share_trends": "{country} — Part des exportations & importations dans le commerce mondial",
+
+        "sec_balance": "F.3.4 · Balance commerciale & taux de couverture",
+        "trace_trade_balance": "Balance commerciale",
+        "title_balance": "{country} — Balance commerciale (milliards USD)",
+        "trace_coverage_ratio": "Taux de couverture (%)",
+        "balanced_100": "Équilibré (100 %)",
+        "title_coverage": "{country} — Taux de couverture (Exportations/Importations × 100 %)",
+        "unit_coverage_pct": "Couverture (%)",
+
+        "sec_growth": "F.3.5 · Taux de croissance annuels",
+        "title_growth": "{country} — Taux de croissance annuel des exportations & importations (%)",
+        "unit_pct": "%",
+
+        "sec_global_view": "F.3.6 · Vue globale du commerce — Aperçu",
+        "title_volume": "Volume (milliards USD)",
+        "unit_usd_b": "Milliards USD",
+        "title_world_share": "Part mondiale (%)",
+        "title_export_growth": "Croissance des exportations (%)",
+        "trace_export_pct": "Export %",
+        "title_trade_balance_b": "Balance commerciale (milliards USD)",
+        "trace_balance": "Balance",
+        "card_stability": "📊 Stabilité — Volatilité des exportations",
+        "card_stability_sub": "σ de la croissance annuelle des exportations · plus bas = plus stable",
+        "card_consistency": "📉 Constance — Fréquence de croissance négative",
+        "card_consistency_sub": "{years} avec croissance des exportations négative",
+        "years_of_10": "{n:.1f} / 10 ans",
+
+        "sec_positioning": "F.4.5 · Positionnement mondial — Où se situe ce pays ?",
+        "quad_tab_static": "📐 Quadrant statique",
+        "quad_tab_dynamic": "⚡ Quadrant dynamique",
+        "quad_tab_strategic": "⭐ Quadrant stratégique",
+        "quad_tab_meta": "🌐 Profil méta",
+        "other_countries": "Autres pays",
+        "others": "Autres",
+
+        "lbl_countries_to_animate": "Pays à animer",
+        "title_static_anim": "Quadrant statique — Animé ({start}–{end})",
+        "axis_export_share_size": "Part des exportations (%) — Taille commerciale",
+        "axis_coverage_balance": "Taux de couverture (%) — Balance commerciale",
+        "quad_dominant_desc": "🟢 Dominant<br><sub>Grande taille & excédent</sub>",
+        "quad_balanced_desc": "🔵 Balanced<br><sub>Petite taille & excédent</sub>",
+        "quad_vulnerable_desc": "🟡 Vulnerable<br><sub>Grande taille & déficit</sub>",
+        "quad_marginal_desc": "⚫ Marginal<br><sub>Petite taille & déficit</sub>",
+        "btn_play": "▶ Lecture",
+        "btn_pause": "⏸ Pause",
+        "slider_year_prefix": "Année : ",
+        "badge_static_quadrant": "→ Quadrant statique : ",
+        "title_static_dist": "Répartition du quadrant statique — Tous les pays",
+        "axis_countries": "Pays",
+
+        "lbl_highlight_countries": "Pays à mettre en évidence",
+        "hover_cagr": "CAGR",
+        "hover_volatility": "Volatilité",
+        "hover_quadrant": "Quadrant",
+        "hover_dynamic_quadrant": "Quadrant dynamique",
+        "quad_star_desc": "⭐ Star<br>(Forte croissance · Faible volatilité)",
+        "quad_stable_desc": "😴 Stable Stagnant<br>(Faible croissance · Faible volatilité)",
+        "quad_risky_desc": "📈 Risky Grower<br>(Forte croissance · Forte volatilité)",
+        "quad_declining_desc": "📉 Declining<br>(Faible croissance · Forte volatilité)",
+        "title_dynamic_quadrant": "Quadrant dynamique — {country} vs tous les pays",
+        "axis_cagr_export": "CAGR des exportations (%)",
+        "axis_export_volatility": "Volatilité des exportations",
+        "badge_dynamic_quadrant": "→ Quadrant dynamique : ",
+
+        "hover_export_share": "Part des exportations",
+        "hover_strategic_quadrant": "Quadrant stratégique",
+        "quad_stars_desc": "⭐ Stars<br><sub>Grande taille & croissance</sub>",
+        "quad_emerging_desc": "🌱 Emerging<br><sub>Petite taille & croissance</sub>",
+        "quad_cashcows_desc": "🐄 Cash Cows<br><sub>Grande taille & stagnation</sub>",
+        "quad_marginal2_desc": "📉 Marginal<br><sub>Petite taille & déclin</sub>",
+        "title_strategic_quadrant": "Quadrant stratégique (BCG) — {country}",
+        "axis_export_share_pct": "Part des exportations (%)",
+        "badge_strategic_quadrant": "→ Quadrant stratégique : ",
+
+        "title_meta_positioning": "Positionnement du profil méta — {country} mis en évidence",
+        "axis_structural_score": "Score structurel",
+        "hover_structural_score": "Score structurel",
+        "hover_meta_profile": "Profil méta",
+        "title_meta_dist": "Répartition des profils méta",
+        "badge_meta_profile": "Profil méta de {country} : ",
+
+        "expander_quad_defs": "Définitions des quadrants & profils méta",
+        "quad_defs_col1": (
+            "**Statique** (Part des exportations × Taux de couverture)\n"
+            "- 🟢 **Dominant** — grand exportateur + excédent commercial\n"
+            "- 🔵 **Balanced** — petit exportateur + excédent commercial\n"
+            "- 🟡 **Vulnerable** — grand exportateur + déficit commercial\n"
+            "- ⚫ **Marginal** — petit exportateur + déficit commercial\n\n"
+            "**Dynamique** (CAGR × Volatilité, seuils : z=0 × volatilité médiane)\n"
+            "- ⭐ **Star** — CAGR élevé, faible volatilité\n"
+            "- 📈 **Risky Grower** — CAGR élevé, forte volatilité\n"
+            "- 📉 **Declining** — CAGR faible, faible volatilité\n"
+            "- 😴 **Stable Stagnant** — CAGR faible, forte volatilité\n\n"
+            "**Stratégique** (Part des exportations × CAGR, seuils : 1 % × 0)\n"
+            "- ⭐ **Stars** — part élevée & CAGR positif\n"
+            "- 🌱 **Emerging** — part faible & CAGR positif\n"
+            "- 🐄 **Cash Cows** — part élevée & CAGR négatif\n"
+            "- 📉 **Marginal** — part faible & CAGR négatif"
+        ),
+        "quad_defs_col2": (
+            "**Profil méta** (composite des 3 quadrants)\n\n"
+            "Dérivé de la combinaison Statique × Dynamique × Stratégique :\n\n"
+            "- 🌍 **Global Leader** — Dominant + Stars\n"
+            "- 💪 **Established Power** — Dominant/Vulnerable + Stars/Cash Cow\n"
+            "- ⬆️ **Rising Challenger** — Emerging + Star (petit mais stable & en croissance)\n"
+            "- 🌪️ **Volatile Emerging** — Emerging + Risky Grower (petit + instable)\n"
+            "- 📍 **Peripheral** — sinon (score faible, croissance faible)\n\n"
+            "*Pas un système à 4 quadrants — classification composite\n"
+            "issue de l'interaction de 3 dimensions de quadrants*"
+        ),
+
+        "sec_scoring": "F.3.7 · Scoring structurel",
+        "md_profile_scorecard": "**Fiche de score du profil**",
+        "score_size_profile": "Profil de taille",
+        "score_balance_profile": "Profil de balance",
+        "score_growth_profile": "Profil de croissance",
+        "score_stability_profile": "Profil de stabilité",
+        "score_consistency_profile": "Profil de constance",
+        "lbl_structural_score": "Score structurel",
+        "lbl_structural_profile": "Profil structurel",
+        "lbl_meta_profile": "Profil méta",
+        "lbl_quadrants": "Quadrants",
+        "lbl_static": "Statique",
+        "lbl_dynamic": "Dynamique",
+        "lbl_strategic": "Stratégique",
+        "sec_radar": "Radar — 5 dimensions",
+        "lbl_compare_with": "Comparer avec",
+        "dim_size": "Taille",
+        "dim_balance": "Équilibre",
+        "dim_growth": "Croissance",
+        "dim_stability": "Stabilité",
+        "dim_consistency": "Constance",
+        "sec_structural_heatmap": "Carte de chaleur structurelle — Meilleurs & pires",
+        "lbl_view": "Vue",
+        "opt_top_performers": "Meilleures performances",
+        "opt_bottom_performers": "Moins bonnes performances",
+        "lbl_n_countries": "N pays",
+        "expander_scoring_methodology": "Méthodologie de scoring",
+        "md_scoring_methodology": (
+            "**Score structurel** = `0,60 × z_export_share + 0,10 × z_coverage_ratio "
+            "+ 0,15 × z_cagr_export − 0,10 × z_volatility_export − 0,05 × z_negfreq_export`\n\n"
+            "**Seuils** : q85 → Strong · q50 → Good · q15 → Moderate · en dessous → Weak\n\n"
+            "**Dimensions du radar** : toutes mappées sur 0→1, où 1 = meilleur profil\n"
+            "(ex. Leader=1,0, Major=0,67, Mid=0,33, Small=0,0)"
+        ),
+    },
+}
 
 def _fmt(x):
     return format_value(x)
@@ -130,16 +494,17 @@ PLOTLY_LAYOUT_COMPACT = {k: v for k, v in PLOTLY_LAYOUT.items()
 
 DIMS = ["size_profile", "balance_profile", "growth_profile",
         "stability_profile", "consistency_profile"]
-DIM_LABELS = ["Size", "Balance", "Growth", "Stability", "Consistency"]
+DIM_LABELS = [t(STRINGS, "dim_size"), t(STRINGS, "dim_balance"), t(STRINGS, "dim_growth"),
+              t(STRINGS, "dim_stability"), t(STRINGS, "dim_consistency")]
 
 
 # ════════════════════════════════════════════════════════════════
 # HEADER
 # ════════════════════════════════════════════════════════════════
 
-st.markdown('<div class="page-eyebrow">Trade Analysis · Page 3 of 6</div>', unsafe_allow_html=True)
-st.title("Country Trade Profile")
-st.caption("F.3 — Individual country trade structure · trends · balance · scoring")
+st.markdown(f'<div class="page-eyebrow">{t(STRINGS, "eyebrow")}</div>', unsafe_allow_html=True)
+st.title(t(STRINGS, "title"))
+st.caption(t(STRINGS, "caption"))
 thin_divider()
 
 
@@ -150,7 +515,7 @@ thin_divider()
 col_sel, col_info = st.columns([1, 3])
 with col_sel:
     default_idx = COUNTRIES.index("France") if "France" in COUNTRIES else 0
-    country = st.selectbox("Select country", COUNTRIES, index=default_idx, key="t3_country")
+    country = st.selectbox(t(STRINGS, "lbl_select_country"), COUNTRIES, index=default_idx, key="t3_country")
 
 # Filter data for selected country
 df_c = df_trade[df_trade["country_name"] == country].sort_values("year").copy()
@@ -163,19 +528,19 @@ with col_info:
         latest = df_c[df_c["year"] == df_c["year"].max()].iloc[0]
 
         k1, k2, k3, k4 = st.columns(4)
-        k1.markdown(kpi("Exports (latest)",
+        k1.markdown(kpi(t(STRINGS, "kpi_exports_latest"),
             f"${latest['X']/1e9:.1f}B", "amber"), unsafe_allow_html=True)
-        k2.markdown(kpi("Export share",
+        k2.markdown(kpi(t(STRINGS, "kpi_export_share"),
             f"{row_s['export_share_structural']:.2f}%", "teal"), unsafe_allow_html=True)
-        k3.markdown(kpi("Structural score",
+        k3.markdown(kpi(t(STRINGS, "kpi_structural_score"),
             f"{row_s['structural_score']:.2f}", "blue"), unsafe_allow_html=True)
-        k4.markdown(kpi("Profile",
+        k4.markdown(kpi(t(STRINGS, "kpi_profile"),
             row_s.get("structural_profile", "—"), ""), unsafe_allow_html=True)
 
 thin_divider()
 
 if df_c.empty:
-    st.warning(f"No data available for {country}.")
+    st.warning(t(STRINGS, "warn_no_data").format(country=country))
     st.stop()
 
 
@@ -184,18 +549,18 @@ if df_c.empty:
 # ════════════════════════════════════════════════════════════════
 
 tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
-    "📈 Trends",
-    "⚖️ Balance",
-    "📊 Growth",
-    "🌐 Global View",
-    "🏅 Scoring",
-    "🎯 Positioning",
+    t(STRINGS, "tab_trends"),
+    t(STRINGS, "tab_balance"),
+    t(STRINGS, "tab_growth"),
+    t(STRINGS, "tab_global_view"),
+    t(STRINGS, "tab_scoring"),
+    t(STRINGS, "tab_positioning"),
 ])
 
 
 # ── TAB 1 : TRENDS ───────────────────────────────────────────
 with tab1:
-    section_label("F.3.2 · Export & Import Trends")
+    section_label(t(STRINGS, "sec_trends"))
     col1, col2 = st.columns(2)
 
     with col1:
@@ -204,54 +569,54 @@ with tab1:
         df_c["_fmtM"] = df_c["M"].apply(format_value)
         fig_trend.add_trace(go.Scatter(
             x=df_c["year"], y=df_c["X"] / 1e9,
-            mode="lines+markers", name="Exports",
+            mode="lines+markers", name=t(STRINGS, "opt_exports"),
             line=dict(color=COLORS["export"], width=2.5),
             marker=dict(size=7),
             fill="tozeroy", fillcolor="rgba(245,158,11,0.08)",
             customdata=df_c[["_fmtX"]],
-            hovertemplate="<b>%{x}</b><br>Exports: $%{customdata[0]}<extra></extra>",
+            hovertemplate="<b>%{x}</b><br>" + t(STRINGS, "opt_exports") + ": $%{customdata[0]}<extra></extra>",
         ))
         fig_trend.add_trace(go.Scatter(
             x=df_c["year"], y=df_c["M"] / 1e9,
-            mode="lines+markers", name="Imports",
+            mode="lines+markers", name=t(STRINGS, "opt_imports"),
             line=dict(color=COLORS["import"], width=2.5, dash="dash"),
             marker=dict(size=7),
             customdata=df_c[["_fmtM"]],
-            hovertemplate="<b>%{x}</b><br>Imports: $%{customdata[0]}<extra></extra>",
+            hovertemplate="<b>%{x}</b><br>" + t(STRINGS, "opt_imports") + ": $%{customdata[0]}<extra></extra>",
         ))
         fig_trend.update_layout(**PLOTLY_LAYOUT,
-            title=f"{country} — Exports & Imports (USD Billion)",
-            yaxis_title="USD Billion",
+            title=t(STRINGS, "title_trends").format(country=country),
+            yaxis_title=t(STRINGS, "unit_usd_billion"),
         )
         st.plotly_chart(fig_trend, width='stretch')
 
     with col2:
-        section_label("F.3.3 · Share Trends")
+        section_label(t(STRINGS, "sec_share_trends"))
         fig_share = go.Figure()
         fig_share.add_trace(go.Scatter(
             x=df_c["year"], y=df_c["export_share"],
-            mode="lines+markers", name="Export Share",
+            mode="lines+markers", name=t(STRINGS, "opt_export_share"),
             line=dict(color=COLORS["export"], width=2.5),
             marker=dict(size=7),
-            hovertemplate="<b>%{x}</b><br>Export Share: %{y:.3f}%<extra></extra>",
+            hovertemplate="<b>%{x}</b><br>" + t(STRINGS, "opt_export_share") + ": %{y:.3f}%<extra></extra>",
         ))
         fig_share.add_trace(go.Scatter(
             x=df_c["year"], y=df_c["import_share"],
-            mode="lines+markers", name="Import Share",
+            mode="lines+markers", name=t(STRINGS, "opt_import_share"),
             line=dict(color=COLORS["import"], width=2.5, dash="dash"),
             marker=dict(size=7),
-            hovertemplate="<b>%{x}</b><br>Import Share: %{y:.3f}%<extra></extra>",
+            hovertemplate="<b>%{x}</b><br>" + t(STRINGS, "opt_import_share") + ": %{y:.3f}%<extra></extra>",
         ))
         fig_share.update_layout(**PLOTLY_LAYOUT,
-            title=f"{country} — Export & Import Share of World Trade",
-            yaxis_title="Share",
+            title=t(STRINGS, "title_share_trends").format(country=country),
+            yaxis_title=t(STRINGS, "unit_share"),
         )
         st.plotly_chart(fig_share, width='stretch')
 
 
 # ── TAB 2 : BALANCE ──────────────────────────────────────────
 with tab2:
-    section_label("F.3.4 · Trade Balance & Coverage Ratio")
+    section_label(t(STRINGS, "sec_balance"))
     col1, col2 = st.columns(2)
 
     with col1:
@@ -261,19 +626,19 @@ with tab2:
         fig_bal.add_trace(go.Bar(
             x=df_c["year"],
             y=df_c["trade_balance_B"],
-            name="Trade Balance",
+            name=t(STRINGS, "trace_trade_balance"),
             marker_color=[
                 COLORS["balance"] if v >= 0 else "#EF4444"
                 for v in df_c["trade_balance_B"]
             ],
             opacity=0.8,
             customdata=df_c[["_fmtBal"]],
-            hovertemplate="<b>%{x}</b><br>Balance: %{customdata[0]}<extra></extra>",
+            hovertemplate="<b>%{x}</b><br>" + t(STRINGS, "trace_trade_balance") + ": %{customdata[0]}<extra></extra>",
         ))
         fig_bal.add_hline(y=0, line_color="#EEF4FB", line_width=1)
         fig_bal.update_layout(**PLOTLY_LAYOUT,
-            title=f"{country} — Trade Balance (USD Billion)",
-            yaxis_title="USD Billion",
+            title=t(STRINGS, "title_balance").format(country=country),
+            yaxis_title=t(STRINGS, "unit_usd_billion"),
         )
         st.plotly_chart(fig_bal, width='stretch')
 
@@ -281,25 +646,25 @@ with tab2:
         fig_cov = go.Figure()
         fig_cov.add_trace(go.Scatter(
             x=df_c["year"], y=df_c["coverage_ratio"] * 100,
-            mode="lines+markers", name="Coverage Ratio (%)",
+            mode="lines+markers", name=t(STRINGS, "trace_coverage_ratio"),
             line=dict(color=COLORS["coverage"], width=2.5),
             marker=dict(size=7),
             fill="tozeroy", fillcolor="rgba(167,139,250,0.08)",
             customdata=df_c[["coverage_ratio"]],
-            hovertemplate="<b>%{x}</b><br>Coverage: %{customdata[0]:.1%}<extra></extra>",
+            hovertemplate="<b>%{x}</b><br>" + t(STRINGS, "unit_coverage_pct") + ": %{customdata[0]:.1%}<extra></extra>",
         ))
         fig_cov.add_hline(y=100, line_dash="dash", line_color="#EEF4FB",
-                          annotation_text="Balanced (100%)")
+                          annotation_text=t(STRINGS, "balanced_100"))
         fig_cov.update_layout(**PLOTLY_LAYOUT,
-            title=f"{country} — Coverage Ratio (Exports/Imports × 100%)",
-            yaxis_title="Coverage (%)",
+            title=t(STRINGS, "title_coverage").format(country=country),
+            yaxis_title=t(STRINGS, "unit_coverage_pct"),
         )
         st.plotly_chart(fig_cov, width='stretch')
 
 
 # ── TAB 3 : GROWTH ───────────────────────────────────────────
 with tab3:
-    section_label("F.3.5 · Annual Growth Rates")
+    section_label(t(STRINGS, "sec_growth"))
     df_g = df_c.dropna(subset=["export_growth", "import_growth"]).copy()
 
     fig_growth = go.Figure()
@@ -307,23 +672,23 @@ with tab3:
 
     fig_growth.add_trace(go.Bar(
         x=df_g["year"], y=df_g["export_growth"],
-        name="Exports",
+        name=t(STRINGS, "opt_exports"),
         marker_color=["rgba(245,158,11,0.9)" if v >= 0 else "rgba(245,158,11,0.35)"
                       for v in df_g["export_growth"]],
         offsetgroup=0,
-        hovertemplate="<b>%{x}</b><br>Export growth: %{y:.1f}%<extra></extra>",
+        hovertemplate="<b>%{x}</b><br>" + t(STRINGS, "opt_exports") + ": %{y:.1f}%<extra></extra>",
     ))
     fig_growth.add_trace(go.Bar(
         x=df_g["year"], y=df_g["import_growth"],
-        name="Imports",
+        name=t(STRINGS, "opt_imports"),
         marker_color=["rgba(96,165,250,0.9)" if v >= 0 else "rgba(96,165,250,0.35)"
                       for v in df_g["import_growth"]],
         offsetgroup=1,
-        hovertemplate="<b>%{x}</b><br>Import growth: %{y:.1f}%<extra></extra>",
+        hovertemplate="<b>%{x}</b><br>" + t(STRINGS, "opt_imports") + ": %{y:.1f}%<extra></extra>",
     ))
     fig_growth.update_layout(**PLOTLY_LAYOUT,
-        title=f"{country} — Annual Export & Import Growth Rate (%)",
-        yaxis_title="%",
+        title=t(STRINGS, "title_growth").format(country=country),
+        yaxis_title=t(STRINGS, "unit_pct"),
         barmode="group",
         height=420,
     )
@@ -332,7 +697,7 @@ with tab3:
 
 # ── TAB 4 : GLOBAL VIEW ──────────────────────────────────────
 with tab4:
-    section_label("F.3.6 · Global Trade View — Overview")
+    section_label(t(STRINGS, "sec_global_view"))
     df_g = df_c.dropna(subset=["export_growth", "import_growth"]).copy()
 
     r1c1, r1c2 = st.columns(2)
@@ -342,17 +707,17 @@ with tab4:
     with r1c1:
         fig1 = go.Figure()
         fig1.add_trace(go.Scatter(x=df_c["year"], y=df_c["X"]/1e9,
-            mode="lines+markers", name="Exports",
+            mode="lines+markers", name=t(STRINGS, "opt_exports"),
             line=dict(color=COLORS["export"], width=2),
             customdata=df_c[["_fmtX"]],
-            hovertemplate="<b>%{x}</b><br>Exports: $%{customdata[0]}<extra></extra>"))
+            hovertemplate="<b>%{x}</b><br>" + t(STRINGS, "opt_exports") + ": $%{customdata[0]}<extra></extra>"))
         fig1.add_trace(go.Scatter(x=df_c["year"], y=df_c["M"]/1e9,
-            mode="lines+markers", name="Imports",
+            mode="lines+markers", name=t(STRINGS, "opt_imports"),
             line=dict(color=COLORS["import"], width=2, dash="dash"),
             customdata=df_c[["_fmtM"]],
-            hovertemplate="<b>%{x}</b><br>Imports: $%{customdata[0]}<extra></extra>"))
+            hovertemplate="<b>%{x}</b><br>" + t(STRINGS, "opt_imports") + ": $%{customdata[0]}<extra></extra>"))
         fig1.update_layout(**PLOTLY_LAYOUT_COMPACT,
-            title="Volume (USD B)", yaxis_title="USD B", height=300,
+            title=t(STRINGS, "title_volume"), yaxis_title=t(STRINGS, "unit_usd_b"), height=300,
             margin=dict(l=30, r=20, t=40, b=30))
         st.plotly_chart(fig1, width='stretch')
 
@@ -360,15 +725,15 @@ with tab4:
     with r1c2:
         fig2 = go.Figure()
         fig2.add_trace(go.Scatter(x=df_c["year"], y=df_c["export_share"],
-            mode="lines+markers", name="Export Share",
+            mode="lines+markers", name=t(STRINGS, "opt_export_share"),
             line=dict(color=COLORS["export"], width=2),
-            hovertemplate="<b>%{x}</b><br>Export Share: %{y:.3f}%<extra></extra>"))
+            hovertemplate="<b>%{x}</b><br>" + t(STRINGS, "opt_export_share") + ": %{y:.3f}%<extra></extra>"))
         fig2.add_trace(go.Scatter(x=df_c["year"], y=df_c["import_share"],
-            mode="lines+markers", name="Import Share",
+            mode="lines+markers", name=t(STRINGS, "opt_import_share"),
             line=dict(color=COLORS["import"], width=2, dash="dash"),
-            hovertemplate="<b>%{x}</b><br>Import Share: %{y:.3f}%<extra></extra>"))
+            hovertemplate="<b>%{x}</b><br>" + t(STRINGS, "opt_import_share") + ": %{y:.3f}%<extra></extra>"))
         fig2.update_layout(**PLOTLY_LAYOUT_COMPACT,
-            title="World Share (%)", yaxis_title="%", height=300,
+            title=t(STRINGS, "title_world_share"), yaxis_title=t(STRINGS, "unit_pct"), height=300,
             margin=dict(l=30, r=20, t=40, b=30))
         st.plotly_chart(fig2, width='stretch')
 
@@ -377,12 +742,12 @@ with tab4:
         fig3 = go.Figure()
         fig3.add_hline(y=0, line_color="#EEF4FB", line_width=1)
         fig3.add_trace(go.Bar(x=df_g["year"], y=df_g["export_growth"],
-            name="Export %",
+            name=t(STRINGS, "trace_export_pct"),
             marker_color=[COLORS["export"] if v >= 0 else "#EF4444"
                           for v in df_g["export_growth"]], opacity=0.8,
-            hovertemplate="<b>%{x}</b><br>Export growth: %{y:.1f}%<extra></extra>"))
+            hovertemplate="<b>%{x}</b><br>" + t(STRINGS, "opt_exports") + ": %{y:.1f}%<extra></extra>"))
         fig3.update_layout(**PLOTLY_LAYOUT_COMPACT,
-            title="Export Growth (%)", yaxis_title="%", height=300,
+            title=t(STRINGS, "title_export_growth"), yaxis_title=t(STRINGS, "unit_pct"), height=300,
             margin=dict(l=30, r=20, t=40, b=30))
         st.plotly_chart(fig3, width='stretch')
 
@@ -390,14 +755,14 @@ with tab4:
     with r2c2:
         fig4 = go.Figure()
         fig4.add_trace(go.Bar(x=df_c["year"], y=df_c["trade_balance_B"],
-            name="Balance",
+            name=t(STRINGS, "trace_balance"),
             marker_color=[COLORS["balance"] if v >= 0 else "#EF4444"
                           for v in df_c["trade_balance_B"]], opacity=0.8,
             customdata=df_c[["_fmtBal"]],
-            hovertemplate="<b>%{x}</b><br>Balance: %{customdata[0]}<extra></extra>"))
+            hovertemplate="<b>%{x}</b><br>" + t(STRINGS, "trace_balance") + ": %{customdata[0]}<extra></extra>"))
         fig4.add_hline(y=0, line_color="#EEF4FB", line_width=1)
         fig4.update_layout(**PLOTLY_LAYOUT_COMPACT,
-            title="Trade Balance (USD B)", yaxis_title="USD B", height=300,
+            title=t(STRINGS, "title_trade_balance_b"), yaxis_title=t(STRINGS, "unit_usd_b"), height=300,
             margin=dict(l=30, r=20, t=40, b=30))
         st.plotly_chart(fig4, width='stretch')
 
@@ -419,13 +784,13 @@ with tab4:
                     padding:.85rem 1rem;text-align:center;height:100%;">
           <div style="font-size:11px;color:#6890B0;text-transform:uppercase;
                       letter-spacing:.07em;margin-bottom:.4rem;">
-            📊 Stability — Export Volatility
+            {t(STRINGS, "card_stability")}
           </div>
           <div style="font-size:32px;font-weight:700;color:{_vol_color};">
             {_vol_lbl}
           </div>
           <div style="font-size:12px;color:#6890B0;margin-top:.3rem;">
-            σ of annual export growth · lower = more stable
+            {t(STRINGS, "card_stability_sub")}
           </div>
         </div>
         """, unsafe_allow_html=True)
@@ -434,7 +799,7 @@ with tab4:
         # Consistency — negfreq_export from df_structural
         _neg_val = df_s.iloc[0].get("negfreq_export", None) if not df_s.empty else None
         _neg_lbl = "—" if _neg_val is None else f"{_neg_val:.0%}"
-        _neg_years = "—" if _neg_val is None else f"{_neg_val * 10:.1f} / 10 years"
+        _neg_years = "—" if _neg_val is None else t(STRINGS, "years_of_10").format(n=_neg_val * 10)
         _neg_color = ("#10B981" if _neg_val is not None and _neg_val < 0.2
                       else "#60A5FA" if _neg_val is not None and _neg_val < 0.3
                       else "#F59E0B" if _neg_val is not None and _neg_val < 0.5
@@ -445,13 +810,13 @@ with tab4:
                     padding:.85rem 1rem;text-align:center;height:100%;">
           <div style="font-size:11px;color:#6890B0;text-transform:uppercase;
                       letter-spacing:.07em;margin-bottom:.4rem;">
-            📉 Consistency — Negative Growth Freq.
+            {t(STRINGS, "card_consistency")}
           </div>
           <div style="font-size:32px;font-weight:700;color:{_neg_color};">
             {_neg_lbl}
           </div>
           <div style="font-size:12px;color:#6890B0;margin-top:.3rem;">
-            {_neg_years} with negative export growth
+            {t(STRINGS, "card_consistency_sub").format(years=_neg_years)}
           </div>
         </div>
         """, unsafe_allow_html=True)
@@ -459,17 +824,17 @@ with tab4:
 
 # ── TAB 6 : POSITIONING ──────────────────────────────────────
 with tab6:
-    section_label("F.4.5 · Global Positioning — Where does this country stand?")
+    section_label(t(STRINGS, "sec_positioning"))
 
     if df_s.empty:
-        st.warning(f"No structural data for {country}.")
+        st.warning(t(STRINGS, "warn_no_structural").format(country=country))
     else:
         row_s = df_s.iloc[0]
 
-        quad_tabs = st.tabs(["📐 Static Quadrant",
-                              "⚡ Dynamic Quadrant",
-                              "⭐ Strategic Quadrant",
-                              "🌐 Meta Profile"])
+        quad_tabs = st.tabs([t(STRINGS, "quad_tab_static"),
+                              t(STRINGS, "quad_tab_dynamic"),
+                              t(STRINGS, "quad_tab_strategic"),
+                              t(STRINGS, "quad_tab_meta")])
 
         QUAD_COLORS = {
             # Static
@@ -503,7 +868,7 @@ with tab6:
             fig.add_trace(go.Scatter(
                 x=df_bg[x_col], y=df_bg[y_col],
                 mode="markers",
-                name="Other countries",
+                name=t(STRINGS, "other_countries"),
                 marker=dict(
                     color=[QUAD_COLORS.get(q, "#6B7280")
                             for q in df_bg[q_col]],
@@ -558,7 +923,7 @@ with tab6:
         with quad_tabs[0]:
             # Animation: export_share × coverage_ratio per year from df_trade
             _hl_sq = st.multiselect(
-                "Countries to animate",
+                t(STRINGS, "lbl_countries_to_animate"),
                 options=[c for c in COUNTRIES if c != country],
                 default=[cc for cc in ["USA","China","Germany","Canada","Brazil","Japan","Tunisia","Qatar"]
                          if cc in COUNTRIES and cc != country],
@@ -665,16 +1030,16 @@ with tab6:
 
             # Build base annotations (quadrant labels) — must persist through frames
             _quad_annotations = [
-                dict(x=_sq_x_right, y=_sq_y_top, text="🟢 Dominant<br><sub>Large & Surplus</sub>",
+                dict(x=_sq_x_right, y=_sq_y_top, text=t(STRINGS, "quad_dominant_desc"),
                      showarrow=False, font=dict(size=10, color="#10B981"),
                      align="center", bgcolor="rgba(22,32,53,0.75)", borderpad=4),
-                dict(x=_sq_x_left,  y=_sq_y_top, text="🔵 Balanced<br><sub>Small & Surplus</sub>",
+                dict(x=_sq_x_left,  y=_sq_y_top, text=t(STRINGS, "quad_balanced_desc"),
                      showarrow=False, font=dict(size=10, color="#60A5FA"),
                      align="center", bgcolor="rgba(22,32,53,0.75)", borderpad=4),
-                dict(x=_sq_x_right, y=_sq_y_bot, text="🟡 Vulnerable<br><sub>Large & Deficit</sub>",
+                dict(x=_sq_x_right, y=_sq_y_bot, text=t(STRINGS, "quad_vulnerable_desc"),
                      showarrow=False, font=dict(size=10, color="#F59E0B"),
                      align="center", bgcolor="rgba(22,32,53,0.75)", borderpad=4),
-                dict(x=_sq_x_left,  y=_sq_y_bot, text="⚫ Marginal<br><sub>Small & Deficit</sub>",
+                dict(x=_sq_x_left,  y=_sq_y_bot, text=t(STRINGS, "quad_marginal_desc"),
                      showarrow=False, font=dict(size=10, color="#6B7280"),
                      align="center", bgcolor="rgba(22,32,53,0.75)", borderpad=4),
             ]
@@ -695,11 +1060,11 @@ with tab6:
                 **PLOTLY_LAYOUT_COMPACT,
                 paper_bgcolor="#1F3050", plot_bgcolor="#162035",
                 legend=dict(bgcolor="#1F3050", bordercolor="#304870"),
-                title=f"Static Quadrant — Animated ({years_anim[0]}–{years_anim[-1]})",
-                xaxis=dict(title="Export Share (%) — Trade Size",
+                title=t(STRINGS, "title_static_anim").format(start=years_anim[0], end=years_anim[-1]),
+                xaxis=dict(title=t(STRINGS, "axis_export_share_size"),
                            range=[0, _x_max],
                            gridcolor="#304870", linecolor="#304870"),
-                yaxis=dict(title="Coverage Ratio (%) — Trade Balance",
+                yaxis=dict(title=t(STRINGS, "axis_coverage_balance"),
                            range=[_y_min, _y_max],
                            gridcolor="#304870", linecolor="#304870"),
                 annotations=_quad_annotations + [dict(
@@ -715,11 +1080,11 @@ with tab6:
                     y=1.08, x=0.5, xanchor="center",
                     pad={"r": 10, "t": 10},
                     buttons=[
-                        dict(label="▶ Play",
+                        dict(label=t(STRINGS, "btn_play"),
                              method="animate",
                              args=[None, dict(frame=dict(duration=1200, redraw=True),
                                              fromcurrent=True, mode="immediate")]),
-                        dict(label="⏸ Pause",
+                        dict(label=t(STRINGS, "btn_pause"),
                              method="animate",
                              args=[[None], dict(frame=dict(duration=0, redraw=False),
                                                mode="immediate")]),
@@ -733,7 +1098,7 @@ with tab6:
                                 label=str(yr), method="animate")
                            for yr in years_anim],
                     x=0, y=0, len=1.0,
-                    currentvalue=dict(prefix="Year: ", font=dict(size=14)),
+                    currentvalue=dict(prefix=t(STRINGS, "slider_year_prefix"), font=dict(size=14)),
                     pad=dict(t=50),
                 )],
             )
@@ -747,7 +1112,7 @@ with tab6:
                 <div style="background:#1A2C48;border-left:4px solid {_sq_color};
                             border-radius:0 10px 10px 0;padding:.75rem 1rem;">
                   <span style="color:{_sq_color};font-weight:600;">{country}</span>
-                  <span style="color:#A8C0D8;"> → Static Quadrant: </span>
+                  <span style="color:#A8C0D8;"> {t(STRINGS, "badge_static_quadrant")}</span>
                   <span style="color:{_sq_color};font-weight:600;">{_sq_val}</span>
                 </div>
                 """, unsafe_allow_html=True)
@@ -763,10 +1128,10 @@ with tab6:
             ))
             fig_qdist.update_layout(**PLOTLY_LAYOUT_COMPACT,
                 paper_bgcolor="#1F3050", plot_bgcolor="#162035",
-                xaxis=dict(title="Countries", gridcolor="#304870"),
+                xaxis=dict(title=t(STRINGS, "axis_countries"), gridcolor="#304870"),
                 yaxis=dict(gridcolor="#304870"),
                 legend=dict(bgcolor="#1F3050", bordercolor="#304870"),
-                title="Static Quadrant Distribution — All Countries",
+                title=t(STRINGS, "title_static_dist"),
                 height=280,
                 margin=dict(l=40,r=40,t=40,b=20),
             )
@@ -774,7 +1139,7 @@ with tab6:
 
         with quad_tabs[1]:
             _hl_dq = st.multiselect(
-                "Highlight countries",
+                t(STRINGS, "lbl_highlight_countries"),
                 [c for c in COUNTRIES if c != country],
                 default=[cc for cc in ["China","USA","Germany","Canada","Brazil","Qatar"]
                          if cc in COUNTRIES and cc != country],
@@ -798,15 +1163,15 @@ with tab6:
             fig_dq.add_trace(go.Scatter(
                 x=df_dq_bg["cagr_export"] * 100,
                 y=df_dq_bg["volatility_export"],
-                mode="markers", name="Others",
+                mode="markers", name=t(STRINGS, "others"),
                 marker=dict(color=[DYN_COLORS.get(q,"#6B7280")
                                    for q in df_dq_bg["dynamic_quadrant"]],
                             size=7, opacity=0.35, line=dict(width=0)),
                 customdata=df_dq_bg[["country_name","dynamic_quadrant","cagr_export","volatility_export"]],
                 hovertemplate="<b>%{customdata[0]}</b><br>"
-                              "CAGR: %{customdata[2]:.2%}<br>"
-                              "Volatility: %{customdata[3]:.2f}<br>"
-                              "Quadrant: %{customdata[1]}<extra></extra>",
+                              + t(STRINGS, "hover_cagr") + ": %{customdata[2]:.2%}<br>"
+                              + t(STRINGS, "hover_volatility") + ": %{customdata[3]:.2f}<br>"
+                              + t(STRINGS, "hover_quadrant") + ": %{customdata[1]}<extra></extra>",
                 showlegend=False,
             ))
             for i, cc in enumerate(_dq_all):
@@ -827,9 +1192,9 @@ with tab6:
                                  f"{rr['volatility_export']:.2f}"]],
                     hovertemplate=(
                         f"<b>{cc}</b><br>"
-                        "CAGR: %{customdata[1]}<br>"
-                        "Volatility: %{customdata[2]}<br>"
-                        "Dynamic Quadrant: %{customdata[0]}<extra></extra>"
+                        + t(STRINGS, "hover_cagr") + ": %{customdata[1]}<br>"
+                        + t(STRINGS, "hover_volatility") + ": %{customdata[2]}<br>"
+                        + t(STRINGS, "hover_dynamic_quadrant") + ": %{customdata[0]}<extra></extra>"
                     ),
                 ))
 
@@ -853,10 +1218,10 @@ with tab6:
             _y_high  = (_vol_median + _ylim[1]) / 2         # midpoint top half
 
             for txt, xp, yp, clr in [
-                ("⭐ Star<br>(High Growth · Low Vol.)",           _x_right, _y_low,  "#10B981"),
-                ("😴 Stable Stagnant<br>(Low Growth · Low Vol.)", _x_left,  _y_low,  "#60A5FA"),
-                ("📈 Risky Grower<br>(High Growth · High Vol.)",  _x_right, _y_high, "#F59E0B"),
-                ("📉 Declining<br>(Low Growth · High Vol.)",      _x_left,  _y_high, "#EF4444"),
+                (t(STRINGS, "quad_star_desc"),     _x_right, _y_low,  "#10B981"),
+                (t(STRINGS, "quad_stable_desc"),   _x_left,  _y_low,  "#60A5FA"),
+                (t(STRINGS, "quad_risky_desc"),    _x_right, _y_high, "#F59E0B"),
+                (t(STRINGS, "quad_declining_desc"),_x_left,  _y_high, "#EF4444"),
             ]:
                 fig_dq.add_annotation(
                     x=xp, y=yp, text=txt, showarrow=False,
@@ -868,10 +1233,10 @@ with tab6:
             fig_dq.update_layout(**PLOTLY_LAYOUT_COMPACT,
                 paper_bgcolor="#1F3050", plot_bgcolor="#162035",
                 legend=dict(bgcolor="#1F3050", bordercolor="#304870"),
-                title=f"Dynamic Quadrant — {country} vs all countries",
-                xaxis=dict(title="CAGR Export (%)",
+                title=t(STRINGS, "title_dynamic_quadrant").format(country=country),
+                xaxis=dict(title=t(STRINGS, "axis_cagr_export"),
                            range=[_xlim[0], _xlim[1]], gridcolor="#304870"),
-                yaxis=dict(title="Export Volatility",
+                yaxis=dict(title=t(STRINGS, "axis_export_volatility"),
                            range=[0, _ylim_cap], gridcolor="#304870"),
                 height=520,
             )
@@ -883,14 +1248,14 @@ with tab6:
             <div style="background:#1A2C48;border-left:4px solid {q_color};
                         border-radius:0 10px 10px 0;padding:.75rem 1rem;">
               <span style="color:{q_color};font-weight:600;">{country}</span>
-              <span style="color:#A8C0D8;"> → Dynamic Quadrant: </span>
+              <span style="color:#A8C0D8;"> {t(STRINGS, "badge_dynamic_quadrant")}</span>
               <span style="color:{q_color};font-weight:600;">{q_val}</span>
             </div>
             """, unsafe_allow_html=True)
 
         with quad_tabs[2]:
             _hl_strat = st.multiselect(
-                "Highlight countries",
+                t(STRINGS, "lbl_highlight_countries"),
                 [c for c in COUNTRIES if c != country],
                 default=[cc for cc in ["USA","China","Germany","Canada","Brazil","Qatar"]
                          if cc in COUNTRIES and cc != country],
@@ -912,12 +1277,12 @@ with tab6:
             df_strat_bg = df_strat_all[~df_strat_all["country_name"].isin(_strat_all)]
             fig_strat.add_trace(go.Scatter(
                 x=df_strat_bg["export_share_structural"], y=df_strat_bg["cagr_export"],
-                mode="markers", name="Others",
+                mode="markers", name=t(STRINGS, "others"),
                 marker=dict(color=[STRAT_COLORS.get(q,"#6B7280")
                                    for q in df_strat_bg["strategic_quadrant"]],
                             size=7, opacity=0.35, line=dict(width=0)),
                 customdata=df_strat_bg[["country_name","strategic_quadrant"]],
-                hovertemplate="<b>%{customdata[0]}</b><br>Quadrant: %{customdata[1]}<extra></extra>",
+                hovertemplate="<b>%{customdata[0]}</b><br>" + t(STRINGS, "hover_quadrant") + ": %{customdata[1]}<extra></extra>",
                 showlegend=False,
             ))
             for i, cc in enumerate(_strat_all):
@@ -938,9 +1303,9 @@ with tab6:
                                  f"{rr['cagr_export']*100:.2f}%"]],
                     hovertemplate=(
                         f"<b>{cc}</b><br>"
-                        "Export Share: %{customdata[1]}<br>"
-                        "CAGR: %{customdata[2]}<br>"
-                        "Strategic Quadrant: %{customdata[0]}<extra></extra>"
+                        + t(STRINGS, "hover_export_share") + ": %{customdata[1]}<br>"
+                        + t(STRINGS, "hover_cagr") + ": %{customdata[2]}<br>"
+                        + t(STRINGS, "hover_strategic_quadrant") + ": %{customdata[0]}<extra></extra>"
                     ),
                 ))
             fig_strat.add_vline(x=_x_thr_s, line_dash="dash",
@@ -953,17 +1318,17 @@ with tab6:
             _sq_yhi_s = df_strat_all["cagr_export"].max()
             _add_quad_labels(fig_strat, _x_thr_s, 0,
                              [_sq_xlo_s, _sq_xhi_s], [_sq_ylo_s, _sq_yhi_s], [
-                ("TR", "⭐ Stars<br><sub>Large & Growing</sub>",           "#10B981"),
-                ("TL", "🌱 Emerging<br><sub>Small & Growing</sub>",        "#60A5FA"),
-                ("BR", "🐄 Cash Cows<br><sub>Large & Stagnant</sub>",      "#A78BFA"),
-                ("BL", "📉 Marginal<br><sub>Small & Shrinking</sub>",      "#6B7280"),
+                ("TR", t(STRINGS, "quad_stars_desc"),    "#10B981"),
+                ("TL", t(STRINGS, "quad_emerging_desc"), "#60A5FA"),
+                ("BR", t(STRINGS, "quad_cashcows_desc"), "#A78BFA"),
+                ("BL", t(STRINGS, "quad_marginal2_desc"),"#6B7280"),
             ])
             fig_strat.update_layout(**PLOTLY_LAYOUT_COMPACT,
                 paper_bgcolor="#1F3050", plot_bgcolor="#162035",
                 legend=dict(bgcolor="#1F3050", bordercolor="#304870"),
-                title=f"Strategic Quadrant (BCG) — {country}",
-                xaxis=dict(title="Export Share (%)", autorange=True, gridcolor="#304870"),
-                yaxis=dict(title="CAGR Export (%)", autorange=True, gridcolor="#304870"),
+                title=t(STRINGS, "title_strategic_quadrant").format(country=country),
+                xaxis=dict(title=t(STRINGS, "axis_export_share_pct"), autorange=True, gridcolor="#304870"),
+                yaxis=dict(title=t(STRINGS, "axis_cagr_export"), autorange=True, gridcolor="#304870"),
                 height=520,
             )
             st.plotly_chart(fig_strat, width='stretch')
@@ -974,7 +1339,7 @@ with tab6:
             <div style="background:#1A2C48;border-left:4px solid {q_color};
                         border-radius:0 10px 10px 0;padding:.75rem 1rem;">
               <span style="color:{q_color};font-weight:600;">{country}</span>
-              <span style="color:#A8C0D8;"> → Strategic Quadrant: </span>
+              <span style="color:#A8C0D8;"> {t(STRINGS, "badge_strategic_quadrant")}</span>
               <span style="color:{q_color};font-weight:600;">{q_val}</span>
             </div>
             """, unsafe_allow_html=True)
@@ -989,7 +1354,7 @@ with tab6:
                 "Volatile Emerging":"#EF4444",
             }
             _hl_meta = st.multiselect(
-                "Highlight countries",
+                t(STRINGS, "lbl_highlight_countries"),
                 [c for c in COUNTRIES if c != country],
                 default=[cc for cc in ["USA","China","Germany","Canada","Brazil","Qatar"]
                          if cc in COUNTRIES and cc != country],
@@ -1029,9 +1394,9 @@ with tab6:
                     customdata=df_mp[["country_name","meta_profile",
                                      "export_share_structural","structural_score"]],
                     hovertemplate="<b>%{customdata[0]}</b><br>"
-                                  "Export Share: %{customdata[2]:.3f}%<br>"
-                                  "Structural Score: %{customdata[3]:.3f}<br>"
-                                  "Meta Profile: %{customdata[1]}<extra></extra>",
+                                  + t(STRINGS, "hover_export_share") + ": %{customdata[2]:.3f}%<br>"
+                                  + t(STRINGS, "hover_structural_score") + ": %{customdata[3]:.3f}<br>"
+                                  + t(STRINGS, "hover_meta_profile") + ": %{customdata[1]}<extra></extra>",
                 ))
             _p95_share_m = df_structural["export_share_structural"].quantile(0.97)
             _p95_score_m = df_structural["structural_score"].quantile(0.97)
@@ -1041,9 +1406,9 @@ with tab6:
             fig_meta_pos.update_layout(**PLOTLY_LAYOUT_COMPACT,
                 paper_bgcolor="#1F3050", plot_bgcolor="#162035",
                 legend=dict(bgcolor="#1F3050", bordercolor="#304870"),
-                title=f"Meta Profile Positioning — {country} highlighted",
-                xaxis=dict(title="Export Share (%)", autorange=True, gridcolor="#304870"),
-                yaxis=dict(title="Structural Score", autorange=True, gridcolor="#304870"),
+                title=t(STRINGS, "title_meta_positioning").format(country=country),
+                xaxis=dict(title=t(STRINGS, "axis_export_share_pct"), autorange=True, gridcolor="#304870"),
+                yaxis=dict(title=t(STRINGS, "axis_structural_score"), autorange=True, gridcolor="#304870"),
                 height=520,
             )
             # Distribution
@@ -1057,10 +1422,10 @@ with tab6:
             ))
             fig_metadist.update_layout(**PLOTLY_LAYOUT_COMPACT,
                 paper_bgcolor="#1F3050", plot_bgcolor="#162035",
-                xaxis=dict(title="Countries", gridcolor="#304870"),
+                xaxis=dict(title=t(STRINGS, "axis_countries"), gridcolor="#304870"),
                 yaxis=dict(gridcolor="#304870"),
                 legend=dict(bgcolor="#1F3050", bordercolor="#304870"),
-                title="Meta Profile Distribution",
+                title=t(STRINGS, "title_meta_dist"),
                 height=270, margin=dict(l=120,r=40,t=40,b=20))
             st.plotly_chart(fig_meta_pos, width='stretch')
             st.plotly_chart(fig_metadist, width='stretch')
@@ -1071,68 +1436,37 @@ with tab6:
             st.markdown(f"""
             <div style="background:#1A2C48;border-left:4px solid {meta_color};
                         border-radius:0 10px 10px 0;padding:.75rem 1rem;">
-              <span style="color:#A8C0D8;">{country} Meta Profile: </span>
+              <span style="color:#A8C0D8;">{t(STRINGS, "badge_meta_profile").format(country=country)}</span>
               <span style="color:{meta_color};font-weight:600;">{meta_val}</span>
             </div>
             """, unsafe_allow_html=True)
 
-        with st.expander("Quadrant & Meta Profile definitions"):
+        with st.expander(t(STRINGS, "expander_quad_defs")):
             col1, col2 = st.columns(2)
             with col1:
-                st.markdown("""
-                **Static** (Export Share × Coverage Ratio)
-                - 🟢 **Dominant** — large exporter + trade surplus
-                - 🔵 **Balanced** — small exporter + trade surplus
-                - 🟡 **Vulnerable** — large exporter + trade deficit
-                - ⚫ **Marginal** — small exporter + trade deficit
-
-                **Dynamic** (CAGR × Volatility, thresholds: z=0 × median vol)
-                - ⭐ **Star** — high CAGR, low volatility
-                - 📈 **Risky Grower** — high CAGR, high volatility
-                - 📉 **Declining** — low CAGR, low volatility
-                - 😴 **Stable Stagnant** — low CAGR, high volatility
-
-                **Strategic** (Export Share × CAGR, thresholds: 1% × 0)
-                - ⭐ **Stars** — large share & positive CAGR
-                - 🌱 **Emerging** — small share & positive CAGR
-                - 🐄 **Cash Cows** — large share & negative CAGR
-                - 📉 **Marginal** — small share & negative CAGR
-                """)
+                st.markdown(t(STRINGS, "quad_defs_col1"))
             with col2:
-                st.markdown("""
-                **Meta Profile** (composite of 3 quadrants)
-
-                Derived from Static × Dynamic × Strategic combination:
-
-                - 🌍 **Global Leader** — Dominant + Stars
-                - 💪 **Established Power** — Dominant/Vulnerable + Stars/Cash Cow
-                - ⬆️ **Rising Challenger** — Emerging + Star (small but stable & growing)
-                - 🌪️ **Volatile Emerging** — Emerging + Risky Grower (small + unstable)
-                - 📍 **Peripheral** — otherwise (low score, low growth)
-
-                *Not a 4-quadrant system — composite classification
-                from the interaction of 3 quadrant dimensions*
-                """)
+                st.markdown(t(STRINGS, "quad_defs_col2"))
 
 
 # ── TAB 5 : SCORING ──────────────────────────────────────────
 with tab5:
-    section_label("F.3.7 · Structural Scoring")
+    section_label(t(STRINGS, "sec_scoring"))
 
     if df_s.empty:
-        st.warning(f"No structural data for {country}.")
+        st.warning(t(STRINGS, "warn_no_structural").format(country=country))
     else:
         row_s = df_s.iloc[0]
 
         # ── Scorecard ────────────────────────────────────────
-        st.markdown("**Profile Scorecard**")
+        st.markdown(t(STRINGS, "md_profile_scorecard"))
 
         score_items = [
-            ("Size Profile",        "size_profile",        "export_share_structural",  "%",   False),
-            ("Balance Profile",     "balance_profile",     "coverage_ratio_structural", "×",  False),
-            ("Growth Profile",      "growth_profile",      "cagr_export",               "%",  True),
-            ("Stability Profile",   "stability_profile",   "volatility_export",         "σ",  False),
-            ("Consistency Profile", "consistency_profile", "negfreq_export",            "",   True),
+            (t(STRINGS, "score_size_profile"),        "size_profile",        "export_share_structural",  "%",   False),
+            (t(STRINGS, "score_balance_profile"),     "balance_profile",     "coverage_ratio_structural", "×",  False),
+            (t(STRINGS, "score_growth_profile"),      "growth_profile",      "cagr_export",               "%",  True),
+            (t(STRINGS, "score_stability_profile"),   "stability_profile",   "volatility_export",         "σ",  False),
+            (t(STRINGS, "score_consistency_profile"), "consistency_profile", "negfreq_export",            "",   True),
         ]
 
         cols_sc = st.columns(5)
@@ -1172,40 +1506,40 @@ with tab5:
                     display:flex;align-items:center;gap:24px;margin-bottom:1rem;">
           <div>
             <div style="font-size:11px;color:#6890B0;text-transform:uppercase;letter-spacing:.06em;">
-              Structural Score</div>
+              {t(STRINGS, "lbl_structural_score")}</div>
             <div style="font-size:26px;font-weight:700;color:{s_color};">{struct_score:.3f}</div>
           </div>
           <div>
             <div style="font-size:11px;color:#6890B0;text-transform:uppercase;letter-spacing:.06em;">
-              Structural Profile</div>
+              {t(STRINGS, "lbl_structural_profile")}</div>
             <div style="font-size:18px;font-weight:600;color:{s_color};">{struct_profile}</div>
           </div>
           <div>
             <div style="font-size:11px;color:#6890B0;text-transform:uppercase;letter-spacing:.06em;">
-              Meta Profile</div>
+              {t(STRINGS, "lbl_meta_profile")}</div>
             <div style="font-size:16px;font-weight:500;color:#C4D5E8;">{meta_profile}</div>
           </div>
           <div style="margin-left:auto;">
             <div style="font-size:11px;color:#6890B0;text-transform:uppercase;
-                        letter-spacing:.06em;margin-bottom:.5rem;">Quadrants</div>
+                        letter-spacing:.06em;margin-bottom:.5rem;">{t(STRINGS, "lbl_quadrants")}</div>
             <div style="display:flex;flex-direction:column;gap:.3rem;">
               <div style="background:#162035;border-radius:6px;padding:.3rem .6rem;
                           display:flex;justify-content:space-between;gap:1rem;">
-                <span style="font-size:11px;color:#6890B0;">Static</span>
+                <span style="font-size:11px;color:#6890B0;">{t(STRINGS, "lbl_static")}</span>
                 <span style="font-size:12px;font-weight:600;
                              color:{QUAD_COLORS.get(row_s.get("static_quadrant",""),"#C4D5E8")};">
                   {row_s.get("static_quadrant","—")}</span>
               </div>
               <div style="background:#162035;border-radius:6px;padding:.3rem .6rem;
                           display:flex;justify-content:space-between;gap:1rem;">
-                <span style="font-size:11px;color:#6890B0;">Dynamic</span>
+                <span style="font-size:11px;color:#6890B0;">{t(STRINGS, "lbl_dynamic")}</span>
                 <span style="font-size:12px;font-weight:600;
                              color:{QUAD_COLORS.get(row_s.get("dynamic_quadrant",""),"#C4D5E8")};">
                   {row_s.get("dynamic_quadrant","—")}</span>
               </div>
               <div style="background:#162035;border-radius:6px;padding:.3rem .6rem;
                           display:flex;justify-content:space-between;gap:1rem;">
-                <span style="font-size:11px;color:#6890B0;">Strategic</span>
+                <span style="font-size:11px;color:#6890B0;">{t(STRINGS, "lbl_strategic")}</span>
                 <span style="font-size:12px;font-weight:600;
                              color:{QUAD_COLORS.get(row_s.get("strategic_quadrant",""),"#C4D5E8")};">
                   {row_s.get("strategic_quadrant","—")}</span>
@@ -1219,14 +1553,14 @@ with tab5:
         col1, col2 = st.columns([1, 1])
 
         with col1:
-            section_label("Radar — 5 Dimensions")
+            section_label(t(STRINGS, "sec_radar"))
 
             # Compare selector
             _opts_radar = [c for c in COUNTRIES if c != country]
             _def_radar = [c for c in ["Germany","Brazil","Canada"]
                           if c in _opts_radar]
             compare_countries = st.multiselect(
-                "Compare with",
+                t(STRINGS, "lbl_compare_with"),
                 _opts_radar,
                 default=_def_radar,
                 max_selections=3,
@@ -1273,13 +1607,19 @@ with tab5:
             st.plotly_chart(fig_radar, width='stretch')
 
         with col2:
-            section_label("Structural Heatmap — Top & Bottom")
+            section_label(t(STRINGS, "sec_structural_heatmap"))
 
             _hm_col1, _hm_col2 = st.columns([1, 2])
             with _hm_col1:
-                hm_view = st.radio("View", ["Top performers", "Bottom performers"],
+                HM_VIEW_OPTS = ["Top performers", "Bottom performers"]
+                HM_VIEW_LABELS = {
+                    "Top performers": t(STRINGS, "opt_top_performers"),
+                    "Bottom performers": t(STRINGS, "opt_bottom_performers"),
+                }
+                hm_view = st.radio(t(STRINGS, "lbl_view"), HM_VIEW_OPTS,
+                                   format_func=lambda x: HM_VIEW_LABELS[x],
                                    key="heatmap_view")
-                top_n = st.slider("N countries", 5, 15, 8, key="heatmap_n")
+                top_n = st.slider(t(STRINGS, "lbl_n_countries"), 5, 15, 8, key="heatmap_n")
 
             if "Top" in hm_view:
                 df_top = df_structural.nlargest(top_n, "structural_score").copy()
@@ -1336,12 +1676,5 @@ with tab5:
             )
             st.plotly_chart(fig_hm, width='stretch')
 
-        with st.expander("Scoring methodology"):
-            st.markdown("""
-            **Structural Score** = `0.60 × z_export_share + 0.10 × z_coverage_ratio + 0.15 × z_cagr_export − 0.10 × z_volatility_export − 0.05 × z_negfreq_export`
-
-            **Thresholds** : q85 → Strong · q50 → Good · q15 → Moderate · below → Weak
-
-            **Radar dimensions** : all mapped 0→1 where 1 = best profile
-            (e.g. Leader=1.0, Major=0.67, Mid=0.33, Small=0.0)
-            """)
+        with st.expander(t(STRINGS, "expander_scoring_methodology")):
+            st.markdown(t(STRINGS, "md_scoring_methodology"))

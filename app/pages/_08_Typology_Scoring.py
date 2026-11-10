@@ -18,8 +18,270 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 from utils.styles import inject_styles, kpi, section_label, thin_divider, finding
+from utils.i18n import t
 
 inject_styles()
+
+STRINGS = {
+    "en": {
+        "eyebrow": "Trade Analysis · Page 6 of 6",
+        "title": "Typology & Final Scoring",
+        "caption": "Combined F×G scoring · Strategic quadrant · Country Profile Card",
+        "kpi_global_champions": "Global Champions",
+        "kpi_competitive": "Competitive",
+        "kpi_vulnerable": "Vulnerable",
+        "kpi_fragile": "Fragile",
+        "select_country": "Select country",
+        "no_data_country": "No data for {country}.",
+        "tab1_label": "📊 Combined Scoring & Profiles",
+        "tab2_label": "🎯 Quadrant & Stress Test",
+        "tab3_label": "🏅 Country Profile Card",
+        "lbl_target_country": "Target Country",
+        "lbl_combined_score": "Combined Score",
+        "lbl_rank": "Rank #{pos} / {n}",
+        "lbl_combined_profile": "Combined Profile",
+        "lbl_strategic_quadrant": "Strategic Quadrant",
+        "lbl_f_rank": "F Rank",
+        "lbl_g_rank": "G Rank",
+        "def_combined_score_desc": "F = Trade Structure score (size, growth, balance, coverage) "
+                                    "&nbsp;·&nbsp; G = Bilateral Risk score (HHI, BDIS, critical share)",
+        "def_threshold_header": "Threshold",
+        "def_strategic_quadrant_desc": "Position in F (trade power) × G (resilience) space — threshold at 0.55",
+        "quad_g_low": "G Low",
+        "quad_more_risk": "More Risk",
+        "quad_g_high": "G High",
+        "quad_resilient": "Resilient",
+        "quad_f_high": "F High",
+        "quad_more_power": "More Power",
+        "quad_f_low": "F Low",
+        "quad_less_power": "Less Power",
+        "matrix_section": "F × G · Typology Matrix",
+        "fig_cross_title": "Structural Profile (F) × Bilateral Profile (G)",
+        "fig_cross_xaxis": "Bilateral Profile (G)",
+        "fig_cross_yaxis": "Structural Profile (F)",
+        "fig_comb_title": "Combined Profile Distribution",
+        "axis_countries": "Countries",
+        "fig_strat_title": "Strategic Quadrant Distribution",
+        "ranking_section": "Combined Score — Ranking",
+        "show_top_n_label": "Show top N",
+        "view_label": "View",
+        "fig_rank_title": "Combined Score — {view}  (0.70 × F + 0.30 × G)",
+        "axis_combined_score": "Combined Score",
+        "summary_section": "All Countries — Combined Scoring Summary",
+        "pills_add_columns_label": "Add columns",
+        "col_country": "Country",
+        "col_combined_score": "Combined Score",
+        "col_combined_profile": "Combined Profile",
+        "col_strategic_quadrant": "Strategic Quadrant",
+        "col_structural_profile_f": "Structural Profile (F)",
+        "col_f_score": "F Score",
+        "col_profile_full_period_g": "Profile Full Period (G)",
+        "col_g_score": "G Score",
+        "tab2_highlight_countries_label": "Highlight countries",
+        "tab2_quadrant_section": "Strategic Quadrant — F × G Ranks",
+        "fig_q_title": "F Rank × G Rank — colored by strategic quadrant",
+        "fig_q_xaxis": "F Normalized Rank (trade power →)",
+        "fig_q_yaxis": "G Normalized Rank (resilience →)",
+        "fg_score_section": "F Score vs G Score — Raw Values",
+        "median_f_annot": "Median F {val}",
+        "median_g_annot": "Median G {val}",
+        "fig_s_title": "Structural Score (F) × Bilateral Risk Score (G) — colored by combined profile",
+        "fig_s_xaxis": "Structural Score (F) →",
+        "fig_s_yaxis": "Score Full Period (G) →",
+        "weight_sensitivity_section": "Weight Sensitivity Analysis",
+        "scoring_methodology_expander": "Scoring methodology",
+        "scoring_methodology_md": """
+**Combined Score** = `0.70 × F_norm_rank + 0.30 × G_norm_rank`
+
+The 70/30 split reflects a deliberate prioritization of **trade power** (size, growth, export coverage) over **bilateral resilience** (partner concentration, dependency). It can be read as: *a country with strong structural trade position matters more globally than one that is merely well-diversified but small.*
+
+**G score formula:** `0.35 × critical_share_norm + 0.25 × HHI_norm + 0.20 × dep_top_norm + 0.10 × n_critical_norm + 0.10 × BDIS_norm`
+
+The stress test below shows how sensitive the ranking is to this choice.
+        """,
+        "weight_on_f_label": "Weight on F (trade power)",
+        "scen_equal": "Equal weight",
+        "scen_slight_f": "Slight F priority",
+        "scen_baseline": "Baseline (70/30)",
+        "scen_strong_f": "Strong F priority",
+        "scen_f_dominant": "F dominant",
+        "target_country_separator": "← Target country (rank #{rank})",
+        "stress_title": "Simulated Ranking — {wf} F + {wg} G  ·  score  Δrank vs 70/30",
+        "stress_xaxis": "Simulated Combined Score",
+        "tab3_section_profile_card": "H.5 · Country Profile Card",
+        "lbl_country_profile_card_header": "Country Profile Card",
+        "card_f_header": "F · Trade Structure",
+        "card_f_structural_score": "Structural score",
+        "card_f_profile": "Profile",
+        "card_f_static_quadrant": "Static quadrant",
+        "card_f_dynamic_quadrant": "Dynamic quadrant",
+        "card_f_meta": "Meta",
+        "card_f_export_share": "Export share",
+        "card_f_coverage": "Coverage",
+        "card_f_cagr_export": "CAGR export",
+        "card_f_volatility": "Volatility",
+        "card_g_header": "G · Bilateral Risk",
+        "card_g_score_full_period": "Score (Full Period)",
+        "card_g_profile_full_period": "Profile (Full Period)",
+        "card_g_profile_recent": "Profile (Recent)",
+        "card_g_convergence_rate": "Convergence Rate",
+        "card_g_score_import": "Score Import",
+        "card_g_score_export": "Score Export",
+        "card_g_hhi_import": "HHI Import",
+        "card_g_hhi_export": "HHI Export",
+        "card_g_critical_share": "Critical share",
+        "card_g_top_partner": "Top partner",
+        "card_h_header": "H · Combined",
+        "card_h_quadrant": "Quadrant",
+        "card_h_stability": "Stability",
+        "card_h_stability_score": "Stability score",
+        "card_h_profile_drift": "Profile Drift",
+        "card_h_drift_magnitude": "Drift Magnitude",
+        "dimension_radar_section": "Dimension Radar",
+        "compare_with_label": "Compare with",
+        "radar_size": "Size",
+        "radar_balance": "Balance",
+        "radar_growth": "Growth",
+        "radar_stability": "Stability",
+        "radar_consistency": "Consistency",
+        "scorecard_section": "Profile Scorecard",
+        "annual_timeline_section": "Annual Profile Timeline",
+        "heatmap_logic_profile": "Logic Profile",
+        "heatmap_score_profile": "Score Profile",
+        "fig_tl_title": "Annual Bilateral Profile — {country}",
+        "no_annual_data": "No annual data available for {country}.",
+    },
+    "fr": {
+        "eyebrow": "Analyse commerciale · Page 6 sur 6",
+        "title": "Typologie & scoring final",
+        "caption": "Scoring combiné F×G · Quadrant stratégique · Fiche profil pays",
+        "kpi_global_champions": "Champions mondiaux",
+        "kpi_competitive": "Compétitifs",
+        "kpi_vulnerable": "Vulnérables",
+        "kpi_fragile": "Fragiles",
+        "select_country": "Sélectionner un pays",
+        "no_data_country": "Aucune donnée pour {country}.",
+        "tab1_label": "📊 Scoring combiné & profils",
+        "tab2_label": "🎯 Quadrant & test de stress",
+        "tab3_label": "🏅 Fiche profil pays",
+        "lbl_target_country": "Pays cible",
+        "lbl_combined_score": "Score combiné",
+        "lbl_rank": "Rang n°{pos} / {n}",
+        "lbl_combined_profile": "Profil combiné",
+        "lbl_strategic_quadrant": "Quadrant stratégique",
+        "lbl_f_rank": "Rang F",
+        "lbl_g_rank": "Rang G",
+        "def_combined_score_desc": "F = Score de structure commerciale (taille, croissance, équilibre, "
+                                    "couverture) &nbsp;·&nbsp; G = Score de risque bilatéral (HHI, BDIS, "
+                                    "part critique)",
+        "def_threshold_header": "Seuil",
+        "def_strategic_quadrant_desc": "Position dans l'espace F (puissance commerciale) × G (résilience) "
+                                        "— seuil à 0.55",
+        "quad_g_low": "G faible",
+        "quad_more_risk": "Risque plus élevé",
+        "quad_g_high": "G élevé",
+        "quad_resilient": "Résilient",
+        "quad_f_high": "F élevé",
+        "quad_more_power": "Puissance plus élevée",
+        "quad_f_low": "F faible",
+        "quad_less_power": "Puissance plus faible",
+        "matrix_section": "F × G · Matrice de typologie",
+        "fig_cross_title": "Profil structurel (F) × Profil bilatéral (G)",
+        "fig_cross_xaxis": "Profil bilatéral (G)",
+        "fig_cross_yaxis": "Profil structurel (F)",
+        "fig_comb_title": "Répartition des profils combinés",
+        "axis_countries": "Pays",
+        "fig_strat_title": "Répartition des quadrants stratégiques",
+        "ranking_section": "Score combiné — Classement",
+        "show_top_n_label": "Afficher le top N",
+        "view_label": "Vue",
+        "fig_rank_title": "Score combiné — {view}  (0.70 × F + 0.30 × G)",
+        "axis_combined_score": "Score combiné",
+        "summary_section": "Tous les pays — Résumé du scoring combiné",
+        "pills_add_columns_label": "Ajouter des colonnes",
+        "col_country": "Pays",
+        "col_combined_score": "Score combiné",
+        "col_combined_profile": "Profil combiné",
+        "col_strategic_quadrant": "Quadrant stratégique",
+        "col_structural_profile_f": "Profil structurel (F)",
+        "col_f_score": "Score F",
+        "col_profile_full_period_g": "Profil période complète (G)",
+        "col_g_score": "Score G",
+        "tab2_highlight_countries_label": "Pays à mettre en évidence",
+        "tab2_quadrant_section": "Quadrant stratégique — Rangs F × G",
+        "fig_q_title": "Rang F × Rang G — coloré par quadrant stratégique",
+        "fig_q_xaxis": "Rang F normalisé (puissance commerciale →)",
+        "fig_q_yaxis": "Rang G normalisé (résilience →)",
+        "fg_score_section": "Score F vs Score G — Valeurs brutes",
+        "median_f_annot": "Médiane F {val}",
+        "median_g_annot": "Médiane G {val}",
+        "fig_s_title": "Score structurel (F) × Score de risque bilatéral (G) — coloré par profil combiné",
+        "fig_s_xaxis": "Score structurel (F) →",
+        "fig_s_yaxis": "Score période complète (G) →",
+        "weight_sensitivity_section": "Analyse de sensibilité des pondérations",
+        "scoring_methodology_expander": "Méthodologie de scoring",
+        "scoring_methodology_md": """
+**Score combiné** = `0.70 × F_norm_rank + 0.30 × G_norm_rank`
+
+La répartition 70/30 reflète une priorisation délibérée de la **puissance commerciale** (taille, croissance, couverture export) sur la **résilience bilatérale** (concentration des partenaires, dépendance). On peut le lire ainsi : *un pays avec une position structurelle commerciale forte compte plus globalement qu'un pays simplement bien diversifié mais petit.*
+
+**Formule du score G :** `0.35 × critical_share_norm + 0.25 × HHI_norm + 0.20 × dep_top_norm + 0.10 × n_critical_norm + 0.10 × BDIS_norm`
+
+Le test de stress ci-dessous montre la sensibilité du classement à ce choix.
+        """,
+        "weight_on_f_label": "Pondération de F (puissance commerciale)",
+        "scen_equal": "Pondération égale",
+        "scen_slight_f": "Légère priorité à F",
+        "scen_baseline": "Référence (70/30)",
+        "scen_strong_f": "Forte priorité à F",
+        "scen_f_dominant": "F dominant",
+        "target_country_separator": "← Pays cible (rang n°{rank})",
+        "stress_title": "Classement simulé — {wf} F + {wg} G  ·  score  Δrang vs 70/30",
+        "stress_xaxis": "Score combiné simulé",
+        "tab3_section_profile_card": "H.5 · Fiche profil pays",
+        "lbl_country_profile_card_header": "Fiche profil pays",
+        "card_f_header": "F · Structure commerciale",
+        "card_f_structural_score": "Score structurel",
+        "card_f_profile": "Profil",
+        "card_f_static_quadrant": "Quadrant statique",
+        "card_f_dynamic_quadrant": "Quadrant dynamique",
+        "card_f_meta": "Méta",
+        "card_f_export_share": "Part des exportations",
+        "card_f_coverage": "Couverture",
+        "card_f_cagr_export": "CAGR export",
+        "card_f_volatility": "Volatilité",
+        "card_g_header": "G · Risque bilatéral",
+        "card_g_score_full_period": "Score (période complète)",
+        "card_g_profile_full_period": "Profil (période complète)",
+        "card_g_profile_recent": "Profil (récent)",
+        "card_g_convergence_rate": "Taux de convergence",
+        "card_g_score_import": "Score import",
+        "card_g_score_export": "Score export",
+        "card_g_hhi_import": "HHI import",
+        "card_g_hhi_export": "HHI export",
+        "card_g_critical_share": "Part critique",
+        "card_g_top_partner": "Partenaire principal",
+        "card_h_header": "H · Combiné",
+        "card_h_quadrant": "Quadrant",
+        "card_h_stability": "Stabilité",
+        "card_h_stability_score": "Score de stabilité",
+        "card_h_profile_drift": "Dérive du profil",
+        "card_h_drift_magnitude": "Ampleur de la dérive",
+        "dimension_radar_section": "Radar des dimensions",
+        "compare_with_label": "Comparer avec",
+        "radar_size": "Taille",
+        "radar_balance": "Équilibre",
+        "radar_growth": "Croissance",
+        "radar_stability": "Stabilité",
+        "radar_consistency": "Consistance",
+        "scorecard_section": "Fiche de score du profil",
+        "annual_timeline_section": "Chronologie annuelle du profil",
+        "heatmap_logic_profile": "Profil logique",
+        "heatmap_score_profile": "Profil score",
+        "fig_tl_title": "Profil bilatéral annuel — {country}",
+        "no_annual_data": "Aucune donnée annuelle disponible pour {country}.",
+    },
+}
 
 TRADE_FILES = ROOT / "Analysis" / "Analysis_files" / "Trade"
 
@@ -120,7 +382,8 @@ STABILITY_COLORS = {
 
 RADAR_DIMS   = ["size_profile", "balance_profile", "growth_profile",
                 "stability_profile", "consistency_profile"]
-RADAR_LABELS = ["Size", "Balance", "Growth", "Stability", "Consistency"]
+RADAR_LABELS = [t(STRINGS, "radar_size"), t(STRINGS, "radar_balance"), t(STRINGS, "radar_growth"),
+                 t(STRINGS, "radar_stability"), t(STRINGS, "radar_consistency")]
 
 RADAR_SCALE = {
     "size_profile":        {"Leader": 1.0, "Major": 0.67, "Mid": 0.33, "Small": 0.0},
@@ -148,10 +411,10 @@ _TL_COLORSCALE = [
 # HEADER
 # ════════════════════════════════════════════════════════════════
 
-st.markdown('<div class="page-eyebrow">Trade Analysis · Page 6 of 6</div>',
+st.markdown(f'<div class="page-eyebrow">{t(STRINGS, "eyebrow")}</div>',
             unsafe_allow_html=True)
-st.title("Typology & Final Scoring")
-st.caption("Combined F×G scoring · Strategic quadrant · Country Profile Card")
+st.title(t(STRINGS, "title"))
+st.caption(t(STRINGS, "caption"))
 thin_divider()
 
 # ── Global KPI cards ─────────────────────────────────────────
@@ -161,10 +424,10 @@ n_vuln  = (df_combined["combined_profile"] == "Vulnerable").sum()
 n_frag  = (df_combined["combined_profile"] == "Fragile").sum()
 
 _kc = st.columns(4)
-_kc[0].markdown(kpi("Global Champions", str(n_champ), "teal"),  unsafe_allow_html=True)
-_kc[1].markdown(kpi("Competitive",      str(n_comp),  "blue"),  unsafe_allow_html=True)
-_kc[2].markdown(kpi("Vulnerable",       str(n_vuln),  "amber"), unsafe_allow_html=True)
-_kc[3].markdown(kpi("Fragile",          str(n_frag),  ""),      unsafe_allow_html=True)
+_kc[0].markdown(kpi(t(STRINGS, "kpi_global_champions"), str(n_champ), "teal"),  unsafe_allow_html=True)
+_kc[1].markdown(kpi(t(STRINGS, "kpi_competitive"),      str(n_comp),  "blue"),  unsafe_allow_html=True)
+_kc[2].markdown(kpi(t(STRINGS, "kpi_vulnerable"),       str(n_vuln),  "amber"), unsafe_allow_html=True)
+_kc[3].markdown(kpi(t(STRINGS, "kpi_fragile"),          str(n_frag),  ""),      unsafe_allow_html=True)
 
 thin_divider()
 
@@ -172,12 +435,12 @@ thin_divider()
 _sel_col, _ = st.columns([1, 3])
 with _sel_col:
     _default_idx = COUNTRIES.index("France") if "France" in COUNTRIES else 0
-    country = st.selectbox("Select country", COUNTRIES,
+    country = st.selectbox(t(STRINGS, "select_country"), COUNTRIES,
                            index=_default_idx, key="t6_country")
 
 _row = df_combined[df_combined["country_name"] == country]
 if _row.empty:
-    st.warning(f"No data for {country}.")
+    st.warning(t(STRINGS, "no_data_country").format(country=country))
     st.stop()
 _row = _row.iloc[0]
 
@@ -208,9 +471,9 @@ thin_divider()
 # ════════════════════════════════════════════════════════════════
 
 tab1, tab2, tab3 = st.tabs([
-    "📊 Combined Scoring & Profiles",
-    "🎯 Quadrant & Stress Test",
-    "🏅 Country Profile Card",
+    t(STRINGS, "tab1_label"),
+    t(STRINGS, "tab2_label"),
+    t(STRINGS, "tab3_label"),
 ])
 
 
@@ -228,32 +491,32 @@ with tab1:
               align-items:center;gap:1.5rem;">
     <div style="border-right:1px solid #304870;padding-right:1.5rem;">
       <div style="font-size:10px;color:#6890B0;text-transform:uppercase;
-                  letter-spacing:.08em;margin-bottom:4px;">Target Country</div>
+                  letter-spacing:.08em;margin-bottom:4px;">{t(STRINGS, "lbl_target_country")}</div>
       <div style="font-size:22px;font-weight:700;color:#EEF4FB;white-space:nowrap;">
         {country}</div>
     </div>
     <div>
-      <div style="font-size:10px;color:#6890B0;text-transform:uppercase;">Combined Score</div>
+      <div style="font-size:10px;color:#6890B0;text-transform:uppercase;">{t(STRINGS, "lbl_combined_score")}</div>
       <div style="font-size:26px;font-weight:700;color:{_cc};line-height:1.1;">
         {_row['combined_score']:.3f}</div>
-      <div style="font-size:11px;color:#6890B0;margin-top:2px;">Rank #{_rank_pos} / {N_COUNTRIES}</div>
+      <div style="font-size:11px;color:#6890B0;margin-top:2px;">{t(STRINGS, "lbl_rank").format(pos=_rank_pos, n=N_COUNTRIES)}</div>
     </div>
     <div>
-      <div style="font-size:10px;color:#6890B0;text-transform:uppercase;">Combined Profile</div>
+      <div style="font-size:10px;color:#6890B0;text-transform:uppercase;">{t(STRINGS, "lbl_combined_profile")}</div>
       <div style="font-size:14px;font-weight:600;color:{_cc};margin-top:6px;">{_cprof}</div>
     </div>
     <div>
-      <div style="font-size:10px;color:#6890B0;text-transform:uppercase;">Strategic Quadrant</div>
+      <div style="font-size:10px;color:#6890B0;text-transform:uppercase;">{t(STRINGS, "lbl_strategic_quadrant")}</div>
       <div style="font-size:14px;font-weight:600;color:{_sq_c};margin-top:6px;">{_strat_q}</div>
     </div>
     <div>
-      <div style="font-size:10px;color:#6890B0;text-transform:uppercase;">F Rank</div>
+      <div style="font-size:10px;color:#6890B0;text-transform:uppercase;">{t(STRINGS, "lbl_f_rank")}</div>
       <div style="font-size:20px;font-weight:700;color:#60A5FA;margin-top:4px;">
         {_row['f_norm_rank']:.3f}</div>
       <div style="font-size:10px;color:#6890B0;margin-top:2px;">{_sprof}</div>
     </div>
     <div>
-      <div style="font-size:10px;color:#6890B0;text-transform:uppercase;">G Rank</div>
+      <div style="font-size:10px;color:#6890B0;text-transform:uppercase;">{t(STRINGS, "lbl_g_rank")}</div>
       <div style="font-size:20px;font-weight:700;color:#A78BFA;margin-top:4px;">
         {_row['g_norm_rank']:.3f}</div>
       <div style="font-size:10px;color:#6890B0;margin-top:2px;">{_bprof}</div>
@@ -266,22 +529,21 @@ with tab1:
     _d1, _d2 = st.columns(2)
 
     with _d1:
-        st.markdown("""
+        st.markdown(f"""
 <div style="background:#162035;border:1px solid #304870;border-radius:10px;padding:.9rem 1rem;">
   <div style="font-size:11px;font-weight:700;color:#93C5FD;text-transform:uppercase;
-              letter-spacing:.07em;margin-bottom:.6rem;">Combined Score</div>
+              letter-spacing:.07em;margin-bottom:.6rem;">{t(STRINGS, "lbl_combined_score")}</div>
   <div style="font-size:13px;color:#C4D5E8;margin-bottom:.6rem;">
     <code style="background:#1F3050;padding:2px 6px;border-radius:4px;color:#A78BFA;">
       0.70 × F_norm_rank &nbsp;+&nbsp; 0.30 × G_norm_rank</code>
   </div>
   <div style="font-size:12px;color:#6890B0;margin-bottom:.5rem;">
-    F = Trade Structure score (size, growth, balance, coverage)
-    &nbsp;·&nbsp; G = Bilateral Risk score (HHI, BDIS, critical share)
+    {t(STRINGS, "def_combined_score_desc")}
   </div>
   <table style="width:100%;font-size:12px;border-collapse:collapse;">
     <tr style="color:#6890B0;border-bottom:1px solid #304870;">
-      <th style="text-align:left;padding:3px 6px;">Threshold</th>
-      <th style="text-align:left;padding:3px 6px;">Combined Profile</th>
+      <th style="text-align:left;padding:3px 6px;">{t(STRINGS, "def_threshold_header")}</th>
+      <th style="text-align:left;padding:3px 6px;">{t(STRINGS, "lbl_combined_profile")}</th>
     </tr>
     <tr><td style="padding:3px 6px;color:#6890B0;">≥ 0.80</td>
         <td style="padding:3px 6px;font-weight:600;color:#10B981;">Global Champion</td></tr>
@@ -296,24 +558,24 @@ with tab1:
 """, unsafe_allow_html=True)
 
     with _d2:
-        st.markdown("""
+        st.markdown(f"""
 <div style="background:#162035;border:1px solid #304870;border-radius:10px;padding:.9rem 1rem;">
   <div style="font-size:11px;font-weight:700;color:#93C5FD;text-transform:uppercase;
-              letter-spacing:.07em;margin-bottom:.6rem;">Strategic Quadrant</div>
+              letter-spacing:.07em;margin-bottom:.6rem;">{t(STRINGS, "lbl_strategic_quadrant")}</div>
   <div style="font-size:12px;color:#6890B0;margin-bottom:.6rem;">
-    Position in F (trade power) × G (resilience) space — threshold at 0.55
+    {t(STRINGS, "def_strategic_quadrant_desc")}
   </div>
   <table style="width:100%;font-size:12px;border-collapse:collapse;text-align:center;">
     <tr>
       <td style="padding:4px;color:#6890B0;font-size:11px;"></td>
       <td style="padding:4px;color:#6890B0;font-size:11px;text-align:center;">
-        G Low<br><span style="color:#EF4444;font-size:10px;">More Risk</span></td>
+        {t(STRINGS, "quad_g_low")}<br><span style="color:#EF4444;font-size:10px;">{t(STRINGS, "quad_more_risk")}</span></td>
       <td style="padding:4px;color:#6890B0;font-size:11px;text-align:center;">
-        G High<br><span style="color:#10B981;font-size:10px;">Resilient</span></td>
+        {t(STRINGS, "quad_g_high")}<br><span style="color:#10B981;font-size:10px;">{t(STRINGS, "quad_resilient")}</span></td>
     </tr>
     <tr>
       <td style="padding:4px;color:#6890B0;font-size:11px;text-align:right;">
-        F High<br><span style="color:#60A5FA;font-size:10px;">More Power</span></td>
+        {t(STRINGS, "quad_f_high")}<br><span style="color:#60A5FA;font-size:10px;">{t(STRINGS, "quad_more_power")}</span></td>
       <td style="padding:6px;background:#231800;border-radius:6px;
                  font-weight:600;color:#F59E0B;text-align:center;">Strong but Exposed</td>
       <td style="padding:6px;background:#082E18;border-radius:6px;
@@ -321,7 +583,7 @@ with tab1:
     </tr>
     <tr>
       <td style="padding:4px;color:#6890B0;font-size:11px;text-align:right;">
-        F Low<br><span style="color:#6B7280;font-size:10px;">Less Power</span></td>
+        {t(STRINGS, "quad_f_low")}<br><span style="color:#6B7280;font-size:10px;">{t(STRINGS, "quad_less_power")}</span></td>
       <td style="padding:6px;background:#2D0E0E;border-radius:6px;
                  font-weight:600;color:#EF4444;text-align:center;">Weak & Vulnerable</td>
       <td style="padding:6px;background:#0F2240;border-radius:6px;
@@ -334,7 +596,7 @@ with tab1:
     thin_divider()
 
     # ── 3. F × G Cross-table ──────────────────────────────────
-    section_label("F × G · Typology Matrix")
+    section_label(t(STRINGS, "matrix_section"))
 
     _cross_l, _cross_r = st.columns(2)
 
@@ -361,9 +623,9 @@ with tab1:
             showscale=False,
         ))
         fig_cross.update_layout(**_lay(
-            title="Structural Profile (F) × Bilateral Profile (G)",
-            xaxis_title="Bilateral Profile (G)",
-            yaxis_title="Structural Profile (F)",
+            title=t(STRINGS, "fig_cross_title"),
+            xaxis_title=t(STRINGS, "fig_cross_xaxis"),
+            yaxis_title=t(STRINGS, "fig_cross_yaxis"),
             margin=dict(l=80, r=20, t=50, b=110),
             height=340,
         ))
@@ -385,8 +647,8 @@ with tab1:
             opacity=0.85,
         ))
         fig_comb.update_layout(**_lay(
-            title="Combined Profile Distribution",
-            xaxis_title="Countries",
+            title=t(STRINGS, "fig_comb_title"),
+            xaxis_title=t(STRINGS, "axis_countries"),
             height=165,
             margin=dict(l=10, r=50, t=50, b=30),
         ))
@@ -404,8 +666,8 @@ with tab1:
             opacity=0.85,
         ))
         fig_strat.update_layout(**_lay(
-            title="Strategic Quadrant Distribution",
-            xaxis_title="Countries",
+            title=t(STRINGS, "fig_strat_title"),
+            xaxis_title=t(STRINGS, "axis_countries"),
             height=175,
             margin=dict(l=10, r=50, t=50, b=30),
         ))
@@ -414,12 +676,14 @@ with tab1:
     thin_divider()
 
     # ── 4. Ranking bar ────────────────────────────────────────
-    section_label("Combined Score — Ranking")
+    section_label(t(STRINGS, "ranking_section"))
 
     _rk_col, _rk_bar = st.columns([1, 3])
     with _rk_col:
-        n_top = st.selectbox("Show top N", [5, 10, 20, 30, 50], index=1, key="t1_n")
-        view  = st.radio("View", ["Top performers", "Bottom performers"], key="t1_view")
+        n_top = st.selectbox(t(STRINGS, "show_top_n_label"), [5, 10, 20, 30, 50], index=1, key="t1_n")
+        # NOTE: option values ("Top performers" / "Bottom performers") are left untranslated
+        # because the code below matches on the literal substring "Top" in view.
+        view  = st.radio(t(STRINGS, "view_label"), ["Top performers", "Bottom performers"], key="t1_view")
 
     _df_rank = (df_combined.nlargest(n_top, "combined_score") if "Top" in view
                 else df_combined.nsmallest(n_top, "combined_score"))
@@ -452,8 +716,8 @@ with tab1:
             opacity=0.85,
         ))
         fig_rank.update_layout(**PLOTLY_LAYOUT,
-            title=f"Combined Score — {view}  (0.70 × F + 0.30 × G)",
-            xaxis_title="Combined Score",
+            title=t(STRINGS, "fig_rank_title").format(view=view),
+            xaxis_title=t(STRINGS, "axis_combined_score"),
             height=max(380, n_top * 22 + 80),
         )
         st.plotly_chart(fig_rank, width='stretch')
@@ -461,33 +725,47 @@ with tab1:
     thin_divider()
 
     # ── 5. Summary table — all countries ─────────────────────
-    section_label("All Countries — Combined Scoring Summary")
+    section_label(t(STRINGS, "summary_section"))
 
+    # NOTE: the pill option "F & G Detail" is left untranslated because the code
+    # below matches on this literal string to decide which columns to show.
     _sc_tog = st.pills(
-        "Add columns", ["F & G Detail"],
+        t(STRINGS, "pills_add_columns_label"), ["F & G Detail"],
         selection_mode="multi", default=[], key="t1_sc_tog",
     )
     _show_sc = "F & G Detail" in (_sc_tog or [])
+
+    # Column header labels — built once via t() so every downstream lookup
+    # (styling subsets, column widths, number formats) stays in sync with the
+    # currently selected language.
+    _L_COUNTRY   = t(STRINGS, "col_country")
+    _L_SCORE     = t(STRINGS, "col_combined_score")
+    _L_PROFILE   = t(STRINGS, "col_combined_profile")
+    _L_QUADRANT  = t(STRINGS, "col_strategic_quadrant")
+    _L_STRUCT_F  = t(STRINGS, "col_structural_profile_f")
+    _L_F_SCORE   = t(STRINGS, "col_f_score")
+    _L_PROFILE_G = t(STRINGS, "col_profile_full_period_g")
+    _L_G_SCORE   = t(STRINGS, "col_g_score")
 
     # Base: combined view only (4 cols)
     # Toggle ON: interleaved F→combined→G decomposition
     if not _show_sc:
         _all_sel = [
-            ("country_name",               "Country"),
-            ("combined_score",             "Combined Score"),
-            ("combined_profile",           "Combined Profile"),
-            ("strategic_quadrant_combined","Strategic Quadrant"),
+            ("country_name",               _L_COUNTRY),
+            ("combined_score",             _L_SCORE),
+            ("combined_profile",           _L_PROFILE),
+            ("strategic_quadrant_combined",_L_QUADRANT),
         ]
     else:
         _all_sel = [
-            ("country_name",               "Country"),
-            ("combined_score",             "Combined Score"),
-            ("combined_profile",           "Combined Profile"),
-            ("strategic_quadrant_combined","Strategic Quadrant"),
-            ("structural_profile",         "Structural Profile (F)"),
-            ("f_norm_rank",                "F Score"),
-            ("profile_full_periode",       "Profile Full Period (G)"),
-            ("g_norm_rank",                "G Score"),
+            ("country_name",               _L_COUNTRY),
+            ("combined_score",             _L_SCORE),
+            ("combined_profile",           _L_PROFILE),
+            ("strategic_quadrant_combined",_L_QUADRANT),
+            ("structural_profile",         _L_STRUCT_F),
+            ("f_norm_rank",                _L_F_SCORE),
+            ("profile_full_periode",       _L_PROFILE_G),
+            ("g_norm_rank",                _L_G_SCORE),
         ]
     _all_sel = [(s, l) for s, l in _all_sel if s in df_combined.columns]
 
@@ -515,7 +793,7 @@ with tab1:
         return f"color:{c};font-weight:600;" if c else ""
 
     def _highlight_target(row):
-        if row["Country"] == country:
+        if row[_L_COUNTRY] == country:
             return ["background-color:rgba(16,185,129,0.10);"] * len(row)
         return [""] * len(row)
 
@@ -523,22 +801,22 @@ with tab1:
     _cols = _df_tbl.columns.tolist()
 
     _st = _st.apply(_highlight_target, axis=1)
-    for _col, _fn in [("Combined Profile",        _clr_combined),
-                       ("Strategic Quadrant",       _clr_quadrant),
-                       ("Profile Full Period (G)",  _clr_fp),
-                       ("Structural Profile (F)",   _clr_struct)]:
+    for _col, _fn in [(_L_PROFILE,   _clr_combined),
+                       (_L_QUADRANT, _clr_quadrant),
+                       (_L_PROFILE_G,_clr_fp),
+                       (_L_STRUCT_F, _clr_struct)]:
         if _col in _cols:
             _st = _st.map(_fn, subset=[_col])
 
-    _num_fmt = {c: "{:.3f}" for c in ["Combined Score", "F Score", "G Score"]
+    _num_fmt = {c: "{:.3f}" for c in [_L_SCORE, _L_F_SCORE, _L_G_SCORE]
                 if c in _cols}
     if _num_fmt:
         _st = _st.format(_num_fmt)
 
     _COL_W = {
-        "Country": 90, "Combined Score": 90, "Combined Profile": 110,
-        "Strategic Quadrant": 120, "Structural Profile (F)": 100,
-        "Profile Full Period (G)": 125, "F Score": 80, "G Score": 80,
+        _L_COUNTRY: 90, _L_SCORE: 90, _L_PROFILE: 110,
+        _L_QUADRANT: 120, _L_STRUCT_F: 100,
+        _L_PROFILE_G: 125, _L_F_SCORE: 80, _L_G_SCORE: 80,
     }
     _col_cfg = {c: st.column_config.Column(width=_COL_W[c]) for c in _cols if c in _COL_W}
 
@@ -562,7 +840,7 @@ with tab2:
         st.session_state["_t2_prev_country"] = country
 
     _hl = st.multiselect(
-        "Highlight countries",
+        t(STRINGS, "tab2_highlight_countries_label"),
         options=COUNTRIES,
         default=_DEFAULT_HL,
         key="t2_hl",
@@ -576,7 +854,7 @@ with tab2:
     _df_q["_lbl"] = _df_q["country_name"].apply(lambda x: x if x in _hl else "")
 
     # ── Strategic Quadrant (colored by quadrant) ─────────────
-    section_label("Strategic Quadrant — F × G Ranks")
+    section_label(t(STRINGS, "tab2_quadrant_section"))
 
     fig_q = go.Figure()
     for _quad, _color in STRATEGIC_COLORS.items():
@@ -620,9 +898,9 @@ with tab2:
         )
 
     fig_q.update_layout(**_lay(
-        title="F Rank × G Rank — colored by strategic quadrant",
-        xaxis_title="F Normalized Rank (trade power →)",
-        yaxis_title="G Normalized Rank (resilience →)",
+        title=t(STRINGS, "fig_q_title"),
+        xaxis_title=t(STRINGS, "fig_q_xaxis"),
+        yaxis_title=t(STRINGS, "fig_q_yaxis"),
         height=540,
     ))
     st.plotly_chart(fig_q, width='stretch')
@@ -630,7 +908,7 @@ with tab2:
     thin_divider()
 
     # ── F score vs G score (raw values) ──────────────────────
-    section_label("F Score vs G Score — Raw Values")
+    section_label(t(STRINGS, "fg_score_section"))
 
     fig_s = go.Figure()
     for _prof, _color in COMBINED_COLORS.items():
@@ -655,44 +933,36 @@ with tab2:
     _f_med = float(_df_q["structural_score"].median())
     _g_med = float(_df_q["score_full_periode"].median())
     fig_s.add_vline(x=_f_med, line_dash="dash", line_color="#475569",
-                    annotation_text=f"Median F {_f_med:.2f}",
+                    annotation_text=t(STRINGS, "median_f_annot").format(val=f"{_f_med:.2f}"),
                     annotation_font=dict(color="#475569", size=10))
     fig_s.add_hline(y=_g_med, line_dash="dash", line_color="#475569",
-                    annotation_text=f"Median G {_g_med:.2f}",
+                    annotation_text=t(STRINGS, "median_g_annot").format(val=f"{_g_med:.2f}"),
                     annotation_font=dict(color="#475569", size=10))
 
     fig_s.update_layout(**PLOTLY_LAYOUT,
-        title="Structural Score (F) × Bilateral Risk Score (G) — colored by combined profile",
-        xaxis_title="Structural Score (F) →",
-        yaxis_title="Score Full Period (G) →",
+        title=t(STRINGS, "fig_s_title"),
+        xaxis_title=t(STRINGS, "fig_s_xaxis"),
+        yaxis_title=t(STRINGS, "fig_s_yaxis"),
         height=540,
     )
     st.plotly_chart(fig_s, width='stretch')
 
     # ── Weight Sensitivity Analysis ───────────────────────────
     thin_divider()
-    section_label("Weight Sensitivity Analysis")
+    section_label(t(STRINGS, "weight_sensitivity_section"))
 
-    with st.expander("Scoring methodology"):
-        st.markdown("""
-**Combined Score** = `0.70 × F_norm_rank + 0.30 × G_norm_rank`
-
-The 70/30 split reflects a deliberate prioritization of **trade power** (size, growth, export coverage) over **bilateral resilience** (partner concentration, dependency). It can be read as: *a country with strong structural trade position matters more globally than one that is merely well-diversified but small.*
-
-**G score formula:** `0.35 × critical_share_norm + 0.25 × HHI_norm + 0.20 × dep_top_norm + 0.10 × n_critical_norm + 0.10 × BDIS_norm`
-
-The stress test below shows how sensitive the ranking is to this choice.
-        """)
+    with st.expander(t(STRINGS, "scoring_methodology_expander")):
+        st.markdown(t(STRINGS, "scoring_methodology_md"))
 
     _wf = st.slider(
-        "Weight on F (trade power)", min_value=0.50, max_value=0.90,
+        t(STRINGS, "weight_on_f_label"), min_value=0.50, max_value=0.90,
         value=0.70, step=0.05, key="stress_wf", format="%.2f",
     )
     _wg = round(1.0 - _wf, 2)
 
-    _scen_lbl = {0.50: "Equal weight", 0.60: "Slight F priority",
-                 0.70: "Baseline (70/30)", 0.80: "Strong F priority",
-                 0.90: "F dominant"}.get(_wf, f"{_wf:.0%} F")
+    _scen_lbl = {0.50: t(STRINGS, "scen_equal"), 0.60: t(STRINGS, "scen_slight_f"),
+                 0.70: t(STRINGS, "scen_baseline"), 0.80: t(STRINGS, "scen_strong_f"),
+                 0.90: t(STRINGS, "scen_f_dominant")}.get(_wf, f"{_wf:.0%} F")
     st.caption(f"**{_scen_lbl}** — F: {_wf:.0%} · G: {_wg:.0%}")
 
     # Compute baseline ranks (70/30) and simulated ranks
@@ -766,14 +1036,15 @@ The stress test below shows how sensitive the ranking is to this choice.
         fig_st.add_hline(
             y=0.5,  # between first bar (target) and second bar
             line_dash="dot", line_color="#475569",
-            annotation_text=f"← Target country (rank #{int(_df_st[_df_st['country_name']==country]['rank_sim'].iloc[0])})",
+            annotation_text=t(STRINGS, "target_country_separator").format(
+                rank=int(_df_st[_df_st['country_name']==country]['rank_sim'].iloc[0])),
             annotation_font=dict(color="#475569", size=10),
             annotation_position="bottom right",
         )
 
     fig_st.update_layout(**_lay(
-        title=f"Simulated Ranking — {_wf:.0%} F + {_wg:.0%} G  ·  score  Δrank vs 70/30",
-        xaxis_title="Simulated Combined Score",
+        title=t(STRINGS, "stress_title").format(wf=f"{_wf:.0%}", wg=f"{_wg:.0%}"),
+        xaxis_title=t(STRINGS, "stress_xaxis"),
         height=max(560, _n_bars * 28 + 80),
         margin=dict(l=130, r=130, t=50, b=40),
     ))
@@ -784,7 +1055,7 @@ The stress test below shows how sensitive the ranking is to this choice.
 # TAB 3 — COUNTRY PROFILE CARD
 # ══════════════════════════════════════════════════════════════════
 with tab3:
-    section_label("H.5 · Country Profile Card")
+    section_label(t(STRINGS, "tab3_section_profile_card"))
 
     thin_divider()
 
@@ -797,12 +1068,12 @@ with tab3:
               justify-content:space-between;flex-wrap:wrap;gap:1rem;">
     <div>
       <div style="font-size:11px;color:#6890B0;text-transform:uppercase;
-                  letter-spacing:.1em;margin-bottom:4px;">Country Profile Card</div>
+                  letter-spacing:.1em;margin-bottom:4px;">{t(STRINGS, "lbl_country_profile_card_header")}</div>
       <div style="font-size:28px;font-weight:700;color:#EEF4FB;">{country}</div>
       <div style="font-size:14px;color:{_cc};font-weight:600;margin-top:4px;">{_cprof}</div>
     </div>
     <div style="text-align:right;">
-      <div style="font-size:11px;color:#6890B0;text-transform:uppercase;">Combined Score</div>
+      <div style="font-size:11px;color:#6890B0;text-transform:uppercase;">{t(STRINGS, "lbl_combined_score")}</div>
       <div style="font-size:40px;font-weight:700;color:{_cc};line-height:1.1;">
         {_row['combined_score']:.3f}</div>
       <div style="font-size:12px;color:#6890B0;margin-top:2px;">
@@ -838,27 +1109,27 @@ with tab3:
               border-radius:12px;padding:1rem;display:flex;flex-direction:column;">
     <div style="font-size:11px;font-weight:700;color:#FCD34D;
                 text-transform:uppercase;letter-spacing:.07em;margin-bottom:.75rem;">
-      F · Trade Structure</div>
+      {t(STRINGS, "card_f_header")}</div>
     <div style="font-size:13px;color:#FBBf24;line-height:1.75;flex:1;">
-      <div><span style="color:#6890B0;">Structural score</span> &nbsp;→&nbsp;
+      <div><span style="color:#6890B0;">{t(STRINGS, "card_f_structural_score")}</span> &nbsp;→&nbsp;
            {_row.get("structural_score", 0):.3f}</div>
-      <div><span style="color:#6890B0;">Profile</span> &nbsp;→&nbsp;
+      <div><span style="color:#6890B0;">{t(STRINGS, "card_f_profile")}</span> &nbsp;→&nbsp;
            <span style="color:{_sc};font-weight:600;">{_sprof}</span></div>
-      <div><span style="color:#6890B0;">Static quadrant</span> &nbsp;→&nbsp;
+      <div><span style="color:#6890B0;">{t(STRINGS, "card_f_static_quadrant")}</span> &nbsp;→&nbsp;
            <span style="color:{_static_q_c};font-weight:600;">{_static_q}</span></div>
-      <div><span style="color:#6890B0;">Dynamic quadrant</span> &nbsp;→&nbsp;
+      <div><span style="color:#6890B0;">{t(STRINGS, "card_f_dynamic_quadrant")}</span> &nbsp;→&nbsp;
            <span style="color:{_dynamic_q_c};font-weight:600;">{_dynamic_q}</span></div>
-      <div><span style="color:#6890B0;">Strategic quadrant</span> &nbsp;→&nbsp;
+      <div><span style="color:#6890B0;">{t(STRINGS, "lbl_strategic_quadrant")}</span> &nbsp;→&nbsp;
            <span style="color:{_strategic_qf_c};font-weight:600;">{_strategic_qf}</span></div>
-      <div><span style="color:#6890B0;">Meta</span> &nbsp;→&nbsp;
+      <div><span style="color:#6890B0;">{t(STRINGS, "card_f_meta")}</span> &nbsp;→&nbsp;
            {_row.get("meta_profile","—")}</div>
-      <div><span style="color:#6890B0;">Export share</span> &nbsp;→&nbsp;
+      <div><span style="color:#6890B0;">{t(STRINGS, "card_f_export_share")}</span> &nbsp;→&nbsp;
            {_row["export_share_structural"]:.2f}%</div>
-      <div><span style="color:#6890B0;">Coverage</span> &nbsp;→&nbsp;
+      <div><span style="color:#6890B0;">{t(STRINGS, "card_f_coverage")}</span> &nbsp;→&nbsp;
            {_row["coverage_ratio_structural"]:.3f}</div>
-      <div><span style="color:#6890B0;">CAGR export</span> &nbsp;→&nbsp;
+      <div><span style="color:#6890B0;">{t(STRINGS, "card_f_cagr_export")}</span> &nbsp;→&nbsp;
            {_row["cagr_export"]*100:.1f}%</div>
-      <div><span style="color:#6890B0;">Volatility</span> &nbsp;→&nbsp;
+      <div><span style="color:#6890B0;">{t(STRINGS, "card_f_volatility")}</span> &nbsp;→&nbsp;
            {_row["volatility_export"]:.2f}</div>
     </div>
   </div>
@@ -868,27 +1139,27 @@ with tab3:
               border-radius:12px;padding:1rem;display:flex;flex-direction:column;">
     <div style="font-size:11px;font-weight:700;color:#93C5FD;
                 text-transform:uppercase;letter-spacing:.07em;margin-bottom:.75rem;">
-      G · Bilateral Risk</div>
+      {t(STRINGS, "card_g_header")}</div>
     <div style="font-size:13px;color:#BAD7F8;line-height:1.75;flex:1;">
-      <div><span style="color:#6890B0;">Score (Full Period)</span> &nbsp;→&nbsp;
+      <div><span style="color:#6890B0;">{t(STRINGS, "card_g_score_full_period")}</span> &nbsp;→&nbsp;
            {_row.get("score_full_periode", 0):.3f}</div>
-      <div><span style="color:#6890B0;">Profile (Full Period)</span> &nbsp;→&nbsp;
+      <div><span style="color:#6890B0;">{t(STRINGS, "card_g_profile_full_period")}</span> &nbsp;→&nbsp;
            <span style="color:{_bc};font-weight:600;">{_bprof}</span></div>
-      <div><span style="color:#6890B0;">Profile (Recent)</span> &nbsp;→&nbsp;
+      <div><span style="color:#6890B0;">{t(STRINGS, "card_g_profile_recent")}</span> &nbsp;→&nbsp;
            <span style="color:{_pr_c};font-weight:600;">{_prof_rec}</span></div>
-      <div><span style="color:#6890B0;">Convergence Rate</span> &nbsp;→&nbsp; {_conv_str}</div>
-      <div><span style="color:#6890B0;">Score Import</span> &nbsp;→&nbsp;
+      <div><span style="color:#6890B0;">{t(STRINGS, "card_g_convergence_rate")}</span> &nbsp;→&nbsp; {_conv_str}</div>
+      <div><span style="color:#6890B0;">{t(STRINGS, "card_g_score_import")}</span> &nbsp;→&nbsp;
            {_row.get("score_import", 0):.3f}</div>
-      <div><span style="color:#6890B0;">Score Export</span> &nbsp;→&nbsp;
+      <div><span style="color:#6890B0;">{t(STRINGS, "card_g_score_export")}</span> &nbsp;→&nbsp;
            {_row.get("score_export", 0):.3f}</div>
       <div><span style="color:#6890B0;">BDIS</span> &nbsp;→&nbsp; {_row["bdis"]:.3f}</div>
-      <div><span style="color:#6890B0;">HHI Import</span> &nbsp;→&nbsp;
+      <div><span style="color:#6890B0;">{t(STRINGS, "card_g_hhi_import")}</span> &nbsp;→&nbsp;
            {_row["hhi_import"]:.3f}</div>
-      <div><span style="color:#6890B0;">HHI Export</span> &nbsp;→&nbsp;
+      <div><span style="color:#6890B0;">{t(STRINGS, "card_g_hhi_export")}</span> &nbsp;→&nbsp;
            {_row["hhi_export"]:.3f}</div>
-      <div><span style="color:#6890B0;">Critical share</span> &nbsp;→&nbsp;
+      <div><span style="color:#6890B0;">{t(STRINGS, "card_g_critical_share")}</span> &nbsp;→&nbsp;
            {_row["critical_share"]:.1%}</div>
-      <div><span style="color:#6890B0;">Top partner</span> &nbsp;→&nbsp;
+      <div><span style="color:#6890B0;">{t(STRINGS, "card_g_top_partner")}</span> &nbsp;→&nbsp;
            {_row.get("top_partner","—")}</div>
     </div>
   </div>
@@ -898,18 +1169,18 @@ with tab3:
               border-radius:12px;padding:1rem;display:flex;flex-direction:column;">
     <div style="font-size:11px;font-weight:700;color:#34D399;
                 text-transform:uppercase;letter-spacing:.07em;margin-bottom:.75rem;">
-      H · Combined</div>
+      {t(STRINGS, "card_h_header")}</div>
     <div style="font-size:13px;color:#6EE7B7;line-height:1.75;flex:1;">
-      <div><span style="color:#6890B0;">Combined score</span> &nbsp;→&nbsp;
+      <div><span style="color:#6890B0;">{t(STRINGS, "lbl_combined_score")}</span> &nbsp;→&nbsp;
            <span style="color:{_cc};font-weight:700;">{_row["combined_score"]:.3f}</span></div>
-      <div><span style="color:#6890B0;">Quadrant</span> &nbsp;→&nbsp;
+      <div><span style="color:#6890B0;">{t(STRINGS, "card_h_quadrant")}</span> &nbsp;→&nbsp;
            <span style="color:{_sq_c};font-weight:600;">{_strat_q}</span></div>
-      <div><span style="color:#6890B0;">Stability</span> &nbsp;→&nbsp;
+      <div><span style="color:#6890B0;">{t(STRINGS, "card_h_stability")}</span> &nbsp;→&nbsp;
            <span style="color:{_stab_c};font-weight:600;">{_stab}</span></div>
-      <div><span style="color:#6890B0;">Stability score</span> &nbsp;→&nbsp; {_stab_score_str}</div>
-      <div><span style="color:#6890B0;">Profile Drift</span> &nbsp;→&nbsp;
+      <div><span style="color:#6890B0;">{t(STRINGS, "card_h_stability_score")}</span> &nbsp;→&nbsp; {_stab_score_str}</div>
+      <div><span style="color:#6890B0;">{t(STRINGS, "card_h_profile_drift")}</span> &nbsp;→&nbsp;
            <span style="color:{_drift_c};font-weight:600;">{_drift}</span></div>
-      <div><span style="color:#6890B0;">Drift Magnitude</span> &nbsp;→&nbsp; {_dm_str}</div>
+      <div><span style="color:#6890B0;">{t(STRINGS, "card_h_drift_magnitude")}</span> &nbsp;→&nbsp; {_dm_str}</div>
     </div>
   </div>
 
@@ -922,13 +1193,13 @@ with tab3:
     _cr, _cs_col = st.columns(2)
 
     with _cr:
-        section_label("Dimension Radar")
+        section_label(t(STRINGS, "dimension_radar_section"))
         _radar_default = [c for c in ["Australia", "Belgium"] if c in COUNTRIES and c != country]
         if st.session_state.get("_radar_prev_country") != country:
             st.session_state["card_compare"] = _radar_default
             st.session_state["_radar_prev_country"] = country
         compare_c = st.multiselect(
-            "Compare with",
+            t(STRINGS, "compare_with_label"),
             [c for c in COUNTRIES if c != country],
             default=_radar_default, max_selections=3,
             key="card_compare",
@@ -968,14 +1239,14 @@ with tab3:
         st.plotly_chart(fig_r, width='stretch')
 
     with _cs_col:
-        section_label("Profile Scorecard")
+        section_label(t(STRINGS, "scorecard_section"))
 
         _DIMS = [
-            ("Size",        "size_profile"),
-            ("Balance",     "balance_profile"),
-            ("Growth",      "growth_profile"),
-            ("Stability",   "stability_profile"),
-            ("Consistency", "consistency_profile"),
+            (t(STRINGS, "radar_size"),        "size_profile"),
+            (t(STRINGS, "radar_balance"),     "balance_profile"),
+            (t(STRINGS, "radar_growth"),      "growth_profile"),
+            (t(STRINGS, "radar_stability"),   "stability_profile"),
+            (t(STRINGS, "radar_consistency"), "consistency_profile"),
         ]
         _LVL_C = {1: "#10B981", 2: "#60A5FA", 3: "#F59E0B", 4: "#EF4444"}
         _LVL_M = {
@@ -1014,7 +1285,7 @@ with tab3:
             padding:.75rem 1rem;">
   <div style="display:flex;justify-content:space-between;align-items:center;">
     <div>
-      <div style="font-size:11px;color:#6890B0;">Structural Score</div>
+      <div style="font-size:11px;color:#6890B0;">{t(STRINGS, "card_f_structural_score")}</div>
       <div style="font-size:22px;font-weight:700;color:{_sc};">
         {_row['structural_score']:.3f}</div>
     </div>
@@ -1029,7 +1300,7 @@ with tab3:
 
     # ── Annual Profile Timeline ───────────────────────────────
     thin_divider()
-    section_label("Annual Profile Timeline")
+    section_label(t(STRINGS, "annual_timeline_section"))
 
     _df_tl = df_final[df_final["country_name"] == country].copy()
 
@@ -1047,7 +1318,7 @@ with tab3:
         fig_tl = go.Figure(go.Heatmap(
             z=[_lg_num, _sc_num],
             x=_years,
-            y=["Logic Profile", "Score Profile"],
+            y=[t(STRINGS, "heatmap_logic_profile"), t(STRINGS, "heatmap_score_profile")],
             colorscale=_TL_COLORSCALE, zmin=0, zmax=3,
             text=[_lg_lbl, _sc_lbl],
             texttemplate="%{text}",
@@ -1057,7 +1328,7 @@ with tab3:
             xgap=2, ygap=4,
         ))
         fig_tl.update_layout(**_lay(
-            title=f"Annual Bilateral Profile — {country}",
+            title=t(STRINGS, "fig_tl_title").format(country=country),
             xaxis=dict(
                 tickmode="array", tickvals=_years,
                 ticktext=[str(y) for y in _years],
@@ -1078,4 +1349,4 @@ with tab3:
         _leg += '</div>'
         st.markdown(_leg, unsafe_allow_html=True)
     else:
-        st.info(f"No annual data available for {country}.")
+        st.info(t(STRINGS, "no_annual_data").format(country=country))

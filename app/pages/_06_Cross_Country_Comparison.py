@@ -24,8 +24,191 @@ import plotly.graph_objects as go
 import plotly.express as px
 import numpy as np
 from utils.styles import inject_styles, kpi, section_label, thin_divider, finding, format_value
+from utils.i18n import t
 
 inject_styles()
+
+# ════════════════════════════════════════════════════════════════
+# TRANSLATIONS
+# ════════════════════════════════════════════════════════════════
+# NOTE: quadrant/profile category values coming from df_structural
+# columns (e.g. "Dominant", "Stars", "Cash Cows", "Declining", ...)
+# are DATA and are never translated, even when shown as plain text.
+
+STRINGS = {
+    "en": {
+        "eyebrow": "Trade Analysis · Page 4 of 6",
+        "title": "Cross-Country Comparison",
+        "caption": "F.4 — Multi-country analysis · volume · balance · share · growth · quadrants",
+        "lbl_select_countries": "Select countries to compare (2–10)",
+        "warn_min_countries": "Please select at least 2 countries.",
+
+        "tab_volume": "📦 Volume",
+        "tab_balance": "⚖️ Balance",
+        "tab_share": "📊 Share",
+        "tab_growth": "📈 Growth",
+        "tab_quadrants": "🎯 Quadrants",
+
+        "sec_volume": "F.4.1 · Export & Import Comparison",
+        "lbl_flow": "Flow",
+        "opt_exports_x": "Exports (X)",
+        "opt_imports_m": "Imports (M)",
+        "opt_total_trade": "Total Trade",
+        "title_evolution": "{metric} Evolution (USD Billion)",
+        "unit_usd_billion": "USD Billion",
+        "title_snapshot": "{metric} Snapshot — {year} (USD Billion)",
+
+        "sec_balance": "F.4.2 · Trade Balance Comparison",
+        "title_balance_evolution": "Trade Balance Evolution (USD Billion)",
+        "title_balance_snapshot": "Trade Balance Snapshot — {year}",
+        "sec_coverage_ratio": "Coverage Ratio",
+        "balanced_100": "Balanced (100%)",
+        "title_coverage_evolution": "Coverage Ratio Evolution (Exports / Imports × 100%)",
+        "unit_coverage_pct": "Coverage (%)",
+
+        "sec_share": "F.4.3 · World Share Comparison",
+        "lbl_share_metric": "Share metric",
+        "opt_export_share": "Export Share",
+        "opt_import_share": "Import Share",
+        "title_share_evolution": "{metric} Evolution",
+        "unit_share_pct": "Share (%)",
+        "title_share_snapshot": "{metric} Snapshot — {year}",
+
+        "sec_growth": "F.4.4 · Growth Comparison",
+        "lbl_growth_metric": "Growth metric",
+        "opt_export_growth": "Export Growth",
+        "opt_import_growth": "Import Growth",
+        "title_growth_yoy": "{metric} YoY (%)",
+        "unit_pct": "%",
+        "title_cagr": "CAGR {metric} — Full Period (%)",
+        "sec_growth_heatmap": "Growth Heatmap — YoY by Country × Year",
+        "title_heatmap": "{metric} (%) — Year × Country",
+        "axis_year": "Year",
+
+        "sec_quadrants": "F.4.6 · Global Quadrant Views — All Countries",
+        "quad_tab_static": "📐 Static",
+        "quad_tab_dynamic": "⚡ Dynamic",
+        "quad_tab_strategic": "⭐ Strategic",
+        "other_countries": "Other countries",
+        "others": "Others",
+        "quad_dominant_desc": "🟢 Dominant<br><sub>Large & Surplus</sub>",
+        "quad_balanced_desc": "🔵 Balanced<br><sub>Small & Surplus</sub>",
+        "quad_vulnerable_desc": "🟡 Vulnerable<br><sub>Large & Deficit</sub>",
+        "quad_marginal_desc": "🔴 Marginal<br><sub>Small & Deficit</sub>",
+        "title_static_quadrant": "Static Quadrant — All Countries",
+        "axis_export_share_pct": "Export Share (%)",
+        "axis_coverage_ratio": "Coverage Ratio",
+        "hover_quadrant": "Quadrant",
+        "hover_cagr": "CAGR",
+        "hover_volatility": "Volatility",
+        "quad_star_desc": "⭐ Star<br>(High CAGR · Low Vol.)",
+        "quad_stable_desc": "😴 Stable Stagnant<br>(Low CAGR · Low Vol.)",
+        "quad_risky_desc": "📈 Risky Grower<br>(High CAGR · High Vol.)",
+        "quad_declining_desc": "📉 Declining<br>(Low CAGR · High Vol.)",
+        "title_dynamic_quadrant": "Dynamic Quadrant — All Countries",
+        "axis_cagr_export": "CAGR Export (%)",
+        "axis_export_volatility": "Export Volatility",
+        "quad_stars_desc": "⭐ Stars<br><sub>Large & Growing</sub>",
+        "quad_emerging_desc": "🌱 Emerging<br><sub>Small & Growing</sub>",
+        "quad_cashcows_desc": "🐄 Cash Cows<br><sub>Large & Stagnant</sub>",
+        "quad_marginal2_desc": "📉 Marginal<br><sub>Small & Shrinking</sub>",
+        "title_strategic_quadrant": "Strategic Quadrant (BCG-style) — All Countries",
+
+        "expander_quad_findings": "Key findings — Quadrant distribution",
+        "find_quad_1": "<strong>Static quadrant</strong>: Most countries are in Marginal or Balanced — "
+                       "only ~15% qualify as Dominant (large share + surplus). Threshold: 1% export share.",
+        "find_quad_2": "<strong>Dynamic quadrant</strong>: Stars (high CAGR + low volatility) dominate "
+                       "large economies — Declining concentrated in commodity-dependent small traders",
+        "find_quad_3": "<strong>Strategic quadrant</strong>: Emerging = small share but positive CAGR — "
+                       "the most interesting group for future growth potential",
+    },
+    "fr": {
+        "eyebrow": "Analyse commerciale · Page 4 sur 6",
+        "title": "Comparaison pays",
+        "caption": "F.4 — Analyse multi-pays · volume · balance · part · croissance · quadrants",
+        "lbl_select_countries": "Sélectionner les pays à comparer (2 à 10)",
+        "warn_min_countries": "Veuillez sélectionner au moins 2 pays.",
+
+        "tab_volume": "📦 Volume",
+        "tab_balance": "⚖️ Balance",
+        "tab_share": "📊 Part",
+        "tab_growth": "📈 Croissance",
+        "tab_quadrants": "🎯 Quadrants",
+
+        "sec_volume": "F.4.1 · Comparaison des exportations & importations",
+        "lbl_flow": "Flux",
+        "opt_exports_x": "Exportations (X)",
+        "opt_imports_m": "Importations (M)",
+        "opt_total_trade": "Commerce total",
+        "title_evolution": "Évolution — {metric} (milliards USD)",
+        "unit_usd_billion": "Milliards USD",
+        "title_snapshot": "{metric} — Instantané {year} (milliards USD)",
+
+        "sec_balance": "F.4.2 · Comparaison de la balance commerciale",
+        "title_balance_evolution": "Évolution de la balance commerciale (milliards USD)",
+        "title_balance_snapshot": "Balance commerciale — Instantané {year}",
+        "sec_coverage_ratio": "Taux de couverture",
+        "balanced_100": "Équilibré (100 %)",
+        "title_coverage_evolution": "Évolution du taux de couverture (Exportations / Importations × 100 %)",
+        "unit_coverage_pct": "Couverture (%)",
+
+        "sec_share": "F.4.3 · Comparaison des parts mondiales",
+        "lbl_share_metric": "Indicateur de part",
+        "opt_export_share": "Part des exportations",
+        "opt_import_share": "Part des importations",
+        "title_share_evolution": "Évolution — {metric}",
+        "unit_share_pct": "Part (%)",
+        "title_share_snapshot": "{metric} — Instantané {year}",
+
+        "sec_growth": "F.4.4 · Comparaison de la croissance",
+        "lbl_growth_metric": "Indicateur de croissance",
+        "opt_export_growth": "Croissance des exportations",
+        "opt_import_growth": "Croissance des importations",
+        "title_growth_yoy": "{metric} annuelle (%)",
+        "unit_pct": "%",
+        "title_cagr": "CAGR {metric} — Période complète (%)",
+        "sec_growth_heatmap": "Carte de chaleur de la croissance — annuelle par pays × année",
+        "title_heatmap": "{metric} (%) — Année × Pays",
+        "axis_year": "Année",
+
+        "sec_quadrants": "F.4.6 · Vues globales des quadrants — Tous les pays",
+        "quad_tab_static": "📐 Statique",
+        "quad_tab_dynamic": "⚡ Dynamique",
+        "quad_tab_strategic": "⭐ Stratégique",
+        "other_countries": "Autres pays",
+        "others": "Autres",
+        "quad_dominant_desc": "🟢 Dominant<br><sub>Grande taille & excédent</sub>",
+        "quad_balanced_desc": "🔵 Balanced<br><sub>Petite taille & excédent</sub>",
+        "quad_vulnerable_desc": "🟡 Vulnerable<br><sub>Grande taille & déficit</sub>",
+        "quad_marginal_desc": "🔴 Marginal<br><sub>Petite taille & déficit</sub>",
+        "title_static_quadrant": "Quadrant statique — Tous les pays",
+        "axis_export_share_pct": "Part des exportations (%)",
+        "axis_coverage_ratio": "Taux de couverture",
+        "hover_quadrant": "Quadrant",
+        "hover_cagr": "CAGR",
+        "hover_volatility": "Volatilité",
+        "quad_star_desc": "⭐ Star<br>(CAGR élevé · faible volatilité)",
+        "quad_stable_desc": "😴 Stable Stagnant<br>(CAGR faible · faible volatilité)",
+        "quad_risky_desc": "📈 Risky Grower<br>(CAGR élevé · forte volatilité)",
+        "quad_declining_desc": "📉 Declining<br>(CAGR faible · forte volatilité)",
+        "title_dynamic_quadrant": "Quadrant dynamique — Tous les pays",
+        "axis_cagr_export": "CAGR des exportations (%)",
+        "axis_export_volatility": "Volatilité des exportations",
+        "quad_stars_desc": "⭐ Stars<br><sub>Grande taille & croissance</sub>",
+        "quad_emerging_desc": "🌱 Emerging<br><sub>Petite taille & croissance</sub>",
+        "quad_cashcows_desc": "🐄 Cash Cows<br><sub>Grande taille & stagnation</sub>",
+        "quad_marginal2_desc": "📉 Marginal<br><sub>Petite taille & déclin</sub>",
+        "title_strategic_quadrant": "Quadrant stratégique (style BCG) — Tous les pays",
+
+        "expander_quad_findings": "Principaux constats — Répartition des quadrants",
+        "find_quad_1": "<strong>Quadrant statique</strong> : la plupart des pays sont dans Marginal ou Balanced — "
+                       "seuls ~15 % se qualifient comme Dominant (grande part + excédent). Seuil : 1 % de part des exportations.",
+        "find_quad_2": "<strong>Quadrant dynamique</strong> : les Stars (CAGR élevé + faible volatilité) dominent "
+                       "les grandes économies — Declining se concentre chez les petits pays dépendants des matières premières",
+        "find_quad_3": "<strong>Quadrant stratégique</strong> : Emerging = part faible mais CAGR positif — "
+                       "le groupe le plus intéressant pour le potentiel de croissance future",
+    },
+}
 
 def _fmt(x):
     return format_value(x)
@@ -93,9 +276,9 @@ QUAD_COLORS = {
 # HEADER
 # ════════════════════════════════════════════════════════════════
 
-st.markdown('<div class="page-eyebrow">Trade Analysis · Page 4 of 6</div>', unsafe_allow_html=True)
-st.title("Cross-Country Comparison")
-st.caption("F.4 — Multi-country analysis · volume · balance · share · growth · quadrants")
+st.markdown(f'<div class="page-eyebrow">{t(STRINGS, "eyebrow")}</div>', unsafe_allow_html=True)
+st.title(t(STRINGS, "title"))
+st.caption(t(STRINGS, "caption"))
 thin_divider()
 
 # ════════════════════════════════════════════════════════════════
@@ -106,7 +289,7 @@ DEFAULT = ["USA","China","France","Canada","Brazil","Qatar","India","Nigeria","G
 default_valid = [c for c in DEFAULT if c in COUNTRIES]
 
 countries = st.multiselect(
-    "Select countries to compare (2–10)",
+    t(STRINGS, "lbl_select_countries"),
     options=COUNTRIES,
     default=default_valid,
     max_selections=10,
@@ -114,7 +297,7 @@ countries = st.multiselect(
 )
 
 if len(countries) < 2:
-    st.warning("Please select at least 2 countries.")
+    st.warning(t(STRINGS, "warn_min_countries"))
     st.stop()
 
 cmap = country_color(countries)
@@ -128,19 +311,26 @@ thin_divider()
 # ════════════════════════════════════════════════════════════════
 
 tab1, tab2, tab3, tab4, tab5 = st.tabs([
-    "📦 Volume",
-    "⚖️ Balance",
-    "📊 Share",
-    "📈 Growth",
-    "🎯 Quadrants",
+    t(STRINGS, "tab_volume"),
+    t(STRINGS, "tab_balance"),
+    t(STRINGS, "tab_share"),
+    t(STRINGS, "tab_growth"),
+    t(STRINGS, "tab_quadrants"),
 ])
 
 
 # ── TAB 1 : VOLUME ───────────────────────────────────────────
 with tab1:
-    section_label("F.4.1 · Export & Import Comparison")
+    section_label(t(STRINGS, "sec_volume"))
 
-    metric = st.radio("Flow", ["Exports (X)", "Imports (M)", "Total Trade"],
+    FLOW_OPTS = ["Exports (X)", "Imports (M)", "Total Trade"]
+    FLOW_LABELS = {
+        "Exports (X)": t(STRINGS, "opt_exports_x"),
+        "Imports (M)": t(STRINGS, "opt_imports_m"),
+        "Total Trade": t(STRINGS, "opt_total_trade"),
+    }
+    metric = st.radio(t(STRINGS, "lbl_flow"), FLOW_OPTS,
+                      format_func=lambda x: FLOW_LABELS[x],
                       horizontal=True, key="vol_metric")
     col_map = {"Exports (X)": "X", "Imports (M)": "M", "Total Trade": "total_trade"}
     col_use = col_map[metric]
@@ -162,8 +352,8 @@ with tab1:
                 hovertemplate="<b>" + c + "</b><br>%{x}<br>Value: %{customdata[0]}<extra></extra>",
             ))
         fig_line.update_layout(**PLOTLY_LAYOUT,
-            title=f"{metric} Evolution (USD Billion)",
-            yaxis_title="USD Billion",
+            title=t(STRINGS, "title_evolution").format(metric=FLOW_LABELS[metric]),
+            yaxis_title=t(STRINGS, "unit_usd_billion"),
         )
         st.plotly_chart(fig_line, width='stretch')
 
@@ -187,15 +377,15 @@ with tab1:
             hovertemplate="<b>%{y}</b><br>Value: %{text}<extra></extra>",
         ))
         fig_bar.update_layout(**PLOTLY_LAYOUT,
-            title=f"{metric} Snapshot — {YEAR_MAX} (USD Billion)",
-            xaxis_title="USD Billion",
+            title=t(STRINGS, "title_snapshot").format(metric=FLOW_LABELS[metric], year=YEAR_MAX),
+            xaxis_title=t(STRINGS, "unit_usd_billion"),
         )
         st.plotly_chart(fig_bar, width='stretch')
 
 
 # ── TAB 2 : BALANCE ──────────────────────────────────────────
 with tab2:
-    section_label("F.4.2 · Trade Balance Comparison")
+    section_label(t(STRINGS, "sec_balance"))
 
     col1, col2 = st.columns(2)
 
@@ -215,8 +405,8 @@ with tab2:
             ))
         fig_bline.add_hline(y=0, line_color="#EEF4FB", line_width=1, line_dash="dash")
         fig_bline.update_layout(**PLOTLY_LAYOUT,
-            title="Trade Balance Evolution (USD Billion)",
-            yaxis_title="USD Billion",
+            title=t(STRINGS, "title_balance_evolution"),
+            yaxis_title=t(STRINGS, "unit_usd_billion"),
         )
         st.plotly_chart(fig_bline, width='stretch')
 
@@ -246,13 +436,13 @@ with tab2:
         ))
         fig_bbar.add_vline(x=0, line_color="#EEF4FB", line_width=1)
         fig_bbar.update_layout(**PLOTLY_LAYOUT,
-            title=f"Trade Balance Snapshot — {YEAR_MAX}",
-            xaxis_title="USD Billion",
+            title=t(STRINGS, "title_balance_snapshot").format(year=YEAR_MAX),
+            xaxis_title=t(STRINGS, "unit_usd_billion"),
         )
         st.plotly_chart(fig_bbar, width='stretch')
 
     # Coverage ratio comparison
-    section_label("Coverage Ratio")
+    section_label(t(STRINGS, "sec_coverage_ratio"))
     fig_cov = go.Figure()
     for c in countries:
         df_c = df_sel[df_sel["country_name"] == c].sort_values("year")
@@ -261,24 +451,30 @@ with tab2:
             mode="lines+markers", name=c,
             line=dict(color=cmap[c], width=2),
             marker=dict(size=6),
-            hovertemplate=f"<b>{c}</b><br>%{{x}}<br>Coverage: %{{y:.1f}}%<extra></extra>",
+            hovertemplate=f"<b>{c}</b><br>%{{x}}<br>" + t(STRINGS, "unit_coverage_pct") + ": %{y:.1f}%<extra></extra>",
         ))
     fig_cov.add_hline(y=100, line_dash="dash", line_color="#EEF4FB",
-                      annotation_text="Balanced (100%)")
+                      annotation_text=t(STRINGS, "balanced_100"))
     fig_cov.update_layout(**PLOTLY_LAYOUT,
-        title="Coverage Ratio Evolution (Exports / Imports × 100%)",
-        yaxis_title="Coverage (%)",
+        title=t(STRINGS, "title_coverage_evolution"),
+        yaxis_title=t(STRINGS, "unit_coverage_pct"),
     )
     st.plotly_chart(fig_cov, width='stretch')
 
 
 # ── TAB 3 : SHARE ────────────────────────────────────────────
 with tab3:
-    section_label("F.4.3 · World Share Comparison")
+    section_label(t(STRINGS, "sec_share"))
 
+    SHARE_METRIC_OPTS = ["Export Share", "Import Share"]
+    SHARE_METRIC_LABELS = {
+        "Export Share": t(STRINGS, "opt_export_share"),
+        "Import Share": t(STRINGS, "opt_import_share"),
+    }
     share_metric = st.radio(
-        "Share metric",
-        ["Export Share", "Import Share"],
+        t(STRINGS, "lbl_share_metric"),
+        SHARE_METRIC_OPTS,
+        format_func=lambda x: SHARE_METRIC_LABELS[x],
         horizontal=True, key="share_metric"
     )
     scol = "export_share" if share_metric == "Export Share" else "import_share"
@@ -294,11 +490,11 @@ with tab3:
                 mode="lines+markers", name=c,
                 line=dict(color=cmap[c], width=2),
                 marker=dict(size=6),
-                hovertemplate="<b>" + c + "</b><br>%{x}<br>" + share_metric + ": %{y:.3f}%<extra></extra>",
+                hovertemplate="<b>" + c + "</b><br>%{x}<br>" + SHARE_METRIC_LABELS[share_metric] + ": %{y:.3f}%<extra></extra>",
             ))
         fig_sline.update_layout(**PLOTLY_LAYOUT,
-            title=f"{share_metric} Evolution",
-            yaxis_title="Share (%)",
+            title=t(STRINGS, "title_share_evolution").format(metric=SHARE_METRIC_LABELS[share_metric]),
+            yaxis_title=t(STRINGS, "unit_share_pct"),
         )
         st.plotly_chart(fig_sline, width='stretch')
 
@@ -320,19 +516,25 @@ with tab3:
             hovertemplate="<b>%{y}</b><br>Share: %{text}<extra></extra>",
         ))
         fig_sbar.update_layout(**PLOTLY_LAYOUT,
-            title=f"{share_metric} Snapshot — {YEAR_MAX}",
-            xaxis_title="Share (%)",
+            title=t(STRINGS, "title_share_snapshot").format(metric=SHARE_METRIC_LABELS[share_metric], year=YEAR_MAX),
+            xaxis_title=t(STRINGS, "unit_share_pct"),
         )
         st.plotly_chart(fig_sbar, width='stretch')
 
 
 # ── TAB 4 : GROWTH ───────────────────────────────────────────
 with tab4:
-    section_label("F.4.4 · Growth Comparison")
+    section_label(t(STRINGS, "sec_growth"))
 
+    GROWTH_METRIC_OPTS = ["Export Growth", "Import Growth"]
+    GROWTH_METRIC_LABELS = {
+        "Export Growth": t(STRINGS, "opt_export_growth"),
+        "Import Growth": t(STRINGS, "opt_import_growth"),
+    }
     g_metric = st.radio(
-        "Growth metric",
-        ["Export Growth", "Import Growth"],
+        t(STRINGS, "lbl_growth_metric"),
+        GROWTH_METRIC_OPTS,
+        format_func=lambda x: GROWTH_METRIC_LABELS[x],
         horizontal=True, key="growth_metric"
     )
     gcol = "export_growth" if g_metric == "Export Growth" else "import_growth"
@@ -354,8 +556,8 @@ with tab4:
                 hovertemplate=f"<b>{c}</b><br>%{{x}}<br>Growth: %{{y:.1f}}%<extra></extra>",
             ))
         fig_gline.update_layout(**PLOTLY_LAYOUT,
-            title=f"{g_metric} YoY (%)",
-            yaxis_title="%",
+            title=t(STRINGS, "title_growth_yoy").format(metric=GROWTH_METRIC_LABELS[g_metric]),
+            yaxis_title=t(STRINGS, "unit_pct"),
         )
         st.plotly_chart(fig_gline, width='stretch')
 
@@ -383,13 +585,13 @@ with tab4:
             ))
             fig_cagr.add_vline(x=0, line_color="#EEF4FB", line_width=1)
             fig_cagr.update_layout(**PLOTLY_LAYOUT,
-                title=f"CAGR {g_metric} — Full Period (%)",
-                xaxis_title="%",
+                title=t(STRINGS, "title_cagr").format(metric=GROWTH_METRIC_LABELS[g_metric]),
+                xaxis_title=t(STRINGS, "unit_pct"),
             )
             st.plotly_chart(fig_cagr, width='stretch')
 
     # Growth heatmap
-    section_label("Growth Heatmap — YoY by Country × Year")
+    section_label(t(STRINGS, "sec_growth_heatmap"))
     df_heat = df_sel.pivot_table(
         index="country_name", columns="year", values=gcol
     ).reindex(countries)
@@ -407,8 +609,8 @@ with tab4:
         colorbar=dict(title="%"),
     ))
     fig_heat.update_layout(**PLOTLY_LAYOUT,
-        title=f"{g_metric} (%) — Year × Country",
-        xaxis_title="Year",
+        title=t(STRINGS, "title_heatmap").format(metric=GROWTH_METRIC_LABELS[g_metric]),
+        xaxis_title=t(STRINGS, "axis_year"),
         height=max(300, len(countries) * 45 + 100),
     )
     st.plotly_chart(fig_heat, width='stretch')
@@ -416,9 +618,9 @@ with tab4:
 
 # ── TAB 5 : QUADRANTS ────────────────────────────────────────
 with tab5:
-    section_label("F.4.6 · Global Quadrant Views — All Countries")
+    section_label(t(STRINGS, "sec_quadrants"))
 
-    quad_tabs = st.tabs(["📐 Static", "⚡ Dynamic", "⭐ Strategic"])
+    quad_tabs = st.tabs([t(STRINGS, "quad_tab_static"), t(STRINGS, "quad_tab_dynamic"), t(STRINGS, "quad_tab_strategic")])
 
     def _global_scatter(x_col, y_col, x_thr, y_thr,
                         x_label, y_label, title, q_col,
@@ -434,7 +636,7 @@ with tab5:
         df_bg = df_all[~df_all["country_name"].isin(highlights)]
         fig.add_trace(go.Scatter(
             x=df_bg[x_col], y=df_bg[y_col],
-            mode="markers", name="Other countries",
+            mode="markers", name=t(STRINGS, "other_countries"),
             marker=dict(
                 color=[QUAD_COLORS.get(q, "#6B7280") for q in df_bg[q_col]],
                 size=8, opacity=0.35, line=dict(width=0),
@@ -516,14 +718,14 @@ with tab5:
         fig_sq = _global_scatter(
             "export_share_structural", "coverage_ratio_structural",
             1.0, 1.0,
-            "Export Share (%)", "Coverage Ratio",
-            "Static Quadrant — All Countries",
+            t(STRINGS, "axis_export_share_pct"), t(STRINGS, "axis_coverage_ratio"),
+            t(STRINGS, "title_static_quadrant"),
             "static_quadrant", countries,
             quad_labels=[
-                ("TR", "🟢 Dominant<br><sub>Large & Surplus</sub>",   "#10B981"),
-                ("TL", "🔵 Balanced<br><sub>Small & Surplus</sub>",   "#60A5FA"),
-                ("BR", "🟡 Vulnerable<br><sub>Large & Deficit</sub>", "#F59E0B"),
-                ("BL", "🔴 Marginal<br><sub>Small & Deficit</sub>",   "#F472B6"),
+                ("TR", t(STRINGS, "quad_dominant_desc"),   "#10B981"),
+                ("TL", t(STRINGS, "quad_balanced_desc"),   "#60A5FA"),
+                ("BR", t(STRINGS, "quad_vulnerable_desc"), "#F59E0B"),
+                ("BL", t(STRINGS, "quad_marginal_desc"),   "#F472B6"),
             ],
             x_range=[0, _sq_xhi],
             y_range=[_sq_ylo, _sq_yhi],
@@ -551,13 +753,13 @@ with tab5:
         df_dq_bg = df_dq_plot[~df_dq_plot["country_name"].isin(countries)]
         fig_dq.add_trace(go.Scatter(
             x=df_dq_bg["cagr_export"]*100, y=df_dq_bg["volatility_export"],
-            mode="markers", name="Others",
+            mode="markers", name=t(STRINGS, "others"),
             marker=dict(color=[DYN_COLORS.get(q,"#6B7280")
                                for q in df_dq_bg["dynamic_quadrant"]],
                         size=7, opacity=0.35, line=dict(width=0)),
             customdata=df_dq_bg[["country_name","dynamic_quadrant"]],
-            hovertemplate="<b>%{customdata[0]}</b><br>CAGR: %{x:.1f}%<br>"
-                          "Volatility: %{y:.2f}<br>Quadrant: %{customdata[1]}<extra></extra>",
+            hovertemplate="<b>%{customdata[0]}</b><br>" + t(STRINGS, "hover_cagr") + ": %{x:.1f}%<br>"
+                          + t(STRINGS, "hover_volatility") + ": %{y:.2f}<br>" + t(STRINGS, "hover_quadrant") + ": %{customdata[1]}<extra></extra>",
             showlegend=False,
         ))
         for cc in countries:
@@ -573,27 +775,27 @@ with tab5:
                 textfont=dict(size=11, color="#EEF4FB"),
                 customdata=[[rr.get("dynamic_quadrant","—"),
                              f"{rr['cagr_export']:.2%}", f"{rr['volatility_export']:.2f}"]],
-                hovertemplate=f"<b>{cc}</b><br>CAGR: %{{customdata[1]}}<br>"
-                              "Volatility: %{customdata[2]}<br>"
-                              "Quadrant: %{customdata[0]}<extra></extra>",
+                hovertemplate=f"<b>{cc}</b><br>" + t(STRINGS, "hover_cagr") + ": %{customdata[1]}<br>"
+                              + t(STRINGS, "hover_volatility") + ": %{customdata[2]}<br>"
+                              + t(STRINGS, "hover_quadrant") + ": %{customdata[0]}<extra></extra>",
             ))
         fig_dq.add_vline(x=0, line_dash="dash", line_color="#6890B0", line_width=2)
         fig_dq.add_hline(y=_vol_median, line_dash="dash", line_color="#6890B0", line_width=2)
         for txt, xp, yp, clr in [
-            ("⭐ Star<br>(High CAGR · Low Vol.)",           _dq_xr, _dq_yb, "#10B981"),
-            ("😴 Stable Stagnant<br>(Low CAGR · Low Vol.)", _dq_xl, _dq_yb, "#60A5FA"),
-            ("📈 Risky Grower<br>(High CAGR · High Vol.)",  _dq_xr, _dq_yt, "#F59E0B"),
-            ("📉 Declining<br>(Low CAGR · High Vol.)",      _dq_xl, _dq_yt, "#EF4444"),
+            (t(STRINGS, "quad_star_desc"),     _dq_xr, _dq_yb, "#10B981"),
+            (t(STRINGS, "quad_stable_desc"),   _dq_xl, _dq_yb, "#60A5FA"),
+            (t(STRINGS, "quad_risky_desc"),    _dq_xr, _dq_yt, "#F59E0B"),
+            (t(STRINGS, "quad_declining_desc"),_dq_xl, _dq_yt, "#EF4444"),
         ]:
             fig_dq.add_annotation(x=xp, y=yp, text=txt, showarrow=False,
                 font=dict(size=10, color=clr),
                 bgcolor="rgba(22,32,53,0.75)", borderpad=4, align="center")
         fig_dq.update_layout(**{k: v for k, v in PLOTLY_LAYOUT.items()
                                 if k not in ("xaxis","yaxis")},
-            title="Dynamic Quadrant — All Countries",
-            xaxis=dict(title="CAGR Export (%)",
+            title=t(STRINGS, "title_dynamic_quadrant"),
+            xaxis=dict(title=t(STRINGS, "axis_cagr_export"),
                        range=[_cagr_xlo, _cagr_xhi], gridcolor="#304870"),
-            yaxis=dict(title="Export Volatility",
+            yaxis=dict(title=t(STRINGS, "axis_export_volatility"),
                        range=[0, _vol_cap], gridcolor="#304870"),
             height=560,
         )
@@ -606,30 +808,21 @@ with tab5:
         fig_strat = _global_scatter(
             "export_share_structural", "cagr_export",
             1.0, 0,
-            "Export Share (%)", "CAGR Export (%)",
-            "Strategic Quadrant (BCG-style) — All Countries",
+            t(STRINGS, "axis_export_share_pct"), t(STRINGS, "axis_cagr_export"),
+            t(STRINGS, "title_strategic_quadrant"),
             "strategic_quadrant", countries,
             quad_labels=[
-                ("TR", "⭐ Stars<br><sub>Large & Growing</sub>",      "#10B981"),
-                ("TL", "🌱 Emerging<br><sub>Small & Growing</sub>",   "#60A5FA"),
-                ("BR", "🐄 Cash Cows<br><sub>Large & Stagnant</sub>", "#A78BFA"),
-                ("BL", "📉 Marginal<br><sub>Small & Shrinking</sub>", "#6B7280"),
+                ("TR", t(STRINGS, "quad_stars_desc"),    "#10B981"),
+                ("TL", t(STRINGS, "quad_emerging_desc"), "#60A5FA"),
+                ("BR", t(STRINGS, "quad_cashcows_desc"), "#A78BFA"),
+                ("BL", t(STRINGS, "quad_marginal2_desc"),"#6B7280"),
             ],
             x_range=[0, _strat_xhi],
             y_range=[_strat_ylo, _strat_yhi],
         )
         st.plotly_chart(fig_strat, width='stretch')
 
-    with st.expander("Key findings — Quadrant distribution"):
-        finding(
-            "<strong>Static quadrant</strong>: Most countries are in Marginal or Balanced — "
-            "only ~15% qualify as Dominant (large share + surplus). Threshold: 1% export share."
-        )
-        finding(
-            "<strong>Dynamic quadrant</strong>: Stars (high CAGR + low volatility) dominate "
-            "large economies — Declining concentrated in commodity-dependent small traders"
-        )
-        finding(
-            "<strong>Strategic quadrant</strong>: Emerging = small share but positive CAGR — "
-            "the most interesting group for future growth potential"
-        )
+    with st.expander(t(STRINGS, "expander_quad_findings")):
+        finding(t(STRINGS, "find_quad_1"))
+        finding(t(STRINGS, "find_quad_2"))
+        finding(t(STRINGS, "find_quad_3"))

@@ -228,23 +228,25 @@ def thin_divider() -> None:
     st.markdown('<hr class="thin-div">', unsafe_allow_html=True)
 
 
-def challenge_solution(challenge: str, solution: str) -> None:
+def challenge_solution(challenge: str, solution: str,
+                        challenge_label: str = "The challenge",
+                        solution_label: str = "The solution") -> None:
     col1, col2 = st.columns(2)
     with col1:
         st.markdown(
-            f'<div class="challenge-box"><div class="box-title">The challenge</div>'
+            f'<div class="challenge-box"><div class="box-title">{challenge_label}</div>'
             f'<div class="box-body">{challenge}</div></div>',
             unsafe_allow_html=True)
     with col2:
         st.markdown(
-            f'<div class="solution-box"><div class="box-title">The solution</div>'
+            f'<div class="solution-box"><div class="box-title">{solution_label}</div>'
             f'<div class="box-body">{solution}</div></div>',
             unsafe_allow_html=True)
 
 
-def decision(text: str) -> None:
+def decision(text: str, label: str = "Key decision") -> None:
     st.markdown(
-        f'<div class="decision-block">⚡ <strong>Key decision</strong> — {text}</div>',
+        f'<div class="decision-block">⚡ <strong>{label}</strong> — {text}</div>',
         unsafe_allow_html=True)
 
 

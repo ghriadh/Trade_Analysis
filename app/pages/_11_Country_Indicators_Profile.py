@@ -29,10 +29,282 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
 warnings.filterwarnings("ignore")
 from utils.styles import inject_styles, kpi, section_label, thin_divider, finding
+from utils.i18n import t
 
 inject_styles()
 
 IND_FILES = ROOT / "Analysis" / "Analysis_files" / "Indicators"
+
+# ════════════════════════════════════════════════════════════════
+# STRINGS — i18n
+# ════════════════════════════════════════════════════════════════
+
+STRINGS = {
+    "en": {
+        "eyebrow": "Indicators Analysis · Page 3 of 4",
+        "title": "Country Indicator Profile",
+        "subtitle": "G · H · N — Time series · comparison · multi-score",
+        "select_country": "Select country",
+        "kpi_gdp_capita": "GDP/capita",
+        "kpi_gdp_growth": "GDP Growth",
+        "kpi_unemployment": "Unemployment",
+        "kpi_inflation": "Inflation",
+        "kpi_trade_pct_gdp": "Trade % GDP",
+        "tab_time_series": "📈 G · Time Series",
+        "tab_comparison": "🔄 H · Comparison",
+        "tab_multiscore": "🏅 N · Multi-Score",
+        "sec_country_time_series": "G · Country Time Series — All Indicators",
+        "indicators_label": "Indicators",
+        "view_label": "View",
+        "break_threshold_slider": "Break threshold",
+        "title_ts_chart": "{country} — {metric} by Indicator",
+        "caption_mixed_units": (
+            "💡 Indicators with different units (%, USD…) share the same axis. "
+            "Switch to **Index-100** or **Z-score** for a normalized multi-indicator view."
+        ),
+        "sec_indicator_dynamics": "G.4 · Indicator Dynamics — CAGR & Volatility",
+        "info_no_growth_country": "No growth data available for this country.",
+        "trace_cagr": "CAGR",
+        "trace_volatility": "Volatility",
+        "title_cagr_by_indicator": "{country} — CAGR by Indicator",
+        "yaxis_cagr": "CAGR",
+        "yaxis_volatility": "Volatility",
+        "caption_cagr_undefined": (
+            "⚠️ CAGR undefined for: **{names}** — "
+            "values change sign over the period (no real-valued compound growth rate). "
+            "Volatility is still shown."
+        ),
+        "sec_zscore_heatmap": "G.5 · Z-Score Heatmap — All Indicators × Years",
+        "title_zscore_heatmap": "{country} — Z-Score Heatmap (green = above world mean)",
+        "year_label": "Year",
+        "sec_cross_country_comparison": "H · Cross-Country Comparison",
+        "indicator_label": "Indicator",
+        "compare_with": "Compare with",
+        "metric_label": "Metric",
+        "annot_base2015": "Base 2015",
+        "annot_world_mean": "World mean",
+        "title_comp_chart": "{ind} — {metric}",
+        "snapshot_year": "Snapshot year",
+        "title_snapshot": "{metric} Snapshot — {year}",
+        "sec_cagr_vs_world": "H.3 · Country vs World — CAGR per Indicator",
+        "trace_world": "World",
+        "title_cagr_vs_world": "CAGR — {country} vs World",
+        "title_outperformance": "Outperformance vs World (CAGR delta)",
+        "yaxis_cagr_delta": "CAGR Delta",
+        "info_growth_unavailable": "Growth data not available.",
+        "sec_multiscore": "N · Multi-Indicator Scoring",
+        "warn_no_multiscore": "No multi-score data for {country}.",
+        "expander_score_defs": "📐 Score definitions, formulas & weights",
+        "score_defs_intro_md": """
+**Double reading** — each pillar is scored twice:
+- **Value Position**: weighted average of normalized indicator *values* → current structural level
+- **Growth Momentum**: weighted average of normalized *growth scores* → directional trajectory
+
+Each score is min-max normalized to **0–100** across all countries. Rank 1 = best.
+""",
+        "weights_economic_health_md": """
+**Economic Health**
+| Indicator | Weight |
+|---|---|
+| GDP per capita growth | +0.25 |
+| Unemployment rate | −0.20 |
+| Inflation (CPI) | −0.20 |
+| Current account | +0.15 |
+| Real interest rate | +0.10 |
+| Gov. expenditure | +0.10 |
+""",
+        "weights_performance_md": """
+**Performance**
+| Indicator | Weight |
+|---|---|
+| GDP growth | +0.30 |
+| Unemployment rate | −0.20 |
+| Inflation (CPI) | −0.15 |
+| Current account | +0.15 |
+| Trade balance | +0.10 |
+| Real interest rate | +0.10 |
+""",
+        "weights_competitiveness_md": """
+**Competitiveness**
+| Indicator | Weight |
+|---|---|
+| Trade % GDP | +0.30 |
+| Current account | +0.25 |
+| GDP per capita | +0.20 |
+| Inflation (CPI) | −0.15 |
+| Unemployment | −0.10 |
+""",
+        "quadrant_interpretation_md": """
+---
+**Quadrant interpretation** (scatter):
+- **Top-right**: high value *and* high growth → strong & accelerating
+- **Top-left**: low value, high growth → catching up
+- **Bottom-right**: high value, low growth → established but slowing
+- **Bottom-left**: low value, low growth → structural challenge
+
+**Rank Divergence** — two complementary views:
+- *Intra-dimension* (dumbbell chart): gap between Value Rank and Growth Rank **within** the same pillar
+- *Inter-dimension* (KPI cards): spread of ranks **across** the 3 pillars (from `rank_div_value / rank_div_growth`)
+""",
+        "banner_value_position_title": "▸ Value Position",
+        "banner_value_position_sub": "Current structural level — where the country stands today",
+        "rank_hash": "Rank #{rank}",
+        "banner_growth_momentum_title": "▸ Growth Momentum",
+        "banner_growth_momentum_sub": "Directional score — where the country is heading",
+        "radar_value_position": "Value Position",
+        "radar_growth_momentum": "Growth Momentum",
+        "title_score_radar": "{country} — Score Radar",
+        "sec_global_ranking": "Global Ranking — All Countries",
+        "highlight_countries": "Highlight countries",
+        "dim_value_suffix": "{dim} · Value",
+        "dim_growth_suffix": "{dim} · Growth",
+        "x_axis_label": "X axis",
+        "y_axis_label": "Y axis",
+        "warn_select_different_axes": "Select different axes.",
+        "title_scatter_axes": "{x} × {y}",
+        "sec_rank_divergence": "Rank Divergence — Value vs Growth",
+        "trace_value_rank": "Value Rank",
+        "trace_growth_rank": "Growth Rank",
+        "title_dumbbell": "Intra-dimension: Value Rank vs Growth Rank (left = better)",
+        "xaxis_rank": "Rank (1 = best)",
+        "spread_value_label": "Inter-Dim Spread · Value",
+        "spread_value_caption": "rank-point spread across 3 pillars",
+        "spread_growth_label": "Inter-Dim Spread · Growth",
+        "spread_growth_caption": "rank-point spread across 3 pillars",
+    },
+    "fr": {
+        "eyebrow": "Analyse des indicateurs · Page 3 sur 4",
+        "title": "Profil pays — Indicateurs",
+        "subtitle": "G · H · N — Série temporelle · comparaison · multi-score",
+        "select_country": "Sélectionner un pays",
+        "kpi_gdp_capita": "PIB/habitant",
+        "kpi_gdp_growth": "Croissance PIB",
+        "kpi_unemployment": "Chômage",
+        "kpi_inflation": "Inflation",
+        "kpi_trade_pct_gdp": "Commerce % PIB",
+        "tab_time_series": "📈 G · Série temporelle",
+        "tab_comparison": "🔄 H · Comparaison",
+        "tab_multiscore": "🏅 N · Multi-score",
+        "sec_country_time_series": "G · Série temporelle du pays — Tous indicateurs",
+        "indicators_label": "Indicateurs",
+        "view_label": "Vue",
+        "break_threshold_slider": "Seuil de rupture",
+        "title_ts_chart": "{country} — {metric} par indicateur",
+        "caption_mixed_units": (
+            "💡 Les indicateurs avec des unités différentes (%, USD…) partagent le même axe. "
+            "Basculer sur **Index-100** ou **Z-score** pour une vue multi-indicateur normalisée."
+        ),
+        "sec_indicator_dynamics": "G.4 · Dynamique des indicateurs — CAGR & volatilité",
+        "info_no_growth_country": "Aucune donnée de croissance disponible pour ce pays.",
+        "trace_cagr": "CAGR",
+        "trace_volatility": "Volatilité",
+        "title_cagr_by_indicator": "{country} — CAGR par indicateur",
+        "yaxis_cagr": "CAGR",
+        "yaxis_volatility": "Volatilité",
+        "caption_cagr_undefined": (
+            "⚠️ CAGR non défini pour : **{names}** — "
+            "les valeurs changent de signe sur la période (pas de taux de croissance composé réel). "
+            "La volatilité reste affichée."
+        ),
+        "sec_zscore_heatmap": "G.5 · Heatmap des Z-scores — Tous indicateurs × années",
+        "title_zscore_heatmap": "{country} — Heatmap des Z-scores (vert = au-dessus de la moyenne mondiale)",
+        "year_label": "Année",
+        "sec_cross_country_comparison": "H · Comparaison entre pays",
+        "indicator_label": "Indicateur",
+        "compare_with": "Comparer avec",
+        "metric_label": "Indicateur",
+        "annot_base2015": "Base 2015",
+        "annot_world_mean": "Moyenne mondiale",
+        "title_comp_chart": "{ind} — {metric}",
+        "snapshot_year": "Année de référence",
+        "title_snapshot": "Instantané {metric} — {year}",
+        "sec_cagr_vs_world": "H.3 · Pays vs World — CAGR par indicateur",
+        "trace_world": "World",
+        "title_cagr_vs_world": "CAGR — {country} vs World",
+        "title_outperformance": "Surperformance vs World (écart de CAGR)",
+        "yaxis_cagr_delta": "Écart de CAGR",
+        "info_growth_unavailable": "Données de croissance non disponibles.",
+        "sec_multiscore": "N · Scoring multi-indicateurs",
+        "warn_no_multiscore": "Aucune donnée de multi-score pour {country}.",
+        "expander_score_defs": "📐 Définitions des scores, formules & pondérations",
+        "score_defs_intro_md": """
+**Double lecture** — chaque pilier est noté deux fois :
+- **Position de valeur** : moyenne pondérée des *valeurs* normalisées des indicateurs → niveau structurel actuel
+- **Dynamique de croissance** : moyenne pondérée des *scores de croissance* normalisés → trajectoire directionnelle
+
+Chaque score est normalisé min-max entre **0 et 100** sur l'ensemble des pays. Rang 1 = le meilleur.
+""",
+        "weights_economic_health_md": """
+**Santé économique**
+| Indicateur | Pondération |
+|---|---|
+| Croissance du PIB par habitant | +0,25 |
+| Taux de chômage | −0,20 |
+| Inflation (IPC) | −0,20 |
+| Compte courant | +0,15 |
+| Taux d'intérêt réel | +0,10 |
+| Dépenses publiques | +0,10 |
+""",
+        "weights_performance_md": """
+**Performance**
+| Indicateur | Pondération |
+|---|---|
+| Croissance du PIB | +0,30 |
+| Taux de chômage | −0,20 |
+| Inflation (IPC) | −0,15 |
+| Compte courant | +0,15 |
+| Balance commerciale | +0,10 |
+| Taux d'intérêt réel | +0,10 |
+""",
+        "weights_competitiveness_md": """
+**Compétitivité**
+| Indicateur | Pondération |
+|---|---|
+| Commerce % PIB | +0,30 |
+| Compte courant | +0,25 |
+| PIB par habitant | +0,20 |
+| Inflation (IPC) | −0,15 |
+| Chômage | −0,10 |
+""",
+        "quadrant_interpretation_md": """
+---
+**Interprétation des quadrants** (nuage de points) :
+- **Haut-droite** : valeur élevée *et* croissance élevée → solide et en accélération
+- **Haut-gauche** : valeur faible, croissance élevée → en rattrapage
+- **Bas-droite** : valeur élevée, croissance faible → établi mais en ralentissement
+- **Bas-gauche** : valeur faible, croissance faible → défi structurel
+
+**Divergence de rang** — deux vues complémentaires :
+- *Intra-dimension* (graphique en haltère) : écart entre le rang de valeur et le rang de croissance **au sein** du même pilier
+- *Inter-dimension* (cartes KPI) : dispersion des rangs **entre** les 3 piliers (d'après `rank_div_value / rank_div_growth`)
+""",
+        "banner_value_position_title": "▸ Position de valeur",
+        "banner_value_position_sub": "Niveau structurel actuel — où se situe le pays aujourd'hui",
+        "rank_hash": "Rang #{rank}",
+        "banner_growth_momentum_title": "▸ Dynamique de croissance",
+        "banner_growth_momentum_sub": "Score directionnel — où se dirige le pays",
+        "radar_value_position": "Position de valeur",
+        "radar_growth_momentum": "Dynamique de croissance",
+        "title_score_radar": "{country} — Radar de scores",
+        "sec_global_ranking": "Classement mondial — Tous les pays",
+        "highlight_countries": "Pays à mettre en évidence",
+        "dim_value_suffix": "{dim} · Valeur",
+        "dim_growth_suffix": "{dim} · Croissance",
+        "x_axis_label": "Axe X",
+        "y_axis_label": "Axe Y",
+        "warn_select_different_axes": "Sélectionner des axes différents.",
+        "title_scatter_axes": "{x} × {y}",
+        "sec_rank_divergence": "Divergence de rang — Valeur vs croissance",
+        "trace_value_rank": "Rang de valeur",
+        "trace_growth_rank": "Rang de croissance",
+        "title_dumbbell": "Intra-dimension : rang de valeur vs rang de croissance (gauche = meilleur)",
+        "xaxis_rank": "Rang (1 = meilleur)",
+        "spread_value_label": "Dispersion inter-dim · Valeur",
+        "spread_value_caption": "dispersion en rangs sur les 3 piliers",
+        "spread_growth_label": "Dispersion inter-dim · Croissance",
+        "spread_growth_caption": "dispersion en rangs sur les 3 piliers",
+    },
+}
 
 # ════════════════════════════════════════════════════════════════
 # DATA
@@ -282,10 +554,10 @@ def _run_lag_regression(target: str, predictors: tuple, cache_key: str,
 # HEADER
 # ════════════════════════════════════════════════════════════════
 
-st.markdown('<div class="page-eyebrow">Indicators Analysis · Page 3 of 4</div>',
+st.markdown(f'<div class="page-eyebrow">{t(STRINGS, "eyebrow")}</div>',
             unsafe_allow_html=True)
-st.title("Country Indicator Profile")
-st.caption("G · H · N — Time series · comparison · multi-score")
+st.title(t(STRINGS, "title"))
+st.caption(t(STRINGS, "subtitle"))
 thin_divider()
 
 # ════════════════════════════════════════════════════════════════
@@ -295,7 +567,7 @@ thin_divider()
 col_sel, col_kpi = st.columns([1, 3])
 with col_sel:
     default_idx = COUNTRIES.index("France") if "France" in COUNTRIES else 0
-    country = st.selectbox("Select country", COUNTRIES,
+    country = st.selectbox(t(STRINGS, "select_country"), COUNTRIES,
                            index=default_idx, key="i3_country")
 
 row_m  = df_multi[df_multi["country_name"] == country]
@@ -313,6 +585,14 @@ _KPI_FACTS = [
      "value",      "#A78BFA"),
 ]
 
+_KPI_LABEL_KEYS = {
+    "GDP/capita":   "kpi_gdp_capita",
+    "GDP Growth":   "kpi_gdp_growth",
+    "Unemployment": "kpi_unemployment",
+    "Inflation":    "kpi_inflation",
+    "Trade % GDP":  "kpi_trade_pct_gdp",
+}
+
 def _latest_val(ind_name, col="value"):
     sub = (df_ind[(df_ind["country_name"] == country) &
                   (df_ind["indicator_name"] == ind_name)]
@@ -323,6 +603,7 @@ def _latest_val(ind_name, col="value"):
     return row[col], int(row["year"])
 
 def _fmt_kpi(label, val, yr, col):
+    disp_label = t(STRINGS, _KPI_LABEL_KEYS.get(label, label))
     if val is None:
         disp = "—"
     elif label == "GDP/capita":
@@ -335,7 +616,7 @@ def _fmt_kpi(label, val, yr, col):
     yr_str = f"({yr})" if yr else ""
     return (
         f'<div class="kpi-card" style="border-top-color:{col}">'
-        f'<div class="kpi-label">{label}</div>'
+        f'<div class="kpi-label">{disp_label}</div>'
         f'<div class="kpi-value" style="color:{col};font-size:22px;">{disp}</div>'
         f'<div style="font-size:10px;color:#6890B0;margin-top:3px;">{yr_str}</div>'
         f'</div>'
@@ -364,30 +645,30 @@ _default_ind = next(
 # ════════════════════════════════════════════════════════════════
 
 tab1, tab2, tab3 = st.tabs([
-    "📈 G · Time Series",
-    "🔄 H · Comparison",
-    "🏅 N · Multi-Score",
+    t(STRINGS, "tab_time_series"),
+    t(STRINGS, "tab_comparison"),
+    t(STRINGS, "tab_multiscore"),
 ])
 
 
 # ── TAB 1 : G · TIME SERIES ─────────────────────────────────────────────────────
 with tab1:
-    section_label("G · Country Time Series — All Indicators")
+    section_label(t(STRINGS, "sec_country_time_series"))
 
     df_c = df_ind[df_ind["country_name"] == country].copy()
 
     inds_sel = st.multiselect(
-        "Indicators", options=INDICATORS,
+        t(STRINGS, "indicators_label"), options=INDICATORS,
         default=[_default_ind], max_selections=6, key="ts_indicators")
 
     col1, col2 = st.columns([1, 3])
     with col1:
         metric_ts = st.radio(
-            "View", ["Value", "YoY Growth %", "Index-100", "Z-score"],
+            t(STRINGS, "view_label"), ["Value", "YoY Growth %", "Index-100", "Z-score"],
             key="ts_metric")
         if len(inds_sel) == 1:
             _brk_thr = st.slider(
-                "Break threshold", min_value=0.03, max_value=0.20,
+                t(STRINGS, "break_threshold_slider"), min_value=0.03, max_value=0.20,
                 value=0.07, step=0.01, format="%.2f", key="g_break_thr")
         else:
             _brk_thr = st.session_state.get("g_break_thr", 0.07)
@@ -429,26 +710,23 @@ with tab1:
         if metric_ts == "Index-100":
             fig_ts.add_hline(y=100, line_color="#EEF4FB",
                              line_width=1, line_dash="dash",
-                             annotation_text="2015 = 100")
+                             annotation_text=t(STRINGS, "annot_base2015"))
         fig_ts.update_layout(**_pl(
-            title=f"{country} — {metric_ts} by Indicator",
+            title=t(STRINGS, "title_ts_chart").format(country=country, metric=metric_ts),
             yaxis_title=metric_ts, height=450))
         st.plotly_chart(fig_ts, width='stretch')
         if metric_ts == "Value" and len(inds_sel) > 1:
-            st.caption(
-                "💡 Indicators with different units (%, USD…) share the same axis. "
-                "Switch to **Index-100** or **Z-score** for a normalized multi-indicator view."
-            )
+            st.caption(t(STRINGS, "caption_mixed_units"))
 
     # G.4 Indicator Dynamics
-    section_label("G.4 · Indicator Dynamics — CAGR & Volatility")
+    section_label(t(STRINGS, "sec_indicator_dynamics"))
     df_grw_c = df_growth[
         (df_growth["country_name"] == country) &
         (df_growth["entity_type"] == "COUNTRY")
     ].copy()
 
     if df_grw_c.empty:
-        st.info("No growth data available for this country.")
+        st.info(t(STRINGS, "info_no_growth_country"))
     else:
         _avail = df_grw_c["indicator_name"].unique().tolist()
         _dyn   = [n for n in inds_sel if n in _avail] or _avail
@@ -463,7 +741,7 @@ with tab1:
         fig_dyn = go.Figure()
         if not _df_cagr_ok.empty:
             fig_dyn.add_trace(go.Bar(
-                x=_df_cagr_ok["_short"], y=_df_cagr_ok["cagr"], name="CAGR",
+                x=_df_cagr_ok["_short"], y=_df_cagr_ok["cagr"], name=t(STRINGS, "trace_cagr"),
                 marker_color=["#10B981" if v >= 0 else "#EF4444"
                               for v in _df_cagr_ok["cagr"]],
                 opacity=0.85,
@@ -474,27 +752,23 @@ with tab1:
             _df_vol_ok = df_dyn.dropna(subset=["volatility"])
             fig_dyn.add_trace(go.Scatter(
                 x=_df_vol_ok["_short"], y=_df_vol_ok["volatility"],
-                name="Volatility", mode="markers", yaxis="y2",
+                name=t(STRINGS, "trace_volatility"), mode="markers", yaxis="y2",
                 marker=dict(color="#F59E0B", size=10, symbol="diamond"),
             ))
         fig_dyn.update_layout(**_pl(
-            title=f"{country} — CAGR by Indicator",
-            yaxis_title="CAGR",
-            yaxis2=dict(title="Volatility", overlaying="y", side="right",
+            title=t(STRINGS, "title_cagr_by_indicator").format(country=country),
+            yaxis_title=t(STRINGS, "yaxis_cagr"),
+            yaxis2=dict(title=t(STRINGS, "yaxis_volatility"), overlaying="y", side="right",
                         showgrid=False, color="#F59E0B"),
             height=460, xaxis_tickangle=-30,
         ))
         st.plotly_chart(fig_dyn, width='stretch')
         if not _df_cagr_nan.empty:
             _nan_names = " · ".join(_df_cagr_nan["indicator_name"].tolist())
-            st.caption(
-                f"⚠️ CAGR undefined for: **{_nan_names}** — "
-                "values change sign over the period (no real-valued compound growth rate). "
-                "Volatility is still shown."
-            )
+            st.caption(t(STRINGS, "caption_cagr_undefined").format(names=_nan_names))
 
     # G.5 Z-Score Heatmap
-    section_label("G.5 · Z-Score Heatmap — All Indicators × Years")
+    section_label(t(STRINGS, "sec_zscore_heatmap"))
     df_hm = df_c.pivot_table(
         index="indicator_name", columns="year", values="z_score")
     df_hm.index = [n[:45] + "…" if len(n) > 45 else n for n in df_hm.index]
@@ -508,8 +782,8 @@ with tab1:
         showscale=True, hoverongaps=False,
     ))
     fig_hm.update_layout(**_pl(
-        title=f"{country} — Z-Score Heatmap (green = above world mean)",
-        xaxis_title="Year",
+        title=t(STRINGS, "title_zscore_heatmap").format(country=country),
+        xaxis_title=t(STRINGS, "year_label"),
         height=max(380, len(df_hm) * 32 + 80),
     ))
     st.plotly_chart(fig_hm, width='stretch')
@@ -521,12 +795,12 @@ with tab1:
 
 # ── TAB 2 : H · COMPARISON ──────────────────────────────────────────────────────
 with tab2:
-    section_label("H · Cross-Country Comparison")
+    section_label(t(STRINGS, "sec_cross_country_comparison"))
 
     indicator_comp = st.selectbox(
-        "Indicator", INDICATORS, index=0, key="comp_ind")
+        t(STRINGS, "indicator_label"), INDICATORS, index=0, key="comp_ind")
     peers = st.multiselect(
-        "Compare with",
+        t(STRINGS, "compare_with"),
         [c for c in COUNTRIES if c != country],
         default=[c for c in ["China", "Germany", "USA", "Japan"]
                  if c in COUNTRIES],
@@ -535,7 +809,7 @@ with tab2:
     col1, col2 = st.columns([1, 3])
     with col1:
         comp_metric = st.radio(
-            "Metric", ["Index-100", "Z-score", "Value"], key="comp_metric")
+            t(STRINGS, "metric_label"), ["Index-100", "Z-score", "Value"], key="comp_metric")
 
     metric_col_c = {"Index-100": "index_100",
                     "Z-score":   "z_score",
@@ -563,16 +837,16 @@ with tab2:
             ))
         if comp_metric == "Index-100":
             fig_comp.add_hline(y=100, line_color="#304870",
-                               line_dash="dash", annotation_text="Base 2015")
+                               line_dash="dash", annotation_text=t(STRINGS, "annot_base2015"))
         if comp_metric == "Z-score":
             fig_comp.add_hline(y=0, line_color="#304870",
-                               line_dash="dash", annotation_text="World mean")
+                               line_dash="dash", annotation_text=t(STRINGS, "annot_world_mean"))
         fig_comp.update_layout(**_pl(
-            title=f"{indicator_comp[:50]} — {comp_metric}",
+            title=t(STRINGS, "title_comp_chart").format(ind=indicator_comp[:50], metric=comp_metric),
             yaxis_title=comp_metric, height=450))
         st.plotly_chart(fig_comp, width='stretch')
 
-    year_snap = st.selectbox("Snapshot year", YEARS[::-1], index=0, key="snap_year")
+    year_snap = st.selectbox(t(STRINGS, "snapshot_year"), YEARS[::-1], index=0, key="snap_year")
     df_snap = df_ind[
         (df_ind["country_name"].isin(all_cc)) &
         (df_ind["indicator_name"] == indicator_comp) &
@@ -589,12 +863,12 @@ with tab2:
         textposition="outside",
     ))
     fig_snap.update_layout(**_pl(
-        title=f"{comp_metric} Snapshot — {year_snap}",
+        title=t(STRINGS, "title_snapshot").format(metric=comp_metric, year=year_snap),
         xaxis_title=comp_metric))
     st.plotly_chart(fig_snap, width='stretch')
 
     # H.3 CAGR vs World
-    section_label("H.3 · Country vs World — CAGR per Indicator")
+    section_label(t(STRINGS, "sec_cagr_vs_world"))
     df_grw_c2 = df_growth[
         (df_growth["country_name"] == country) &
         (df_growth["entity_type"] == "COUNTRY")
@@ -618,11 +892,11 @@ with tab2:
             name=country, x=df_vs["_short"], y=df_vs["cagr"],
             marker_color="#60A5FA", opacity=0.85))
         fig_cagr.add_trace(go.Bar(
-            name="World", x=df_vs["_short"], y=df_vs["world_cagr"],
+            name=t(STRINGS, "trace_world"), x=df_vs["_short"], y=df_vs["world_cagr"],
             marker_color="#F59E0B", opacity=0.70))
         fig_cagr.update_layout(**_pl(
-            title=f"CAGR — {country} vs World",
-            yaxis_title="CAGR", barmode="group",
+            title=t(STRINGS, "title_cagr_vs_world").format(country=country),
+            yaxis_title=t(STRINGS, "yaxis_cagr"), barmode="group",
             height=560, xaxis_tickangle=-30,
             margin=dict(l=40, r=40, t=50, b=140)))
         st.plotly_chart(fig_cagr, width='stretch')
@@ -637,12 +911,12 @@ with tab2:
         ))
         fig_out.add_hline(y=0, line_dash="dash", line_color="#EEF4FB")
         fig_out.update_layout(**_pl(
-            title="Outperformance vs World (CAGR delta)",
-            yaxis_title="CAGR Delta", height=520, xaxis_tickangle=-30,
+            title=t(STRINGS, "title_outperformance"),
+            yaxis_title=t(STRINGS, "yaxis_cagr_delta"), height=520, xaxis_tickangle=-30,
             margin=dict(l=40, r=40, t=50, b=140)))
         st.plotly_chart(fig_out, width='stretch')
     else:
-        st.info("Growth data not available.")
+        st.info(t(STRINGS, "info_growth_unavailable"))
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -651,70 +925,24 @@ with tab2:
 
 # ── TAB 3 : N · MULTI-SCORE ─────────────────────────────────────────────────────
 with tab3:
-    section_label("N · Multi-Indicator Scoring")
+    section_label(t(STRINGS, "sec_multiscore"))
 
     if row_m.empty:
-        st.warning(f"No multi-score data for {country}.")
+        st.warning(t(STRINGS, "warn_no_multiscore").format(country=country))
     else:
         r = row_m.iloc[0]
 
         # ── Expander: formulas & weights ──────────────────────────────────────
-        with st.expander("📐 Score definitions, formulas & weights"):
-            st.markdown("""
-**Double reading** — each pillar is scored twice:
-- **Value Position**: weighted average of normalized indicator *values* → current structural level
-- **Growth Momentum**: weighted average of normalized *growth scores* → directional trajectory
-
-Each score is min-max normalized to **0–100** across all countries. Rank 1 = best.
-""")
+        with st.expander(t(STRINGS, "expander_score_defs")):
+            st.markdown(t(STRINGS, "score_defs_intro_md"))
             _fc1, _fc2, _fc3 = st.columns(3)
             with _fc1:
-                st.markdown("""
-**Economic Health**
-| Indicator | Weight |
-|---|---|
-| GDP per capita growth | +0.25 |
-| Unemployment rate | −0.20 |
-| Inflation (CPI) | −0.20 |
-| Current account | +0.15 |
-| Real interest rate | +0.10 |
-| Gov. expenditure | +0.10 |
-""")
+                st.markdown(t(STRINGS, "weights_economic_health_md"))
             with _fc2:
-                st.markdown("""
-**Performance**
-| Indicator | Weight |
-|---|---|
-| GDP growth | +0.30 |
-| Unemployment rate | −0.20 |
-| Inflation (CPI) | −0.15 |
-| Current account | +0.15 |
-| Trade balance | +0.10 |
-| Real interest rate | +0.10 |
-""")
+                st.markdown(t(STRINGS, "weights_performance_md"))
             with _fc3:
-                st.markdown("""
-**Competitiveness**
-| Indicator | Weight |
-|---|---|
-| Trade % GDP | +0.30 |
-| Current account | +0.25 |
-| GDP per capita | +0.20 |
-| Inflation (CPI) | −0.15 |
-| Unemployment | −0.10 |
-""")
-            st.markdown("""
----
-**Quadrant interpretation** (scatter):
-- **Top-right**: high value *and* high growth → strong & accelerating
-- **Top-left**: low value, high growth → catching up
-- **Bottom-right**: high value, low growth → established but slowing
-- **Bottom-left**: low value, low growth → structural challenge
-
-**Rank Divergence** — two complementary views:
-- *Intra-dimension* (dumbbell chart): gap between Value Rank and Growth Rank **within** the same pillar
-- *Inter-dimension* (KPI cards): spread of ranks **across** the 3 pillars (from `rank_div_value / rank_div_growth`)
-""")
+                st.markdown(t(STRINGS, "weights_competitiveness_md"))
+            st.markdown(t(STRINGS, "quadrant_interpretation_md"))
 
         thin_divider()
 
@@ -722,10 +950,10 @@ Each score is min-max normalized to **0–100** across all countries. Rank 1 = b
         st.markdown(
             '<div style="background:#0F2035;border-left:4px solid #10B981;'
             'border-radius:0 8px 8px 0;padding:.5rem 1rem;margin-bottom:.6rem;">'
-            '<span style="color:#10B981;font-weight:700;font-size:13px;'
-            'text-transform:uppercase;letter-spacing:.06em;">▸ Value Position</span>'
+            f'<span style="color:#10B981;font-weight:700;font-size:13px;'
+            f'text-transform:uppercase;letter-spacing:.06em;">{t(STRINGS, "banner_value_position_title")}</span>'
             '&nbsp;&nbsp;<span style="color:#6890B0;font-size:12px;">'
-            'Current structural level — where the country stands today</span>'
+            f'{t(STRINGS, "banner_value_position_sub")}</span>'
             '</div>',
             unsafe_allow_html=True)
 
@@ -741,7 +969,7 @@ Each score is min-max normalized to **0–100** across all countries. Rank 1 = b
   <div style="font-size:10px;color:#6890B0;text-transform:uppercase;
               letter-spacing:.07em;margin-bottom:.4rem;">{dim}</div>
   <div style="font-size:30px;font-weight:700;color:{clr};">{v_val:.1f}</div>
-  <div style="font-size:11px;color:#6890B0;margin-top:4px;">Rank #{v_rank}</div>
+  <div style="font-size:11px;color:#6890B0;margin-top:4px;">{t(STRINGS, "rank_hash").format(rank=v_rank)}</div>
 </div>""", unsafe_allow_html=True)
 
         st.markdown("<div style='margin-top:.75rem;'></div>", unsafe_allow_html=True)
@@ -750,10 +978,10 @@ Each score is min-max normalized to **0–100** across all countries. Rank 1 = b
         st.markdown(
             '<div style="background:#0F2035;border-left:4px solid #60A5FA;'
             'border-radius:0 8px 8px 0;padding:.5rem 1rem;margin-bottom:.6rem;">'
-            '<span style="color:#60A5FA;font-weight:700;font-size:13px;'
-            'text-transform:uppercase;letter-spacing:.06em;">▸ Growth Momentum</span>'
+            f'<span style="color:#60A5FA;font-weight:700;font-size:13px;'
+            f'text-transform:uppercase;letter-spacing:.06em;">{t(STRINGS, "banner_growth_momentum_title")}</span>'
             '&nbsp;&nbsp;<span style="color:#6890B0;font-size:12px;">'
-            'Directional score — where the country is heading</span>'
+            f'{t(STRINGS, "banner_growth_momentum_sub")}</span>'
             '</div>',
             unsafe_allow_html=True)
 
@@ -769,7 +997,7 @@ Each score is min-max normalized to **0–100** across all countries. Rank 1 = b
   <div style="font-size:10px;color:#6890B0;text-transform:uppercase;
               letter-spacing:.07em;margin-bottom:.4rem;">{dim}</div>
   <div style="font-size:30px;font-weight:700;color:{clr};">{v_gr:.1f}</div>
-  <div style="font-size:11px;color:#6890B0;margin-top:4px;">Rank #{gr_rank}</div>
+  <div style="font-size:11px;color:#6890B0;margin-top:4px;">{t(STRINGS, "rank_hash").format(rank=gr_rank)}</div>
 </div>""", unsafe_allow_html=True)
 
         thin_divider()
@@ -779,8 +1007,8 @@ Each score is min-max normalized to **0–100** across all countries. Rank 1 = b
         with _rc2:
             fig_rad = go.Figure()
             for sfx, clr, name in [
-                ("_value_norm",  "#10B981", "Value Position"),
-                ("_growth_norm", "#60A5FA", "Growth Momentum"),
+                ("_value_norm",  "#10B981", t(STRINGS, "radar_value_position")),
+                ("_growth_norm", "#60A5FA", t(STRINGS, "radar_growth_momentum")),
             ]:
                 vals    = [r.get(f"{d}{sfx}", 0) for d in DIMS]
                 vals_cl = vals + [vals[0]]
@@ -804,7 +1032,7 @@ Each score is min-max normalized to **0–100** across all countries. Rank 1 = b
                 ),
                 legend=dict(bgcolor="#1F3050", bordercolor="#304870"),
                 height=360, margin=dict(l=40, r=40, t=40, b=40),
-                title=dict(text=f"{country} — Score Radar",
+                title=dict(text=t(STRINGS, "title_score_radar").format(country=country),
                            font=dict(color="#EEF4FB")),
             )
             st.plotly_chart(fig_rad, width='stretch')
@@ -812,27 +1040,27 @@ Each score is min-max normalized to **0–100** across all countries. Rank 1 = b
         thin_divider()
 
         # ── Scatter with axis selectors ───────────────────────────────────────
-        section_label("Global Ranking — All Countries")
+        section_label(t(STRINGS, "sec_global_ranking"))
 
         _score_opts = {
-            **{f"{d} · Value":  f"{d}_value_norm"  for d in DIMS},
-            **{f"{d} · Growth": f"{d}_growth_norm" for d in DIMS},
+            **{t(STRINGS, "dim_value_suffix").format(dim=d):  f"{d}_value_norm"  for d in DIMS},
+            **{t(STRINGS, "dim_growth_suffix").format(dim=d): f"{d}_growth_norm" for d in DIMS},
         }
         _slabels = list(_score_opts.keys())
 
         _sc1, _sc2, _sc3 = st.columns([3, 1.5, 1.5])
         with _sc1:
             highlight_m = st.multiselect(
-                "Highlight countries",
+                t(STRINGS, "highlight_countries"),
                 [c for c in df_multi["country_name"].tolist() if c != country],
                 default=[c for c in ["China", "Germany", "USA"]
                          if c in df_multi["country_name"].values],
                 max_selections=5, key="multi_hl",
             )
         with _sc2:
-            _x_label = st.selectbox("X axis", _slabels, index=0, key="n_x_axis")
+            _x_label = st.selectbox(t(STRINGS, "x_axis_label"), _slabels, index=0, key="n_x_axis")
         with _sc3:
-            _y_label = st.selectbox("Y axis", _slabels, index=3, key="n_y_axis")
+            _y_label = st.selectbox(t(STRINGS, "y_axis_label"), _slabels, index=3, key="n_y_axis")
 
         _xc       = _score_opts[_x_label]
         _yc       = _score_opts[_y_label]
@@ -841,7 +1069,7 @@ Each score is min-max normalized to **0–100** across all countries. Rank 1 = b
         _z_label  = _other[0] if _other else _x_label
 
         if _x_label == _y_label:
-            st.warning("Select different axes.")
+            st.warning(t(STRINGS, "warn_select_different_axes"))
         else:
             df_m_all = df_multi.copy()
             _hl_set  = set([country] + highlight_m)
@@ -879,14 +1107,14 @@ Each score is min-max normalized to **0–100** across all countries. Rank 1 = b
                     textfont=dict(size=11, color="#EEF4FB"),
                 ))
             fig_sc.update_layout(**_pl(
-                title=f"{_x_label} × {_y_label}",
+                title=t(STRINGS, "title_scatter_axes").format(x=_x_label, y=_y_label),
                 xaxis_title=_x_label, yaxis_title=_y_label, height=420))
             st.plotly_chart(fig_sc, width='stretch')
 
         thin_divider()
 
         # ── Dumbbell: Rank Divergence ─────────────────────────────────────────
-        section_label("Rank Divergence — Value vs Growth")
+        section_label(t(STRINGS, "sec_rank_divergence"))
 
         fig_db   = go.Figure()
         _db_dims = list(reversed(DIMS))
@@ -906,7 +1134,7 @@ Each score is min-max normalized to **0–100** across all countries. Rank 1 = b
 
         fig_db.add_trace(go.Scatter(
             x=_vr_list, y=_db_dims, mode="markers+text",
-            name="Value Rank",
+            name=t(STRINGS, "trace_value_rank"),
             marker=dict(color="#10B981", size=14, symbol="circle",
                         line=dict(width=1, color="#EEF4FB")),
             text=[f"#{v}" for v in _vr_list],
@@ -915,7 +1143,7 @@ Each score is min-max normalized to **0–100** across all countries. Rank 1 = b
         ))
         fig_db.add_trace(go.Scatter(
             x=_gr_list, y=_db_dims, mode="markers+text",
-            name="Growth Rank",
+            name=t(STRINGS, "trace_growth_rank"),
             marker=dict(color="#60A5FA", size=14, symbol="diamond",
                         line=dict(width=1, color="#EEF4FB")),
             text=[f"#{v}" for v in _gr_list],
@@ -924,8 +1152,8 @@ Each score is min-max normalized to **0–100** across all countries. Rank 1 = b
         ))
         fig_db.update_layout(**PLOTLY_LAYOUT)
         fig_db.update_layout(
-            title="Intra-dimension: Value Rank vs Growth Rank (left = better)",
-            xaxis=dict(title="Rank (1 = best)", autorange="reversed",
+            title=t(STRINGS, "title_dumbbell"),
+            xaxis=dict(title=t(STRINGS, "xaxis_rank"), autorange="reversed",
                        dtick=10, gridcolor="#304870", linecolor="#304870"),
             yaxis=dict(gridcolor="#304870", linecolor="#304870"),
             legend=dict(orientation="h", x=0.5, xanchor="center", y=-0.25),
@@ -942,9 +1170,9 @@ Each score is min-max normalized to **0–100** across all countries. Rank 1 = b
             padding:1rem;text-align:center;">
   <div style="font-size:10px;color:#6890B0;text-transform:uppercase;
               letter-spacing:.06em;margin-bottom:.3rem;">
-    Inter-Dim Spread · Value</div>
+    {t(STRINGS, "spread_value_label")}</div>
   <div style="font-size:28px;font-weight:700;color:#10B981;">{rd_val}</div>
-  <div style="font-size:11px;color:#6890B0;">rank-point spread across 3 pillars</div>
+  <div style="font-size:11px;color:#6890B0;">{t(STRINGS, "spread_value_caption")}</div>
 </div>""", unsafe_allow_html=True)
         _dk2.markdown(f"""
 <div style="background:#1F3050;border:1px solid #304870;
@@ -952,9 +1180,9 @@ Each score is min-max normalized to **0–100** across all countries. Rank 1 = b
             padding:1rem;text-align:center;">
   <div style="font-size:10px;color:#6890B0;text-transform:uppercase;
               letter-spacing:.06em;margin-bottom:.3rem;">
-    Inter-Dim Spread · Growth</div>
+    {t(STRINGS, "spread_growth_label")}</div>
   <div style="font-size:28px;font-weight:700;color:#60A5FA;">{rd_gr}</div>
-  <div style="font-size:11px;color:#6890B0;">rank-point spread across 3 pillars</div>
+  <div style="font-size:11px;color:#6890B0;">{t(STRINGS, "spread_growth_caption")}</div>
 </div>""", unsafe_allow_html=True)
 
 
