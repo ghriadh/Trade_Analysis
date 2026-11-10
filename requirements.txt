@@ -14,10 +14,10 @@ comtradeapicall
 # Utilities
 tqdm
 # Database
-sqlalchemy
+sqlalchemy==2.0.49
 pyodbc
-duckdb
-duckdb-engine
+duckdb==1.5.3
+duckdb-engine==0.17.0
 jupysql
 databricks-sqlalchemy
 # Statistics / forecasting
