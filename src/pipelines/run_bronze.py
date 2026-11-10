@@ -83,12 +83,17 @@ def run_bronze_pipeline(db: str | None = None) -> None:
         rows=len(df_indicators), duration_s=time.time() - t)
 
     # --- Indicator values (World Bank API — depends on indicators CSV above)
-    t = time.time()
+    # extract_indicators_values() records its own "indicators_values" stage
+    # (with the real row count) via its own ETLStatusWriter instances — this
+    # function must NOT also call status.record_stage() for it: `status` here
+    # holds an in-memory snapshot taken before that call, so saving it
+    # afterwards would overwrite the correct stage just written to disk.
     extract_indicators_values(start_year=START_YEAR, end_year=END_YEAR, connector=connector)
-    status.record_stage("bronze", "indicator_values",                       
-        rows=0, duration_s=time.time() - t)
 
-    status.end_pipeline("bronze")
+    # Fresh writer: `status` still holds its pre-indicators_values in-memory
+    # snapshot, and end_pipeline() saves the full dict — reloading here keeps
+    # the "indicators_values" stage that was written to disk in the meantime.
+    ETLStatusWriter().end_pipeline("bronze")
     logger.info("=== END BRONZE PIPELINE ===")
 
 # helper to read row count from CSV without loading full DF
