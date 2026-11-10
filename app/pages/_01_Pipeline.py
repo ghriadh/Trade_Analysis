@@ -1036,6 +1036,8 @@ else:
         ("bronze_result", None),
         ("silver_result", None),
         ("gold_result",   None),
+        ("silver_stderr", None),
+        ("gold_stderr",   None),
     ]:
         if key not in st.session_state:
             st.session_state[key] = default
@@ -1082,6 +1084,8 @@ else:
         if res == "ok":
             st.success(t(STRINGS, "silver_completed"))
             _stage_row("silver", "#60A5FA")
+        elif st.session_state.silver_stderr:
+            st.error(t(STRINGS, "silver_failed").format(err=st.session_state.silver_stderr[-500:]))
         else:
             st.error(t(STRINGS, "silver_failed_exit").format(code=res.split(':', 1)[1]))
 
@@ -1090,6 +1094,8 @@ else:
         if res == "ok":
             st.success(t(STRINGS, "gold_completed"))
             _stage_row("gold", "#FBBF24")
+        elif st.session_state.gold_stderr:
+            st.error(t(STRINGS, "gold_failed").format(err=st.session_state.gold_stderr[-500:]))
         else:
             st.error(t(STRINGS, "gold_failed_exit").format(code=res.split(':', 1)[1]))
 
@@ -1103,7 +1109,7 @@ else:
     c1, c2, c3 = st.columns(3)
 
     if c1.button(t(STRINGS, "btn_run_bronze"), key="run_bronze", disabled=bronze_running):
-        for k in ("bronze_result", "silver_result", "gold_result"):
+        for k in ("bronze_result", "silver_result", "gold_result", "silver_stderr", "gold_stderr"):
             st.session_state[k] = None
         st.session_state.bronze_proc = subprocess.Popen(
             _cmd("src.pipelines.run_bronze"), cwd=str(ROOT), env=os.environ.copy(),
@@ -1125,8 +1131,7 @@ else:
             )
         etl = load_etl_status()
         st.session_state.silver_result = "ok" if r.returncode == 0 else f"fail:{r.returncode}"
-        if r.returncode != 0:
-            st.error(t(STRINGS, "silver_failed").format(err=r.stderr[-500:]))
+        st.session_state.silver_stderr = r.stderr if r.returncode != 0 else None
         st.rerun()
 
     if c3.button(t(STRINGS, "btn_run_gold"), key="run_gold", disabled=bronze_running):
@@ -1137,8 +1142,7 @@ else:
             )
         etl = load_etl_status()
         st.session_state.gold_result = "ok" if r.returncode == 0 else f"fail:{r.returncode}"
-        if r.returncode != 0:
-            st.error(t(STRINGS, "gold_failed").format(err=r.stderr[-500:]))
+        st.session_state.gold_stderr = r.stderr if r.returncode != 0 else None
         st.rerun()
 
     # Auto-refresh every 3s while Bronze is running
