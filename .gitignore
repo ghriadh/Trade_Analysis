@@ -32,7 +32,11 @@ logs/
 # traverses the tree below, letting the negations re-include one file.
 data/bronze/*
 data/silver/
-data/sql/
+data/sql/*
+# Exception: a slimmed gold+analysis-only copy (50MB, vs 125MB full
+# file) tracked so the Architecture page's live pure-SQL demo works
+# on a fresh cloud deployment. The full working file stays git-ignored.
+!data/sql/trade_analysis_sql_demo.duckdb
 
 # Exception: ship the final consolidated trade_data / indicators_values
 # bronze files so "Run Silver" and "Run Bronze" don't pay the full

@@ -133,9 +133,8 @@ STRINGS = {
         "btn_query_duckdb": "▶  Query live DuckDB file",
         "file_not_found": "File not found: {path}",
         "sql_demo_local_note": (
-            "ℹ️  This demo reads a 125MB DuckDB file (the pure-SQL ETL duplicate), "
-            "deliberately excluded from the repo to stay under GitHub's size limit — "
-            "only available by running the pure-SQL pipeline locally."
+            "ℹ️  Neither the full pure-SQL DuckDB file nor its tracked gold+analysis "
+            "demo copy was found — run the pure-SQL pipeline locally to generate one."
         ),
         "spinner_querying_duckdb": "Querying DuckDB file…",
         "connected_real_pipeline": "✅  Connected to the real pipeline output",
@@ -279,9 +278,9 @@ STRINGS = {
         "btn_query_duckdb": "▶  Interroger le fichier DuckDB en direct",
         "file_not_found": "Fichier introuvable : {path}",
         "sql_demo_local_note": (
-            "ℹ️  Cette démo lit un fichier DuckDB de 125 Mo (le double pur-SQL de l'ETL), "
-            "volontairement exclu du dépôt pour rester sous la limite GitHub — "
-            "disponible uniquement en exécutant le pipeline pur-SQL en local."
+            "ℹ️  Ni le fichier DuckDB pur-SQL complet, ni sa copie allégée "
+            "gold+analysis trackée n'ont été trouvés — exécute le pipeline pur-SQL "
+            "en local pour en générer un."
         ),
         "spinner_querying_duckdb": "Interrogation du fichier DuckDB…",
         "connected_real_pipeline": "✅  Connecté à la sortie réelle du pipeline",
@@ -617,7 +616,12 @@ with st.expander(t(STRINGS, "exp_duckdb_demo")):
         try:
             import duckdb
 
-            db_path = ROOT / "data" / "sql" / "trade_analysis_sql.duckdb"
+            # Prefer the full working file (local dev, built by the real
+            # pure-SQL pipeline); fall back to the tracked gold+analysis-only
+            # slim copy so this demo also works on a fresh cloud deployment.
+            full_path = ROOT / "data" / "sql" / "trade_analysis_sql.duckdb"
+            demo_path = ROOT / "data" / "sql" / "trade_analysis_sql_demo.duckdb"
+            db_path = full_path if full_path.exists() else demo_path
 
             if not db_path.exists():
                 st.caption(t(STRINGS, "sql_demo_local_note"))
